@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - Premium Learning Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--light);
+            color: var(--text-primary);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 60px;
+            width: 250px;
+            height: calc(100vh - 60px);
+            background: white;
+            border-right: 1px solid var(--border);
+            padding: 2rem 0;
+            overflow-y: auto;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-item {
+            padding: 1rem 2rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-left: 3px solid transparent;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-item:hover {
+            background: var(--light);
+            color: var(--primary);
+            border-left-color: var(--primary);
+        }
+
+        .nav-item.active {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            border-left-color: var(--primary);
+            font-weight: 600;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            margin-top: 60px;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        .card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .learning-progress {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .progress-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .progress-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .progress-percentage {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .progress-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .quiz-list {
+            list-style: none;
+        }
+
+        .quiz-item {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .quiz-item:hover {
+            background: linear-gradient(90deg, rgba(99, 102, 241, 0.1) 0%, transparent);
+            transform: translateX(4px);
+        }
+
+        .quiz-info h3 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .quiz-info p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .quiz-action {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--border);
+            color: var(--text-primary);
+        }
+
+        .score-badge {
+            background: linear-gradient(135deg, var(--success) 0%, #06b6d4 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding: 1rem 0;
+                display: flex;
+                overflow-x: auto;
+            }
+
+            .nav-item {
+                padding: 1rem 1.5rem;
+                white-space: nowrap;
+            }
+
+            .main-content {
+                margin-left: 0;
+                margin-top: 0;
+            }
+
+            .learning-progress {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>📚 Student Portal</div>
+        <div>Welcome, Ahmed! 👋</div>
+    </header>
+
+    <div class="sidebar">
+        <div class="nav-item active">📊 Dashboard</div>
+        <div class="nav-item">📚 My Courses</div>
+        <div class="nav-item">✅ Quiz History</div>
+        <div class="nav-item">📝 Study Notes</div>
+        <div class="nav-item">📈 Progress Analytics</div>
+        <div class="nav-item">⚙️ Settings</div>
+    </div>
+
+    <div class="main-content">
+        <div class="container">
+            <div class="section-title">Your Learning Dashboard</div>
+
+            <!-- Statistics -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">85%</div>
+                    <div class="stat-label">Overall Progress</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">12</div>
+                    <div class="stat-label">Quizzes Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">92</div>
+                    <div class="stat-label">Average Score</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">42</div>
+                    <div class="stat-label">Study Hours</div>
+                </div>
+            </div>
+
+            <!-- Learning Progress -->
+            <h2 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--text-primary);">Course Progress</h2>
+            <div class="learning-progress">
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <div class="progress-name">📐 Mathematics</div>
+                        <div class="progress-percentage">85%</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%;"></div>
+                    </div>
+                    <div class="progress-details">
+                        <span>17/20 Quizzes Passed</span>
+                        <span>Avg: 88%</span>
+                    </div>
+                </div>
+
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <div class="progress-name">⚛️ Physics</div>
+                        <div class="progress-percentage">78%</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 78%;"></div>
+                    </div>
+                    <div class="progress-details">
+                        <span>15/20 Quizzes Passed</span>
+                        <span>Avg: 85%</span>
+                    </div>
+                </div>
+
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <div class="progress-name">📝 Practice Tests</div>
+                        <div class="progress-percentage">92%</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 92%;"></div>
+                    </div>
+                    <div class="progress-details">
+                        <span>46/50 Problems Solved</span>
+                        <span>Avg: 92%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Available Quizzes -->
+            <div class="card">
+                <h2 style="font-size: 1.3rem; margin-bottom: 1.5rem;">Available Quizzes</h2>
+                <ul class="quiz-list">
+                    <li class="quiz-item">
+                        <div class="quiz-info">
+                            <h3>Algebra Quiz 1</h3>
+                            <p>Quadratic equations and factorization</p>
+                        </div>
+                        <div class="quiz-action">
+                            <span class="score-badge">85%</span>
+                            <button class="btn btn-secondary">Review</button>
+                        </div>
+                    </li>
+                    <li class="quiz-item">
+                        <div class="quiz-info">
+                            <h3>Trigonometry Quiz 1</h3>
+                            <p>Ratios and identities</p>
+                        </div>
+                        <div class="quiz-action">
+                            <span class="score-badge">92%</span>
+                            <button class="btn btn-secondary">Review</button>
+                        </div>
+                    </li>
+                    <li class="quiz-item">
+                        <div class="quiz-info">
+                            <h3>Physics - Mechanics</h3>
+                            <p>Kinematics and Newton's Laws</p>
+                        </div>
+                        <div class="quiz-action">
+                            <span class="score-badge">88%</span>
+                            <button class="btn btn-secondary">Review</button>
+                        </div>
+                    </li>
+                    <li class="quiz-item">
+                        <div class="quiz-info">
+                            <h3>Physics - Energy & Work</h3>
+                            <p>Energy conservation and power</p>
+                        </div>
+                        <div class="quiz-action">
+                            <button class="btn btn-primary">Take Quiz</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="card">
+                <h2 style="font-size: 1.3rem; margin-bottom: 1.5rem;">Recent Activity</h2>
+                <div style="color: var(--text-secondary); font-size: 0.95rem;">
+                    <p style="margin-bottom: 0.75rem;">✅ Completed Physics - Waves Quiz (92%)</p>
+                    <p style="margin-bottom: 0.75rem;">📝 Added 5 new study notes</p>
+                    <p style="margin-bottom: 0.75rem;">🎯 Achieved 85% overall progress</p>
+                    <p>📚 Started Calculus Basics chapter</p>
+                </div>
+            </div>
+
+            <!-- Recommendations -->
+            <div class="card">
+                <h2 style="font-size: 1.3rem; margin-bottom: 1.5rem;">Recommended Next Steps</h2>
+                <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(148, 51, 234, 0.1) 100%); padding: 1.5rem; border-radius: 0.75rem; border-left: 4px solid var(--primary);">
+                    <p style="color: var(--text-primary); font-weight: 600; margin-bottom: 0.5rem;">Focus on Physics</p>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Your physics progress is slightly behind mathematics. Consider focusing on the remaining chapters.</p>
+                    <button class="btn btn-primary">Start Physics Chapter 4</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

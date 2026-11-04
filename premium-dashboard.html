@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT 1 & EST 1 - Premium Learning Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --secondary: #ec4899;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --dark-lighter: #334155;
+            --light: #f8fafc;
+            --light-secondary: #e2e8f0;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        [data-theme="dark"] {
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --dark: #020617;
+            --dark-light: #1e1b4b;
+            --dark-lighter: #312e81;
+            --light: #0f172a;
+            --light-secondary: #1e293b;
+            --border: #334155;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--light);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background 0.3s ease;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .theme-toggle {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Main Layout */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Dashboard Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Card */
+        .card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border);
+        }
+
+        [data-theme="dark"] .card {
+            background: var(--dark-light);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+
+        .card-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .card-icon.blue {
+            background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
+            color: white;
+        }
+
+        .card-icon.pink {
+            background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+            color: white;
+        }
+
+        .card-icon.green {
+            background: linear-gradient(135deg, #10b981 0%, #6ee7b7 100%);
+            color: white;
+        }
+
+        .card-icon.orange {
+            background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+            color: white;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .card-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        .card-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        .card-footer {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--light-secondary);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* Courses Grid */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border);
+        }
+
+        [data-theme="dark"] .course-card {
+            background: var(--dark-light);
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .course-header {
+            height: 120px;
+            background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-header.physics {
+            background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+        }
+
+        .course-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: drift 20s linear infinite;
+        }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(20px, 20px); }
+        }
+
+        .course-body {
+            padding: 1.5rem;
+        }
+
+        .course-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .course-info {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .course-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .course-badge.intermediate {
+            background: var(--warning);
+        }
+
+        .course-badge.advanced {
+            background: var(--danger);
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--light-secondary);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Stats Section */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* Topics List */
+        .topics-list {
+            list-style: none;
+        }
+
+        .topic-item {
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: var(--light);
+            border-left: 3px solid var(--primary);
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        [data-theme="dark"] .topic-item {
+            background: var(--dark-lighter);
+        }
+
+        .topic-item:hover {
+            background: linear-gradient(90deg, var(--primary) 0%, transparent);
+            border-left-color: var(--primary-dark);
+            transform: translateX(4px);
+        }
+
+        .topic-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .topic-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-light);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .card-value {
+                font-size: 1.5rem;
+            }
+
+            .stat-value {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card, .course-card, .section {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* Badges and Tags */
+        .badge {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .badge-success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .badge-info {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 1.5rem 0;
+        }
+
+        /* Learning Path */
+        .learning-path {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .learning-path::before {
+            content: '';
+            position: absolute;
+            left: 0.25rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--primary-light) 100%);
+        }
+
+        .path-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--light);
+            border-radius: 0.5rem;
+        }
+
+        [data-theme="dark"] .path-item {
+            background: var(--dark-lighter);
+        }
+
+        .path-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 1.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--primary);
+        }
+
+        .path-title {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .path-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        /* Tab Navigation */
+        .tabs {
+            display: flex;
+            gap: 2rem;
+            border-bottom: 2px solid var(--border);
+            margin-bottom: 2rem;
+            overflow-x: auto;
+        }
+
+        .tab {
+            padding: 1rem 0;
+            color: var(--text-secondary);
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+            white-space: nowrap;
+            transition: color 0.3s;
+        }
+
+        .tab::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .tab:hover {
+            color: var(--text-primary);
+        }
+
+        .tab.active {
+            color: var(--primary);
+        }
+
+        .tab.active::after {
+            transform: scaleX(1);
+        }
+
+        /* Features Highlight */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-box {
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        [data-theme="dark"] .feature-box {
+            background: var(--dark-light);
+        }
+
+        .feature-box:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .feature-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 1rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: drift 30s linear infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        /* Welcome message */
+        .welcome-card {
+            background: linear-gradient(135deg, rgba(99,102,241,0.1) 0%, rgba(148,51,234,0.1) 100%);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        [data-theme="dark"] .welcome-card {
+            background: linear-gradient(135deg, rgba(99,102,241,0.2) 0%, rgba(148,51,234,0.2) 100%);
+        }
+
+        .welcome-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .welcome-subtitle {
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-brand">
+            <span>📚</span>
+            <span>SAT 1 & EST 1</span>
+        </div>
+        <div class="header-actions">
+            <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Welcome Section -->
+        <div class="welcome-card">
+            <div class="welcome-title">Welcome to Premium Learning Platform</div>
+            <div class="welcome-subtitle">Complete SAT 1 & EST 1 preparation with Ahmed Labib</div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="section">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-value">2</div>
+                    <div class="stat-label">Expert Subjects</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">11</div>
+                    <div class="stat-label">Comprehensive Chapters</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">50+</div>
+                    <div class="stat-label">Practice Problems</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">110+</div>
+                    <div class="stat-label">Key Formulas</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Cards -->
+        <div class="section">
+            <div class="section-title">Your Learning Dashboard</div>
+            <div class="dashboard-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon blue">📐</div>
+                        <div>
+                            <div class="card-title">Mathematics</div>
+                            <div class="card-subtitle">5 Chapters</div>
+                        </div>
+                    </div>
+                    <div class="card-value">5/5</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%;"></div>
+                    </div>
+                    <div class="card-footer">All chapters covered</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon pink">⚛️</div>
+                        <div>
+                            <div class="card-title">Physics</div>
+                            <div class="card-subtitle">6 Chapters</div>
+                        </div>
+                    </div>
+                    <div class="card-value">6/6</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%;"></div>
+                    </div>
+                    <div class="card-footer">All chapters covered</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon green">✅</div>
+                        <div>
+                            <div class="card-title">Practice Tests</div>
+                            <div class="card-subtitle">50+ Problems</div>
+                        </div>
+                    </div>
+                    <div class="card-value">50+</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%;"></div>
+                    </div>
+                    <div class="card-footer">Complete solutions included</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon orange">📖</div>
+                        <div>
+                            <div class="card-title">Study Materials</div>
+                            <div class="card-subtitle">2000+ Lines</div>
+                        </div>
+                    </div>
+                    <div class="card-value">110+</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%;"></div>
+                    </div>
+                    <div class="card-footer">Formulas and examples</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Courses Section -->
+        <div class="section">
+            <div class="section-title">Featured Courses</div>
+            <div class="section-subtitle">Expert-led preparation courses with comprehensive curriculum</div>
+
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-header"></div>
+                    <div class="course-body">
+                        <div class="course-name">Mathematics SAT 1 & EST 1</div>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 1rem 0;">Complete mathematics curriculum covering algebra, trigonometry, calculus, and geometry.</p>
+                        <div class="course-info">
+                            <span>👨‍🏫 Ahmed Labib</span>
+                            <span class="course-badge">Intermediate</span>
+                        </div>
+                        <div class="course-info">
+                            <span>⏱️ 12 Weeks</span>
+                            <span>📚 5 Chapters</span>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Start Learning</button>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-header physics"></div>
+                    <div class="course-body">
+                        <div class="course-name">Physics SAT 1 & EST 1</div>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 1rem 0;">Complete physics curriculum covering mechanics, energy, waves, electricity, and modern physics.</p>
+                        <div class="course-info">
+                            <span>👨‍🏫 Ahmed Labib</span>
+                            <span class="course-badge">Intermediate</span>
+                        </div>
+                        <div class="course-info">
+                            <span>⏱️ 12 Weeks</span>
+                            <span>📚 6 Chapters</span>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Start Learning</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="section">
+            <div class="section-title">Why Choose Our Platform?</div>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon">🎓</div>
+                    <div class="feature-title">Expert Instruction</div>
+                    <div class="feature-desc">Learn from Ahmed Labib, specialized in SAT 1 & EST 1 preparation</div>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-title">Progress Tracking</div>
+                    <div class="feature-desc">Monitor your learning progress with detailed analytics</div>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">✅</div>
+                    <div class="feature-title">Practice Problems</div>
+                    <div class="feature-desc">50+ solved problems with complete explanations</div>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-title">Self-Paced</div>
+                    <div class="feature-desc">Learn at your own pace, anytime, anywhere</div>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-title">Mobile Friendly</div>
+                    <div class="feature-desc">Access all materials on desktop, tablet, or phone</div>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">🔒</div>
+                    <div class="feature-title">Secure & Private</div>
+                    <div class="feature-desc">Your data is safe with enterprise-grade security</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Learning Path -->
+        <div class="section">
+            <div class="section-title">Your Learning Path</div>
+            <div class="learning-path">
+                <div class="path-item">
+                    <div class="path-title">Foundation Phase (Weeks 1-4)</div>
+                    <div class="path-desc">Master fundamental concepts and build strong foundations in both subjects</div>
+                </div>
+                <div class="path-item">
+                    <div class="path-title">Development Phase (Weeks 5-8)</div>
+                    <div class="path-desc">Deepen understanding with advanced topics and problem-solving techniques</div>
+                </div>
+                <div class="path-item">
+                    <div class="path-title">Practice Phase (Weeks 9-10)</div>
+                    <div class="path-desc">Solve comprehensive practice problems and take full-length tests</div>
+                </div>
+                <div class="path-item">
+                    <div class="path-title">Mastery Phase (Weeks 11-12)</div>
+                    <div class="path-desc">Final review, strategy refinement, and exam preparation</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mathematics Topics -->
+        <div class="section">
+            <div class="section-title">Mathematics Topics</div>
+            <ul class="topics-list">
+                <li class="topic-item">
+                    <div class="topic-name">📐 Algebra & Polynomials</div>
+                    <div class="topic-desc">Quadratic equations, factorization, systems of equations, inequalities</div>
+                </li>
+                <li class="topic-item">
+                    <div class="topic-name">📊 Trigonometry</div>
+                    <div class="topic-desc">Ratios, identities, equations, special angles, graphs</div>
+                </li>
+                <li class="topic-item">
+                    <div class="topic-name">📈 Logarithms & Exponentials</div>
+                    <div class="topic-desc">Properties, equations, growth, decay, change of base</div>
+                </li>
+                <li class="topic-item">
+                    <div class="topic-name">🔬 Calculus Basics</div>
+                    <div class="topic-desc">Limits, derivatives, differentiation rules, integration</div>
+                </li>
+                <li class="topic-item">
+                    <div class="topic-name">🎯 Geometry & Vectors</div>
+                    <div class="topic-desc">Conic sections, vector operations, dot/cross products</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Physics Topics -->
+        <div class="section">
+            <div class="section-title">Physics Topics</div>
+            <ul class="topics-list">
+                <li class="topic-item">
+                    <div class="topic-name">🚀 Mechanics & Motion</div>
+                    <div class="topic-desc">Kinematics, Newton's Laws, friction, circular motion, gravitation</div>
+                </li>
+                <li class="topic-item">
+                    <div class="topic-name">⚡ Energy & Work</div>
+                    <div class="topic-desc">Work, kinetic/potential energy, conservation, power</div>
+                </li>
+                <li class="topic-item">
+                    <div class="topic-name">🌊 Waves & Oscillations</div>
+                    <div class="topic-desc">SHM, wave properties, sound, light, Doppler effect</div>
+                </li>
+                <li class="topic-item">
+                    <div class="topic-name">⚙️ Electricity & Current</div>
+                    <div class="topic-desc">Charges, fields, current, resistance, circuits, power</div>
+                </li>
+                <li class="topic-item">
+                    <div class="topic-name">🧲 Magnetism & Electromagnetism</div>
+                    <div class="topic-desc">Magnetic fields, induction, Faraday's Law, transformers</div>
+                </li>
+                <li class="topic-item">
+                    <div class="topic-name">🌌 Modern Physics</div>
+                    <div class="topic-desc">Quantum theory, atomic structure, nuclear physics, relativity</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Call to Action -->
+        <div style="text-align: center; margin: 3rem 0;">
+            <h2 style="font-size: 1.8rem; margin-bottom: 1rem;">Ready to Start Your Journey?</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">Join thousands of students preparing for SAT 1 & EST 1 exams</p>
+            <button class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1rem;">Get Started Today</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 SAT 1 & EST 1 Premium Learning Platform</p>
+        <p>Teacher: Ahmed Labib | Free Educational Material</p>
+        <p style="margin-top: 1rem; opacity: 0.8;">Quality Education for Exam Success</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            document.querySelector('.theme-toggle').textContent = newTheme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+        }
+
+        // Load saved theme preference
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        if (savedTheme === 'dark') {
+            document.querySelector('.theme-toggle').textContent = '☀️ Light Mode';
+        }
+
+        // Add smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
