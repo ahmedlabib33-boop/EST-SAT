@@ -1,641 +1,1098 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmed Labib - SAT 1 & EST 1 Study Materials</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EST · SAT — Math &amp; Physics with Ahmed Labib</title>
+<meta name="description" content="Master SAT 1 and EST 1 Math and Physics with Ahmed Labib: a daily mission, timed practice with instant explanations, a formula vault and progress you can see.">
+<meta name="theme-color" content="#07070F">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322D3EE'/%3E%3Cstop offset='1' stop-color='%238B5CF6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='700' font-size='34' fill='white' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #07070F;
+  --bg-2: #0E0E1C;
+  --line: rgba(255, 255, 255, 0.09);
+  --line-2: rgba(255, 255, 255, 0.16);
+  --text: #F4F4FF;
+  --muted: #A3A3C2;
+  --dim: #77779A;
+  --violet: #8B5CF6;
+  --indigo: #6366F1;
+  --cyan: #22D3EE;
+  --pink: #EC4899;
+  --green: #34D399;
+  --amber: #FBBF24;
+  --red: #F87171;
+  --lav: #C4B5FD;
+  --r-xl: 28px;
+  --r-lg: 20px;
+  --r-md: 14px;
+  --head: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+}
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: #333;
-        }
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img, svg { display: block; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+h1, h2, h3 { font-family: var(--head); line-height: 1.12; margin: 0; letter-spacing: -0.02em; }
+p { margin: 0; }
+:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 8px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.icon { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
-        header {
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
+/* ---------- Space background ---------- */
+.space { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.space::before {
+  content: ""; position: absolute; inset: 0; opacity: 0.55;
+  background-image:
+    radial-gradient(1.5px 1.5px at 8% 14%, #fff, transparent 60%),
+    radial-gradient(1px 1px at 22% 72%, #fff, transparent 60%),
+    radial-gradient(1px 1px at 35% 28%, #fff, transparent 60%),
+    radial-gradient(1.5px 1.5px at 47% 86%, #fff, transparent 60%),
+    radial-gradient(1px 1px at 58% 12%, #fff, transparent 60%),
+    radial-gradient(1px 1px at 66% 54%, #fff, transparent 60%),
+    radial-gradient(1.5px 1.5px at 78% 32%, #fff, transparent 60%),
+    radial-gradient(1px 1px at 86% 78%, #fff, transparent 60%),
+    radial-gradient(1px 1px at 93% 8%, #fff, transparent 60%),
+    radial-gradient(1px 1px at 14% 46%, #fff, transparent 60%),
+    radial-gradient(1px 1px at 72% 92%, #fff, transparent 60%),
+    radial-gradient(1px 1px at 4% 90%, #fff, transparent 60%);
+}
+.space::after {
+  content: ""; position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 20%, transparent 75%);
+}
+.glow { position: absolute; border-radius: 50%; filter: blur(110px); animation: drift 26s ease-in-out infinite alternate; }
+.glow.g1 { width: 620px; height: 520px; background: var(--violet); opacity: 0.32; top: -220px; right: -120px; }
+.glow.g2 { width: 520px; height: 440px; background: var(--cyan); opacity: 0.14; bottom: -180px; left: -140px; animation-duration: 32s; }
+.glow.g3 { width: 380px; height: 320px; background: var(--pink); opacity: 0.12; bottom: 10%; right: -80px; animation-duration: 38s; }
+@keyframes drift { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(-40px, 30px, 0) scale(1.08); } }
 
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
+/* ---------- Shared pieces ---------- */
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 30px 60px -32px rgba(0,0,0,0.7);
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 14px 22px; border-radius: var(--r-md); border: 1px solid transparent;
+  font-weight: 600; font-size: 15px; line-height: 1.2; text-decoration: none; cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; box-shadow: none; }
+.btn-primary { background: linear-gradient(135deg, var(--violet), var(--indigo)); color: #fff; box-shadow: 0 12px 30px -12px rgba(139,92,246,0.9); }
+.btn-primary:hover:not(:disabled) { box-shadow: 0 18px 40px -12px rgba(139,92,246,1); }
+.btn-ghost { background: rgba(255,255,255,0.06); border-color: var(--line-2); color: var(--text); }
+.btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.28); }
+.btn-light { background: #fff; color: #1E1B4B; box-shadow: 0 10px 30px -12px rgba(255,255,255,0.5); }
+.btn-sm { padding: 10px 16px; font-size: 14px; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan);
+}
+.grad-text { background: linear-gradient(90deg, var(--cyan), var(--violet) 55%, var(--pink)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+section { scroll-margin-top: 84px; }
+.section { padding: 96px 0 0; }
+.section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 36px; flex-wrap: wrap; }
+.section-head h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin-top: 10px; }
+.section-head p { color: var(--muted); max-width: 520px; }
+.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.js .reveal.in { opacity: 1; transform: none; }
 
-        header p {
-            font-size: 1.1em;
-            opacity: 0.9;
-        }
+/* ---------- Nav ---------- */
+.nav { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid var(--line); background: rgba(7,7,15,0.72); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
+.nav-in { display: flex; align-items: center; gap: 24px; height: 68px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.mark {
+  width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center;
+  background: linear-gradient(135deg, var(--cyan), var(--violet)); box-shadow: 0 8px 24px -6px rgba(139,92,246,0.8);
+  font-family: var(--head); font-weight: 700; font-size: 19px; color: #fff;
+}
+.brand-txt b { display: block; font-family: var(--head); font-size: 16px; letter-spacing: 0.06em; line-height: 1.2; }
+.brand-txt small { display: block; color: var(--muted); font-size: 12px; line-height: 1.3; }
+.links { display: flex; gap: 4px; margin-left: auto; }
+.links a { padding: 8px 12px; border-radius: 10px; color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s, background 0.2s; }
+.links a:hover { color: var(--text); background: rgba(255,255,255,0.06); }
 
-        .teacher-info {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px 20px;
-            border-radius: 5px;
-            margin-top: 15px;
-            display: inline-block;
-        }
+/* ---------- Hero ---------- */
+.hero { padding: 72px 0 0; }
+.hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; }
+.pill {
+  display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 8px; border-radius: 999px;
+  background: rgba(255,255,255,0.05); border: 1px solid var(--line-2); font-size: 13px; color: var(--lav); font-weight: 500;
+}
+.pill b { background: linear-gradient(135deg, var(--cyan), var(--violet)); color: #fff; font-size: 11px; padding: 3px 8px; border-radius: 999px; letter-spacing: 0.06em; }
+.hero h1 { font-size: clamp(2.5rem, 5.6vw, 4.3rem); margin: 22px 0 20px; line-height: 1.04; }
+.lead { font-size: clamp(1.05rem, 1.6vw, 1.2rem); color: var(--muted); max-width: 540px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.perks { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 32px 0 0; padding: 0; list-style: none; color: var(--muted); font-size: 14px; }
+.perks li { display: flex; align-items: center; gap: 8px; }
+.perks .icon { width: 16px; height: 16px; color: var(--green); }
 
-        .teacher-info strong {
-            color: #ffd700;
-        }
+/* Mission Control card */
+.mc {
+  position: relative; overflow: hidden; padding: 30px; border-radius: var(--r-xl);
+  border: 1px solid transparent;
+  background:
+    linear-gradient(145deg, #3A1878 0%, #23215F 52%, #0B4D63 100%) padding-box,
+    linear-gradient(145deg, rgba(34,211,238,0.7), rgba(139,92,246,0.5) 45%, rgba(236,72,153,0.6)) border-box;
+  box-shadow: 0 40px 80px -40px rgba(139,92,246,0.7);
+}
+.orbits { position: absolute; width: 380px; height: 380px; top: -150px; right: -150px; pointer-events: none; }
+.orbit { position: absolute; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.13); animation: spin 28s linear infinite; }
+.orbit::after { content: ""; position: absolute; top: -5px; left: calc(50% - 5px); width: 10px; height: 10px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 14px 2px var(--cyan); }
+.orbit.o1 { inset: 0; }
+.orbit.o2 { inset: 70px; animation-duration: 18s; animation-direction: reverse; }
+.orbit.o2::after { background: var(--pink); box-shadow: 0 0 14px 2px var(--pink); width: 8px; height: 8px; left: calc(50% - 4px); top: -4px; }
+.orbit.o3 { inset: 135px; animation-duration: 12s; border-color: rgba(255,255,255,0.2); }
+.orbit.o3::after { background: #fff; box-shadow: 0 0 12px 2px #fff; width: 6px; height: 6px; left: calc(50% - 3px); top: -3px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.mc > *:not(.orbits) { position: relative; }
+.mc-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; }
+.mc-label { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); letter-spacing: 0.14em; text-transform: uppercase; font-size: 11px; color: #E0E7FF; }
+.live { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 rgba(52,211,153,0.7); animation: pulse 2s infinite; }
+@keyframes pulse { 70% { box-shadow: 0 0 0 8px rgba(52,211,153,0); } 100% { box-shadow: 0 0 0 0 rgba(52,211,153,0); } }
+.mc-date { color: #C7D2FE; }
+.mc-kicker { margin-top: 22px; font-size: 13px; color: #C7D2FE; font-weight: 500; }
+.mc-title { font-size: clamp(1.6rem, 2.8vw, 2.1rem); margin-top: 6px; max-width: 420px; }
+.mc-meta { display: flex; flex-wrap: wrap; gap: 8px 18px; list-style: none; padding: 0; margin: 14px 0 0; font-size: 14px; color: #E0E7FF; }
+.mc-meta li { display: flex; align-items: center; gap: 7px; }
+.mc-meta .icon { width: 16px; height: 16px; color: #A5B4FC; }
+.segs { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-top: 22px; }
+.segs span { height: 6px; border-radius: 6px; background: rgba(255,255,255,0.16); transition: background 0.4s, box-shadow 0.4s; }
+.segs span.on { background: var(--cyan); box-shadow: 0 0 12px rgba(34,211,238,0.7); }
+.mc-count { margin-top: 10px; font-size: 13px; color: #C7D2FE; }
+.mc .btn-light { margin-top: 20px; }
+.mc-tiles { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 10px; margin-top: 24px; }
+.tile { background: rgba(7,7,15,0.38); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--r-md); padding: 14px; min-width: 0; }
+.tile-k { display: block; font-size: 11px; font-family: var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: #A5B4FC; }
+.tile strong { display: flex; align-items: baseline; gap: 6px; font-family: var(--head); font-size: 28px; line-height: 1.2; margin-top: 6px; }
+.tile strong small { font-family: var(--body); font-size: 13px; font-weight: 500; color: var(--muted); }
+.tile .sub { display: block; font-size: 12px; color: var(--muted); line-height: 1.4; }
+.date-pick { display: block; margin-top: 8px; }
+.date-pick input {
+  width: 100%; max-width: 100%; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--line-2);
+  background: rgba(255,255,255,0.06); color: var(--text); font: 500 13px var(--body); color-scheme: dark;
+}
 
-        nav {
-            background: white;
-            padding: 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+/* ---------- Strip ---------- */
+.strip { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 72px; border-radius: var(--r-lg); overflow: hidden; }
+.strip div { padding: 26px 24px; text-align: center; border-right: 1px solid var(--line); }
+.strip div:last-child { border-right: 0; }
+.strip b { display: block; font-family: var(--head); font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.1; }
+.strip span { color: var(--muted); font-size: 14px; }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+/* ---------- Steps ---------- */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.step { padding: 28px; position: relative; }
+.step-n {
+  width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; margin-bottom: 20px;
+  font-family: var(--mono); font-weight: 500; color: var(--cyan);
+  background: rgba(34,211,238,0.1); border: 1px solid rgba(34,211,238,0.35); box-shadow: 0 0 24px -6px rgba(34,211,238,0.6);
+}
+.step h3 { font-size: 1.2rem; margin-bottom: 8px; }
+.step p { color: var(--muted); font-size: 15px; }
 
-        nav a {
-            display: block;
-            padding: 15px 25px;
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
-        }
+/* ---------- Subjects ---------- */
+.subjects { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.subject { padding: 28px; --accent: var(--violet); --accent-2: var(--indigo); }
+.subject.physics { --accent: var(--cyan); --accent-2: #3B82F6; }
+.subject-head { display: flex; align-items: center; gap: 20px; margin-bottom: 22px; }
+.ring-wrap { position: relative; width: 112px; height: 112px; flex: none; }
+.ring { width: 112px; height: 112px; transform: rotate(-90deg); }
+.ring circle { fill: none; stroke-width: 9; }
+.ring-track { stroke: rgba(255,255,255,0.08); }
+.ring-fill { stroke-linecap: round; stroke-dasharray: 326.73; stroke-dashoffset: 326.73; transition: stroke-dashoffset 0.9s cubic-bezier(.2,.8,.2,1); filter: drop-shadow(0 0 6px var(--accent)); }
+.ring-val { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+.ring-val b { font-family: var(--head); font-size: 22px; line-height: 1.1; }
+.ring-val span { font-size: 11px; color: var(--muted); }
+.subject-badge { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
+.subject h3 { font-size: 1.6rem; margin: 6px 0 4px; }
+.subject-head p { color: var(--muted); font-size: 14px; }
+.chapters { display: grid; gap: 8px; }
+.chapter {
+  display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; padding: 12px 14px;
+  border-radius: var(--r-md); border: 1px solid var(--line); background: rgba(255,255,255,0.025); cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.chapter:hover { border-color: var(--line-2); background: rgba(255,255,255,0.05); }
+.chapter .check { width: 24px; height: 24px; flex: none; border-radius: 8px; border: 1.5px solid var(--line-2); display: grid; place-items: center; transition: background 0.2s, border-color 0.2s; }
+.chapter .check .icon { width: 14px; height: 14px; stroke-width: 3; opacity: 0; color: #07070F; transition: opacity 0.2s; }
+.chapter strong { display: block; font-weight: 600; font-size: 15px; }
+.chapter small { display: block; color: var(--muted); font-size: 13px; line-height: 1.4; }
+.chapter[aria-pressed="true"] { border-color: color-mix(in srgb, var(--accent) 50%, transparent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.chapter[aria-pressed="true"] .check { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 12px -2px var(--accent); }
+.chapter[aria-pressed="true"] .check .icon { opacity: 1; }
+.hint { color: var(--dim); font-size: 13px; }
+.subject .hint { margin-top: 14px; }
 
-        nav a:hover {
-            background: #f0f0f0;
-            color: #764ba2;
-            border-bottom-color: #667eea;
-        }
+/* ---------- Practice ---------- */
+.practice { display: grid; grid-template-columns: 1fr 320px; gap: 20px; align-items: start; }
+.q-card { padding: 28px; }
+.q-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.modes { display: flex; flex-wrap: wrap; gap: 4px; padding: 4px; border-radius: 12px; background: rgba(255,255,255,0.04); border: 1px solid var(--line); }
+.mode { border: 0; background: transparent; padding: 7px 12px; border-radius: 9px; font-size: 13px; font-weight: 600; color: var(--muted); cursor: pointer; transition: background 0.2s, color 0.2s; }
+.mode:hover { color: var(--text); }
+.mode[aria-pressed="true"] { background: rgba(139,92,246,0.22); color: #fff; box-shadow: inset 0 0 0 1px rgba(139,92,246,0.5); }
+.timer { display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px; border-radius: 10px; font-family: var(--mono); font-size: 14px; color: var(--amber); background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.3); }
+.timer .icon { width: 16px; height: 16px; }
+.timer.late { color: var(--red); background: rgba(248,113,113,0.1); border-color: rgba(248,113,113,0.4); }
+.q-tag { margin-top: 22px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--lav); }
+.q-text { font-family: var(--body); font-weight: 600; font-size: clamp(1.15rem, 2vw, 1.4rem); line-height: 1.45; letter-spacing: 0; margin: 10px 0 22px; }
+.opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.opt {
+  display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; padding: 12px 14px 12px 12px;
+  border-radius: var(--r-md); border: 1px solid var(--line-2); background: rgba(255,255,255,0.03); cursor: pointer;
+  font-size: 16px; font-weight: 500; transition: border-color 0.2s, background 0.2s, transform 0.15s;
+}
+.opt:hover:not(:disabled) { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.06); }
+.opt .letter { width: 32px; height: 32px; flex: none; border-radius: 10px; display: grid; place-items: center; background: rgba(255,255,255,0.08); font-weight: 600; font-size: 14px; transition: background 0.2s, color 0.2s; }
+.opt.selected { border-color: var(--cyan); background: rgba(34,211,238,0.08); }
+.opt.selected .letter { background: var(--cyan); color: #04131A; }
+.opt:disabled { cursor: default; }
+.opt.correct { border-color: var(--green); background: rgba(52,211,153,0.1); }
+.opt.correct .letter { background: var(--green); color: #032015; }
+.opt.wrong { border-color: var(--red); background: rgba(248,113,113,0.1); }
+.opt.wrong .letter { background: var(--red); color: #2A0606; }
+.feedback { display: none; margin-top: 16px; padding: 14px 16px; border-radius: var(--r-md); font-size: 15px; line-height: 1.55; }
+.feedback.show { display: block; }
+.feedback.ok { background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.35); }
+.feedback.ok strong { color: var(--green); }
+.feedback.no { background: rgba(248,113,113,0.08); border: 1px solid rgba(248,113,113,0.35); }
+.feedback.no strong { color: var(--red); }
+.q-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
+.side { display: grid; gap: 12px; }
+.side-card { padding: 22px; }
+.side-card h3 { font-size: 1.05rem; margin-bottom: 14px; }
+.kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.kpi { padding: 14px; border-radius: var(--r-md); background: rgba(255,255,255,0.03); border: 1px solid var(--line); }
+.kpi > span { display: block; font-size: 12px; color: var(--muted); }
+.kpi b { display: block; font-family: var(--head); font-size: 24px; line-height: 1.3; }
+.side-note { font-size: 13px; color: var(--dim); margin-top: 12px; }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+/* ---------- Progress ---------- */
+.progress-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; }
+.heat-card { padding: 28px; }
+.heat-card h3, .rhythm h3 { font-size: 1.2rem; }
+.heat-sub { color: var(--muted); font-size: 14px; margin-top: 4px; }
+.heat-days, .heat { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; max-width: 420px; }
+.heat-days { margin-top: 22px; margin-bottom: 8px; }
+.heat-days span { text-align: center; font-size: 12px; color: var(--dim); }
+.cell { aspect-ratio: 1; border-radius: 9px; background: rgba(34,211,238,0.06); border: 1px solid rgba(255,255,255,0.05); }
+.cell.l1 { background: rgba(34,211,238,0.24); }
+.cell.l2 { background: rgba(34,211,238,0.44); }
+.cell.l3 { background: rgba(34,211,238,0.68); }
+.cell.l4 { background: var(--cyan); box-shadow: 0 0 12px -2px var(--cyan); }
+.cell.today { outline: 2px solid #fff; outline-offset: 1px; }
+.legend { display: flex; align-items: center; gap: 6px; margin-top: 16px; font-size: 12px; color: var(--dim); }
+.legend i { width: 12px; height: 12px; border-radius: 3px; background: rgba(34,211,238,0.06); }
+.legend i:nth-of-type(2) { background: rgba(34,211,238,0.24); }
+.legend i:nth-of-type(3) { background: rgba(34,211,238,0.44); }
+.legend i:nth-of-type(4) { background: rgba(34,211,238,0.68); }
+.legend i:nth-of-type(5) { background: var(--cyan); }
+.rhythm { padding: 28px; display: flex; flex-direction: column; gap: 16px; }
+.rhythm .kpis { grid-template-columns: 1fr 1fr; }
+.rhythm .kpi b { font-size: 28px; }
+.rhythm-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: auto; }
+.link-btn { border: 0; background: none; padding: 0; color: var(--dim); font-size: 13px; text-decoration: underline; cursor: pointer; }
+.link-btn:hover { color: var(--text); }
 
-        .subjects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
+/* ---------- Formulas ---------- */
+.fotd {
+  display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center; padding: 30px; margin-bottom: 20px;
+  background: linear-gradient(135deg, rgba(236,72,153,0.16), rgba(139,92,246,0.08) 60%, rgba(34,211,238,0.06));
+}
+.fotd-code { padding: 22px 28px; border-radius: var(--r-lg); background: rgba(0,0,0,0.38); border: 1px solid var(--line); font-family: var(--mono); font-size: clamp(1.3rem, 2.6vw, 1.9rem); white-space: nowrap; }
+.fotd .eyebrow { color: #F9A8D4; }
+.fotd h3 { font-size: 1.4rem; margin: 8px 0 4px; }
+.fotd p { color: var(--muted); font-size: 14px; }
+.ftabs { display: inline-flex; gap: 4px; padding: 4px; border-radius: 12px; background: rgba(255,255,255,0.04); border: 1px solid var(--line); }
+.fgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+.formula { padding: 20px; border-radius: var(--r-lg); border: 1px solid var(--line); background: rgba(255,255,255,0.03); transition: border-color 0.2s, transform 0.2s; }
+.formula:hover { border-color: var(--line-2); transform: translateY(-2px); }
+.formula code { display: block; font-family: var(--mono); font-size: 17px; margin: 12px 0 8px; color: #fff; overflow-wrap: anywhere; }
+.formula h3 { font-family: var(--body); font-size: 14px; font-weight: 500; color: var(--muted); letter-spacing: 0; }
+.f-chip { display: inline-block; font-size: 11px; font-family: var(--mono); letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; color: var(--lav); background: rgba(139,92,246,0.14); }
+.formula.physics .f-chip { color: #A5F3FC; background: rgba(34,211,238,0.12); }
 
-        .subject-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
+/* ---------- Teacher & CTA ---------- */
+.teacher { display: grid; grid-template-columns: auto 1fr auto; gap: 28px; align-items: center; padding: 32px; }
+.avatar {
+  width: 96px; height: 96px; border-radius: 28px; display: grid; place-items: center;
+  font-family: var(--head); font-size: 32px; font-weight: 700;
+  background: linear-gradient(135deg, var(--pink), var(--violet) 55%, var(--cyan)); box-shadow: 0 20px 40px -16px rgba(236,72,153,0.7);
+}
+.teacher h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); margin: 6px 0 8px; }
+.teacher p { color: var(--muted); max-width: 560px; }
+.cta { margin: 96px 0 0; padding: 64px 32px; text-align: center; position: relative; overflow: hidden; }
+.cta::before { content: ""; position: absolute; inset: auto -20% -60% -20%; height: 120%; background: radial-gradient(closest-side, rgba(139,92,246,0.35), transparent); pointer-events: none; }
+.cta > * { position: relative; }
+.cta h2 { font-size: clamp(2rem, 4.4vw, 3.2rem); max-width: 760px; margin: 14px auto 16px; }
+.cta p { color: var(--muted); max-width: 520px; margin: 0 auto; }
+.cta .hero-actions { justify-content: center; }
+footer { margin-top: 72px; padding: 32px 0 40px; border-top: 1px solid var(--line); color: var(--dim); font-size: 14px; }
+.foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.foot nav { display: flex; gap: 18px; flex-wrap: wrap; }
+.foot a { text-decoration: none; }
+.foot a:hover { color: var(--text); }
 
-        .subject-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-        }
-
-        .card-header {
-            padding: 30px;
-            text-align: center;
-            color: white;
-            font-size: 1.8em;
-            font-weight: bold;
-        }
-
-        .math-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .physics-header {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        .card-body {
-            padding: 30px;
-        }
-
-        .card-body h3 {
-            color: #667eea;
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
-
-        .topics-list {
-            list-style: none;
-            margin: 20px 0;
-        }
-
-        .topics-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-            color: #666;
-        }
-
-        .topics-list li:last-child {
-            border-bottom: none;
-        }
-
-        .topics-list a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .topics-list a:hover {
-            color: #764ba2;
-            text-decoration: underline;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            flex: 1;
-            min-width: 150px;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            text-align: center;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: #667eea;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #764ba2;
-            transform: scale(1.05);
-        }
-
-        .btn-secondary {
-            background: #f5576c;
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background: #d63447;
-            transform: scale(1.05);
-        }
-
-        .section {
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .content-area {
-            background: white;
-            border-radius: 10px;
-            padding: 40px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            margin-top: 30px;
-        }
-
-        .content-area h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-            font-size: 2em;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 15px;
-        }
-
-        .topic-section {
-            margin: 30px 0;
-            padding: 20px;
-            background: #f9f9f9;
-            border-radius: 5px;
-            border-left: 4px solid #667eea;
-        }
-
-        .topic-section h3 {
-            color: #333;
-            margin-bottom: 15px;
-            font-size: 1.5em;
-        }
-
-        .topic-section p {
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 15px;
-        }
-
-        .formula-box {
-            background: #e8f0ff;
-            border-left: 4px solid #667eea;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
-        }
-
-        .example-box {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 3px;
-        }
-
-        .example-box strong {
-            color: #856404;
-        }
-
-        footer {
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 50px;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8em;
-            }
-
-            nav ul {
-                flex-direction: column;
-            }
-
-            nav a {
-                padding: 12px 15px;
-                border-bottom: none;
-                border-right: 3px solid transparent;
-            }
-
-            nav a:hover {
-                border-right-color: #667eea;
-                border-bottom: none;
-            }
-
-            .subjects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .content-area {
-                padding: 20px;
-            }
-        }
-    </style>
+/* ---------- Responsive ---------- */
+@media (max-width: 1020px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .practice { grid-template-columns: 1fr; }
+  .side { grid-template-columns: 1fr 1fr; }
+  .teacher { grid-template-columns: auto 1fr; }
+  .teacher .btn { grid-column: 1 / -1; justify-self: start; }
+}
+@media (max-width: 860px) {
+  .links { display: none; }
+  .nav .btn { margin-left: auto; }
+  .steps, .subjects, .progress-grid { grid-template-columns: 1fr; }
+  .strip { grid-template-columns: 1fr 1fr; }
+  .strip div:nth-child(2) { border-right: 0; }
+  .strip div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .fotd { grid-template-columns: 1fr; }
+  .fotd-code { white-space: normal; }
+}
+@media (max-width: 600px) {
+  .wrap { padding: 0 16px; }
+  .hero { padding-top: 40px; }
+  .section { padding-top: 72px; }
+  .mc { padding: 22px; }
+  .mc-tiles { grid-template-columns: 1fr 1fr; }
+  .mc-tiles .tile:first-child { grid-column: 1 / -1; }
+  .opts { grid-template-columns: 1fr; }
+  .mode { padding: 7px 9px; }
+  .side { grid-template-columns: 1fr; }
+  .q-card, .subject, .heat-card, .rhythm, .step { padding: 22px; }
+  .subject-head { gap: 16px; }
+  .ring-wrap, .ring { width: 92px; height: 92px; }
+  .teacher { grid-template-columns: 1fr; padding: 24px; }
+  .avatar { width: 72px; height: 72px; border-radius: 22px; font-size: 24px; }
+  .cta { padding: 48px 20px; }
+  .brand-txt small { display: none; }
+  .hero-actions .btn { flex: 1 1 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; }
+}
+</style>
 </head>
 <body>
-    <header>
-        <h1>📚 Study Materials</h1>
-        <p>Complete SAT 1 & EST 1 Preparation</p>
-        <div class="teacher-info">
-            <strong>👨‍🏫 Teacher:</strong> Ahmed Labib
-        </div>
-    </header>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3" fill="currentColor"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-sigma" viewBox="0 0 24 24"><path d="M18 7V4H6l6 8-6 8h12v-3"/></symbol>
+  <symbol id="i-atom" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5Z"/><path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5Z"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+</svg>
 
-    <nav>
-        <ul>
-            <li><a href="#" onclick="showSection('home'); return false;">Home</a></li>
-            <li><a href="#" onclick="showSection('math'); return false;">📐 Mathematics</a></li>
-            <li><a href="#" onclick="showSection('physics'); return false;">⚛️ Physics</a></li>
-            <li><a href="#" onclick="showSection('resources'); return false;">📚 Resources</a></li>
-        </ul>
+<div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="EST · SAT home">
+      <span class="mark" aria-hidden="true">E</span>
+      <span class="brand-txt"><b>EST · SAT</b><small>with Ahmed Labib</small></span>
+    </a>
+    <nav class="links" aria-label="Sections">
+      <a href="#mission">Mission</a>
+      <a href="#subjects">Subjects</a>
+      <a href="#practice">Practice</a>
+      <a href="#progress">Progress</a>
+      <a href="#formulas">Formulas</a>
     </nav>
+    <a class="btn btn-ghost btn-sm" href="student-portal.html">Student portal</a>
+  </div>
+</header>
 
-    <div class="container">
-        <!-- Home Section -->
-        <div id="home" class="section active">
-            <div class="content-area">
-                <h2>Welcome to Your Study Platform</h2>
-                <p style="font-size: 1.1em; line-height: 1.8; margin: 20px 0;">
-                    This platform provides comprehensive study materials for <strong>SAT 1 & EST 1</strong> examinations in <strong>Mathematics and Physics</strong>.
-                    Choose a subject below to begin your preparation journey.
-                </p>
-            </div>
-
-            <div class="subjects-grid" style="margin-top: 40px;">
-                <div class="subject-card">
-                    <div class="card-header math-header">📐 Mathematics</div>
-                    <div class="card-body">
-                        <h3>Math Preparation</h3>
-                        <p>Complete coverage of SAT 1 & EST 1 Mathematics topics with detailed explanations and practice problems.</p>
-                        <div class="btn-group">
-                            <button class="btn btn-primary" onclick="showSection('math')">Start Learning</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="subject-card">
-                    <div class="card-header physics-header">⚛️ Physics</div>
-                    <div class="card-body">
-                        <h3>Physics Preparation</h3>
-                        <p>Master all Physics concepts for SAT 1 & EST 1 with comprehensive explanations and solved examples.</p>
-                        <div class="btn-group">
-                            <button class="btn btn-secondary" onclick="showSection('physics')">Start Learning</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<main id="top">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <span class="pill"><b>NEW</b> SAT 1 · EST 1 · Math &amp; Physics</span>
+        <h1>Master SAT 1 &amp; EST 1.<br><span class="grad-text">One mission at a time.</span></h1>
+        <p class="lead">Math and Physics with Ahmed Labib: a short daily mission, instant explanations, and progress you can actually see.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" type="button" data-launch>
+            <svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>Start today’s mission
+          </button>
+          <a class="btn btn-ghost" href="classic.html">Explore the curriculum</a>
         </div>
+        <ul class="perks">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Free to use</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Works on your phone</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>No sign-up needed</li>
+        </ul>
+      </div>
 
-        <!-- Math Section -->
-        <div id="math" class="section">
-            <div class="content-area">
-                <h2>📐 Mathematics (SAT 1 & EST 1)</h2>
-                <p>Complete mathematics curriculum with theory, examples, and practice problems.</p>
-
-                <div class="topic-section">
-                    <h3>1. Algebra & Polynomials</h3>
-                    <p><strong>Topics covered:</strong></p>
-                    <ul style="margin-left: 20px;">
-                        <li>Quadratic equations and roots</li>
-                        <li>Polynomial operations and factorization</li>
-                        <li>Systems of equations</li>
-                        <li>Inequalities and absolute values</li>
-                    </ul>
-                    <div class="formula-box">
-                        Quadratic Formula: x = [-b ± √(b² - 4ac)] / 2a
-                    </div>
-                    <div class="example-box">
-                        <strong>Example:</strong> Solve x² - 5x + 6 = 0<br>
-                        Using factorization: (x - 2)(x - 3) = 0<br>
-                        Solutions: x = 2 or x = 3
-                    </div>
-                </div>
-
-                <div class="topic-section">
-                    <h3>2. Trigonometry</h3>
-                    <p><strong>Topics covered:</strong></p>
-                    <ul style="margin-left: 20px;">
-                        <li>Trigonometric ratios (sin, cos, tan)</li>
-                        <li>Unit circle and special angles</li>
-                        <li>Trigonometric identities</li>
-                        <li>Graphs of trigonometric functions</li>
-                    </ul>
-                    <div class="formula-box">
-                        sin²θ + cos²θ = 1<br>
-                        tan θ = sin θ / cos θ<br>
-                        sin(A ± B) = sin A cos B ± cos A sin B
-                    </div>
-                </div>
-
-                <div class="topic-section">
-                    <h3>3. Logarithms & Exponentials</h3>
-                    <p><strong>Topics covered:</strong></p>
-                    <ul style="margin-left: 20px;">
-                        <li>Laws of exponents</li>
-                        <li>Logarithmic equations</li>
-                        <li>Change of base formula</li>
-                        <li>Exponential growth and decay</li>
-                    </ul>
-                    <div class="formula-box">
-                        log_a(x) = y ⟺ a^y = x<br>
-                        log_a(mn) = log_a(m) + log_a(n)<br>
-                        log_a(m/n) = log_a(m) - log_a(n)
-                    </div>
-                </div>
-
-                <div class="topic-section">
-                    <h3>4. Calculus Basics</h3>
-                    <p><strong>Topics covered:</strong></p>
-                    <ul style="margin-left: 20px;">
-                        <li>Limits and continuity</li>
-                        <li>Derivatives and differentiation rules</li>
-                        <li>Applications of derivatives</li>
-                        <li>Basic integration</li>
-                    </ul>
-                    <div class="formula-box">
-                        Power Rule: d/dx(x^n) = nx^(n-1)<br>
-                        Product Rule: d/dx(uv) = u'v + uv'<br>
-                        Chain Rule: d/dx(f(g(x))) = f'(g(x))·g'(x)
-                    </div>
-                </div>
-
-                <div class="topic-section">
-                    <h3>5. Geometry & Vectors</h3>
-                    <p><strong>Topics covered:</strong></p>
-                    <ul style="margin-left: 20px;">
-                        <li>Conic sections (circles, ellipses, parabolas)</li>
-                        <li>Vector operations and properties</li>
-                        <li>Dot and cross products</li>
-                        <li>3D geometry</li>
-                    </ul>
-                </div>
-
-                <div class="btn-group" style="margin-top: 30px;">
-                    <button class="btn btn-primary" onclick="showSection('home')">Back to Home</button>
-                </div>
-            </div>
+      <div class="mc reveal" id="mission">
+        <div class="orbits" aria-hidden="true"><span class="orbit o1"></span><span class="orbit o2"></span><span class="orbit o3"></span></div>
+        <div class="mc-head">
+          <span class="mc-label"><span class="live" aria-hidden="true"></span>Mission control</span>
+          <span class="mc-date" id="todayLabel"></span>
         </div>
-
-        <!-- Physics Section -->
-        <div id="physics" class="section">
-            <div class="content-area">
-                <h2>⚛️ Physics (SAT 1 & EST 1)</h2>
-                <p>Complete physics curriculum covering mechanics, energy, electricity, magnetism, and waves.</p>
-
-                <div class="topic-section">
-                    <h3>1. Mechanics & Motion</h3>
-                    <p><strong>Topics covered:</strong></p>
-                    <ul style="margin-left: 20px;">
-                        <li>Kinematics (velocity, acceleration, equations of motion)</li>
-                        <li>Newton's Laws of Motion</li>
-                        <li>Friction and resistance</li>
-                        <li>Circular motion and gravitation</li>
-                    </ul>
-                    <div class="formula-box">
-                        v = u + at<br>
-                        s = ut + ½at²<br>
-                        F = ma (Newton's Second Law)<br>
-                        g = GM/r²
-                    </div>
-                    <div class="example-box">
-                        <strong>Example:</strong> A car accelerates at 5 m/s² for 10 seconds. Find final velocity.<br>
-                        Given: u = 0, a = 5 m/s², t = 10 s<br>
-                        v = u + at = 0 + 5(10) = 50 m/s
-                    </div>
-                </div>
-
-                <div class="topic-section">
-                    <h3>2. Energy & Work</h3>
-                    <p><strong>Topics covered:</strong></p>
-                    <ul style="margin-left: 20px;">
-                        <li>Kinetic and potential energy</li>
-                        <li>Work-energy theorem</li>
-                        <li>Conservation of energy</li>
-                        <li>Power and efficiency</li>
-                    </ul>
-                    <div class="formula-box">
-                        KE = ½mv²<br>
-                        PE = mgh<br>
-                        Work = Force × Distance = Fd<br>
-                        Power = Work / Time = E / t
-                    </div>
-                </div>
-
-                <div class="topic-section">
-                    <h3>3. Waves & Oscillations</h3>
-                    <p><strong>Topics covered:</strong></p>
-                    <ul style="margin-left: 20px;">
-                        <li>Simple harmonic motion</li>
-                        <li>Wave properties (wavelength, frequency, amplitude)</li>
-                        <li>Sound waves and Doppler effect</li>
-                        <li>Light waves and electromagnetic spectrum</li>
-                    </ul>
-                    <div class="formula-box">
-                        v = fλ (Wave equation)<br>
-                        f = 1/T (Frequency and period)<br>
-                        T = 2π√(m/k) (SHM period)<br>
-                        f' = f(v ± v_observer)/(v ∓ v_source) (Doppler effect)
-                    </div>
-                </div>
-
-                <div class="topic-section">
-                    <h3>4. Electricity & Current</h3>
-                    <p><strong>Topics covered:</strong></p>
-                    <ul style="margin-left: 20px;">
-                        <li>Electric charge and Coulomb's Law</li>
-                        <li>Electric fields and potential</li>
-                        <li>Current, voltage, and resistance</li>
-                        <li>Circuits and Kirchhoff's Laws</li>
-                    </ul>
-                    <div class="formula-box">
-                        F = kq₁q₂/r² (Coulomb's Law)<br>
-                        V = IR (Ohm's Law)<br>
-                        P = VI = I²R (Power)<br>
-                        EMF = ε = IR + Ir (Circuit equation)
-                    </div>
-                </div>
-
-                <div class="topic-section">
-                    <h3>5. Magnetism & Electromagnetism</h3>
-                    <p><strong>Topics covered:</strong></p>
-                    <ul style="margin-left: 20px;">
-                        <li>Magnetic fields and forces</li>
-                        <li>Electromagnetic induction</li>
-                        <li>Faraday's Law</li>
-                        <li>Transformers and AC circuits</li>
-                    </ul>
-                    <div class="formula-box">
-                        F = BIL sin θ (Force on current-carrying conductor)<br>
-                        ε = -N(dΦ/dt) (Faraday's Law)<br>
-                        Φ = BA cos θ (Magnetic flux)
-                    </div>
-                </div>
-
-                <div class="topic-section">
-                    <h3>6. Modern Physics</h3>
-                    <p><strong>Topics covered:</strong></p>
-                    <ul style="margin-left: 20px;">
-                        <li>Quantum theory and photons</li>
-                        <li>Atomic structure and spectra</li>
-                        <li>Nuclear physics and radioactivity</li>
-                        <li>Relativity basics</li>
-                    </ul>
-                    <div class="formula-box">
-                        E = hf (Photon energy)<br>
-                        E = mc² (Mass-energy equivalence)<br>
-                        λ = h/p (de Broglie wavelength)<br>
-                        A(t) = A₀e^(-λt) (Radioactive decay)
-                    </div>
-                </div>
-
-                <div class="btn-group" style="margin-top: 30px;">
-                    <button class="btn btn-primary" onclick="showSection('home')">Back to Home</button>
-                </div>
-            </div>
+        <p class="mc-kicker">Today’s mission</p>
+        <h2 class="mc-title" id="missionTitle">Quadratics × Kinematics Sprint</h2>
+        <ul class="mc-meta">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>6 questions · about 10 min</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-target"/></svg><span id="missionTopics">Algebra + Mechanics</span></li>
+        </ul>
+        <div class="segs" id="missionSegs" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <p class="mc-count" id="missionCount">0 / 6 questions done</p>
+        <button class="btn btn-light" type="button" data-launch>
+          <svg class="icon" aria-hidden="true"><use href="#i-play"/></svg><span id="launchLabel">Launch mission</span>
+        </button>
+        <div class="mc-tiles">
+          <div class="tile">
+            <span class="tile-k">Exam countdown</span>
+            <strong id="examDays">—</strong>
+            <span class="sub" id="examLabel">Set your exam date</span>
+            <label class="date-pick"><span class="sr-only">Your exam date</span><input type="date" id="examDate"></label>
+          </div>
+          <div class="tile">
+            <span class="tile-k">Streak</span>
+            <strong><span data-stat="streak">0</span><small>days</small></strong>
+            <span class="sub">Practise daily to grow it</span>
+          </div>
+          <div class="tile">
+            <span class="tile-k">Accuracy</span>
+            <strong data-stat="accuracy">—</strong>
+            <span class="sub"><span data-stat="answered">0</span> answered</span>
+          </div>
         </div>
-
-        <!-- Resources Section -->
-        <div id="resources" class="section">
-            <div class="content-area">
-                <h2>📚 Study Resources & Tips</h2>
-
-                <div class="topic-section">
-                    <h3>📋 Study Tips</h3>
-                    <ul style="margin-left: 20px; line-height: 2;">
-                        <li>✅ Practice problems regularly to strengthen concepts</li>
-                        <li>✅ Review formulas and key concepts before exams</li>
-                        <li>✅ Solve past papers to familiarize yourself with exam patterns</li>
-                        <li>✅ Create summary notes for quick revision</li>
-                        <li>✅ Time yourself while solving practice problems</li>
-                        <li>✅ Focus on weak areas and practice them more</li>
-                        <li>✅ Use diagrams and visual aids for better understanding</li>
-                    </ul>
-                </div>
-
-                <div class="topic-section">
-                    <h3>⏱️ Exam Preparation Timeline</h3>
-                    <ul style="margin-left: 20px; line-height: 2;">
-                        <li><strong>8-12 weeks before:</strong> Start with fundamentals and weak areas</li>
-                        <li><strong>4-8 weeks before:</strong> Complete all topics and solve practice problems</li>
-                        <li><strong>2-4 weeks before:</strong> Solve full past papers under exam conditions</li>
-                        <li><strong>1-2 weeks before:</strong> Revise and practice weak topics</li>
-                        <li><strong>Last week:</strong> Light revision and rest</li>
-                    </ul>
-                </div>
-
-                <div class="topic-section">
-                    <h3>📝 Important Formulas</h3>
-                    <p>Key formulas are highlighted throughout the course material. Make sure to memorize these and understand their applications.</p>
-                </div>
-
-                <div class="btn-group" style="margin-top: 30px;">
-                    <button class="btn btn-primary" onclick="showSection('home')">Back to Home</button>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
 
-    <footer>
-        <p>&copy; 2024 SAT 1 & EST 1 Study Materials | Teacher: Ahmed Labib | All Rights Reserved</p>
-        <p style="margin-top: 10px; opacity: 0.8;">Free Educational Platform for Exam Preparation</p>
-    </footer>
+    <div class="wrap">
+      <div class="strip card reveal">
+        <div><b>2</b><span>subjects</span></div>
+        <div><b>11</b><span>chapters</span></div>
+        <div><b>100+</b><span>key formulas</span></div>
+        <div><b>40+</b><span>practice problems</span></div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        function showSection(sectionId) {
-            // Hide all sections
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
+  <!-- How it works -->
+  <section class="section" id="how">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><span class="eyebrow">How it works</span><h2>Three steps. Every day.</h2></div>
+        <p>Short, focused sessions beat long, tired ones. The platform keeps you on the right next step.</p>
+      </div>
+      <div class="steps">
+        <article class="step card reveal"><div class="step-n">01</div><h3>Set your exam date</h3><p>The countdown keeps every session pointed at the real deadline.</p></article>
+        <article class="step card reveal"><div class="step-n">02</div><h3>Run your daily mission</h3><p>Six mixed Math and Physics questions, timed, each with an instant explanation.</p></article>
+        <article class="step card reveal"><div class="step-n">03</div><h3>Watch your rhythm</h3><p>Streaks, accuracy and chapter progress show exactly what to study next.</p></article>
+      </div>
+    </div>
+  </section>
 
-            // Show selected section
-            const selectedSection = document.getElementById(sectionId);
-            if (selectedSection) {
-                selectedSection.classList.add('active');
-                window.scrollTo(0, 0);
-            }
-        }
-    </script>
+  <!-- Subjects -->
+  <section class="section" id="subjects">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><span class="eyebrow">Curriculum</span><h2>Your subjects</h2></div>
+        <p>Tap a chapter when you’ve finished it. Your rings fill up as you go. Progress is saved on this device.</p>
+      </div>
+      <div class="subjects">
+        <article class="subject card reveal">
+          <div class="subject-head">
+            <div class="ring-wrap">
+              <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+                <defs><linearGradient id="gm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8B5CF6"/><stop offset="1" stop-color="#6366F1"/></linearGradient></defs>
+                <circle class="ring-track" cx="60" cy="60" r="52"/>
+                <circle class="ring-fill" cx="60" cy="60" r="52" stroke="url(#gm)" data-ring="math"/>
+              </svg>
+              <div class="ring-val"><b data-ring-label="math">0/5</b><span>chapters</span></div>
+            </div>
+            <div>
+              <span class="subject-badge"><svg class="icon" aria-hidden="true"><use href="#i-sigma"/></svg>SAT 1 · EST 1</span>
+              <h3>Mathematics</h3>
+              <p>5 chapters · algebra to calculus</p>
+            </div>
+          </div>
+          <div class="chapters">
+            <button class="chapter" type="button" data-id="math-0" aria-pressed="false"><span class="check"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span><strong>Algebra &amp; Polynomials</strong><small>Quadratics, factoring, systems, inequalities</small></span></button>
+            <button class="chapter" type="button" data-id="math-1" aria-pressed="false"><span class="check"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span><strong>Trigonometry</strong><small>Ratios, special angles, identities, equations</small></span></button>
+            <button class="chapter" type="button" data-id="math-2" aria-pressed="false"><span class="check"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span><strong>Logarithms &amp; Exponentials</strong><small>Log laws, exponential equations, growth and decay</small></span></button>
+            <button class="chapter" type="button" data-id="math-3" aria-pressed="false"><span class="check"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span><strong>Calculus Basics</strong><small>Limits, derivatives, integration</small></span></button>
+            <button class="chapter" type="button" data-id="math-4" aria-pressed="false"><span class="check"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span><strong>Geometry &amp; Vectors</strong><small>Conic sections, vectors, dot product</small></span></button>
+          </div>
+        </article>
+
+        <article class="subject physics card reveal">
+          <div class="subject-head">
+            <div class="ring-wrap">
+              <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+                <defs><linearGradient id="gp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset="1" stop-color="#3B82F6"/></linearGradient></defs>
+                <circle class="ring-track" cx="60" cy="60" r="52"/>
+                <circle class="ring-fill" cx="60" cy="60" r="52" stroke="url(#gp)" data-ring="physics"/>
+              </svg>
+              <div class="ring-val"><b data-ring-label="physics">0/6</b><span>chapters</span></div>
+            </div>
+            <div>
+              <span class="subject-badge"><svg class="icon" aria-hidden="true"><use href="#i-atom"/></svg>SAT 1 · EST 1</span>
+              <h3>Physics</h3>
+              <p>6 chapters · motion to modern physics</p>
+            </div>
+          </div>
+          <div class="chapters">
+            <button class="chapter" type="button" data-id="physics-0" aria-pressed="false"><span class="check"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span><strong>Mechanics &amp; Motion</strong><small>Kinematics, Newton’s laws, circular motion, gravity</small></span></button>
+            <button class="chapter" type="button" data-id="physics-1" aria-pressed="false"><span class="check"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span><strong>Energy &amp; Work</strong><small>Work, kinetic and potential energy, power</small></span></button>
+            <button class="chapter" type="button" data-id="physics-2" aria-pressed="false"><span class="check"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span><strong>Waves &amp; Oscillations</strong><small>Simple harmonic motion, sound, Doppler effect</small></span></button>
+            <button class="chapter" type="button" data-id="physics-3" aria-pressed="false"><span class="check"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span><strong>Electricity &amp; Current</strong><small>Coulomb’s law, Ohm’s law, circuits, power</small></span></button>
+            <button class="chapter" type="button" data-id="physics-4" aria-pressed="false"><span class="check"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span><strong>Magnetism &amp; Electromagnetism</strong><small>Magnetic force, induction, transformers</small></span></button>
+            <button class="chapter" type="button" data-id="physics-5" aria-pressed="false"><span class="check"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span><strong>Modern Physics</strong><small>Photons, atoms, nuclear decay, relativity</small></span></button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Practice -->
+  <section class="section" id="practice">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><span class="eyebrow">Practice arena</span><h2>Answer. Learn why. Repeat.</h2></div>
+        <p>Every question comes from Ahmed Labib’s problem sets, with a worked explanation the moment you check.</p>
+      </div>
+      <div class="practice">
+        <div class="q-card card reveal" id="qCard" tabindex="-1">
+          <div class="q-top">
+            <div class="modes" role="group" aria-label="Question set">
+              <button class="mode" type="button" data-mode="mission" aria-pressed="true">Today’s mission</button>
+              <button class="mode" type="button" data-mode="all" aria-pressed="false">All</button>
+              <button class="mode" type="button" data-mode="math" aria-pressed="false">Math</button>
+              <button class="mode" type="button" data-mode="physics" aria-pressed="false">Physics</button>
+            </div>
+            <span class="timer" id="timerBox"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span id="qTimer" aria-label="Time left">1:00</span></span>
+          </div>
+          <p class="q-tag"><span id="qTag">Practice</span> · <span id="qCount"></span></p>
+          <h3 class="q-text" id="qText">Turn on JavaScript to practise here, or open the <a href="classic.html">classic study guide</a>.</h3>
+          <div class="opts" id="qOpts"></div>
+          <div class="feedback" id="qFeedback" role="status" aria-live="polite"></div>
+          <div class="q-foot">
+            <span class="hint">Tip: press 1–4 or A–D to pick an answer</span>
+            <button class="btn btn-primary" type="button" id="qAction" disabled>Check answer</button>
+          </div>
+        </div>
+
+        <aside class="side">
+          <div class="side-card card reveal">
+            <h3>Your numbers</h3>
+            <div class="kpis">
+              <div class="kpi"><span>Answered</span><b data-stat="answered">0</b></div>
+              <div class="kpi"><span>Accuracy</span><b data-stat="accuracy">—</b></div>
+              <div class="kpi"><span>Avg. time</span><b data-stat="avg">—</b></div>
+              <div class="kpi"><span>Streak</span><b><span data-stat="streak">0</span>d</b></div>
+            </div>
+            <p class="side-note">Saved on this device. No account needed.</p>
+          </div>
+          <div class="side-card card reveal">
+            <h3>How the timer works</h3>
+            <p class="hint">You get 60 seconds per question, close to real exam pace. When it runs out you can still answer. It just turns red.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Progress -->
+  <section class="section" id="progress">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><span class="eyebrow">Study rhythm</span><h2>See your consistency</h2></div>
+        <p>Each square is a day. The brighter it is, the more questions you answered.</p>
+      </div>
+      <div class="progress-grid">
+        <div class="heat-card card reveal">
+          <h3>Last 4 weeks</h3>
+          <p class="heat-sub" id="heatActive">0 active days</p>
+          <div class="heat-days" id="heatDays" aria-hidden="true"></div>
+          <div class="heat" id="heat" role="group" aria-label="Practice activity over the last 4 weeks"></div>
+          <div class="legend" aria-hidden="true">Less <i></i><i></i><i></i><i></i><i></i> More</div>
+        </div>
+        <div class="rhythm card reveal">
+          <h3>Highlights</h3>
+          <div class="kpis">
+            <div class="kpi"><span>Current streak</span><b><span data-stat="streak">0</span>d</b></div>
+            <div class="kpi"><span>Best streak</span><b><span data-stat="best">0</span>d</b></div>
+            <div class="kpi"><span>Questions answered</span><b data-stat="answered">0</b></div>
+            <div class="kpi"><span>Accuracy</span><b data-stat="accuracy">—</b></div>
+          </div>
+          <div class="rhythm-foot">
+            <button class="btn btn-primary btn-sm" type="button" data-launch>Practise now</button>
+            <button class="link-btn" type="button" id="resetBtn">Reset my progress</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulas -->
+  <section class="section" id="formulas">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><span class="eyebrow">Formula vault</span><h2>The formulas that matter</h2></div>
+        <div class="ftabs" role="group" aria-label="Filter formulas">
+          <button class="mode" type="button" data-f="all" aria-pressed="true">All</button>
+          <button class="mode" type="button" data-f="math" aria-pressed="false">Math</button>
+          <button class="mode" type="button" data-f="physics" aria-pressed="false">Physics</button>
+        </div>
+      </div>
+      <div class="fotd card reveal">
+        <div class="fotd-code" id="fotdF">v² = u² + 2as</div>
+        <div>
+          <span class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#i-zap"/></svg>Formula of the day</span>
+          <h3 id="fotdN">Velocity–displacement</h3>
+          <p id="fotdC">Physics · Mechanics</p>
+        </div>
+      </div>
+      <div class="fgrid" id="fGrid"></div>
+    </div>
+  </section>
+
+  <!-- Teacher -->
+  <section class="section" id="teacher">
+    <div class="wrap">
+      <div class="teacher card reveal">
+        <div class="avatar" aria-hidden="true">AL</div>
+        <div>
+          <span class="eyebrow">Your teacher</span>
+          <h2>Ahmed Labib</h2>
+          <p>SAT 1 and EST 1 Mathematics and Physics. Every guide, formula and practice problem on this platform was written for his students.</p>
+        </div>
+        <a class="btn btn-ghost" href="classic.html">Open the full study guide <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="wrap">
+    <div class="cta card reveal">
+      <span class="eyebrow">Ready for launch</span>
+      <h2>Your exam is a mission. <span class="grad-text">Launch it today.</span></h2>
+      <p>Six questions. About ten minutes. One step closer.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" type="button" data-launch><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>Start learning free</button>
+        <a class="btn btn-ghost" href="student-portal.html">Open student portal</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="year">2026</span> EST · SAT · Ahmed Labib</span>
+    <nav aria-label="Other pages">
+      <a href="classic.html">Classic study guide</a>
+      <a href="premium-dashboard.html">Dashboard</a>
+      <a href="student-portal.html">Student portal</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var QUESTIONS = [
+    { s: 'math', t: 'Algebra', q: 'Solve x² − 7x + 12 = 0.', o: ['x = −3 or x = −4', 'x = 3 or x = 4', 'x = 2 or x = 6', 'x = 1 or x = 12'], a: 1, why: 'Factor: (x − 3)(x − 4) = 0, so x = 3 or x = 4. Check with the discriminant: Δ = 49 − 48 = 1.' },
+    { s: 'math', t: 'Algebra', q: 'Factor completely: 3x³ − 12x.', o: ['3x(x − 2)²', '3x(x² + 4)', '3x(x + 2)(x − 2)', '3(x + 2)(x − 2)'], a: 2, why: 'Take out 3x to get 3x(x² − 4). Then x² − 4 is a difference of squares: (x + 2)(x − 2).' },
+    { s: 'math', t: 'Trigonometry', q: 'What is sin 120°?', o: ['√3/2', '−√3/2', '1/2', '−1/2'], a: 0, why: 'sin 120° = sin(180° − 60°) = sin 60° = √3/2. Sine is positive in the second quadrant.' },
+    { s: 'math', t: 'Trigonometry', q: 'Solve cos x = 1/2 for 0 ≤ x ≤ 2π.', o: ['x = π/6 or 11π/6', 'x = π/3 or 2π/3', 'x = 2π/3 or 4π/3', 'x = π/3 or 5π/3'], a: 3, why: 'cos x = 1/2 at the special angle π/3. Cosine is also positive in the fourth quadrant, which gives 2π − π/3 = 5π/3.' },
+    { s: 'math', t: 'Logarithms', q: 'Solve 3^(x − 1) = 27.', o: ['x = 3', 'x = 4', 'x = 9', 'x = 2'], a: 1, why: 'Write 27 as 3³. Then x − 1 = 3, so x = 4.' },
+    { s: 'math', t: 'Calculus', q: 'Differentiate f(x) = 3x⁴ − 2x² + 5x − 7.', o: ['12x³ − 4x + 5', '12x³ − 4x', '3x³ − 4x + 5', '12x³ − 2x + 5'], a: 0, why: 'Use the power rule on each term: 12x³ − 4x + 5. The constant −7 differentiates to 0.' },
+    { s: 'math', t: 'Calculus', q: 'Find ∫(4x³ + 2x) dx.', o: ['12x² + 2 + C', '4x⁴ + 2x² + C', 'x⁴ + x² + C', 'x⁴ + 2x² + C'], a: 2, why: 'Raise each power by one and divide by the new power: 4x⁴/4 + 2x²/2 = x⁴ + x², plus the constant C.' },
+    { s: 'math', t: 'Calculus', q: 'What is the minimum point of f(x) = x² − 4x + 3?', o: ['(−2, 15)', '(1, 0)', '(3, 0)', '(2, −1)'], a: 3, why: 'f′(x) = 2x − 4 = 0 gives x = 2, and f″(x) = 2 > 0, so it is a minimum. f(2) = 4 − 8 + 3 = −1.' },
+    { s: 'physics', t: 'Mechanics', q: 'A car starts from rest and accelerates at 3 m/s² for 8 s. What is its final velocity?', o: ['11 m/s', '24 m/s', '48 m/s', '96 m/s'], a: 1, why: 'v = u + at = 0 + 3 × 8 = 24 m/s. (96 m is the distance it covers, from s = ½at².)' },
+    { s: 'physics', t: 'Mechanics', q: 'What force accelerates a 5 kg object at 2 m/s²?', o: ['2.5 N', '7 N', '10 N', '25 N'], a: 2, why: 'Newton’s second law: F = ma = 5 × 2 = 10 N.' },
+    { s: 'physics', t: 'Mechanics', q: 'An object moves at 8 m/s in a circle of radius 4 m. What is its centripetal acceleration?', o: ['16 m/s²', '2 m/s²', '32 m/s²', '64 m/s²'], a: 0, why: 'a = v²/r = 64 / 4 = 16 m/s².' },
+    { s: 'physics', t: 'Energy', q: 'A 2 kg object is dropped from 10 m (g = 10 m/s²). How fast is it moving just before it lands?', o: ['10 m/s', '≈ 14.1 m/s', '20 m/s', '200 m/s'], a: 1, why: 'Energy is conserved: mgh = ½mv², so v² = 2gh = 200 and v = √200 ≈ 14.1 m/s. The mass cancels out.' },
+    { s: 'physics', t: 'Energy', q: 'How much work does a 500 W motor do in 10 s?', o: ['50 J', '510 J', '0.02 J', '5000 J'], a: 3, why: 'Power is work per unit time, so W = Pt = 500 × 10 = 5000 J.' },
+    { s: 'physics', t: 'Waves', q: 'A wave has frequency 100 Hz and wavelength 2 m. What is its speed?', o: ['50 m/s', '102 m/s', '200 m/s', '0.02 m/s'], a: 2, why: 'v = fλ = 100 × 2 = 200 m/s.' },
+    { s: 'physics', t: 'Electricity', q: 'What is the equivalent resistance of 10 Ω and 20 Ω in parallel?', o: ['≈ 6.67 Ω', '30 Ω', '15 Ω', '0.15 Ω'], a: 0, why: '1/R = 1/10 + 1/20 = 3/20, so R = 20/3 ≈ 6.67 Ω. A parallel total is always smaller than the smallest resistor.' },
+    { s: 'physics', t: 'Electricity', q: 'A 100 V supply is connected across a 50 Ω resistor. What current flows?', o: ['0.5 A', '2 A', '50 A', '5000 A'], a: 1, why: 'Ohm’s law: I = V/R = 100 / 50 = 2 A.' },
+    { s: 'physics', t: 'Modern Physics', q: 'An isotope has a half-life of 5 days. How much of a 100 g sample remains after 15 days?', o: ['33.3 g', '25 g', '12.5 g', '6.25 g'], a: 2, why: '15 days is 3 half-lives: 100 × (½)³ = 12.5 g.' }
+  ];
+
+  var MISSIONS = [
+    { title: 'Quadratics × Kinematics Sprint', topics: ['Algebra', 'Mechanics'] },
+    { title: 'Trig × Waves Run', topics: ['Trigonometry', 'Waves'] },
+    { title: 'Derivatives × Energy Boost', topics: ['Calculus', 'Energy'] },
+    { title: 'Logs × Half-life Leap', topics: ['Logarithms', 'Modern Physics'] },
+    { title: 'Circuits × Calculus Climb', topics: ['Electricity', 'Calculus'] },
+    { title: 'Forces × Factoring Drill', topics: ['Mechanics', 'Algebra'] },
+    { title: 'Identities × Ohm’s Law Mix', topics: ['Trigonometry', 'Electricity'] }
+  ];
+
+  var FORMULAS = [
+    { f: 'x = (−b ± √(b² − 4ac)) / 2a', n: 'Quadratic formula', s: 'math', c: 'Algebra' },
+    { f: 'Δ = b² − 4ac', n: 'Discriminant', s: 'math', c: 'Algebra' },
+    { f: 'a² − b² = (a + b)(a − b)', n: 'Difference of squares', s: 'math', c: 'Algebra' },
+    { f: 'sin²θ + cos²θ = 1', n: 'Pythagorean identity', s: 'math', c: 'Trigonometry' },
+    { f: 'sin 2θ = 2 sin θ cos θ', n: 'Double angle', s: 'math', c: 'Trigonometry' },
+    { f: 'logₐ(mn) = logₐm + logₐn', n: 'Product rule for logs', s: 'math', c: 'Logarithms' },
+    { f: 'A(t) = A₀ · (½)^(t/T)', n: 'Half-life decay', s: 'math', c: 'Logarithms' },
+    { f: 'd/dx(xⁿ) = nxⁿ⁻¹', n: 'Power rule', s: 'math', c: 'Calculus' },
+    { f: '∫xⁿ dx = xⁿ⁺¹/(n + 1) + C', n: 'Power rule for integrals', s: 'math', c: 'Calculus' },
+    { f: '(x − h)² + (y − k)² = r²', n: 'Equation of a circle', s: 'math', c: 'Geometry' },
+    { f: 'A · B = |A||B| cos θ', n: 'Dot product', s: 'math', c: 'Vectors' },
+    { f: 'v = u + at', n: 'Velocity–time', s: 'physics', c: 'Mechanics' },
+    { f: 's = ut + ½at²', n: 'Displacement', s: 'physics', c: 'Mechanics' },
+    { f: 'v² = u² + 2as', n: 'Velocity–displacement', s: 'physics', c: 'Mechanics' },
+    { f: 'F = ma', n: 'Newton’s second law', s: 'physics', c: 'Mechanics' },
+    { f: 'a = v²/r', n: 'Centripetal acceleration', s: 'physics', c: 'Mechanics' },
+    { f: 'KE = ½mv²', n: 'Kinetic energy', s: 'physics', c: 'Energy' },
+    { f: 'PE = mgh', n: 'Gravitational potential energy', s: 'physics', c: 'Energy' },
+    { f: 'P = W / t', n: 'Power', s: 'physics', c: 'Energy' },
+    { f: 'v = fλ', n: 'Wave equation', s: 'physics', c: 'Waves' },
+    { f: 'V = IR', n: 'Ohm’s law', s: 'physics', c: 'Electricity' },
+    { f: '1/R = 1/R₁ + 1/R₂', n: 'Resistors in parallel', s: 'physics', c: 'Electricity' },
+    { f: 'F = BIL sin θ', n: 'Force on a current', s: 'physics', c: 'Magnetism' },
+    { f: 'E = hf', n: 'Photon energy', s: 'physics', c: 'Modern Physics' }
+  ];
+
+  function $(s, el) { return (el || document).querySelector(s); }
+  function $$(s, el) { return Array.prototype.slice.call((el || document).querySelectorAll(s)); }
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function keyOf(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function addDays(d, n) { return new Date(d.getFullYear(), d.getMonth(), d.getDate() + n); }
+  function parseKey(k) { var p = k.split('-').map(Number); return new Date(p[0], p[1] - 1, p[2]); }
+  function daysBetween(a, b) { return Math.round((b - a) / 864e5); }
+
+  var reveals = $$('.reveal');
+  if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  var KEY = 'estsat.v1';
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { saved = {}; }
+  var state = {
+    stats: Object.assign({ answered: 0, correct: 0, time: 0 }, saved.stats),
+    days: saved.days || {},
+    chapters: saved.chapters || [],
+    exam: saved.exam || '',
+    mission: saved.mission || { date: '', done: [] }
+  };
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* storage unavailable: keep in memory */ } }
+
+  var now = new Date();
+  var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  var todayKey = keyOf(today);
+  var dayNum = Math.round(today.getTime() / 864e5);
+  if (state.mission.date !== todayKey) state.mission = { date: todayKey, done: [] };
+
+  // ---------- Mission ----------
+  var mission = MISSIONS[dayNum % MISSIONS.length];
+  var missionQueue = (function () {
+    var order = QUESTIONS.map(function (q, i) { return i; });
+    var rot = dayNum % order.length;
+    order = order.slice(rot).concat(order.slice(0, rot));
+    var main = order.filter(function (i) { return mission.topics.indexOf(QUESTIONS[i].t) >= 0; });
+    var rest = order.filter(function (i) { return mission.topics.indexOf(QUESTIONS[i].t) < 0; });
+    return main.concat(rest).slice(0, 6);
+  })();
+  function missionDone() { return state.mission.done.filter(function (i) { return missionQueue.indexOf(i) >= 0; }).length; }
+
+  $('#todayLabel').textContent = today.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+  $('#missionTitle').textContent = mission.title;
+  $('#missionTopics').textContent = mission.topics.join(' + ');
+
+  function renderMission() {
+    var done = missionDone();
+    $$('#missionSegs span').forEach(function (s, i) { s.classList.toggle('on', i < done); });
+    $('#missionCount').textContent = done >= 6 ? 'Mission complete. See you tomorrow!' : done + ' / 6 questions done';
+    $('#launchLabel').textContent = done === 0 ? 'Launch mission' : done >= 6 ? 'Keep practising' : 'Resume mission';
+  }
+
+  // ---------- Exam countdown ----------
+  var examInput = $('#examDate');
+  examInput.min = todayKey;
+  examInput.value = state.exam;
+  function renderExam() {
+    var out = $('#examDays'), lab = $('#examLabel');
+    if (!state.exam) { out.textContent = '—'; lab.textContent = 'Set your exam date'; return; }
+    var d = daysBetween(today, parseKey(state.exam));
+    if (d > 0) { out.textContent = d; lab.textContent = d === 1 ? 'day to go' : 'days to go'; }
+    else if (d === 0) { out.textContent = '0'; lab.textContent = 'Exam day. Good luck!'; }
+    else { out.textContent = '—'; lab.textContent = 'That date has passed. Pick a new one'; }
+  }
+  examInput.addEventListener('change', function () { state.exam = examInput.value; save(); renderExam(); });
+
+  // ---------- Stats, streak, heatmap ----------
+  function streakInfo() {
+    var cur = 0, d = today;
+    if (!state.days[keyOf(d)]) d = addDays(d, -1);
+    while (state.days[keyOf(d)]) { cur++; d = addDays(d, -1); }
+    var keys = Object.keys(state.days).filter(function (k) { return state.days[k] > 0; }).sort();
+    var best = 0, run = 0, prev = null;
+    keys.forEach(function (k) {
+      var dt = parseKey(k);
+      run = prev && daysBetween(prev, dt) === 1 ? run + 1 : 1;
+      if (run > best) best = run;
+      prev = dt;
+    });
+    return { cur: cur, best: Math.max(best, cur) };
+  }
+  function setStat(name, value) { $$('[data-stat="' + name + '"]').forEach(function (el) { el.textContent = value; }); }
+  function renderStats() {
+    var s = state.stats, st = streakInfo();
+    setStat('streak', st.cur);
+    setStat('best', st.best);
+    setStat('answered', s.answered);
+    setStat('accuracy', s.answered ? Math.round(s.correct / s.answered * 100) + '%' : '—');
+    setStat('avg', s.answered ? Math.round(s.time / s.answered) + 's' : '—');
+    renderHeat();
+  }
+  function renderHeat() {
+    var grid = $('#heat'), head = $('#heatDays');
+    var start = addDays(today, -27), active = 0, i;
+    grid.innerHTML = ''; head.innerHTML = '';
+    for (i = 0; i < 7; i++) {
+      var h = document.createElement('span');
+      h.textContent = addDays(start, i).toLocaleDateString('en-US', { weekday: 'narrow' });
+      head.appendChild(h);
+    }
+    for (i = 0; i < 28; i++) {
+      var d = addDays(start, i), n = state.days[keyOf(d)] || 0;
+      if (n) active++;
+      var lvl = n === 0 ? 0 : n < 3 ? 1 : n < 6 ? 2 : n < 10 ? 3 : 4;
+      var c = document.createElement('span');
+      c.className = 'cell l' + lvl + (i === 27 ? ' today' : '');
+      var label = d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }) + ': ' + (n ? n + (n === 1 ? ' question' : ' questions') : 'no practice');
+      c.title = label;
+      c.setAttribute('role', 'img');
+      c.setAttribute('aria-label', label);
+      grid.appendChild(c);
+    }
+    $('#heatActive').textContent = active + (active === 1 ? ' active day' : ' active days');
+  }
+
+  // ---------- Chapters ----------
+  var RING = 2 * Math.PI * 52;
+  function renderChapters() {
+    ['math', 'physics'].forEach(function (sub) {
+      var btns = $$('.chapter[data-id^="' + sub + '-"]'), done = 0;
+      btns.forEach(function (b) {
+        var on = state.chapters.indexOf(b.dataset.id) >= 0;
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        if (on) done++;
+      });
+      $('[data-ring="' + sub + '"]').style.strokeDashoffset = RING * (1 - done / btns.length);
+      $('[data-ring-label="' + sub + '"]').textContent = done + '/' + btns.length;
+    });
+  }
+  $$('.chapter').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var i = state.chapters.indexOf(b.dataset.id);
+      if (i >= 0) state.chapters.splice(i, 1); else state.chapters.push(b.dataset.id);
+      save(); renderChapters();
+    });
+  });
+
+  // ---------- Practice ----------
+  var card = $('#qCard'), action = $('#qAction');
+  var mode = 'mission', queue = [], pos = 0, sel = -1, checked = false;
+  var timer = null, t0 = 0, left = 60, inView = false, started = false;
+
+  function shuffle(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function buildQueue() {
+    if (mode === 'mission') {
+      var rest = missionQueue.filter(function (i) { return state.mission.done.indexOf(i) < 0; });
+      queue = rest.length ? rest : missionQueue.slice();
+    } else {
+      queue = shuffle(QUESTIONS.map(function (q, i) { return i; }).filter(function (i) { return mode === 'all' || QUESTIONS[i].s === mode; }));
+    }
+    pos = 0;
+  }
+  function current() { return queue[pos % queue.length]; }
+  function paintTimer() {
+    $('#qTimer').textContent = Math.floor(left / 60) + ':' + pad(left % 60);
+    $('#timerBox').classList.toggle('late', left <= 10);
+  }
+  function stopTimer() { if (timer) clearInterval(timer); timer = null; }
+  function startTimer() {
+    stopTimer(); started = true; t0 = Date.now(); left = 60; paintTimer();
+    timer = setInterval(function () {
+      left = Math.max(0, 60 - Math.floor((Date.now() - t0) / 1000));
+      paintTimer();
+      if (left === 0) stopTimer();
+    }, 1000);
+  }
+  function showQuestion() {
+    var q = QUESTIONS[current()];
+    sel = -1; checked = false; started = false; left = 60; stopTimer(); paintTimer();
+    $('#qTag').textContent = (q.s === 'math' ? 'Math' : 'Physics') + ' · ' + q.t;
+    var done = missionDone();
+    $('#qCount').textContent = mode === 'mission'
+      ? (done >= 6 ? 'Mission complete · bonus round' : 'Mission question ' + (done + 1) + ' of 6')
+      : 'Question ' + (pos % queue.length + 1) + ' of ' + queue.length;
+    $('#qText').textContent = q.q;
+    var box = $('#qOpts');
+    box.innerHTML = '';
+    q.o.forEach(function (txt, i) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'opt'; b.setAttribute('aria-pressed', 'false');
+      b.innerHTML = '<span class="letter" aria-hidden="true">' + 'ABCD'.charAt(i) + '</span><span class="txt"></span>';
+      b.querySelector('.txt').textContent = txt;
+      b.setAttribute('aria-label', 'Answer ' + 'ABCD'.charAt(i) + ': ' + txt);
+      b.addEventListener('click', function () { choose(i); });
+      box.appendChild(b);
+    });
+    var fb = $('#qFeedback'); fb.className = 'feedback'; fb.textContent = '';
+    action.textContent = 'Check answer'; action.disabled = true;
+    if (inView) startTimer();
+  }
+  function choose(i) {
+    if (checked) return;
+    if (!started) startTimer();
+    sel = i;
+    $$('#qOpts .opt').forEach(function (b, j) { b.classList.toggle('selected', j === i); b.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
+    action.disabled = false;
+  }
+  function check() {
+    var qi = current(), q = QUESTIONS[qi], ok = sel === q.a;
+    var spent = started ? Math.min(300, Math.max(1, Math.round((Date.now() - t0) / 1000))) : 0;
+    checked = true; stopTimer();
+    state.stats.answered++;
+    if (ok) state.stats.correct++;
+    state.stats.time += spent;
+    state.days[todayKey] = (state.days[todayKey] || 0) + 1;
+    if (mode === 'mission' && missionQueue.indexOf(qi) >= 0 && state.mission.done.indexOf(qi) < 0) state.mission.done.push(qi);
+    save();
+    $$('#qOpts .opt').forEach(function (b, j) {
+      b.disabled = true;
+      if (j === q.a) b.classList.add('correct'); else if (j === sel) b.classList.add('wrong');
+    });
+    var fb = $('#qFeedback');
+    fb.className = 'feedback show ' + (ok ? 'ok' : 'no');
+    fb.innerHTML = '<strong></strong> <span></span>';
+    fb.querySelector('strong').textContent = ok ? 'Correct!' : 'Not quite. The answer is ' + 'ABCD'.charAt(q.a) + '.';
+    fb.querySelector('span').textContent = q.why;
+    action.textContent = mode === 'mission' && missionDone() >= 6 ? 'Keep practising' : 'Next question';
+    renderStats(); renderMission();
+  }
+  function next() {
+    if (mode === 'mission') {
+      var wasLast = missionDone() >= 6;
+      buildQueue();
+      if (wasLast) pos = Math.floor(Math.random() * queue.length);
+    } else {
+      pos++;
+      if (pos >= queue.length) buildQueue();
+    }
+    showQuestion();
+  }
+  action.addEventListener('click', function () { if (!checked) check(); else next(); });
+  card.addEventListener('keydown', function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey || checked) return;
+    var k = e.key.toLowerCase();
+    var i = '1234'.indexOf(k); if (i < 0) i = 'abcd'.indexOf(k);
+    if (i >= 0 && k.length === 1) { e.preventDefault(); choose(i); var b = $$('#qOpts .opt')[i]; if (b) b.focus(); }
+  });
+  function setMode(m) {
+    mode = m;
+    $$('.mode[data-mode]').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.mode === m ? 'true' : 'false'); });
+    buildQueue(); showQuestion();
+  }
+  $$('.mode[data-mode]').forEach(function (b) { b.addEventListener('click', function () { setMode(b.dataset.mode); }); });
+  $$('[data-launch]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      if (mode !== 'mission') setMode('mission');
+      $('#practice').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      card.focus({ preventScroll: true });
+    });
+  });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      es.forEach(function (en) { inView = en.isIntersecting; if (inView && !started && !checked) startTimer(); });
+    }, { threshold: 0.4 }).observe(card);
+  } else { inView = true; }
+
+  // ---------- Formulas ----------
+  var fotd = FORMULAS[dayNum % FORMULAS.length];
+  $('#fotdF').textContent = fotd.f;
+  $('#fotdN').textContent = fotd.n;
+  $('#fotdC').textContent = (fotd.s === 'math' ? 'Math' : 'Physics') + ' · ' + fotd.c;
+  function renderFormulas(filter) {
+    var grid = $('#fGrid'); grid.innerHTML = '';
+    FORMULAS.filter(function (f) { return filter === 'all' || f.s === filter; }).forEach(function (f) {
+      var el = document.createElement('article');
+      el.className = 'formula ' + f.s;
+      el.innerHTML = '<span class="f-chip"></span><code></code><h3></h3>';
+      el.querySelector('.f-chip').textContent = (f.s === 'math' ? 'Math' : 'Physics') + ' · ' + f.c;
+      el.querySelector('code').textContent = f.f;
+      el.querySelector('h3').textContent = f.n;
+      grid.appendChild(el);
+    });
+  }
+  $$('[data-f]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      $$('[data-f]').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      renderFormulas(b.dataset.f);
+    });
+  });
+
+  // ---------- Reset ----------
+  $('#resetBtn').addEventListener('click', function () {
+    if (!window.confirm('Reset your streak, answers and chapter progress on this device? Your exam date stays.')) return;
+    state.stats = { answered: 0, correct: 0, time: 0 };
+    state.days = {};
+    state.chapters = [];
+    state.mission = { date: todayKey, done: [] };
+    save(); renderAll(); buildQueue(); showQuestion();
+  });
+
+  function renderAll() { renderMission(); renderExam(); renderStats(); renderChapters(); }
+  $('#year').textContent = today.getFullYear();
+  renderAll();
+  renderFormulas('all');
+  buildQueue();
+  showQuestion();
+})();
+</script>
 </body>
 </html>
