@@ -73,6 +73,33 @@ class LoginAttempt(db.Model):
     created_at = db.Column(db.DateTime, nullable=False, default=utcnow, index=True)
 
 
+class LiveClass(db.Model):
+    """A live audio/video class. Media runs through LiveKit; this row tracks who controls it."""
+    __tablename__ = 'live_classes'
+
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(120), nullable=False)
+    room = db.Column(db.String(64), nullable=False, unique=True)
+    started_by = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    started_at = db.Column(db.DateTime, nullable=False, default=utcnow)
+    ended_at = db.Column(db.DateTime)
+    open_mics = db.Column(db.Boolean, nullable=False, default=False)
+    speakers = db.Column(db.JSON, nullable=False, default=list)  # user ids allowed to talk
+    removed = db.Column(db.JSON, nullable=False, default=list)  # user ids removed by the teacher
+
+    host = db.relationship('User')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'started_at': iso(self.started_at),
+            'ended_at': iso(self.ended_at),
+            'host_name': self.host.full_name if self.host else None,
+            'open_mics': self.open_mics,
+        }
+
+
 class Course(db.Model):
     __tablename__ = 'courses'
 

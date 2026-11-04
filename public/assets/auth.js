@@ -127,6 +127,24 @@
     window.location.href = 'index.html';
   }
 
+  function liveBanner() {
+    if (document.body.getAttribute('data-live-banner') === 'off') return;
+    fetch('/api/live/status').then(function (r) { return r.ok ? r.json() : null; }).then(function (s) {
+      if (!s || !s.live || document.querySelector('.live-banner')) return;
+      var a = document.createElement('a');
+      a.className = 'live-banner';
+      a.href = 'live.html';
+      a.innerHTML = '<span class="live-dot" aria-hidden="true"></span><span>Live now:</span>';
+      var title = document.createElement('b');
+      title.textContent = s.live.title;
+      var join = document.createElement('span');
+      join.textContent = 'Join →';
+      a.appendChild(title);
+      a.appendChild(join);
+      document.body.appendChild(a);
+    }).catch(function () { /* banner is optional */ });
+  }
+
   window.EstSat = {
     api: api, token: token, user: user, loggedIn: loggedIn, setSession: setSession, setUser: setUser,
     clearSession: clearSession, logout: logout, readState: readState, writeState: writeState,
@@ -134,6 +152,7 @@
     firstName: firstName, renderAuthLinks: renderAuthLinks, safeNext: safeNext
   };
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', renderAuthLinks);
-  else renderAuthLinks();
+  function onReady() { renderAuthLinks(); liveBanner(); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', onReady);
+  else onReady();
 })();

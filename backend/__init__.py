@@ -66,8 +66,9 @@ def create_app(config=None):
     _register_jwt_handlers()
     _register_error_handlers(app)
 
+    from .live_routes import live_bp
     from .routes import blueprints
-    for bp in blueprints:
+    for bp in blueprints + [live_bp]:
         app.register_blueprint(bp)
 
     @app.get('/api')

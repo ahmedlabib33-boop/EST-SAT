@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Live class — EST · SAT</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#07070F">
+<script>
+  document.documentElement.classList.add('js');
+  try { if (!localStorage.getItem('estsat.token')) location.replace('login.html?next=live.html'); } catch (e) { location.replace('login.html?next=live.html'); }
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322D3EE'/%3E%3Cstop offset='1' stop-color='%238B5CF6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='700' font-size='34' fill='white' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/live.css">
+</head>
+<body data-live-banner="off">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></symbol>
+  <symbol id="i-mic-off" viewBox="0 0 24 24"><line x1="2" x2="22" y1="2" y2="22"/><path d="M18.89 13.23A7.12 7.12 0 0 0 19 12v-2"/><path d="M5 10v2a7 7 0 0 0 12 5"/><path d="M15 9.34V5a3 3 0 0 0-5.68-1.33"/><path d="M9 9v3a3 3 0 0 0 5.12 2.12"/><line x1="12" x2="12" y1="19" y2="22"/></symbol>
+  <symbol id="i-cam" viewBox="0 0 24 24"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/><rect x="2" y="6" width="14" height="12" rx="2"/></symbol>
+  <symbol id="i-cam-off" viewBox="0 0 24 24"><path d="M10.66 6H14a2 2 0 0 1 2 2v2.5l5.248-3.062A.5.5 0 0 1 22 7.87v8.196"/><path d="M16 16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2"/><path d="m2 2 20 20"/></symbol>
+  <symbol id="i-screen" viewBox="0 0 24 24"><path d="m9 10 3-3 3 3"/><path d="M12 13V7"/><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M12 17v4"/><path d="M8 21h8"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></symbol>
+  <symbol id="i-leave" viewBox="0 0 24 24"><path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.42 19.42 0 0 1-3.33-2.67m-2.67-3.34a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91"/><line x1="22" x2="2" y1="2" y2="22"/></symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></symbol>
+</svg>
+<div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html" aria-label="EST · SAT home">
+      <span class="mark" aria-hidden="true">E</span>
+      <span class="brand-txt"><b>EST · SAT</b><small>Live class</small></span>
+    </a>
+    <a class="btn btn-ghost btn-sm" href="student-portal.html" id="backLink" style="margin-left:auto"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg>My portal</a>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap live-main" id="lobbyWrap">
+    <p class="loading" id="loading" role="status">Loading live class…</p>
+    <div class="alert error" role="alert" id="pageError"></div>
+    <section class="lobby card" id="lobby" hidden>
+      <span class="live-tag" id="lobbyTag"><span class="live-dot" id="lobbyDot" hidden></span><span id="lobbyKicker">Live class</span></span>
+      <h1 id="lobbyTitle">No live class right now</h1>
+      <p id="lobbyText"></p>
+      <form class="form" id="startForm" hidden novalidate>
+        <div class="alert error" role="alert" id="startError"></div>
+        <div class="field">
+          <label for="classTitle">Class title</label>
+          <input class="input" id="classTitle" maxlength="120" placeholder="e.g. Kinematics Q&amp;A" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Go live</button>
+      </form>
+      <div class="hero-actions" id="joinActions" hidden>
+        <button class="btn btn-primary" type="button" id="joinBtn">Join class</button>
+      </div>
+    </section>
+  </div>
+
+  <section class="room" id="room" hidden aria-label="Live class">
+    <div class="room-top">
+      <span class="live-tag"><span class="live-dot"></span>LIVE <span id="roomTimer">00:00</span></span>
+      <h1 id="roomTitle">Live class</h1>
+      <span class="meta" id="roomCount">1 in class</span>
+    </div>
+    <div class="room-body">
+      <div class="stage-wrap">
+        <div class="stage" id="stage">
+          <div class="stage-empty" id="stageEmpty">
+            <div class="avatar" id="stageAvatar" aria-hidden="true">AL</div>
+            <p id="stageText">Waiting for the teacher’s camera…</p>
+          </div>
+        </div>
+        <div class="strip" id="strip" aria-label="Participants with video"></div>
+      </div>
+      <aside class="side card">
+        <div class="tabs" role="tablist" aria-label="Class panel">
+          <button class="tab" type="button" role="tab" id="tabChat" aria-controls="chatPanel" aria-selected="true">Chat</button>
+          <button class="tab" type="button" role="tab" id="tabPeople" aria-controls="peoplePanel" aria-selected="false" tabindex="-1">People</button>
+        </div>
+        <div class="side-panel" id="chatPanel" role="tabpanel" aria-labelledby="tabChat">
+          <ol class="chat-list" id="chatList" aria-live="polite"></ol>
+          <form class="chat-form" id="chatForm">
+            <label class="sr-only" for="chatInput">Message the class</label>
+            <input class="input" id="chatInput" maxlength="500" placeholder="Message the class" autocomplete="off">
+            <button class="btn btn-primary btn-sm" type="submit">Send</button>
+          </form>
+        </div>
+        <div class="side-panel" id="peoplePanel" role="tabpanel" aria-labelledby="tabPeople" hidden>
+          <div>
+            <div class="teacher-tools" id="teacherTools" hidden>
+              <button class="btn btn-ghost" type="button" id="muteAllBtn">Mute everyone</button>
+              <button class="btn btn-ghost" type="button" id="openMicsBtn" aria-pressed="false">Open all mics</button>
+            </div>
+            <div class="room-banner" id="handsNote" hidden style="margin:0 12px 12px"></div>
+          </div>
+          <ul class="people" id="peopleList"></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="controls" role="toolbar" aria-label="Call controls">
+      <button class="ctl" type="button" id="micBtn"><svg class="icon" aria-hidden="true"><use href="#i-mic-off"/></svg><span class="label">Unmute</span></button>
+      <button class="ctl" type="button" id="camBtn"><svg class="icon" aria-hidden="true"><use href="#i-cam-off"/></svg><span class="label">Start video</span></button>
+      <button class="ctl" type="button" id="shareBtn" hidden><svg class="icon" aria-hidden="true"><use href="#i-screen"/></svg><span class="label">Share screen</span></button>
+      <button class="ctl" type="button" id="handBtn" hidden aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-hand"/></svg><span class="label">Raise hand</span></button>
+      <button class="ctl danger" type="button" id="leaveBtn"><svg class="icon" aria-hidden="true"><use href="#i-leave"/></svg><span class="label">Leave</span></button>
+      <button class="ctl danger" type="button" id="endBtn" hidden><span class="label">End class for all</span><span class="sr-only">End class for everyone</span></button>
+    </div>
+    <div class="room-banner" id="connNote" hidden></div>
+  </section>
+</main>
+
+<button class="btn btn-primary" type="button" id="audioBtn" hidden style="position:fixed;left:50%;top:84px;transform:translateX(-50%);z-index:45">Tap to hear the class</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div id="audioSink" hidden></div>
+
+<script src="assets/auth.js"></script>
+<script src="assets/vendor/livekit-client-2.22.4.umd.js"></script>
+<script>
+(function () {
+  'use strict';
+  var E = window.EstSat, LK = window.LivekitClient;
+  if (!E.loggedIn()) return;
+  var RoomEvent = LK.RoomEvent, Track = LK.Track;
+
+  function $(id) { return document.getElementById(id); }
+  function show(id, on) { $(id).hidden = !on; }
+  var me = E.user() || {};
+  var isStaff = me.role === 'admin' || me.role === 'teacher';
+  var room = null, info = null, speakers = new Set(), tiles = new Map(), timerId = null, pollId = null, leaving = false;
+
+  var toastTimer;
+  function toast(text) {
+    var t = $('toast');
+    t.textContent = text;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.classList.remove('show'); }, 3500);
+  }
+  function initials(name) {
+    return (name || '?').trim().split(/\s+/).slice(0, 2).map(function (w) { return w.charAt(0).toUpperCase(); }).join('') || '?';
+  }
+  function roleOf(p) {
+    if (p.attributes && p.attributes.role) return p.attributes.role;
+    try { return JSON.parse(p.metadata || '{}').role || 'student'; } catch (e) { return 'student'; }
+  }
+  function displayName(p) { return p.name || p.identity; }
+  function isLocal(p) { return room && p === room.localParticipant; }
+  function allParticipants() { return [room.localParticipant].concat(Array.from(room.remoteParticipants.values())); }
+  function api(path, body) { return E.api('/live/' + path, { method: 'POST', body: body || {} }); }
+
+  // ---------- Lobby ----------
+  function lobby(status, note) {
+    show('loading', false);
+    show('room', false);
+    show('lobbyWrap', true);
+    show('lobby', true);
+    var live = status.live;
+    show('lobbyDot', !!live);
+    show('startForm', false);
+    show('joinActions', false);
+    if (!status.configured) {
+      $('lobbyKicker').textContent = 'Live class';
+      $('lobbyTitle').textContent = 'Live classes are almost ready';
+      $('lobbyText').textContent = isStaff
+        ? 'The video server isn’t connected yet. Once it is, you’ll be able to go live from here.'
+        : 'Your teacher hasn’t switched on live classes yet. Check back soon.';
+      return;
+    }
+    if (live) {
+      $('lobbyKicker').textContent = 'Live now';
+      $('lobbyTitle').textContent = live.title;
+      $('lobbyText').textContent = note || ((live.host_name || 'Your teacher') + ' is live. ' +
+        (isStaff ? 'Join to teach.' : 'You’ll join with your mic and camera off. Raise your hand to speak.'));
+      $('joinBtn').textContent = note ? 'Rejoin class' : 'Join class';
+      show('joinActions', true);
+      return;
+    }
+    $('lobbyKicker').textContent = 'Live class';
+    $('lobbyTitle').textContent = note ? 'Class ended' : 'No live class right now';
+    if (isStaff) {
+      $('lobbyText').textContent = (note ? note + ' ' : '') + 'Start a class and your students will see a “Live now” banner on the site.';
+      show('startForm', true);
+    } else {
+      $('lobbyText').textContent = (note ? note + ' ' : '') + 'When Ahmed Labib goes live, this page will update by itself.';
+      clearInterval(pollId);
+      pollId = setInterval(function () {
+        E.api('/live/status', { auth: false }).then(function (s) {
+          if (s.live) { clearInterval(pollId); lobby(s); toast('Class is live — join now!'); }
+        }).catch(function () {});
+      }, 15000);
+    }
+  }
+
+  function loadLobby(note) {
+    return E.api('/live/status', { auth: false }).then(function (s) { lobby(s, note); }).catch(function (err) {
+      show('loading', false);
+      $('pageError').textContent = err.message;
+      $('pageError').classList.add('show');
+    });
+  }
+
+  $('startForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var button = e.target.querySelector('button');
+    button.disabled = true;
+    api('start', { title: $('classTitle').value.trim() }).then(join).catch(function (err) {
+      $('startError').textContent = err.message;
+      $('startError').classList.add('show');
+    }).then(function () { button.disabled = false; });
+  });
+  $('joinBtn').addEventListener('click', function () { join(); });
+
+  // ---------- Joining ----------
+  function join() {
+    $('joinBtn').disabled = true;
+    return api('join').then(function (res) {
+      info = res;
+      speakers = new Set(res.speakers || []);
+      room = new LK.Room({ adaptiveStream: true, dynacast: true, publishDefaults: { simulcast: true },
+        videoCaptureDefaults: { resolution: LK.VideoPresets.h720.resolution } });
+      wire(room);
+      return room.connect(res.url, res.token).then(function () { enterRoom(); });
+    }).catch(function (err) {
+      toast(err.message || 'Could not join the class.');
+      if (room) { room.disconnect(); room = null; }
+    }).then(function () { $('joinBtn').disabled = false; });
+  }
+
+  function enterRoom() {
+    leaving = false;
+    clearInterval(pollId);
+    show('lobbyWrap', false);
+    show('room', true);
+    $('roomTitle').textContent = info.live.title;
+    $('backLink').hidden = true;
+    var host = info.role === 'host';
+    show('shareBtn', host);
+    show('endBtn', host);
+    show('handBtn', !host);
+    show('teacherTools', host);
+    $('openMicsBtn').setAttribute('aria-pressed', info.live.open_mics ? 'true' : 'false');
+    $('openMicsBtn').textContent = info.live.open_mics ? 'Close student mics' : 'Open all mics';
+    var started = new Date(info.live.started_at + 'Z');
+    clearInterval(timerId);
+    timerId = setInterval(function () {
+      var s = Math.max(0, Math.floor((Date.now() - started) / 1000)), h = Math.floor(s / 3600);
+      var mm = String(Math.floor(s / 60) % 60).padStart(2, '0'), ss = String(s % 60).padStart(2, '0');
+      $('roomTimer').textContent = (h ? h + ':' : '') + mm + ':' + ss;
+    }, 1000);
+    systemMessage('You joined ' + info.live.title + '.');
+    if (host) {
+      room.localParticipant.setMicrophoneEnabled(true)
+        .then(function () { return room.localParticipant.setCameraEnabled(true); })
+        .catch(function () { toast('Allow camera and microphone access so students can see and hear you.'); })
+        .then(renderAll);
+    } else if (info.can_talk) {
+      toast('Your teacher lets you talk. Tap the mic when you want to speak.');
+    }
+    $('audioBtn').hidden = room.canPlaybackAudio;
+    renderAll();
+  }
+
+  // ---------- Room events ----------
+  var renderQueued = false;
+  function renderAll() {
+    if (renderQueued) return;
+    renderQueued = true;
+    requestAnimationFrame(function () { renderQueued = false; if (room) { renderVideo(); renderPeople(); updateControls(); } });
+  }
+
+  function wire(r) {
+    r.on(RoomEvent.TrackSubscribed, function (track) {
+      if (track.kind === Track.Kind.Audio) $('audioSink').appendChild(track.attach());
+      renderAll();
+    });
+    r.on(RoomEvent.TrackUnsubscribed, function (track) {
+      if (track.kind === Track.Kind.Audio) track.detach().forEach(function (el) { el.remove(); });
+      renderAll();
+    });
+    [RoomEvent.LocalTrackPublished, RoomEvent.LocalTrackUnpublished, RoomEvent.TrackMuted, RoomEvent.TrackUnmuted,
+     RoomEvent.ParticipantAttributesChanged].forEach(function (ev) { r.on(ev, renderAll); });
+    r.on(RoomEvent.ParticipantConnected, function (p) { if (roleOf(p) === 'host') systemMessage(displayName(p) + ' joined.'); renderAll(); });
+    r.on(RoomEvent.ParticipantDisconnected, function (p) { if (roleOf(p) === 'host') systemMessage(displayName(p) + ' left.'); renderAll(); });
+    r.on(RoomEvent.ActiveSpeakersChanged, function (list) {
+      var ids = new Set(list.map(function (p) { return p.identity; }));
+      tiles.forEach(function (t) { t.el.classList.toggle('speaking', ids.has(t.identity)); });
+    });
+    r.on(RoomEvent.ParticipantPermissionsChanged, function (prev, p) {
+      if (!isLocal(p)) return;
+      var can = !!(p.permissions && p.permissions.canPublish);
+      if (can && !(prev && prev.canPublish)) toast('Your teacher lets you talk now. Tap the mic to unmute.');
+      if (!can && prev && prev.canPublish) toast('Your teacher turned your mic off.');
+      renderAll();
+    });
+    r.on(RoomEvent.DataReceived, function (payload, participant, kind, topic) {
+      if (topic !== 'chat' || !participant) return;
+      try { addChat(participant, JSON.parse(new TextDecoder().decode(payload)).text); } catch (e) { /* ignore malformed */ }
+    });
+    r.on(RoomEvent.AudioPlaybackStatusChanged, function () { $('audioBtn').hidden = r.canPlaybackAudio; });
+    r.on(RoomEvent.Reconnecting, function () { $('connNote').textContent = 'Connection lost. Reconnecting…'; show('connNote', true); });
+    r.on(RoomEvent.Reconnected, function () { show('connNote', false); toast('Reconnected.'); });
+    r.on(RoomEvent.Disconnected, function (reason) {
+      cleanup();
+      var R = LK.DisconnectReason || {};
+      var note = reason === R.ROOM_DELETED ? 'The teacher ended the class.'
+        : reason === R.PARTICIPANT_REMOVED ? 'You were removed from the class.'
+        : reason === R.DUPLICATE_IDENTITY ? 'You joined from another device.'
+        : leaving ? 'You left the class.' : 'You were disconnected.';
+      loadLobby(note);
+    });
+  }
+
+  function cleanup() {
+    clearInterval(timerId);
+    tiles.forEach(function (t) { if (t.track) t.track.detach(t.video); t.el.remove(); });
+    tiles.clear();
+    $('audioSink').innerHTML = '';
+    $('chatList').innerHTML = '';
+    $('audioBtn').hidden = true;
+    $('backLink').hidden = false;
+    room = null;
+  }
+
+  // ---------- Video ----------
+  function videoItems() {
+    var items = [];
+    allParticipants().forEach(function (p) {
+      [Track.Source.ScreenShare, Track.Source.Camera].forEach(function (src) {
+        var pub = p.getTrackPublication(src);
+        if (pub && pub.track && !pub.isMuted) items.push({ key: p.identity + ':' + src, p: p, track: pub.track, src: src });
+      });
+    });
+    return items;
+  }
+  function tileFor(item) {
+    var t = tiles.get(item.key);
+    if (!t) {
+      var el = document.createElement('div');
+      el.className = 'tile';
+      var video = document.createElement('video');
+      video.autoplay = true; video.playsInline = true; video.muted = true;
+      var label = document.createElement('div');
+      label.className = 'tile-label';
+      el.appendChild(video); el.appendChild(label);
+      t = { el: el, video: video, label: label, track: null, identity: item.p.identity };
+      tiles.set(item.key, t);
+    }
+    if (t.track !== item.track) {
+      if (t.track) t.track.detach(t.video);
+      item.track.attach(t.video);
+      t.track = item.track;
+    }
+    t.el.classList.toggle('mirror', isLocal(item.p) && item.src === Track.Source.Camera);
+    var micPub = item.p.getTrackPublication(Track.Source.Microphone);
+    var muted = !micPub || micPub.isMuted;
+    var text = displayName(item.p) + (isLocal(item.p) ? ' (you)' : '') + (item.src === Track.Source.ScreenShare ? ' · screen' : '');
+    t.label.innerHTML = muted ? '<svg class="icon" aria-hidden="true"><use href="#i-mic-off"/></svg>' : '';
+    var span = document.createElement('span'); span.textContent = text; t.label.appendChild(span);
+    return t;
+  }
+  function renderVideo() {
+    var items = videoItems();
+    var stageItem = items.filter(function (i) { return i.src === Track.Source.ScreenShare; })[0]
+      || items.filter(function (i) { return roleOf(i.p) === 'host'; })[0]
+      || items[0];
+    var keep = new Set();
+    if (stageItem) {
+      var st = tileFor(stageItem);
+      keep.add(stageItem.key);
+      if (st.el.parentNode !== $('stage')) $('stage').appendChild(st.el);
+    }
+    show('stageEmpty', !stageItem);
+    var host = allParticipants().filter(function (p) { return roleOf(p) === 'host'; })[0];
+    $('stageAvatar').textContent = initials(host ? displayName(host) : 'Ahmed Labib');
+    $('stageText').textContent = host ? displayName(host) + ' has the camera off.' : 'Waiting for the teacher to join…';
+    var strip = $('strip');
+    items.filter(function (i) { return i !== stageItem; }).slice(0, 24).forEach(function (item) {
+      var t = tileFor(item);
+      keep.add(item.key);
+      strip.appendChild(t.el);
+    });
+    tiles.forEach(function (t, key) {
+      if (!keep.has(key)) { if (t.track) t.track.detach(t.video); t.el.remove(); tiles.delete(key); }
+    });
+    $('roomCount').textContent = (room.remoteParticipants.size + 1) + ' in class';
+  }
+
+  // ---------- People ----------
+  function renderPeople() {
+    var list = $('peopleList'), host = info.role === 'host';
+    var people = allParticipants().map(function (p) {
+      var mic = p.getTrackPublication(Track.Source.Microphone);
+      return { p: p, role: roleOf(p), hand: !!(p.attributes && p.attributes.hand), talking: !!(mic && !mic.isMuted) };
+    });
+    people.sort(function (a, b) {
+      return (b.hand - a.hand) || ((b.role === 'host') - (a.role === 'host')) || displayName(a.p).localeCompare(displayName(b.p));
+    });
+    list.innerHTML = '';
+    people.forEach(function (x) {
+      var li = document.createElement('li');
+      li.className = 'person' + (x.hand ? ' raised' : '');
+      var who = document.createElement('div'); who.className = 'who';
+      var b = document.createElement('b'); b.textContent = displayName(x.p) + (isLocal(x.p) ? ' (you)' : '');
+      var small = document.createElement('small');
+      small.textContent = x.role === 'host' ? 'Teacher' : (speakers.has(x.p.identity) || info.live.open_mics ? 'Can talk' : 'Listening') + (x.talking ? ' · mic on' : '');
+      who.appendChild(b); who.appendChild(small);
+      li.appendChild(who);
+      if (x.hand) { var h = document.createElement('span'); h.className = 'hand'; h.textContent = 'Hand up'; li.appendChild(h); }
+      if (host && x.role !== 'host') {
+        var allowed = speakers.has(x.p.identity);
+        var talk = document.createElement('button');
+        talk.type = 'button'; talk.className = 'btn ' + (allowed ? 'btn-ghost' : 'btn-primary');
+        talk.textContent = allowed ? 'Stop talk' : 'Let talk';
+        talk.setAttribute('aria-label', (allowed ? 'Stop ' : 'Let ') + displayName(x.p) + ' talk');
+        talk.addEventListener('click', function () { setTalk(x.p, !allowed, talk); });
+        var rm = document.createElement('button');
+        rm.type = 'button'; rm.className = 'btn btn-ghost'; rm.textContent = 'Remove';
+        rm.setAttribute('aria-label', 'Remove ' + displayName(x.p) + ' from the class');
+        rm.addEventListener('click', function () { removePerson(x.p, rm); });
+        li.appendChild(talk); li.appendChild(rm);
+      }
+      list.appendChild(li);
+    });
+    var hands = people.filter(function (x) { return x.hand; }).length;
+    $('tabPeople').textContent = 'People (' + people.length + ')' + (hands ? ' · ' + hands + ' hand' + (hands > 1 ? 's' : '') : '');
+    $('handsNote').textContent = hands + (hands === 1 ? ' student has a hand up.' : ' students have hands up.');
+    show('handsNote', host && hands > 0);
+  }
+
+  function setTalk(p, allow, button) {
+    button.disabled = true;
+    api('allow-talk', { identity: p.identity, allow: allow }).then(function (res) {
+      speakers = new Set(res.speakers);
+      toast(allow ? displayName(p) + ' can talk now.' : displayName(p) + '’s mic is off.');
+      renderAll();
+    }).catch(function (err) { toast(err.message); button.disabled = false; });
+  }
+  function removePerson(p, button) {
+    if (!window.confirm('Remove ' + displayName(p) + ' from this class? They won’t be able to rejoin it.')) return;
+    button.disabled = true;
+    api('remove', { identity: p.identity }).then(function () { toast(displayName(p) + ' was removed.'); })
+      .catch(function (err) { toast(err.message); button.disabled = false; });
+  }
+
+  // ---------- Controls ----------
+  function canPublish() {
+    var perm = room.localParticipant.permissions;
+    return perm ? !!perm.canPublish : !!info.can_talk;
+  }
+  function setCtl(id, on, iconOn, iconOff, labelOn, labelOff) {
+    var b = $(id);
+    b.classList.toggle('on', on);
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    b.querySelector('use').setAttribute('href', on ? iconOn : iconOff);
+    b.querySelector('.label').textContent = on ? labelOn : labelOff;
+  }
+  function updateControls() {
+    var lp = room.localParticipant, allowed = canPublish();
+    $('micBtn').disabled = !allowed;
+    $('camBtn').disabled = !allowed;
+    $('micBtn').title = allowed ? '' : 'Raise your hand to ask to speak';
+    setCtl('micBtn', lp.isMicrophoneEnabled, '#i-mic', '#i-mic-off', 'Mute', 'Unmute');
+    setCtl('camBtn', lp.isCameraEnabled, '#i-cam', '#i-cam-off', 'Stop video', 'Start video');
+    setCtl('shareBtn', lp.isScreenShareEnabled, '#i-screen', '#i-screen', 'Stop sharing', 'Share screen');
+    var raised = !!(lp.attributes && lp.attributes.hand);
+    $('handBtn').classList.toggle('raised', raised);
+    $('handBtn').setAttribute('aria-pressed', raised ? 'true' : 'false');
+    $('handBtn').querySelector('.label').textContent = raised ? 'Lower hand' : 'Raise hand';
+  }
+  function toggle(fn, current, failText) {
+    fn(!current).then(renderAll).catch(function () { toast(failText); renderAll(); });
+  }
+  $('micBtn').addEventListener('click', function () {
+    var lp = room.localParticipant;
+    toggle(lp.setMicrophoneEnabled.bind(lp), lp.isMicrophoneEnabled, 'Allow microphone access in your browser to talk.');
+  });
+  $('camBtn').addEventListener('click', function () {
+    var lp = room.localParticipant;
+    toggle(lp.setCameraEnabled.bind(lp), lp.isCameraEnabled, 'Allow camera access in your browser to share video.');
+  });
+  $('shareBtn').addEventListener('click', function () {
+    var lp = room.localParticipant;
+    toggle(lp.setScreenShareEnabled.bind(lp), lp.isScreenShareEnabled, 'Screen sharing was blocked or isn’t supported on this device.');
+  });
+  $('handBtn').addEventListener('click', function () {
+    var raised = !!(room.localParticipant.attributes && room.localParticipant.attributes.hand);
+    $('handBtn').disabled = true;
+    api('hand', { raised: !raised }).then(function () { if (!raised) toast('Hand raised. Your teacher can see it.'); })
+      .catch(function (err) { toast(err.message); }).then(function () { $('handBtn').disabled = false; });
+  });
+  $('leaveBtn').addEventListener('click', function () { leaving = true; room.disconnect(); });
+  $('endBtn').addEventListener('click', function () {
+    if (!window.confirm('End the class for everyone?')) return;
+    api('end').catch(function (err) { toast(err.message); });
+  });
+  $('muteAllBtn').addEventListener('click', function () {
+    api('mute-all').then(function (res) { toast(res.muted ? 'Muted ' + res.muted + (res.muted === 1 ? ' mic.' : ' mics.') : 'Everyone was already muted.'); })
+      .catch(function (err) { toast(err.message); });
+  });
+  $('openMicsBtn').addEventListener('click', function () {
+    var open = $('openMicsBtn').getAttribute('aria-pressed') !== 'true';
+    api('open-mics', { open: open }).then(function (res) {
+      info.live.open_mics = res.open_mics;
+      $('openMicsBtn').setAttribute('aria-pressed', res.open_mics ? 'true' : 'false');
+      $('openMicsBtn').textContent = res.open_mics ? 'Close student mics' : 'Open all mics';
+      toast(res.open_mics ? 'Every student can unmute now.' : 'Only students you choose can talk.');
+      renderAll();
+    }).catch(function (err) { toast(err.message); });
+  });
+  $('audioBtn').addEventListener('click', function () {
+    room.startAudio().then(function () { $('audioBtn').hidden = true; });
+  });
+
+  // ---------- Chat ----------
+  function systemMessage(text) {
+    var li = document.createElement('li'); li.className = 'system'; li.textContent = text;
+    $('chatList').appendChild(li);
+  }
+  function addChat(p, text) {
+    if (typeof text !== 'string' || !text.trim()) return;
+    var li = document.createElement('li');
+    if (roleOf(p) === 'host') li.className = 'host';
+    var b = document.createElement('b'); b.textContent = displayName(p) + (isLocal(p) ? ' (you)' : '') + (roleOf(p) === 'host' ? ' · Teacher' : '');
+    li.appendChild(b);
+    li.appendChild(document.createTextNode(text.slice(0, 500)));
+    var list = $('chatList');
+    var atBottom = list.scrollHeight - list.scrollTop - list.clientHeight < 40;
+    list.appendChild(li);
+    while (list.children.length > 300) list.removeChild(list.firstChild);
+    if (atBottom || isLocal(p)) list.scrollTop = list.scrollHeight;
+  }
+  $('chatForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var input = $('chatInput'), text = input.value.trim();
+    if (!text || !room) return;
+    room.localParticipant.publishData(new TextEncoder().encode(JSON.stringify({ text: text.slice(0, 500) })), { reliable: true, topic: 'chat' })
+      .then(function () { addChat(room.localParticipant, text); input.value = ''; })
+      .catch(function () { toast('Message not sent. Check your connection.'); });
+  });
+
+  // ---------- Tabs ----------
+  var tabs = [$('tabChat'), $('tabPeople')];
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () {
+      tabs.forEach(function (x, j) {
+        x.setAttribute('aria-selected', i === j ? 'true' : 'false');
+        x.tabIndex = i === j ? 0 : -1;
+        $(x.getAttribute('aria-controls')).hidden = i !== j;
+      });
+    });
+    t.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); tabs[1 - i].click(); tabs[1 - i].focus(); }
+    });
+  });
+
+  window.addEventListener('pagehide', function () { if (room) { leaving = true; room.disconnect(); } });
+
+  E.api('/auth/me').then(function (res) {
+    me = res.user;
+    E.setUser(me);
+    isStaff = me.role === 'admin' || me.role === 'teacher';
+    return loadLobby();
+  }).catch(function (err) {
+    if (err.status === 401) { location.replace('login.html?next=live.html'); return; }
+    show('loading', false);
+    $('pageError').textContent = err.message;
+    $('pageError').classList.add('show');
+  });
+})();
+</script>
+</body>
+</html>
