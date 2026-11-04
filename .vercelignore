@@ -1,19 +1,14 @@
+# Local-only files. app.py is the local dev runner; keeping it out also stops Vercel
+# from treating the whole project as a Flask app (the API runs from api/index.py).
 app.py
-models.py
-routes.py
-seed_data.py
-requirements.txt
-.env.example
+tests/
+requirements-dev.txt
+.env
+.env.*
+*.db
 venv/
+.venv/
 __pycache__/
 *.pyc
-.git/
-.gitignore
-README.md
-API_DOCUMENTATION.md
-SETUP.md
-PROJECT_SUMMARY.md
-VERCEL_DEPLOYMENT.md
-math-guide.md
-physics-guide.md
-practice-problems.md
+.pytest_cache/
+*.md
