@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Labib - SAT 1 & EST 1 Study Materials</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .teacher-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+        .teacher-info strong {
+            color: #ffd700;
+        }
+
+        nav {
+            background: white;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            display: block;
+            padding: 15px 25px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        nav a:hover {
+            background: #f0f0f0;
+            color: #764ba2;
+            border-bottom-color: #667eea;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .subject-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-header {
+            padding: 30px;
+            text-align: center;
+            color: white;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .math-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .physics-header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .card-body h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .topics-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .topics-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            color: #666;
+        }
+
+        .topics-list li:last-child {
+            border-bottom: none;
+        }
+
+        .topics-list a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .topics-list a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            flex: 1;
+            min-width: 150px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: #f5576c;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #d63447;
+            transform: scale(1.05);
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .content-area {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .content-area h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+
+        .topic-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+        }
+
+        .topic-section h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .topic-section p {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .formula-box {
+            background: #e8f0ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+
+        .example-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+
+        .example-box strong {
+            color: #856404;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav a {
+                padding: 12px 15px;
+                border-bottom: none;
+                border-right: 3px solid transparent;
+            }
+
+            nav a:hover {
+                border-right-color: #667eea;
+                border-bottom: none;
+            }
+
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-area {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 Study Materials</h1>
+        <p>Complete SAT 1 & EST 1 Preparation</p>
+        <div class="teacher-info">
+            <strong>👨‍🏫 Teacher:</strong> Ahmed Labib
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showSection('home'); return false;">Home</a></li>
+            <li><a href="#" onclick="showSection('math'); return false;">📐 Mathematics</a></li>
+            <li><a href="#" onclick="showSection('physics'); return false;">⚛️ Physics</a></li>
+            <li><a href="#" onclick="showSection('resources'); return false;">📚 Resources</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Home Section -->
+        <div id="home" class="section active">
+            <div class="content-area">
+                <h2>Welcome to Your Study Platform</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; margin: 20px 0;">
+                    This platform provides comprehensive study materials for <strong>SAT 1 & EST 1</strong> examinations in <strong>Mathematics and Physics</strong>.
+                    Choose a subject below to begin your preparation journey.
+                </p>
+            </div>
+
+            <div class="subjects-grid" style="margin-top: 40px;">
+                <div class="subject-card">
+                    <div class="card-header math-header">📐 Mathematics</div>
+                    <div class="card-body">
+                        <h3>Math Preparation</h3>
+                        <p>Complete coverage of SAT 1 & EST 1 Mathematics topics with detailed explanations and practice problems.</p>
+                        <div class="btn-group">
+                            <button class="btn btn-primary" onclick="showSection('math')">Start Learning</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="card-header physics-header">⚛️ Physics</div>
+                    <div class="card-body">
+                        <h3>Physics Preparation</h3>
+                        <p>Master all Physics concepts for SAT 1 & EST 1 with comprehensive explanations and solved examples.</p>
+                        <div class="btn-group">
+                            <button class="btn btn-secondary" onclick="showSection('physics')">Start Learning</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Math Section -->
+        <div id="math" class="section">
+            <div class="content-area">
+                <h2>📐 Mathematics (SAT 1 & EST 1)</h2>
+                <p>Complete mathematics curriculum with theory, examples, and practice problems.</p>
+
+                <div class="topic-section">
+                    <h3>1. Algebra & Polynomials</h3>
+                    <p><strong>Topics covered:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>Quadratic equations and roots</li>
+                        <li>Polynomial operations and factorization</li>
+                        <li>Systems of equations</li>
+                        <li>Inequalities and absolute values</li>
+                    </ul>
+                    <div class="formula-box">
+                        Quadratic Formula: x = [-b ± √(b² - 4ac)] / 2a
+                    </div>
+                    <div class="example-box">
+                        <strong>Example:</strong> Solve x² - 5x + 6 = 0<br>
+                        Using factorization: (x - 2)(x - 3) = 0<br>
+                        Solutions: x = 2 or x = 3
+                    </div>
+                </div>
+
+                <div class="topic-section">
+                    <h3>2. Trigonometry</h3>
+                    <p><strong>Topics covered:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>Trigonometric ratios (sin, cos, tan)</li>
+                        <li>Unit circle and special angles</li>
+                        <li>Trigonometric identities</li>
+                        <li>Graphs of trigonometric functions</li>
+                    </ul>
+                    <div class="formula-box">
+                        sin²θ + cos²θ = 1<br>
+                        tan θ = sin θ / cos θ<br>
+                        sin(A ± B) = sin A cos B ± cos A sin B
+                    </div>
+                </div>
+
+                <div class="topic-section">
+                    <h3>3. Logarithms & Exponentials</h3>
+                    <p><strong>Topics covered:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>Laws of exponents</li>
+                        <li>Logarithmic equations</li>
+                        <li>Change of base formula</li>
+                        <li>Exponential growth and decay</li>
+                    </ul>
+                    <div class="formula-box">
+                        log_a(x) = y ⟺ a^y = x<br>
+                        log_a(mn) = log_a(m) + log_a(n)<br>
+                        log_a(m/n) = log_a(m) - log_a(n)
+                    </div>
+                </div>
+
+                <div class="topic-section">
+                    <h3>4. Calculus Basics</h3>
+                    <p><strong>Topics covered:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>Limits and continuity</li>
+                        <li>Derivatives and differentiation rules</li>
+                        <li>Applications of derivatives</li>
+                        <li>Basic integration</li>
+                    </ul>
+                    <div class="formula-box">
+                        Power Rule: d/dx(x^n) = nx^(n-1)<br>
+                        Product Rule: d/dx(uv) = u'v + uv'<br>
+                        Chain Rule: d/dx(f(g(x))) = f'(g(x))·g'(x)
+                    </div>
+                </div>
+
+                <div class="topic-section">
+                    <h3>5. Geometry & Vectors</h3>
+                    <p><strong>Topics covered:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>Conic sections (circles, ellipses, parabolas)</li>
+                        <li>Vector operations and properties</li>
+                        <li>Dot and cross products</li>
+                        <li>3D geometry</li>
+                    </ul>
+                </div>
+
+                <div class="btn-group" style="margin-top: 30px;">
+                    <button class="btn btn-primary" onclick="showSection('home')">Back to Home</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Physics Section -->
+        <div id="physics" class="section">
+            <div class="content-area">
+                <h2>⚛️ Physics (SAT 1 & EST 1)</h2>
+                <p>Complete physics curriculum covering mechanics, energy, electricity, magnetism, and waves.</p>
+
+                <div class="topic-section">
+                    <h3>1. Mechanics & Motion</h3>
+                    <p><strong>Topics covered:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>Kinematics (velocity, acceleration, equations of motion)</li>
+                        <li>Newton's Laws of Motion</li>
+                        <li>Friction and resistance</li>
+                        <li>Circular motion and gravitation</li>
+                    </ul>
+                    <div class="formula-box">
+                        v = u + at<br>
+                        s = ut + ½at²<br>
+                        F = ma (Newton's Second Law)<br>
+                        g = GM/r²
+                    </div>
+                    <div class="example-box">
+                        <strong>Example:</strong> A car accelerates at 5 m/s² for 10 seconds. Find final velocity.<br>
+                        Given: u = 0, a = 5 m/s², t = 10 s<br>
+                        v = u + at = 0 + 5(10) = 50 m/s
+                    </div>
+                </div>
+
+                <div class="topic-section">
+                    <h3>2. Energy & Work</h3>
+                    <p><strong>Topics covered:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>Kinetic and potential energy</li>
+                        <li>Work-energy theorem</li>
+                        <li>Conservation of energy</li>
+                        <li>Power and efficiency</li>
+                    </ul>
+                    <div class="formula-box">
+                        KE = ½mv²<br>
+                        PE = mgh<br>
+                        Work = Force × Distance = Fd<br>
+                        Power = Work / Time = E / t
+                    </div>
+                </div>
+
+                <div class="topic-section">
+                    <h3>3. Waves & Oscillations</h3>
+                    <p><strong>Topics covered:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>Simple harmonic motion</li>
+                        <li>Wave properties (wavelength, frequency, amplitude)</li>
+                        <li>Sound waves and Doppler effect</li>
+                        <li>Light waves and electromagnetic spectrum</li>
+                    </ul>
+                    <div class="formula-box">
+                        v = fλ (Wave equation)<br>
+                        f = 1/T (Frequency and period)<br>
+                        T = 2π√(m/k) (SHM period)<br>
+                        f' = f(v ± v_observer)/(v ∓ v_source) (Doppler effect)
+                    </div>
+                </div>
+
+                <div class="topic-section">
+                    <h3>4. Electricity & Current</h3>
+                    <p><strong>Topics covered:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>Electric charge and Coulomb's Law</li>
+                        <li>Electric fields and potential</li>
+                        <li>Current, voltage, and resistance</li>
+                        <li>Circuits and Kirchhoff's Laws</li>
+                    </ul>
+                    <div class="formula-box">
+                        F = kq₁q₂/r² (Coulomb's Law)<br>
+                        V = IR (Ohm's Law)<br>
+                        P = VI = I²R (Power)<br>
+                        EMF = ε = IR + Ir (Circuit equation)
+                    </div>
+                </div>
+
+                <div class="topic-section">
+                    <h3>5. Magnetism & Electromagnetism</h3>
+                    <p><strong>Topics covered:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>Magnetic fields and forces</li>
+                        <li>Electromagnetic induction</li>
+                        <li>Faraday's Law</li>
+                        <li>Transformers and AC circuits</li>
+                    </ul>
+                    <div class="formula-box">
+                        F = BIL sin θ (Force on current-carrying conductor)<br>
+                        ε = -N(dΦ/dt) (Faraday's Law)<br>
+                        Φ = BA cos θ (Magnetic flux)
+                    </div>
+                </div>
+
+                <div class="topic-section">
+                    <h3>6. Modern Physics</h3>
+                    <p><strong>Topics covered:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>Quantum theory and photons</li>
+                        <li>Atomic structure and spectra</li>
+                        <li>Nuclear physics and radioactivity</li>
+                        <li>Relativity basics</li>
+                    </ul>
+                    <div class="formula-box">
+                        E = hf (Photon energy)<br>
+                        E = mc² (Mass-energy equivalence)<br>
+                        λ = h/p (de Broglie wavelength)<br>
+                        A(t) = A₀e^(-λt) (Radioactive decay)
+                    </div>
+                </div>
+
+                <div class="btn-group" style="margin-top: 30px;">
+                    <button class="btn btn-primary" onclick="showSection('home')">Back to Home</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resources Section -->
+        <div id="resources" class="section">
+            <div class="content-area">
+                <h2>📚 Study Resources & Tips</h2>
+
+                <div class="topic-section">
+                    <h3>📋 Study Tips</h3>
+                    <ul style="margin-left: 20px; line-height: 2;">
+                        <li>✅ Practice problems regularly to strengthen concepts</li>
+                        <li>✅ Review formulas and key concepts before exams</li>
+                        <li>✅ Solve past papers to familiarize yourself with exam patterns</li>
+                        <li>✅ Create summary notes for quick revision</li>
+                        <li>✅ Time yourself while solving practice problems</li>
+                        <li>✅ Focus on weak areas and practice them more</li>
+                        <li>✅ Use diagrams and visual aids for better understanding</li>
+                    </ul>
+                </div>
+
+                <div class="topic-section">
+                    <h3>⏱️ Exam Preparation Timeline</h3>
+                    <ul style="margin-left: 20px; line-height: 2;">
+                        <li><strong>8-12 weeks before:</strong> Start with fundamentals and weak areas</li>
+                        <li><strong>4-8 weeks before:</strong> Complete all topics and solve practice problems</li>
+                        <li><strong>2-4 weeks before:</strong> Solve full past papers under exam conditions</li>
+                        <li><strong>1-2 weeks before:</strong> Revise and practice weak topics</li>
+                        <li><strong>Last week:</strong> Light revision and rest</li>
+                    </ul>
+                </div>
+
+                <div class="topic-section">
+                    <h3>📝 Important Formulas</h3>
+                    <p>Key formulas are highlighted throughout the course material. Make sure to memorize these and understand their applications.</p>
+                </div>
+
+                <div class="btn-group" style="margin-top: 30px;">
+                    <button class="btn btn-primary" onclick="showSection('home')">Back to Home</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 SAT 1 & EST 1 Study Materials | Teacher: Ahmed Labib | All Rights Reserved</p>
+        <p style="margin-top: 10px; opacity: 0.8;">Free Educational Platform for Exam Preparation</p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+        }
+    </script>
+</body>
+</html>
