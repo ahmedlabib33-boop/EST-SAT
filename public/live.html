@@ -133,6 +133,7 @@
   var me = E.user() || {};
   var isStaff = me.role === 'admin' || me.role === 'teacher';
   var room = null, info = null, speakers = new Set(), tiles = new Map(), timerId = null, pollId = null, leaving = false;
+  var autoJoin = new URLSearchParams(location.search).get('join') === '1';
 
   var toastTimer;
   function toast(text) {
@@ -179,6 +180,7 @@
         (isStaff ? 'Join to teach.' : 'You’ll join with your mic and camera off. Raise your hand to speak.'));
       $('joinBtn').textContent = note ? 'Rejoin class' : 'Join class';
       show('joinActions', true);
+      if (autoJoin && !note) { autoJoin = false; join(); }
       return;
     }
     $('lobbyKicker').textContent = 'Live class';

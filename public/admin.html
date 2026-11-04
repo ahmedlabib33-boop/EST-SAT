@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teacher dashboard — EST · SAT</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#07070F">
+<script>
+  document.documentElement.classList.add('js');
+  try { if (!localStorage.getItem('estsat.token')) location.replace('login.html?next=admin.html'); } catch (e) { location.replace('login.html?next=admin.html'); }
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322D3EE'/%3E%3Cstop offset='1' stop-color='%238B5CF6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='700' font-size='34' fill='white' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body data-live-banner="off">
+<div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html" aria-label="EST · SAT home">
+      <span class="mark" aria-hidden="true">E</span>
+      <span class="brand-txt"><b>EST · SAT</b><small>Teacher dashboard</small></span>
+    </a>
+    <nav class="links" aria-label="Main">
+      <a href="admin.html" aria-current="page">Dashboard</a>
+      <a href="live.html">Live class</a>
+      <a href="student-portal.html">My portal</a>
+      <a href="index.html">Site</a>
+    </nav>
+    <button class="btn btn-ghost btn-sm" type="button" id="logoutBtn">Log out</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="loading" id="loading" role="status">Loading dashboard…</p>
+  <div class="alert error" role="alert" id="loadError" style="margin-top:48px"></div>
+
+  <section class="lobby card" id="denied" hidden style="margin-top:64px;max-width:620px;margin-left:auto;margin-right:auto;padding:36px;text-align:center">
+    <span class="eyebrow">Teacher dashboard</span>
+    <h1 style="font-size:2rem;margin:12px 0 10px">This page is for teachers</h1>
+    <p style="color:var(--muted)">Your account is a student account. Your progress lives in your portal.</p>
+    <div class="hero-actions" style="justify-content:center"><a class="btn btn-primary" href="student-portal.html">Go to my portal</a></div>
+  </section>
+
+  <div id="app" hidden>
+    <section class="portal">
+      <div class="portal-head">
+        <div>
+          <span class="eyebrow">Teacher dashboard</span>
+          <h1><span id="greeting">Welcome</span>, <span class="grad-text" id="firstName">Ahmed</span></h1>
+          <p id="todayLine"></p>
+        </div>
+        <div class="hero-actions" style="margin-top:0">
+          <button class="btn btn-ghost" type="button" id="exportBtn">Export CSV</button>
+          <button class="btn btn-ghost" type="button" id="refreshBtn">Refresh</button>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi card"><span>Students</span><b id="kStudents">0</b></div>
+        <div class="kpi card"><span>Active today</span><b id="kToday">0</b></div>
+        <div class="kpi card"><span>Active this week</span><b id="kWeek">0</b></div>
+        <div class="kpi card"><span>Questions answered</span><b id="kAnswered">0</b></div>
+        <div class="kpi card"><span>Average accuracy</span><b id="kAccuracy">—</b></div>
+      </div>
+    </section>
+
+    <div class="admin-grid">
+      <section class="panel card" aria-labelledby="liveHead">
+        <h2 id="liveHead">Live class</h2>
+        <p class="sub">Teach live with video, audio and screen sharing.</p>
+        <div class="live-state" id="liveState"></div>
+        <div id="liveBody"></div>
+      </section>
+      <section class="panel card" aria-labelledby="attnHead">
+        <h2 id="attnHead">Needs attention</h2>
+        <p class="sub">Students who may need a nudge.</p>
+        <ul class="attention" id="attention"></ul>
+      </section>
+    </div>
+
+    <section class="panel card admin-section" aria-labelledby="studentsHead">
+      <div class="panel-head">
+        <div><h2 id="studentsHead">Students</h2><p class="sub" id="studentCount"></p></div>
+      </div>
+      <div class="tools">
+        <label class="sr-only" for="search">Search students</label>
+        <input class="input" id="search" type="search" placeholder="Search name, username, email or school">
+        <label class="sr-only" for="filter">Filter students</label>
+        <select class="input" id="filter">
+          <option value="all">All students</option>
+          <option value="week">Active this week</option>
+          <option value="inactive">Inactive 7+ days</option>
+          <option value="exam">Exam in 30 days</option>
+          <option value="disabled">Disabled accounts</option>
+        </select>
+      </div>
+      <div class="alert success" role="status" id="notice"></div>
+      <div class="table-wrap">
+        <table class="students">
+          <thead>
+            <tr>
+              <th aria-sort="none" data-sort="name"><button type="button">Student</button></th>
+              <th aria-sort="none" data-sort="answered"><button type="button">Answered</button></th>
+              <th aria-sort="none" data-sort="accuracy"><button type="button">Accuracy</button></th>
+              <th aria-sort="none" data-sort="chapters"><button type="button">Chapters</button></th>
+              <th aria-sort="descending" data-sort="last"><button type="button">Last active</button></th>
+              <th aria-sort="none" data-sort="exam"><button type="button">Exam</button></th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel card admin-section" aria-labelledby="teamHead">
+      <h2 id="teamHead">Team</h2>
+      <p class="sub">Teacher and admin accounts. Admins can make a student a teacher from the student’s details.</p>
+      <ul class="attention" id="team"></ul>
+    </section>
+  </div>
+</main>
+
+<dialog class="student-dialog" id="studentDialog" aria-labelledby="dName">
+  <div class="dialog-body">
+    <div class="dialog-head">
+      <div><h2 id="dName">Student</h2><p id="dMeta"></p></div>
+      <button class="dialog-close" type="button" id="dClose" aria-label="Close">×</button>
+    </div>
+    <div class="dialog-kpis">
+      <div class="kpi"><span>Answered</span><b id="dAnswered">0</b></div>
+      <div class="kpi"><span>Accuracy</span><b id="dAccuracy">—</b></div>
+      <div class="kpi"><span>Active days</span><b id="dDays">0</b></div>
+      <div class="kpi"><span>Exam</span><b id="dExam">—</b></div>
+    </div>
+    <div class="dialog-section">
+      <h3>Chapters</h3>
+      <div class="sp-head"><b>Mathematics</b><span id="dMathCount"></span></div>
+      <div class="chips" id="dMath"></div>
+      <div class="sp-head" style="margin-top:14px"><b>Physics</b><span id="dPhysCount"></span></div>
+      <div class="chips" id="dPhys"></div>
+    </div>
+    <div class="dialog-section">
+      <h3>Practice, last 4 weeks</h3>
+      <div class="heat-days" id="dHeatDays" aria-hidden="true"></div>
+      <div class="heat" id="dHeat" role="group" aria-label="Practice activity over the last 4 weeks"></div>
+    </div>
+    <div class="alert" role="status" id="dNotice"></div>
+    <div class="dialog-actions">
+      <button class="btn btn-ghost btn-sm" type="button" id="dReset">Reset password</button>
+      <button class="btn btn-ghost btn-sm" type="button" id="dToggle">Disable account</button>
+      <button class="btn btn-ghost btn-sm" type="button" id="dRole" hidden>Make teacher</button>
+    </div>
+  </div>
+</dialog>
+
+<script src="assets/auth.js"></script>
+<script>
+(function () {
+  'use strict';
+  var E = window.EstSat;
+  if (!E.loggedIn()) return;
+
+  var CHAPTERS = {
+    math: ['Algebra & Polynomials', 'Trigonometry', 'Logarithms & Exponentials', 'Calculus Basics', 'Geometry & Vectors'],
+    physics: ['Mechanics & Motion', 'Energy & Work', 'Waves & Oscillations', 'Electricity & Current', 'Magnetism & Electromagnetism', 'Modern Physics']
+  };
+  function $(id) { return document.getElementById(id); }
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function keyOf(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function addDays(d, n) { return new Date(d.getFullYear(), d.getMonth(), d.getDate() + n); }
+  function parseKey(k) { var p = k.split('-').map(Number); return new Date(p[0], p[1] - 1, p[2]); }
+  function daysBetween(a, b) { return Math.round((b - a) / 864e5); }
+  var now = new Date(), today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  var me = null, students = [], team = [], sortKey = 'last', sortDir = -1, current = null;
+
+  function daysSince(k) { return k ? daysBetween(parseKey(k), today) : Infinity; }
+  function daysUntil(k) { return k ? daysBetween(today, parseKey(k)) : Infinity; }
+  function relDay(k) {
+    var d = daysSince(k);
+    return d === Infinity ? 'Never' : d <= 0 ? 'Today' : d === 1 ? 'Yesterday' : d + ' days ago';
+  }
+  function examText(k) {
+    var d = daysUntil(k);
+    return d === Infinity ? '—' : d > 0 ? d + ' days' : d === 0 ? 'Today' : 'Passed';
+  }
+  function joinedDays(s) { return s.created_at ? Math.floor((now - new Date(s.created_at + 'Z')) / 864e5) : 0; }
+  function cell(tr, text, small) {
+    var td = document.createElement('td');
+    td.textContent = text;
+    if (small) { var s = document.createElement('small'); s.textContent = small; td.appendChild(s); }
+    tr.appendChild(td);
+    return td;
+  }
+
+  // ---------- Overview ----------
+  function renderOverview() {
+    var active = students.filter(function (s) { return s.is_active; });
+    var todayCount = active.filter(function (s) { return daysSince(s.progress.last_active) <= 0; }).length;
+    var week = active.filter(function (s) { return daysSince(s.progress.last_active) < 7; }).length;
+    var answered = 0, accSum = 0, accN = 0;
+    active.forEach(function (s) {
+      answered += s.progress.answered || 0;
+      if (s.progress.accuracy != null) { accSum += s.progress.accuracy; accN++; }
+    });
+    $('kStudents').textContent = active.length;
+    $('kToday').textContent = todayCount;
+    $('kWeek').textContent = week;
+    $('kAnswered').textContent = answered.toLocaleString('en-US');
+    $('kAccuracy').textContent = accN ? Math.round(accSum / accN) + '%' : '—';
+    $('todayLine').textContent = today.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) +
+      ' · ' + active.length + (active.length === 1 ? ' student' : ' students');
+  }
+
+  function renderAttention() {
+    var items = [];
+    students.filter(function (s) { return s.is_active; }).forEach(function (s) {
+      var p = s.progress, idle = daysSince(p.last_active), exam = daysUntil(p.exam);
+      if (exam >= 0 && exam <= 14 && (p.chapters_done || 0) < 6) {
+        items.push({ s: s, level: 3, cls: 'red', text: 'Exam in ' + exam + (exam === 1 ? ' day' : ' days') + ', ' + (p.chapters_done || 0) + ' of 11 chapters done' });
+      }
+      if (p.answered >= 10 && p.accuracy != null && p.accuracy < 50) {
+        items.push({ s: s, level: 2, cls: '', text: 'Accuracy ' + p.accuracy + '% across ' + p.answered + ' questions' });
+      }
+      if (idle === Infinity && joinedDays(s) >= 2) {
+        items.push({ s: s, level: 1, cls: 'blue', text: 'Signed up ' + joinedDays(s) + ' days ago, hasn’t practised yet' });
+      } else if (idle !== Infinity && idle >= 7) {
+        items.push({ s: s, level: 1, cls: 'blue', text: 'No practice for ' + idle + ' days' });
+      }
+    });
+    items.sort(function (a, b) { return b.level - a.level; });
+    var list = $('attention');
+    list.innerHTML = '';
+    if (!items.length) {
+      var li = document.createElement('li');
+      li.textContent = students.length ? 'Everyone is on track. Nice.' : 'No students yet. Share the site so students can sign up.';
+      list.appendChild(li);
+      return;
+    }
+    items.slice(0, 8).forEach(function (it) {
+      var li = document.createElement('li');
+      var dot = document.createElement('span'); dot.className = 'dot ' + it.cls; dot.setAttribute('aria-hidden', 'true');
+      var who = document.createElement('div'); who.className = 'who';
+      var b = document.createElement('b'); b.textContent = it.s.full_name || it.s.username;
+      var small = document.createElement('small'); small.textContent = it.text;
+      who.appendChild(b); who.appendChild(small);
+      var btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 'btn btn-ghost btn-sm'; btn.textContent = 'View';
+      btn.setAttribute('aria-label', 'View ' + (it.s.full_name || it.s.username));
+      btn.addEventListener('click', function () { openStudent(it.s); });
+      li.appendChild(dot); li.appendChild(who); li.appendChild(btn);
+      list.appendChild(li);
+    });
+  }
+
+  // ---------- Students table ----------
+  var SORTS = {
+    name: function (s) { return (s.full_name || s.username).toLowerCase(); },
+    answered: function (s) { return s.progress.answered || 0; },
+    accuracy: function (s) { return s.progress.accuracy == null ? -1 : s.progress.accuracy; },
+    chapters: function (s) { return s.progress.chapters_done || 0; },
+    last: function (s) { return s.progress.last_active || ''; },
+    exam: function (s) { var d = daysUntil(s.progress.exam); return d < 0 ? Infinity : d; }
+  };
+  function filtered() {
+    var q = $('search').value.trim().toLowerCase(), f = $('filter').value;
+    return students.filter(function (s) {
+      if (q && [s.full_name, s.username, s.email, s.school].join(' ').toLowerCase().indexOf(q) < 0) return false;
+      if (f === 'disabled') return !s.is_active;
+      if (f !== 'all' && !s.is_active) return false;
+      if (f === 'week') return daysSince(s.progress.last_active) < 7;
+      if (f === 'inactive') return daysSince(s.progress.last_active) >= 7;
+      if (f === 'exam') { var d = daysUntil(s.progress.exam); return d >= 0 && d <= 30; }
+      return true;
+    });
+  }
+  function visible() {
+    var list = filtered(), get = SORTS[sortKey];
+    return list.sort(function (a, b) {
+      var x = get(a), y = get(b);
+      return (x < y ? -1 : x > y ? 1 : 0) * sortDir || SORTS.name(a).localeCompare(SORTS.name(b));
+    });
+  }
+  function renderTable() {
+    var list = visible();
+    Array.prototype.forEach.call(document.querySelectorAll('th[data-sort]'), function (th) {
+      th.setAttribute('aria-sort', th.dataset.sort === sortKey ? (sortDir > 0 ? 'ascending' : 'descending') : 'none');
+    });
+    var rows = $('rows');
+    rows.innerHTML = '';
+    $('studentCount').textContent = list.length === students.length
+      ? students.length + (students.length === 1 ? ' student' : ' students')
+      : 'Showing ' + list.length + ' of ' + students.length;
+    if (!list.length) {
+      var tr = document.createElement('tr'), td = cell(tr, students.length ? 'No students match.' : 'No students yet.');
+      td.colSpan = 7; td.className = 'empty';
+      rows.appendChild(tr);
+      return;
+    }
+    list.forEach(function (s) {
+      var p = s.progress, tr = document.createElement('tr');
+      tr.tabIndex = 0;
+      tr.setAttribute('aria-label', 'Open details for ' + (s.full_name || s.username));
+      var name = cell(tr, '', '@' + s.username + ' · ' + s.email);
+      name.className = 'name-cell';
+      var b = document.createElement('b'); b.textContent = s.full_name || s.username;
+      name.insertBefore(b, name.firstChild);
+      cell(tr, String(p.answered || 0));
+      cell(tr, p.accuracy == null ? '—' : p.accuracy + '%');
+      cell(tr, (p.chapters_done || 0) + ' / 11');
+      cell(tr, relDay(p.last_active));
+      cell(tr, examText(p.exam));
+      var st = cell(tr, '');
+      var pill = document.createElement('span');
+      pill.className = 'status-pill ' + (s.is_active ? 'on' : 'off');
+      pill.textContent = s.is_active ? 'Active' : 'Disabled';
+      st.appendChild(pill);
+      tr.addEventListener('click', function () { openStudent(s); });
+      tr.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openStudent(s); } });
+      rows.appendChild(tr);
+    });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('th[data-sort] button'), function (btn) {
+    btn.addEventListener('click', function () {
+      var key = btn.parentNode.dataset.sort;
+      sortDir = key === sortKey ? -sortDir : (key === 'name' || key === 'exam' ? 1 : -1);
+      sortKey = key;
+      renderTable();
+    });
+  });
+  $('search').addEventListener('input', renderTable);
+  $('filter').addEventListener('change', renderTable);
+
+  function renderTeam() {
+    var list = $('team');
+    list.innerHTML = '';
+    team.forEach(function (u) {
+      var li = document.createElement('li');
+      var who = document.createElement('div'); who.className = 'who';
+      var b = document.createElement('b'); b.textContent = (u.full_name || u.username) + (me && u.id === me.id ? ' (you)' : '');
+      var small = document.createElement('small'); small.textContent = '@' + u.username + ' · ' + u.email;
+      who.appendChild(b); who.appendChild(small);
+      var badge = document.createElement('span');
+      badge.className = 'badge' + (u.role === 'admin' ? ' teacher' : '');
+      badge.textContent = u.role === 'admin' ? 'Admin' : 'Teacher';
+      li.appendChild(who); li.appendChild(badge);
+      list.appendChild(li);
+    });
+  }
+
+  // ---------- Student details ----------
+  var dialog = $('studentDialog');
+  function notice(box, text, ok) { box.textContent = text; box.className = 'alert show ' + (ok ? 'success' : 'error'); }
+  function openStudent(s) {
+    current = s;
+    $('dName').textContent = s.full_name || s.username;
+    var meta = ['@' + s.username, s.email];
+    if (s.grade_level) meta.push(s.grade_level);
+    if (s.school) meta.push(s.school);
+    meta.push('joined ' + new Date(s.created_at + 'Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }));
+    $('dMeta').textContent = meta.join(' · ');
+    $('dNotice').className = 'alert';
+    $('dToggle').textContent = s.is_active ? 'Disable account' : 'Enable account';
+    $('dRole').hidden = !(me && me.role === 'admin');
+    renderDetail(s, {});
+    if (typeof dialog.showModal === 'function') dialog.showModal(); else dialog.setAttribute('open', '');
+    E.api('/admin/students/' + s.id).then(function (res) { if (current === s) renderDetail(s, res.state || {}); })
+      .catch(function (err) { notice($('dNotice'), err.message, false); });
+  }
+  function renderDetail(s, state) {
+    var p = s.progress, chapters = state.chapters || [], days = state.days || {};
+    $('dAnswered').textContent = p.answered || 0;
+    $('dAccuracy').textContent = p.accuracy == null ? '—' : p.accuracy + '%';
+    $('dDays').textContent = p.active_days || 0;
+    $('dExam').textContent = examText(p.exam);
+    [['math', 'dMath', 'dMathCount'], ['physics', 'dPhys', 'dPhysCount']].forEach(function (cfg) {
+      var box = $(cfg[1]), done = 0;
+      box.innerHTML = '';
+      CHAPTERS[cfg[0]].forEach(function (name, i) {
+        var on = chapters.indexOf(cfg[0] + '-' + i) >= 0;
+        if (on) done++;
+        var chip = document.createElement('span');
+        chip.className = 'chip' + (on ? ' done' : '');
+        chip.textContent = (on ? '✓ ' : '') + name;
+        box.appendChild(chip);
+      });
+      $(cfg[2]).textContent = done + ' / ' + CHAPTERS[cfg[0]].length;
+    });
+    var grid = $('dHeat'), head = $('dHeatDays'), start = addDays(today, -27), i;
+    grid.innerHTML = ''; head.innerHTML = '';
+    for (i = 0; i < 7; i++) {
+      var h = document.createElement('span');
+      h.textContent = addDays(start, i).toLocaleDateString('en-US', { weekday: 'narrow' });
+      head.appendChild(h);
+    }
+    for (i = 0; i < 28; i++) {
+      var d = addDays(start, i), n = days[keyOf(d)] || 0;
+      var c = document.createElement('span');
+      c.className = 'cell l' + (n === 0 ? 0 : n < 3 ? 1 : n < 6 ? 2 : n < 10 ? 3 : 4) + (i === 27 ? ' today' : '');
+      var label = d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }) + ': ' + (n ? n + (n === 1 ? ' question' : ' questions') : 'no practice');
+      c.title = label; c.setAttribute('role', 'img'); c.setAttribute('aria-label', label);
+      grid.appendChild(c);
+    }
+  }
+  $('dClose').addEventListener('click', function () { dialog.close(); });
+  dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+  dialog.addEventListener('close', function () { current = null; });
+
+  $('dReset').addEventListener('click', function () {
+    var s = current;
+    if (!s || !window.confirm('Reset the password for ' + (s.full_name || s.username) + '? Their current password will stop working.')) return;
+    E.api('/admin/users/' + s.id + '/reset-password', { method: 'POST' }).then(function (res) {
+      var box = $('dNotice');
+      box.innerHTML = '';
+      box.appendChild(document.createTextNode('Temporary password: '));
+      var code = document.createElement('span'); code.className = 'temp-pass'; code.textContent = res.temporary_password;
+      box.appendChild(code);
+      box.appendChild(document.createTextNode(' — share it privately and ask them to change it in their portal.'));
+      box.className = 'alert show success';
+    }).catch(function (err) { notice($('dNotice'), err.message, false); });
+  });
+  $('dToggle').addEventListener('click', function () {
+    var s = current;
+    if (!s) return;
+    var enable = !s.is_active;
+    if (!enable && !window.confirm('Disable ' + (s.full_name || s.username) + '? They won’t be able to log in until you enable the account again.')) return;
+    E.api('/admin/users/' + s.id, { method: 'PATCH', body: { is_active: enable } }).then(function (res) {
+      s.is_active = res.user.is_active;
+      $('dToggle').textContent = s.is_active ? 'Disable account' : 'Enable account';
+      notice($('dNotice'), s.is_active ? 'Account enabled.' : 'Account disabled. They’ve been logged out.', true);
+      renderOverview(); renderAttention(); renderTable();
+    }).catch(function (err) { notice($('dNotice'), err.message, false); });
+  });
+  $('dRole').addEventListener('click', function () {
+    var s = current;
+    if (!s || !window.confirm('Make ' + (s.full_name || s.username) + ' a teacher? They’ll see this dashboard and all students.')) return;
+    E.api('/admin/users/' + s.id, { method: 'PATCH', body: { role: 'teacher' } }).then(function () {
+      dialog.close();
+      showNotice((s.full_name || s.username) + ' is now a teacher.');
+      load();
+    }).catch(function (err) { notice($('dNotice'), err.message, false); });
+  });
+  function showNotice(text) { var n = $('notice'); n.textContent = text; n.classList.add('show'); }
+
+  // ---------- Live class ----------
+  function renderLive(status) {
+    var state = $('liveState'), bodyEl = $('liveBody');
+    state.innerHTML = ''; bodyEl.innerHTML = '';
+    if (!status.configured) {
+      state.textContent = 'Video server not connected';
+      var p = document.createElement('p');
+      p.className = 'hint';
+      p.textContent = 'Add LIVEKIT_URL, LIVEKIT_API_KEY and LIVEKIT_API_SECRET in Vercel (Settings → Environment Variables) to switch on live classes.';
+      bodyEl.appendChild(p);
+      return;
+    }
+    if (status.live) {
+      var dot = document.createElement('span'); dot.className = 'live-dot'; dot.setAttribute('aria-hidden', 'true');
+      var mins = Math.max(0, Math.round((now - new Date(status.live.started_at + 'Z')) / 60000));
+      state.appendChild(dot);
+      state.appendChild(document.createTextNode('Live now: ' + status.live.title + ' · ' + mins + ' min'));
+      var actions = document.createElement('div'); actions.className = 'live-actions';
+      var open = document.createElement('a'); open.className = 'btn btn-primary'; open.href = 'live.html?join=1'; open.textContent = 'Open class';
+      var end = document.createElement('button'); end.type = 'button'; end.className = 'btn btn-ghost'; end.textContent = 'End class';
+      end.addEventListener('click', function () {
+        if (!window.confirm('End the class for everyone?')) return;
+        E.api('/live/end', { method: 'POST', body: {} }).then(loadLive).catch(function (err) { window.alert(err.message); });
+      });
+      actions.appendChild(open); actions.appendChild(end);
+      bodyEl.appendChild(actions);
+      return;
+    }
+    state.textContent = 'No class running';
+    var form = document.createElement('form'); form.className = 'form';
+    form.innerHTML = '<div class="field"><label for="liveTitle">Class title</label><input class="input" id="liveTitle" maxlength="120" placeholder="e.g. Kinematics Q&amp;A"></div><button class="btn btn-primary" type="submit">Go live</button>';
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button');
+      btn.disabled = true;
+      E.api('/live/start', { method: 'POST', body: { title: $('liveTitle').value.trim() } })
+        .then(function () { location.href = 'live.html?join=1'; })
+        .catch(function (err) { window.alert(err.message); btn.disabled = false; });
+    });
+    bodyEl.appendChild(form);
+  }
+  function loadLive() { return E.api('/live/status', { auth: false }).then(renderLive).catch(function () { $('liveState').textContent = 'Couldn’t check the live class.'; }); }
+
+  // ---------- CSV ----------
+  function csvCell(v) {
+    var s = v == null ? '' : String(v);
+    if (/^[=+\-@\t\r]/.test(s)) s = "'" + s;
+    return '"' + s.replace(/"/g, '""') + '"';
+  }
+  $('exportBtn').addEventListener('click', function () {
+    var head = ['Full name', 'Username', 'Email', 'Grade', 'School', 'Questions answered', 'Accuracy %', 'Chapters done', 'Active days', 'Last active', 'Exam date', 'Joined', 'Status'];
+    var lines = [head.map(csvCell).join(',')];
+    visible().forEach(function (s) {
+      var p = s.progress;
+      lines.push([s.full_name, s.username, s.email, s.grade_level, s.school, p.answered || 0, p.accuracy == null ? '' : p.accuracy,
+        p.chapters_done || 0, p.active_days || 0, p.last_active || '', p.exam || '', (s.created_at || '').slice(0, 10),
+        s.is_active ? 'Active' : 'Disabled'].map(csvCell).join(','));
+    });
+    var blob = new Blob(['﻿' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'est-sat-students-' + keyOf(today) + '.csv';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  });
+
+  // ---------- Load ----------
+  function load() {
+    return Promise.all([E.api('/admin/students'), E.api('/admin/users')]).then(function (r) {
+      students = r[0].students || [];
+      team = (r[1].users || []).filter(function (u) { return u.role === 'admin' || u.role === 'teacher'; });
+      renderOverview(); renderAttention(); renderTable(); renderTeam();
+    });
+  }
+  $('refreshBtn').addEventListener('click', function () { load(); loadLive(); });
+  $('logoutBtn').addEventListener('click', E.logout);
+
+  E.api('/auth/me').then(function (res) {
+    me = res.user;
+    E.setUser(me);
+    $('loading').hidden = true;
+    if (me.role !== 'admin' && me.role !== 'teacher') { $('denied').hidden = false; return; }
+    var h = now.getHours();
+    $('greeting').textContent = h < 12 ? 'Good morning' : h < 18 ? 'Good afternoon' : 'Good evening';
+    $('firstName').textContent = E.firstName(me);
+    $('app').hidden = false;
+    return Promise.all([load(), loadLive()]);
+  }).catch(function (err) {
+    if (err.status === 401) { location.replace('login.html?next=admin.html'); return; }
+    $('loading').hidden = true;
+    $('loadError').textContent = 'We couldn’t load the dashboard: ' + err.message;
+    $('loadError').classList.add('show');
+  });
+})();
+</script>
+</body>
+</html>

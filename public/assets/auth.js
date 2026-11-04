@@ -115,7 +115,11 @@
     var u = user();
     var links = document.querySelectorAll('[data-auth-link]');
     Array.prototype.forEach.call(links, function (a) {
-      if (loggedIn() && u) { a.textContent = 'Hi, ' + firstName(u); a.href = 'student-portal.html'; }
+      if (loggedIn() && u) {
+        var staff = u.role === 'admin' || u.role === 'teacher';
+        a.textContent = staff ? 'Dashboard' : 'Hi, ' + firstName(u);
+        a.href = staff ? 'admin.html' : 'student-portal.html';
+      }
       else { a.textContent = 'Log in'; a.href = 'login.html'; }
     });
   }

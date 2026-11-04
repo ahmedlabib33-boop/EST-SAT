@@ -51,7 +51,10 @@
           <h1>Welcome back, <span class="grad-text" id="firstName">there</span></h1>
           <p><span id="userLine"></span> <span class="badge" id="roleBadge">Student</span></p>
         </div>
-        <a class="btn btn-primary" href="index.html#practice"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>Continue today’s mission</a>
+        <div class="hero-actions" style="margin-top:0">
+          <a class="btn btn-ghost" href="admin.html" id="dashBtn" hidden>Teacher dashboard</a>
+          <a class="btn btn-primary" href="index.html#practice"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>Continue today’s mission</a>
+        </div>
       </div>
 
       <div class="kpi-row">
@@ -196,6 +199,7 @@
     var staff = u.role === 'admin' || u.role === 'teacher';
     $('roleBadge').textContent = u.role === 'admin' ? 'Admin' : u.role === 'teacher' ? 'Teacher' : 'Student';
     $('roleBadge').classList.toggle('teacher', staff);
+    $('dashBtn').hidden = !staff;
     $('pName').value = u.full_name || '';
     $('pGrade').value = u.grade_level || '';
     $('pSchool').value = u.school || '';

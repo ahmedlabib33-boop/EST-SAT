@@ -536,6 +536,46 @@ def get_students():
     return jsonify({'total': len(students), 'students': students}), 200
 
 
+@admin_bp.get('/students/<int:user_id>')
+@roles_required(*STAFF_ROLES)
+def get_student(user_id):
+    user = db.session.get(User, user_id)
+    if not user or user.role != 'student':
+        return error('Student not found.', 404)
+    state = db.session.get(UserState, user_id)
+    data = state.data if state else {}
+    return jsonify({
+        'student': dict(user.to_dict(), progress=summarize_state(data)),
+        'state': data,
+        'state_updated_at': state.updated_at.isoformat() if state and state.updated_at else None,
+    }), 200
+
+
+@admin_bp.patch('/users/<int:user_id>')
+@roles_required(*STAFF_ROLES)
+def update_user(user_id):
+    user = db.session.get(User, user_id)
+    if not user:
+        return error('User not found.', 404)
+    if user.id == current_user.id:
+        return error('You can’t change your own account from here.', 400)
+    if user.role == 'admin':
+        return error('Admin accounts can’t be changed from here.', 403)
+    data = body()
+    if 'role' in data:
+        if current_user.role != 'admin':
+            return error('Only an admin can change roles.', 403)
+        if data['role'] not in ('student', 'teacher'):
+            return error('Role must be student or teacher.', 400)
+        user.role = data['role']
+    if 'is_active' in data:
+        if user.role != 'student' and current_user.role != 'admin':
+            return error('Only an admin can disable teacher accounts.', 403)
+        user.is_active = bool(data['is_active'])
+    db.session.commit()
+    return jsonify({'user': user.to_dict()}), 200
+
+
 @admin_bp.post('/users/<int:user_id>/reset-password')
 @roles_required(*STAFF_ROLES)
 def reset_password(user_id):

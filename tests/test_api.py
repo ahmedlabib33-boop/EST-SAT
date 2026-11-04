@@ -142,6 +142,44 @@ def test_teacher_endpoints(client):
     assert client.post('/api/auth/login', json={'username': 'sara', 'password': temp}).status_code == 200
 
 
+def make_role(client, username, role):
+    with client.app.app_context():
+        User.query.filter_by(username=username).first().role = role
+        db.session.commit()
+
+
+def test_admin_student_detail_and_account_controls(client):
+    sara_token = register(client).get_json()['access_token']
+    client.put('/api/user/state', headers=auth(sara_token),
+               json={'data': {'stats': {'answered': 2, 'correct': 1}, 'chapters': ['physics-0']}})
+    teacher_token = register(client, username='omar', email='omar@example.com').get_json()['access_token']
+    admin_token = register(client, username='ahmed', email='ahmed@example.com').get_json()['access_token']
+    make_role(client, 'omar', 'teacher')
+    make_role(client, 'ahmed', 'admin')
+    with client.app.app_context():
+        ids = {u.username: u.id for u in User.query.all()}
+
+    assert client.get(f"/api/admin/students/{ids['sara']}", headers=auth(sara_token)).status_code == 403
+    detail = client.get(f"/api/admin/students/{ids['sara']}", headers=auth(teacher_token)).get_json()
+    assert detail['state']['chapters'] == ['physics-0'] and detail['student']['progress']['accuracy'] == 50
+    assert client.get(f"/api/admin/students/{ids['omar']}", headers=auth(admin_token)).status_code == 404
+
+    # teacher: can disable a student, cannot change roles or touch staff/self
+    assert client.patch(f"/api/admin/users/{ids['sara']}", headers=auth(teacher_token), json={'role': 'teacher'}).status_code == 403
+    assert client.patch(f"/api/admin/users/{ids['ahmed']}", headers=auth(teacher_token), json={'is_active': False}).status_code == 403
+    assert client.patch(f"/api/admin/users/{ids['omar']}", headers=auth(teacher_token), json={'is_active': False}).status_code == 400
+    res = client.patch(f"/api/admin/users/{ids['sara']}", headers=auth(teacher_token), json={'is_active': False})
+    assert res.status_code == 200 and res.get_json()['user']['is_active'] is False
+    assert client.post('/api/auth/login', json={'username': 'sara', 'password': 'correct-horse'}).status_code == 403
+    client.patch(f"/api/admin/users/{ids['sara']}", headers=auth(teacher_token), json={'is_active': True})
+
+    # admin: can promote/demote between student and teacher, never to admin
+    assert client.patch(f"/api/admin/users/{ids['sara']}", headers=auth(admin_token), json={'role': 'admin'}).status_code == 400
+    res = client.patch(f"/api/admin/users/{ids['sara']}", headers=auth(admin_token), json={'role': 'teacher'})
+    assert res.get_json()['user']['role'] == 'teacher'
+    assert client.patch(f"/api/admin/users/{ids['ahmed']}", headers=auth(admin_token), json={'is_active': False}).status_code == 400
+
+
 def test_quiz_flow(client):
     token = register(client).get_json()['access_token']
     quiz = client.get('/api/quizzes/1').get_json()

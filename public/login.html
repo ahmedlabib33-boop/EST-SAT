@@ -110,9 +110,11 @@
   'use strict';
   var E = window.EstSat;
   var params = new URLSearchParams(location.search);
-  var next = E.safeNext(params.get('next'), 'student-portal.html');
+  var explicitNext = E.safeNext(params.get('next'), '');
+  function home(u) { return u && (u.role === 'admin' || u.role === 'teacher') ? 'admin.html' : 'student-portal.html'; }
+  var next = explicitNext || 'student-portal.html';
 
-  if (E.loggedIn()) { location.replace(next); return; }
+  if (E.loggedIn()) { location.replace(explicitNext || home(E.user())); return; }
 
   var tabs = [document.getElementById('tab-login'), document.getElementById('tab-signup')];
   function select(i, focus) {
@@ -174,6 +176,7 @@
       request()
         .then(function (res) {
           E.setSession(res.access_token, res.user);
+          next = explicitNext || home(res.user);
           return E.pullState(true).catch(function () { /* progress sync can retry on the next page */ });
         })
         .then(function () { location.replace(next); })
