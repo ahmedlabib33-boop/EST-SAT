@@ -399,7 +399,8 @@
       return { p: p, role: roleOf(p), hand: !!(p.attributes && p.attributes.hand), talking: !!(mic && !mic.isMuted) };
     });
     people.sort(function (a, b) {
-      return (b.hand - a.hand) || ((b.role === 'host') - (a.role === 'host')) || displayName(a.p).localeCompare(displayName(b.p));
+      return (b.hand - a.hand) || ((b.role === 'host') - (a.role === 'host')) ||
+        displayName(a.p).localeCompare(displayName(b.p), undefined, { numeric: true, sensitivity: 'base' });
     });
     list.innerHTML = '';
     people.forEach(function (x) {
