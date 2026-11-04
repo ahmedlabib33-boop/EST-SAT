@@ -1,449 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Portal - Premium Learning Platform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --primary-light: #818cf8;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --dark: #0f172a;
-            --light: #f8fafc;
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --border: #e2e8f0;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: var(--light);
-            color: var(--text-primary);
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: var(--shadow);
-        }
-
-        .sidebar {
-            position: fixed;
-            left: 0;
-            top: 60px;
-            width: 250px;
-            height: calc(100vh - 60px);
-            background: white;
-            border-right: 1px solid var(--border);
-            padding: 2rem 0;
-            overflow-y: auto;
-            box-shadow: var(--shadow);
-        }
-
-        .nav-item {
-            padding: 1rem 2rem;
-            color: var(--text-secondary);
-            cursor: pointer;
-            border-left: 3px solid transparent;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .nav-item:hover {
-            background: var(--light);
-            color: var(--primary);
-            border-left-color: var(--primary);
-        }
-
-        .nav-item.active {
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--primary);
-            border-left-color: var(--primary);
-            font-weight: 600;
-        }
-
-        .main-content {
-            margin-left: 250px;
-            margin-top: 60px;
-            padding: 2rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            color: var(--text-primary);
-        }
-
-        .card {
-            background: white;
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            margin-bottom: 2rem;
-        }
-
-        .learning-progress {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .progress-card {
-            background: white;
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-        }
-
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .progress-name {
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .progress-percentage {
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 1.1rem;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: var(--border);
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 1rem;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
-            border-radius: 4px;
-            transition: width 0.3s ease;
-        }
-
-        .progress-details {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        .quiz-list {
-            list-style: none;
-        }
-
-        .quiz-item {
-            background: var(--light);
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--primary);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s;
-        }
-
-        .quiz-item:hover {
-            background: linear-gradient(90deg, rgba(99, 102, 241, 0.1) 0%, transparent);
-            transform: translateX(4px);
-        }
-
-        .quiz-info h3 {
-            font-size: 1rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .quiz-info p {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        .quiz-action {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
-        }
-
-        .btn-secondary {
-            background: var(--border);
-            color: var(--text-primary);
-        }
-
-        .score-badge {
-            background: linear-gradient(135deg, var(--success) 0%, #06b6d4 100%);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .stat-card {
-            background: white;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-        }
-
-        .stat-value {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: static;
-                border-right: none;
-                border-bottom: 1px solid var(--border);
-                padding: 1rem 0;
-                display: flex;
-                overflow-x: auto;
-            }
-
-            .nav-item {
-                padding: 1rem 1.5rem;
-                white-space: nowrap;
-            }
-
-            .main-content {
-                margin-left: 0;
-                margin-top: 0;
-            }
-
-            .learning-progress {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My portal — EST · SAT</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#07070F">
+<script>
+  document.documentElement.classList.add('js');
+  try { if (!localStorage.getItem('estsat.token')) location.replace('login.html?next=student-portal.html'); } catch (e) { location.replace('login.html?next=student-portal.html'); }
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322D3EE'/%3E%3Cstop offset='1' stop-color='%238B5CF6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='700' font-size='34' fill='white' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-    <header>
-        <div>📚 Student Portal</div>
-        <div>Welcome, Ahmed! 👋</div>
-    </header>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3" fill="currentColor"/></symbol>
+</svg>
+<div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
 
-    <div class="sidebar">
-        <div class="nav-item active">📊 Dashboard</div>
-        <div class="nav-item">📚 My Courses</div>
-        <div class="nav-item">✅ Quiz History</div>
-        <div class="nav-item">📝 Study Notes</div>
-        <div class="nav-item">📈 Progress Analytics</div>
-        <div class="nav-item">⚙️ Settings</div>
-    </div>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html" aria-label="EST · SAT home">
+      <span class="mark" aria-hidden="true">E</span>
+      <span class="brand-txt"><b>EST · SAT</b><small>with Ahmed Labib</small></span>
+    </a>
+    <nav class="links" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="index.html#practice">Practice</a>
+      <a href="index.html#formulas">Formulas</a>
+      <a href="classic.html">Study guide</a>
+    </nav>
+    <button class="btn btn-ghost btn-sm" type="button" id="logoutBtn">Log out</button>
+  </div>
+</header>
 
-    <div class="main-content">
-        <div class="container">
-            <div class="section-title">Your Learning Dashboard</div>
+<main class="wrap">
+  <p class="loading" id="loading" role="status">Loading your portal…</p>
+  <div class="alert error" role="alert" id="loadError" style="margin-top:48px"></div>
 
-            <!-- Statistics -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-value">85%</div>
-                    <div class="stat-label">Overall Progress</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">12</div>
-                    <div class="stat-label">Quizzes Completed</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">92</div>
-                    <div class="stat-label">Average Score</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">42</div>
-                    <div class="stat-label">Study Hours</div>
-                </div>
-            </div>
-
-            <!-- Learning Progress -->
-            <h2 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--text-primary);">Course Progress</h2>
-            <div class="learning-progress">
-                <div class="progress-card">
-                    <div class="progress-header">
-                        <div class="progress-name">📐 Mathematics</div>
-                        <div class="progress-percentage">85%</div>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 85%;"></div>
-                    </div>
-                    <div class="progress-details">
-                        <span>17/20 Quizzes Passed</span>
-                        <span>Avg: 88%</span>
-                    </div>
-                </div>
-
-                <div class="progress-card">
-                    <div class="progress-header">
-                        <div class="progress-name">⚛️ Physics</div>
-                        <div class="progress-percentage">78%</div>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 78%;"></div>
-                    </div>
-                    <div class="progress-details">
-                        <span>15/20 Quizzes Passed</span>
-                        <span>Avg: 85%</span>
-                    </div>
-                </div>
-
-                <div class="progress-card">
-                    <div class="progress-header">
-                        <div class="progress-name">📝 Practice Tests</div>
-                        <div class="progress-percentage">92%</div>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 92%;"></div>
-                    </div>
-                    <div class="progress-details">
-                        <span>46/50 Problems Solved</span>
-                        <span>Avg: 92%</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Available Quizzes -->
-            <div class="card">
-                <h2 style="font-size: 1.3rem; margin-bottom: 1.5rem;">Available Quizzes</h2>
-                <ul class="quiz-list">
-                    <li class="quiz-item">
-                        <div class="quiz-info">
-                            <h3>Algebra Quiz 1</h3>
-                            <p>Quadratic equations and factorization</p>
-                        </div>
-                        <div class="quiz-action">
-                            <span class="score-badge">85%</span>
-                            <button class="btn btn-secondary">Review</button>
-                        </div>
-                    </li>
-                    <li class="quiz-item">
-                        <div class="quiz-info">
-                            <h3>Trigonometry Quiz 1</h3>
-                            <p>Ratios and identities</p>
-                        </div>
-                        <div class="quiz-action">
-                            <span class="score-badge">92%</span>
-                            <button class="btn btn-secondary">Review</button>
-                        </div>
-                    </li>
-                    <li class="quiz-item">
-                        <div class="quiz-info">
-                            <h3>Physics - Mechanics</h3>
-                            <p>Kinematics and Newton's Laws</p>
-                        </div>
-                        <div class="quiz-action">
-                            <span class="score-badge">88%</span>
-                            <button class="btn btn-secondary">Review</button>
-                        </div>
-                    </li>
-                    <li class="quiz-item">
-                        <div class="quiz-info">
-                            <h3>Physics - Energy & Work</h3>
-                            <p>Energy conservation and power</p>
-                        </div>
-                        <div class="quiz-action">
-                            <button class="btn btn-primary">Take Quiz</button>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Recent Activity -->
-            <div class="card">
-                <h2 style="font-size: 1.3rem; margin-bottom: 1.5rem;">Recent Activity</h2>
-                <div style="color: var(--text-secondary); font-size: 0.95rem;">
-                    <p style="margin-bottom: 0.75rem;">✅ Completed Physics - Waves Quiz (92%)</p>
-                    <p style="margin-bottom: 0.75rem;">📝 Added 5 new study notes</p>
-                    <p style="margin-bottom: 0.75rem;">🎯 Achieved 85% overall progress</p>
-                    <p>📚 Started Calculus Basics chapter</p>
-                </div>
-            </div>
-
-            <!-- Recommendations -->
-            <div class="card">
-                <h2 style="font-size: 1.3rem; margin-bottom: 1.5rem;">Recommended Next Steps</h2>
-                <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(148, 51, 234, 0.1) 100%); padding: 1.5rem; border-radius: 0.75rem; border-left: 4px solid var(--primary);">
-                    <p style="color: var(--text-primary); font-weight: 600; margin-bottom: 0.5rem;">Focus on Physics</p>
-                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Your physics progress is slightly behind mathematics. Consider focusing on the remaining chapters.</p>
-                    <button class="btn btn-primary">Start Physics Chapter 4</button>
-                </div>
-            </div>
+  <div id="app" hidden>
+    <section class="portal">
+      <div class="portal-head">
+        <div>
+          <span class="eyebrow">My portal</span>
+          <h1>Welcome back, <span class="grad-text" id="firstName">there</span></h1>
+          <p><span id="userLine"></span> <span class="badge" id="roleBadge">Student</span></p>
         </div>
+        <a class="btn btn-primary" href="index.html#practice"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>Continue today’s mission</a>
+      </div>
+
+      <div class="kpi-row">
+        <div class="kpi card"><span>Questions answered</span><b id="kAnswered">0</b></div>
+        <div class="kpi card"><span>Accuracy</span><b id="kAccuracy">—</b></div>
+        <div class="kpi card"><span>Current streak</span><b id="kStreak">0d</b></div>
+        <div class="kpi card"><span>Best streak</span><b id="kBest">0d</b></div>
+        <div class="kpi card"><span>Exam countdown</span><b id="kExam">—</b></div>
+      </div>
+    </section>
+
+    <section class="stack" id="teacherSection" hidden style="margin-top:20px">
+      <div class="panel card">
+        <h2>Your students</h2>
+        <p class="sub" id="studentCount">Loading…</p>
+        <div class="tools">
+          <label class="sr-only" for="studentSearch">Search students</label>
+          <input class="input" id="studentSearch" type="search" placeholder="Search by name, username or email">
+        </div>
+        <div class="alert success" role="status" id="resetNote"></div>
+        <div class="table-wrap">
+          <table class="students">
+            <thead><tr><th>Student</th><th>Answered</th><th>Accuracy</th><th>Chapters</th><th>Last active</th><th>Exam</th><th><span class="sr-only">Actions</span></th></tr></thead>
+            <tbody id="studentRows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <div class="portal-grid">
+      <div class="stack">
+        <section class="panel card">
+          <h2>Chapter progress</h2>
+          <p class="sub">Tick chapters as you finish them on the <a class="link" href="index.html#subjects">home page</a>.</p>
+          <div class="subject-progress">
+            <div>
+              <div class="sp-head"><b>Mathematics</b><span id="mathCount">0 / 5</span></div>
+              <div class="bar"><i id="mathBar" style="width:0%"></i></div>
+              <div class="chips" id="mathChips"></div>
+            </div>
+            <div>
+              <div class="sp-head"><b>Physics</b><span id="physCount">0 / 6</span></div>
+              <div class="bar physics"><i id="physBar" style="width:0%"></i></div>
+              <div class="chips" id="physChips"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel card">
+          <h2>Study rhythm</h2>
+          <p class="sub" id="heatActive">Last 4 weeks</p>
+          <div class="heat-days" id="heatDays" aria-hidden="true"></div>
+          <div class="heat" id="heat" role="group" aria-label="Practice activity over the last 4 weeks"></div>
+          <div class="legend" aria-hidden="true">Less <i></i><i></i><i></i><i></i><i></i> More</div>
+        </section>
+      </div>
+
+      <div class="stack">
+        <section class="panel card">
+          <h2>Profile</h2>
+          <p class="sub">How your name appears to your teacher.</p>
+          <form class="form" id="profileForm" novalidate>
+            <div class="alert" role="status" id="profileMsg"></div>
+            <div class="field"><label for="pName">Full name</label><input class="input" id="pName" autocomplete="name" maxlength="120" required></div>
+            <div class="field"><label for="pGrade">Grade</label><input class="input" id="pGrade" maxlength="20" placeholder="e.g. Grade 11"></div>
+            <div class="field"><label for="pSchool">School</label><input class="input" id="pSchool" autocomplete="organization" maxlength="120"></div>
+            <button class="btn btn-ghost" type="submit">Save profile</button>
+          </form>
+        </section>
+
+        <section class="panel card">
+          <h2>Change password</h2>
+          <p class="sub">You’ll stay logged in on this device.</p>
+          <form class="form" id="passwordForm" novalidate>
+            <div class="alert" role="status" id="passwordMsg"></div>
+            <input type="text" autocomplete="username" id="pwUsername" hidden>
+            <div class="field"><label for="pwCurrent">Current password</label><input class="input" id="pwCurrent" type="password" autocomplete="current-password" required></div>
+            <div class="field"><label for="pwNew">New password</label><input class="input" id="pwNew" type="password" autocomplete="new-password" minlength="8" maxlength="128" required><span class="help">At least 8 characters.</span></div>
+            <button class="btn btn-ghost" type="submit">Update password</button>
+          </form>
+        </section>
+      </div>
     </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="year">2026</span> EST · SAT · Ahmed Labib</span>
+    <nav aria-label="Other pages"><a href="index.html">Home</a><a href="classic.html">Classic study guide</a></nav>
+  </div>
+</footer>
+
+<script src="assets/auth.js"></script>
+<script>
+(function () {
+  'use strict';
+  var E = window.EstSat;
+  if (!E.loggedIn()) return;
+
+  var CHAPTERS = {
+    math: ['Algebra & Polynomials', 'Trigonometry', 'Logarithms & Exponentials', 'Calculus Basics', 'Geometry & Vectors'],
+    physics: ['Mechanics & Motion', 'Energy & Work', 'Waves & Oscillations', 'Electricity & Current', 'Magnetism & Electromagnetism', 'Modern Physics']
+  };
+  function $(id) { return document.getElementById(id); }
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function keyOf(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function addDays(d, n) { return new Date(d.getFullYear(), d.getMonth(), d.getDate() + n); }
+  function parseKey(k) { var p = k.split('-').map(Number); return new Date(p[0], p[1] - 1, p[2]); }
+  function daysBetween(a, b) { return Math.round((b - a) / 864e5); }
+  var now = new Date(), today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  $('year').textContent = today.getFullYear();
+  $('logoutBtn').addEventListener('click', E.logout);
+
+  function streaks(days) {
+    var cur = 0, d = today;
+    if (!days[keyOf(d)]) d = addDays(d, -1);
+    while (days[keyOf(d)]) { cur++; d = addDays(d, -1); }
+    var best = 0, run = 0, prev = null;
+    Object.keys(days).filter(function (k) { return days[k] > 0; }).sort().forEach(function (k) {
+      var dt = parseKey(k);
+      run = prev && daysBetween(prev, dt) === 1 ? run + 1 : 1;
+      best = Math.max(best, run);
+      prev = dt;
+    });
+    return { cur: cur, best: Math.max(best, cur) };
+  }
+  function relDay(k) {
+    if (!k) return 'Never';
+    var d = daysBetween(parseKey(k), today);
+    return d <= 0 ? 'Today' : d === 1 ? 'Yesterday' : d + ' days ago';
+  }
+  function examText(k) {
+    if (!k) return '—';
+    var d = daysBetween(today, parseKey(k));
+    return d > 0 ? d + 'd' : d === 0 ? 'Today' : 'Passed';
+  }
+
+  function renderUser(u) {
+    $('firstName').textContent = E.firstName(u);
+    $('userLine').textContent = '@' + u.username + ' · ' + u.email;
+    var staff = u.role === 'admin' || u.role === 'teacher';
+    $('roleBadge').textContent = u.role === 'admin' ? 'Admin' : u.role === 'teacher' ? 'Teacher' : 'Student';
+    $('roleBadge').classList.toggle('teacher', staff);
+    $('pName').value = u.full_name || '';
+    $('pGrade').value = u.grade_level || '';
+    $('pSchool').value = u.school || '';
+    $('pwUsername').value = u.username;
+    return staff;
+  }
+
+  function renderState(s) {
+    s = s || {};
+    var stats = s.stats || {}, days = s.days || {}, chapters = s.chapters || [];
+    var st = streaks(days);
+    $('kAnswered').textContent = stats.answered || 0;
+    $('kAccuracy').textContent = stats.answered ? Math.round((stats.correct || 0) / stats.answered * 100) + '%' : '—';
+    $('kStreak').textContent = st.cur + 'd';
+    $('kBest').textContent = st.best + 'd';
+    $('kExam').textContent = examText(s.exam);
+
+    [['math', 'mathCount', 'mathBar', 'mathChips'], ['physics', 'physCount', 'physBar', 'physChips']].forEach(function (cfg) {
+      var names = CHAPTERS[cfg[0]], done = 0, box = $(cfg[3]);
+      box.innerHTML = '';
+      names.forEach(function (name, i) {
+        var on = chapters.indexOf(cfg[0] + '-' + i) >= 0;
+        if (on) done++;
+        var chip = document.createElement('span');
+        chip.className = 'chip' + (on ? ' done' : '');
+        chip.textContent = (on ? '✓ ' : '') + name;
+        box.appendChild(chip);
+      });
+      $(cfg[1]).textContent = done + ' / ' + names.length;
+      $(cfg[2]).style.width = Math.round(done / names.length * 100) + '%';
+    });
+
+    var grid = $('heat'), head = $('heatDays'), start = addDays(today, -27), active = 0, i;
+    grid.innerHTML = ''; head.innerHTML = '';
+    for (i = 0; i < 7; i++) {
+      var h = document.createElement('span');
+      h.textContent = addDays(start, i).toLocaleDateString('en-US', { weekday: 'narrow' });
+      head.appendChild(h);
+    }
+    for (i = 0; i < 28; i++) {
+      var d = addDays(start, i), n = days[keyOf(d)] || 0;
+      if (n) active++;
+      var c = document.createElement('span');
+      c.className = 'cell l' + (n === 0 ? 0 : n < 3 ? 1 : n < 6 ? 2 : n < 10 ? 3 : 4) + (i === 27 ? ' today' : '');
+      var label = d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }) + ': ' + (n ? n + (n === 1 ? ' question' : ' questions') : 'no practice');
+      c.title = label; c.setAttribute('role', 'img'); c.setAttribute('aria-label', label);
+      grid.appendChild(c);
+    }
+    $('heatActive').textContent = 'Last 4 weeks · ' + active + (active === 1 ? ' active day' : ' active days');
+  }
+
+  // ---------- Teacher view ----------
+  var students = [];
+  function renderStudents() {
+    var q = $('studentSearch').value.trim().toLowerCase();
+    var rows = $('studentRows');
+    rows.innerHTML = '';
+    var list = students.filter(function (s) {
+      return !q || [s.full_name, s.username, s.email].join(' ').toLowerCase().indexOf(q) >= 0;
+    });
+    $('studentCount').textContent = students.length + (students.length === 1 ? ' student has' : ' students have') + ' signed up.';
+    if (!list.length) {
+      var tr = document.createElement('tr'), td = document.createElement('td');
+      td.colSpan = 7; td.className = 'empty';
+      td.textContent = students.length ? 'No students match your search.' : 'No students yet. Share the site so they can create accounts.';
+      tr.appendChild(td); rows.appendChild(tr);
+      return;
+    }
+    list.forEach(function (s) {
+      var p = s.progress || {};
+      var tr = document.createElement('tr');
+      var cells = [
+        [s.full_name || s.username, '@' + s.username + ' · ' + s.email],
+        [String(p.answered || 0)],
+        [p.accuracy == null ? '—' : p.accuracy + '%'],
+        [(p.chapters_done || 0) + ' / 11'],
+        [relDay(p.last_active)],
+        [examText(p.exam)]
+      ];
+      cells.forEach(function (c) {
+        var td = document.createElement('td');
+        td.textContent = c[0];
+        if (c[1]) { var small = document.createElement('small'); small.textContent = c[1]; td.appendChild(small); }
+        tr.appendChild(td);
+      });
+      var actions = document.createElement('td');
+      var btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 'btn btn-ghost btn-sm'; btn.textContent = 'Reset password';
+      btn.setAttribute('aria-label', 'Reset password for ' + (s.full_name || s.username));
+      btn.addEventListener('click', function () { resetPassword(s, btn); });
+      actions.appendChild(btn);
+      tr.appendChild(actions);
+      rows.appendChild(tr);
+    });
+  }
+  function resetPassword(s, btn) {
+    if (!window.confirm('Reset the password for ' + (s.full_name || s.username) + '? Their current password will stop working.')) return;
+    btn.disabled = true;
+    E.api('/admin/users/' + s.id + '/reset-password', { method: 'POST' }).then(function (res) {
+      var note = $('resetNote');
+      note.innerHTML = '';
+      note.appendChild(document.createTextNode('New temporary password for ' + (s.full_name || s.username) + ': '));
+      var code = document.createElement('span'); code.className = 'temp-pass'; code.textContent = res.temporary_password;
+      note.appendChild(code);
+      note.appendChild(document.createTextNode(' — share it privately and ask them to change it in their portal.'));
+      note.classList.add('show');
+    }).catch(function (err) { window.alert(err.message); }).then(function () { btn.disabled = false; });
+  }
+  function loadStudents() {
+    $('teacherSection').hidden = false;
+    E.api('/admin/students').then(function (res) {
+      students = res.students || [];
+      renderStudents();
+    }).catch(function (err) { $('studentCount').textContent = err.message; });
+    $('studentSearch').addEventListener('input', renderStudents);
+  }
+
+  // ---------- Forms ----------
+  function message(box, text, ok) {
+    box.textContent = text;
+    box.className = 'alert show ' + (ok ? 'success' : 'error');
+  }
+  $('profileForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var box = $('profileMsg');
+    if (!$('pName').value.trim()) { message(box, 'Please enter your full name.', false); return; }
+    E.api('/user/profile', { method: 'PUT', body: { full_name: $('pName').value.trim(), grade_level: $('pGrade').value.trim(), school: $('pSchool').value.trim() } })
+      .then(function (res) { E.setUser(res.user); renderUser(res.user); E.renderAuthLinks(); message(box, 'Profile saved.', true); })
+      .catch(function (err) { message(box, err.message, false); });
+  });
+  $('passwordForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var box = $('passwordMsg');
+    if ($('pwNew').value.length < 8) { message(box, 'Your new password needs at least 8 characters.', false); return; }
+    E.api('/user/password', { method: 'PUT', body: { current_password: $('pwCurrent').value, new_password: $('pwNew').value } })
+      .then(function () { $('passwordForm').reset(); message(box, 'Password updated.', true); })
+      .catch(function (err) { message(box, err.message, false); });
+  });
+
+  // ---------- Load ----------
+  Promise.all([E.api('/auth/me'), E.pullState(false).catch(function () { return E.readState(); })])
+    .then(function (r) {
+      var u = r[0].user;
+      E.setUser(u);
+      var staff = renderUser(u);
+      renderState(r[1]);
+      $('loading').hidden = true;
+      $('app').hidden = false;
+      if (staff) loadStudents();
+    })
+    .catch(function (err) {
+      if (err.status === 401) { location.replace('login.html?next=student-portal.html'); return; }
+      $('loading').hidden = true;
+      var box = $('loadError');
+      box.textContent = 'We couldn’t load your portal: ' + err.message;
+      box.classList.add('show');
+    });
+})();
+</script>
 </body>
 </html>

@@ -40,7 +40,7 @@
       <a href="#progress">Progress</a>
       <a href="#formulas">Formulas</a>
     </nav>
-    <a class="btn btn-ghost btn-sm" href="student-portal.html">Student portal</a>
+    <a class="btn btn-ghost btn-sm" href="login.html" data-auth-link>Log in</a>
   </div>
 </header>
 
@@ -227,7 +227,7 @@
               <div class="kpi"><span>Avg. time</span><b data-stat="avg">—</b></div>
               <div class="kpi"><span>Streak</span><b><span data-stat="streak">0</span>d</b></div>
             </div>
-            <p class="side-note">Saved on this device. No account needed.</p>
+            <p class="side-note" id="syncNote">Saved on this device. <a class="link" href="login.html?mode=signup">Create a free account</a> to keep it on every device.</p>
           </div>
           <div class="side-card card reveal">
             <h3>How the timer works</h3>
@@ -333,6 +333,7 @@
   </div>
 </footer>
 
+<script src="assets/auth.js"></script>
 <script>
 (function () {
   'use strict';
@@ -422,7 +423,23 @@
     exam: saved.exam || '',
     mission: saved.mission || { date: '', done: [] }
   };
-  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* storage unavailable: keep in memory */ } }
+  var sync = window.EstSat && window.EstSat.loggedIn() ? window.EstSat : null;
+  var pushTimer = null;
+  function pushNow(keepalive) {
+    pushTimer = null;
+    sync.pushState(state, keepalive).catch(function () { sync.markDirty(); });
+  }
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* storage unavailable: keep in memory */ }
+    if (sync && sync.loggedIn()) {
+      sync.markDirty();
+      clearTimeout(pushTimer);
+      pushTimer = setTimeout(pushNow, 1500);
+    }
+  }
+  window.addEventListener('pagehide', function () {
+    if (pushTimer) { clearTimeout(pushTimer); pushNow(true); }
+  });
 
   var now = new Date();
   var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -683,7 +700,8 @@
 
   // ---------- Reset ----------
   $('#resetBtn').addEventListener('click', function () {
-    if (!window.confirm('Reset your streak, answers and chapter progress on this device? Your exam date stays.')) return;
+    var where = sync ? 'in your account' : 'on this device';
+    if (!window.confirm('Reset your streak, answers and chapter progress ' + where + '? Your exam date stays.')) return;
     state.stats = { answered: 0, correct: 0, time: 0 };
     state.days = {};
     state.chapters = [];
@@ -697,6 +715,21 @@
   renderFormulas('all');
   buildQueue();
   showQuestion();
+
+  if (sync) {
+    $('#syncNote').textContent = 'Synced to your account.';
+    sync.pullState(false).then(function (remote) {
+      if (!remote) return;
+      state.stats = Object.assign({ answered: 0, correct: 0, time: 0 }, remote.stats);
+      state.days = remote.days || {};
+      state.chapters = remote.chapters || [];
+      state.exam = remote.exam || '';
+      state.mission = remote.mission && remote.mission.date === todayKey ? remote.mission : { date: todayKey, done: [] };
+      examInput.value = state.exam;
+      renderAll();
+      if (mode === 'mission' && !checked && !started) { buildQueue(); showQuestion(); }
+    }).catch(function () { /* offline: keep local progress, it syncs on the next save */ });
+  }
 })();
 </script>
 </body>

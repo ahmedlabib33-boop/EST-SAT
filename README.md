@@ -59,21 +59,23 @@ python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # 3. Install dependencies
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
 
-# 4. Setup environment
-cp .env.example .env
+# 4. (Optional) add local demo accounts to the SQLite database
+python -m backend.seed --demo
 
-# 5. Seed database with sample data
-python seed_data.py
-
-# 6. Run server
+# 5. Run the site and API together
 python app.py
 
-# 7. Access platform
-# API: http://localhost:5000/api
-# Web UI: Open index.html
+# 6. Open http://localhost:5000 (API at http://localhost:5000/api)
+
+# Run the tests
+python -m pytest tests
 ```
+
+Production runs on Vercel: pages are served from `public/`, the API from `api/index.py`,
+and data lives in the Supabase project `est-sat` (schema `estsat`). Vercel needs
+`DATABASE_URL` and `JWT_SECRET_KEY` set as environment variables.
 
 ---
 
@@ -81,11 +83,15 @@ python app.py
 
 ```
 EST-SAT/
-├── index.html                 # Web interface
-├── app.py                      # Flask application
-├── models.py                   # Database models
-├── routes.py                   # API endpoints
-├── seed_data.py               # Sample data
+├── public/                    # Website (served by Vercel)
+│   ├── index.html             # Mission Control homepage + practice
+│   ├── login.html             # Log in / create account
+│   ├── student-portal.html    # Student portal + teacher view
+│   └── assets/                # site.css, auth.js
+├── api/index.py               # Vercel entry point for the API
+├── backend/                   # Flask app: models, routes, seed data
+├── app.py                     # Local runner (site + API on one port)
+├── tests/                     # API tests (pytest)
 ├── requirements.txt           # Python dependencies
 ├── .env.example               # Environment template
 ├── README.md                  # This file
@@ -208,12 +214,13 @@ GET    /api/admin/statistics    # Platform stats
 
 ## 🧪 Testing
 
-### Sample Credentials (After Seeding)
+### Sample Credentials (local only, after `python -m backend.seed --demo`)
 ```
 Admin:    admin / admin123
 Teacher:  ahmed_labib / teacher123
 Student:  student1 / student123
 ```
+These demo accounts are refused outside local SQLite and never exist in production.
 
 ### Test API
 ```bash

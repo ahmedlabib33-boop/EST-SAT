@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log in — EST · SAT</title>
+<meta name="description" content="Log in or create a free EST · SAT account to save your missions, streaks and progress on every device.">
+<meta name="theme-color" content="#07070F">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322D3EE'/%3E%3Cstop offset='1' stop-color='%238B5CF6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='700' font-size='34' fill='white' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></symbol>
+</svg>
+<div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html" aria-label="EST · SAT home">
+      <span class="mark" aria-hidden="true">E</span>
+      <span class="brand-txt"><b>EST · SAT</b><small>with Ahmed Labib</small></span>
+    </a>
+    <a class="btn btn-ghost btn-sm" href="index.html" style="margin-left:auto"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg>Back to site</a>
+  </div>
+</header>
+
+<main class="auth-main">
+  <div class="wrap auth-grid">
+    <section class="auth-pitch">
+      <span class="eyebrow">Your account</span>
+      <h1>Your missions, <span class="grad-text">on every device.</span></h1>
+      <p class="lead">A free account keeps your streak, answers and chapter progress safe, on your phone, laptop or the school computer.</p>
+      <ul>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><b>Progress follows you.</b> Log in anywhere and pick up where you stopped.</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><b>Nothing is lost.</b> Practice you did before signing up is added to your account.</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><b>Your teacher can help.</b> Ahmed Labib sees how you’re doing and can reset your password.</span></li>
+      </ul>
+    </section>
+
+    <section class="auth-card card" aria-label="Log in or create an account">
+      <div class="tabs" role="tablist" aria-label="Account">
+        <button class="tab" type="button" role="tab" id="tab-login" aria-controls="panel-login" aria-selected="true">Log in</button>
+        <button class="tab" type="button" role="tab" id="tab-signup" aria-controls="panel-signup" aria-selected="false" tabindex="-1">Create account</button>
+      </div>
+
+      <div id="panel-login" role="tabpanel" aria-labelledby="tab-login">
+        <h2>Welcome back</h2>
+        <p class="sub">Log in with your username or email.</p>
+        <form class="form" id="loginForm" novalidate>
+          <div class="alert error" role="alert" id="loginError"></div>
+          <div class="field">
+            <label for="loginId">Username or email</label>
+            <input class="input" id="loginId" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+          </div>
+          <div class="field">
+            <label for="loginPw">Password</label>
+            <div class="input-wrap">
+              <input class="input" id="loginPw" name="password" type="password" autocomplete="current-password" required>
+              <button class="pw-toggle" type="button" aria-controls="loginPw" aria-pressed="false">Show</button>
+            </div>
+          </div>
+          <button class="btn btn-primary" type="submit">Log in</button>
+          <p class="form-note">Forgot your password? Ask Ahmed Labib to reset it for you.</p>
+        </form>
+      </div>
+
+      <div id="panel-signup" role="tabpanel" aria-labelledby="tab-signup" hidden>
+        <h2>Create your free account</h2>
+        <p class="sub">It takes 30 seconds. No email confirmation needed.</p>
+        <form class="form" id="signupForm" novalidate>
+          <div class="alert error" role="alert" id="signupError"></div>
+          <div class="field">
+            <label for="suName">Full name</label>
+            <input class="input" id="suName" name="full_name" autocomplete="name" maxlength="120" required>
+          </div>
+          <div class="field">
+            <label for="suEmail">Email</label>
+            <input class="input" id="suEmail" name="email" type="email" autocomplete="email" autocapitalize="none" spellcheck="false" maxlength="120" required>
+          </div>
+          <div class="field">
+            <label for="suUser">Username</label>
+            <input class="input" id="suUser" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" minlength="3" maxlength="30" pattern="[A-Za-z0-9_.]{3,30}" aria-describedby="suUserHelp" required>
+            <span class="help" id="suUserHelp">3–30 letters, numbers, dots or underscores.</span>
+          </div>
+          <div class="field">
+            <label for="suPw">Password</label>
+            <div class="input-wrap">
+              <input class="input" id="suPw" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="128" aria-describedby="suPwHelp" required>
+              <button class="pw-toggle" type="button" aria-controls="suPw" aria-pressed="false">Show</button>
+            </div>
+            <span class="help" id="suPwHelp">At least 8 characters.</span>
+          </div>
+          <button class="btn btn-primary" type="submit">Create my account</button>
+          <p class="form-note">Practice you’ve already done on this device will be saved to your account.</p>
+        </form>
+      </div>
+    </section>
+  </div>
+</main>
+
+<script src="assets/auth.js"></script>
+<script>
+(function () {
+  'use strict';
+  var E = window.EstSat;
+  var params = new URLSearchParams(location.search);
+  var next = E.safeNext(params.get('next'), 'student-portal.html');
+
+  if (E.loggedIn()) { location.replace(next); return; }
+
+  var tabs = [document.getElementById('tab-login'), document.getElementById('tab-signup')];
+  function select(i, focus) {
+    tabs.forEach(function (t, j) {
+      var on = i === j;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (focus) tabs[i].focus();
+    var first = document.querySelector('#' + tabs[i].getAttribute('aria-controls') + ' .input');
+    if (!focus && first && window.matchMedia('(min-width: 1021px)').matches) first.focus();
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { select(i); });
+    t.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); select(1 - i, true); }
+    });
+  });
+  select(params.get('mode') === 'signup' || location.hash === '#signup' ? 1 : 0);
+
+  Array.prototype.forEach.call(document.querySelectorAll('.pw-toggle'), function (b) {
+    b.addEventListener('click', function () {
+      var input = document.getElementById(b.getAttribute('aria-controls'));
+      var show = input.type === 'password';
+      input.type = show ? 'text' : 'password';
+      b.textContent = show ? 'Hide' : 'Show';
+      b.setAttribute('aria-pressed', show ? 'true' : 'false');
+    });
+  });
+
+  function showError(box, message) {
+    box.textContent = message;
+    box.classList.add('show');
+    box.focus && box.setAttribute('tabindex', '-1');
+    box.focus();
+  }
+  function firstInvalid(form) {
+    var bad = form.querySelector(':invalid');
+    if (!bad) return null;
+    var labels = {
+      suName: 'Please enter your full name.', suEmail: 'Please enter a valid email address.',
+      suUser: 'Usernames are 3–30 letters, numbers, dots or underscores.', suPw: 'Your password needs at least 8 characters.',
+      loginId: 'Enter your username or email.', loginPw: 'Enter your password.'
+    };
+    return { el: bad, message: labels[bad.id] || 'Please check the form.' };
+  }
+
+  function handle(form, errorBox, request, busyText) {
+    var button = form.querySelector('button[type="submit"]');
+    var idle = button.textContent;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorBox.classList.remove('show');
+      var bad = firstInvalid(form);
+      if (bad) { showError(errorBox, bad.message); bad.el.focus(); return; }
+      button.disabled = true;
+      button.textContent = busyText;
+      request()
+        .then(function (res) {
+          E.setSession(res.access_token, res.user);
+          return E.pullState(true).catch(function () { /* progress sync can retry on the next page */ });
+        })
+        .then(function () { location.replace(next); })
+        .catch(function (err) {
+          E.clearSession(false);
+          showError(errorBox, err.message);
+          button.disabled = false;
+          button.textContent = idle;
+        });
+    });
+  }
+
+  var loginForm = document.getElementById('loginForm');
+  handle(loginForm, document.getElementById('loginError'), function () {
+    return E.api('/auth/login', { method: 'POST', auth: false, body: {
+      username: loginForm.username.value.trim(), password: loginForm.password.value
+    } });
+  }, 'Logging in…');
+
+  var signupForm = document.getElementById('signupForm');
+  handle(signupForm, document.getElementById('signupError'), function () {
+    return E.api('/auth/register', { method: 'POST', auth: false, body: {
+      full_name: signupForm.full_name.value.trim(), email: signupForm.email.value.trim(),
+      username: signupForm.username.value.trim(), password: signupForm.password.value
+    } });
+  }, 'Creating your account…');
+})();
+</script>
+</body>
+</html>

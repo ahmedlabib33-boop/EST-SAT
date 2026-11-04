@@ -30,7 +30,8 @@ CHAPTER_RE = re.compile(r'^(math|physics)-\d{1,2}$')
 STAFF_ROLES = ('admin', 'teacher')
 FAIL_WINDOW = timedelta(minutes=15)
 MAX_FAILS_PER_ACCOUNT = 8
-MAX_FAILS_PER_IP = 40
+# Generous because a whole classroom often shares one school IP address.
+MAX_FAILS_PER_IP = 150
 # Checked when the username doesn't exist, so a wrong username takes as long as a wrong password.
 _DUMMY_HASH = generate_password_hash('estsat-timing-equaliser')
 
