@@ -366,9 +366,13 @@ was right.
 
 | Subject | Topics | Lessons | Questions |
 |---|---|---|---|
-| Math | 5 | 155 | 191 |
-| English | 12 | 157 | 157 |
-| Physics | 6 | 47 | 47 |
+| Math | 5 | 155 | 368 |
+| English | 12 | 157 | 344 |
+| Physics | 6 | 47 | 114 |
+
+Each lesson has a question on its rule, a second that applies it a step further, and many
+have a third marked `Hard`. The Exam Arena's **Challenge** paper draws on those first and
+gives 75 seconds a question instead of 90.
 
 Every practice question is written by hand in `scripts/items_math.py`, `scripts/items_english.py`
 and `scripts/items_physics.py`. To change or add one, edit those files and run:

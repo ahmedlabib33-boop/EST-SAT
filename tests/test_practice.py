@@ -43,9 +43,9 @@ def first_lesson_with_questions(client, subject):
 def test_banks_are_loaded(client):
     counts = {s['subject']: s for s in client.get('/api/practice/subjects').get_json()['subjects']}
     # 155, not the workbook's 159: four math rows repeat an earlier lesson verbatim.
-    assert counts['math'] == {'subject': 'math', 'topics': 5, 'lessons': 155, 'questions': 328}
-    assert counts['english'] == {'subject': 'english', 'topics': 12, 'lessons': 157, 'questions': 314}
-    assert counts['physics'] == {'subject': 'physics', 'topics': 6, 'lessons': 47, 'questions': 94}
+    assert counts['math'] == {'subject': 'math', 'topics': 5, 'lessons': 155, 'questions': 368}
+    assert counts['english'] == {'subject': 'english', 'topics': 12, 'lessons': 157, 'questions': 344}
+    assert counts['physics'] == {'subject': 'physics', 'topics': 6, 'lessons': 47, 'questions': 114}
 
 
 def test_unknown_subject_is_rejected(client):
@@ -71,6 +71,32 @@ def test_physics_is_a_full_subject(client):
     sheet = client.get('/api/practice/physics/revision').get_json()
     assert len(sheet['lessons']) == counts['physics']['lessons']
     assert all(l['title'] for l in sheet['lessons'])
+
+
+def test_a_challenge_paper_asks_the_hard_questions_first(client):
+    """difficulty is an order of preference: take every hard question, then top up."""
+    hard = client.get('/api/practice/random?subject=all&n=20&difficulty=hard').get_json()['questions']
+    assert len(hard) == 20
+    assert len({q['id'] for q in hard}) == 20
+
+    graded = client.post('/api/practice/grade', json={'items': [{'id': q['id'], 'answer': ''} for q in hard]})
+    assert graded.status_code == 200
+
+    # Far more than the bank holds, so every hard one is used and the rest come from medium.
+    big = client.get('/api/practice/random?subject=all&n=100&difficulty=hard,medium').get_json()['questions']
+    assert len(big) == 100
+    assert len({q['id'] for q in big}) == 100
+
+    # Asking for hard alone caps at however many hard questions exist.
+    only = client.get('/api/practice/random?subject=all&n=100&difficulty=hard').get_json()['questions']
+    assert 60 <= len(only) < 100
+    assert client.get('/api/practice/random?subject=all&n=5&difficulty=nope').get_json()['questions'] == []
+
+
+def test_every_subject_has_challenge_questions(client):
+    for subject in ('math', 'english', 'physics'):
+        body = client.get('/api/practice/random?subject=%s&n=60&difficulty=hard' % subject).get_json()
+        assert len(body['questions']) >= 20, subject
 
 
 def test_the_daily_mission_is_the_same_all_day_and_changes_tomorrow(client):

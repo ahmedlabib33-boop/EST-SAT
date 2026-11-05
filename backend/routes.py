@@ -33,6 +33,7 @@ TOPIC_KEY_RE = re.compile(r"^(math|english|physics)\|[A-Za-z0-9 .,&'-]{1,60}$")
 ASSIGNMENT_ID_RE = re.compile(r'^a-\d{1,16}$')
 GOAL_ID_RE = re.compile(r'^g-\d{1,16}$')
 ATTEMPT_SUBJECTS = ('math', 'english', 'physics', 'mixed')
+ATTEMPT_LEVELS = ('standard', 'challenge')
 GOAL_KINDS = ('level', 'streak', 'exam', 'topic')
 MAX_MISTAKES = 100
 STAFF_ROLES = ('admin', 'teacher')
@@ -233,6 +234,7 @@ def clean_study_extras(raw, keep_mistakes=None):
                 'total': total,
                 'percent': _count(a.get('percent'), 100),
                 'seconds': _count(a.get('seconds'), 6 * 3600),
+                'level': a['level'] if a.get('level') in ATTEMPT_LEVELS else 'standard',
             })
 
     time_in = _map(raw, 'time')

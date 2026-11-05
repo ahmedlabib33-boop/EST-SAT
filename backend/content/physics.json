@@ -1213,6 +1213,37 @@
    "topicId": "PHY-01"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "0.4 m/s²"
+    },
+    {
+     "id": "B",
+     "text": "12 m/s²"
+    },
+    {
+     "id": "C",
+     "text": "2.5 m/s²"
+    },
+    {
+     "id": "D",
+     "text": "6 m/s²"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "0 = 30² + 2a(75) gives 150a = −900, so a = −6 m/s²: a deceleration of 6 m/s²."
+   ],
+   "id": "physics-practice-1206",
+   "lessonId": "physics-lesson-6",
+   "lessonKey": "Velocity–displacement equation",
+   "question": "A car travelling at 30 m/s brakes to rest in 75 m. What is its deceleration?",
+   "topicId": "PHY-01"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -1334,6 +1365,37 @@
    "lessonId": "physics-lesson-8",
    "lessonKey": "Newton's second law",
    "question": "A 4 kg box is pushed with 20 N while friction holds it back with 4 N. What is its acceleration?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "400 N"
+    },
+    {
+     "id": "B",
+     "text": "150 N"
+    },
+    {
+     "id": "C",
+     "text": "28800 N"
+    },
+    {
+     "id": "D",
+     "text": "3600 N"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "a = 24 ÷ 8 = 3 m/s², then F = ma = 1200 × 3 = 3600 N."
+   ],
+   "id": "physics-practice-1208",
+   "lessonId": "physics-lesson-8",
+   "lessonKey": "Newton's second law",
+   "question": "A 1200 kg car goes from rest to 24 m/s in 8 s. What net force acts on it?",
    "topicId": "PHY-01"
   },
   {
@@ -1523,6 +1585,37 @@
    "topicId": "PHY-01"
   },
   {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "2000 N"
+    },
+    {
+     "id": "B",
+     "text": "20000 N"
+    },
+    {
+     "id": "C",
+     "text": "500 N"
+    },
+    {
+     "id": "D",
+     "text": "200 N"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "a = v²/r = 100 ÷ 50 = 2 m/s², then F = ma = 1000 × 2 = 2000 N."
+   ],
+   "id": "physics-practice-1211",
+   "lessonId": "physics-lesson-11",
+   "lessonKey": "Circular motion",
+   "question": "A 1000 kg car takes a bend of radius 50 m at 10 m/s. What centripetal force is needed?",
+   "topicId": "PHY-01"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -1582,6 +1675,37 @@
    "lessonId": "physics-lesson-12",
    "lessonKey": "Momentum",
    "question": "A 2 kg trolley at 3 m/s hits a stationary 1 kg trolley and they move off together. How fast do they go?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "3.6 kg·m/s"
+    },
+    {
+     "id": "B",
+     "text": "18 kg·m/s"
+    },
+    {
+     "id": "C",
+     "text": "2 kg·m/s"
+    },
+    {
+     "id": "D",
+     "text": "0.4 kg·m/s"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "The direction reverses, so Δp = 0.2(−8) − 0.2(10) = −3.6, which is 3.6 kg·m/s in size."
+   ],
+   "id": "physics-practice-1212",
+   "lessonId": "physics-lesson-12",
+   "lessonKey": "Momentum",
+   "question": "A 0.2 kg ball hits a wall at 10 m/s and rebounds at 8 m/s. What is the size of the change in its momentum?",
    "topicId": "PHY-01"
   },
   {
@@ -1709,6 +1833,37 @@
    "topicId": "PHY-02"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "100 J"
+    },
+    {
+     "id": "B",
+     "text": "10000 J"
+    },
+    {
+     "id": "C",
+     "text": "1000 J"
+    },
+    {
+     "id": "D",
+     "text": "40 J"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Energy and work",
+   "explanation": [
+    "The force needed is the weight, 2000 N, and W = 2000 × 5 = 10000 J."
+   ],
+   "id": "physics-practice-1214",
+   "lessonId": "physics-lesson-14",
+   "lessonKey": "Work",
+   "question": "A crane lifts a 200 kg load through 5 m at a steady speed (g = 10 N/kg). How much work does it do?",
+   "topicId": "PHY-02"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -1768,6 +1923,37 @@
    "lessonId": "physics-lesson-15",
    "lessonKey": "Kinetic energy",
    "question": "A car doubles its speed. What happens to its kinetic energy?",
+   "topicId": "PHY-02"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "200 kJ"
+    },
+    {
+     "id": "B",
+     "text": "400 kJ"
+    },
+    {
+     "id": "C",
+     "text": "20 kJ"
+    },
+    {
+     "id": "D",
+     "text": "10 kJ"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Energy and work",
+   "explanation": [
+    "KE = ½ × 1000 × 20² = 200000 J, and all of it is lost to the brakes."
+   ],
+   "id": "physics-practice-1215",
+   "lessonId": "physics-lesson-15",
+   "lessonKey": "Kinetic energy",
+   "question": "A 1000 kg car travelling at 20 m/s brakes to rest. How much energy is turned into heat?",
    "topicId": "PHY-02"
   },
   {
@@ -1895,6 +2081,37 @@
    "topicId": "PHY-02"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "16 m/s"
+    },
+    {
+     "id": "B",
+     "text": "8 m/s"
+    },
+    {
+     "id": "C",
+     "text": "4 m/s"
+    },
+    {
+     "id": "D",
+     "text": "2.8 m/s"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Energy and work",
+   "explanation": [
+    "v = √(2gh) = √(2 × 10 × 0.8) = √16 = 4 m/s."
+   ],
+   "id": "physics-practice-1217",
+   "lessonId": "physics-lesson-17",
+   "lessonKey": "Conservation of energy",
+   "question": "A pendulum bob is released 0.8 m above its lowest point (g = 10 m/s²). How fast is it moving at the bottom?",
+   "topicId": "PHY-02"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -1957,6 +2174,37 @@
    "topicId": "PHY-02"
   },
   {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "300 W"
+    },
+    {
+     "id": "B",
+     "text": "2400 W"
+    },
+    {
+     "id": "C",
+     "text": "30 W"
+    },
+    {
+     "id": "D",
+     "text": "120 W"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Energy and work",
+   "explanation": [
+    "Work = 600 N × 4 m = 2400 J, and P = 2400 ÷ 8 = 300 W."
+   ],
+   "id": "physics-practice-1218",
+   "lessonId": "physics-lesson-18",
+   "lessonKey": "Power",
+   "question": "A 60 kg student climbs 4 m of stairs in 8 s (g = 10 N/kg). What is their useful power?",
+   "topicId": "PHY-02"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -2016,6 +2264,37 @@
    "lessonId": "physics-lesson-19",
    "lessonKey": "Efficiency",
    "question": "A lamp takes in 60 J and wastes 48 J as heat. What is its efficiency?",
+   "topicId": "PHY-02"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "4%"
+    },
+    {
+     "id": "B",
+     "text": "60%"
+    },
+    {
+     "id": "C",
+     "text": "25%"
+    },
+    {
+     "id": "D",
+     "text": "40%"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Energy and work",
+   "explanation": [
+    "Useful work = mgh = 200 J, and 200 ÷ 500 × 100 = 40%."
+   ],
+   "id": "physics-practice-1219",
+   "lessonId": "physics-lesson-19",
+   "lessonKey": "Efficiency",
+   "question": "A motor uses 500 J to lift a 2 kg mass through 10 m (g = 10 N/kg). What is its efficiency?",
    "topicId": "PHY-02"
   },
   {
@@ -2085,6 +2364,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "1.2 m"
+    },
+    {
+     "id": "B",
+     "text": "6 m"
+    },
+    {
+     "id": "C",
+     "text": "300 m"
+    },
+    {
+     "id": "D",
+     "text": "0.83 m"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Waves and oscillations",
+   "explanation": [
+    "v = 1500 ÷ 5 = 300 m/s, then λ = v ÷ f = 300 ÷ 250 = 1.2 m."
+   ],
+   "id": "physics-practice-1220",
+   "lessonId": "physics-lesson-20",
+   "lessonKey": "Wave equation",
+   "question": "A wave of frequency 250 Hz travels 1500 m in 5 s. What is its wavelength?",
+   "topicId": "PHY-03"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
      "text": "0.02 s"
     },
     {
@@ -2140,6 +2450,37 @@
    "lessonId": "physics-lesson-21",
    "lessonKey": "Period and frequency",
    "question": "A pendulum takes 0.5 s for one complete swing. What is its frequency?",
+   "topicId": "PHY-03"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "0.68 m"
+    },
+    {
+     "id": "B",
+     "text": "0.17 m"
+    },
+    {
+     "id": "C",
+     "text": "680 m"
+    },
+    {
+     "id": "D",
+     "text": "1.7 m"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Waves and oscillations",
+   "explanation": [
+    "f = 1 ÷ 0.002 = 500 Hz, then λ = 340 ÷ 500 = 0.68 m."
+   ],
+   "id": "physics-practice-1221",
+   "lessonId": "physics-lesson-21",
+   "lessonKey": "Period and frequency",
+   "question": "A sound wave has a period of 0.002 s and travels at 340 m/s. What is its wavelength?",
    "topicId": "PHY-03"
   },
   {
@@ -2326,6 +2667,37 @@
    "lessonId": "physics-lesson-24",
    "lessonKey": "Echo and the speed of sound",
    "question": "A cliff is 510 m away and sound travels at 340 m/s. How long until the echo returns?",
+   "topicId": "PHY-03"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "3000 m"
+    },
+    {
+     "id": "B",
+     "text": "1500 m"
+    },
+    {
+     "id": "C",
+     "text": "6000 m"
+    },
+    {
+     "id": "D",
+     "text": "375 m"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Waves and oscillations",
+   "explanation": [
+    "The pulse covers 6000 m there and back, so the depth is 3000 m."
+   ],
+   "id": "physics-practice-1224",
+   "lessonId": "physics-lesson-24",
+   "lessonKey": "Echo and the speed of sound",
+   "question": "A sonar pulse returns to a ship after 4 s. Sound travels at 1500 m/s in water. How deep is the sea bed?",
    "topicId": "PHY-03"
   },
   {
@@ -2577,6 +2949,37 @@
    "topicId": "PHY-04"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "1440 J"
+    },
+    {
+     "id": "B",
+     "text": "6 J"
+    },
+    {
+     "id": "C",
+     "text": "720 J"
+    },
+    {
+     "id": "D",
+     "text": "12 J"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Electricity and current",
+   "explanation": [
+    "P = VI = 6 W, and E = Pt = 6 × 120 = 720 J."
+   ],
+   "id": "physics-practice-1228",
+   "lessonId": "physics-lesson-28",
+   "lessonKey": "Ohm's law",
+   "question": "A 12 V battery drives 0.5 A through a lamp for 2 minutes. How much energy is delivered?",
+   "topicId": "PHY-04"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -2698,6 +3101,37 @@
    "lessonId": "physics-lesson-30",
    "lessonKey": "Resistors in parallel",
    "question": "What is the total resistance of a 6 Ω and a 3 Ω resistor in parallel?",
+   "topicId": "PHY-04"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "4 A"
+    },
+    {
+     "id": "B",
+     "text": "0.8 A"
+    },
+    {
+     "id": "C",
+     "text": "2 A"
+    },
+    {
+     "id": "D",
+     "text": "1.33 A"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Electricity and current",
+   "explanation": [
+    "The parallel pair is 3 Ω, so the total is 6 Ω and I = 12 ÷ 6 = 2 A."
+   ],
+   "id": "physics-practice-1230",
+   "lessonId": "physics-lesson-30",
+   "lessonKey": "Resistors in parallel",
+   "question": "Two 6 Ω resistors in parallel are joined in series with a 3 Ω resistor across 12 V. What current flows from the supply?",
    "topicId": "PHY-04"
   },
   {
@@ -2829,6 +3263,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "230 Ω"
+    },
+    {
+     "id": "B",
+     "text": "2400 Ω"
+    },
+    {
+     "id": "C",
+     "text": "24 Ω"
+    },
+    {
+     "id": "D",
+     "text": "0.04 Ω"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Electricity and current",
+   "explanation": [
+    "R = V ÷ I = 240 ÷ 10 = 24 Ω."
+   ],
+   "id": "physics-practice-1232",
+   "lessonId": "physics-lesson-32",
+   "lessonKey": "Power and resistance",
+   "question": "A heater draws 10 A from a 240 V supply. What is its resistance?",
+   "topicId": "PHY-04"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
      "text": "It stays the same"
     },
     {
@@ -2949,6 +3414,37 @@
    "topicId": "PHY-04"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "200 J"
+    },
+    {
+     "id": "B",
+     "text": "720 000 J"
+    },
+    {
+     "id": "C",
+     "text": "7 200 J"
+    },
+    {
+     "id": "D",
+     "text": "12 000 J"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Electricity and current",
+   "explanation": [
+    "E = Pt = 2000 W × 360 s = 720 000 J."
+   ],
+   "id": "physics-practice-1234",
+   "lessonId": "physics-lesson-34",
+   "lessonKey": "Electrical energy",
+   "question": "A 2 kW kettle runs for 6 minutes. How much energy does it use in joules?",
+   "topicId": "PHY-04"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -3008,6 +3504,37 @@
    "lessonId": "physics-lesson-35",
    "lessonKey": "Force on a current",
    "question": "A 0.4 m wire at right angles to a 0.2 T field feels a force of 0.8 N. What current is it carrying?",
+   "topicId": "PHY-05"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "0.6 N"
+    },
+    {
+     "id": "B",
+     "text": "6 N"
+    },
+    {
+     "id": "C",
+     "text": "2.4 N"
+    },
+    {
+     "id": "D",
+     "text": "0.15 N"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Magnetism and electromagnetism",
+   "explanation": [
+    "F = BIL = 0.3 × 4 × 0.5 = 0.6 N."
+   ],
+   "id": "physics-practice-1235",
+   "lessonId": "physics-lesson-35",
+   "lessonKey": "Force on a current",
+   "question": "A 0.5 m length of wire carries 4 A at right angles to a 0.3 T field. What force acts on it?",
    "topicId": "PHY-05"
   },
   {
@@ -3259,6 +3786,37 @@
    "topicId": "PHY-05"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "500"
+    },
+    {
+     "id": "B",
+     "text": "2000"
+    },
+    {
+     "id": "C",
+     "text": "20"
+    },
+    {
+     "id": "D",
+     "text": "50"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Magnetism and electromagnetism",
+   "explanation": [
+    "Nₛ = Nₚ × Vₛ/Vₚ = 1000 × 12/240 = 50."
+   ],
+   "id": "physics-practice-1239",
+   "lessonId": "physics-lesson-39",
+   "lessonKey": "Transformers",
+   "question": "A transformer steps 240 V down to 12 V. The primary has 1000 turns. How many turns does the secondary have?",
+   "topicId": "PHY-05"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -3380,6 +3938,37 @@
    "lessonId": "physics-lesson-41",
    "lessonKey": "Photon energy",
    "question": "Which carries more energy, one photon of blue light or one of red light?",
+   "topicId": "PHY-06"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "1.1 × 10⁻²⁰ J"
+    },
+    {
+     "id": "B",
+     "text": "9.1 × 10¹⁴ J"
+    },
+    {
+     "id": "C",
+     "text": "4.0 × 10⁻¹⁸ J"
+    },
+    {
+     "id": "D",
+     "text": "4.0 × 10⁻¹⁹ J"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Modern physics",
+   "explanation": [
+    "E = hf = 6.6 × 10⁻³⁴ × 6 × 10¹⁴ ≈ 4.0 × 10⁻¹⁹ J."
+   ],
+   "id": "physics-practice-1241",
+   "lessonId": "physics-lesson-41",
+   "lessonKey": "Photon energy",
+   "question": "Light has a frequency of 6 × 10¹⁴ Hz and h = 6.6 × 10⁻³⁴ J·s. What is the energy of one photon?",
    "topicId": "PHY-06"
   },
   {
@@ -3566,6 +4155,37 @@
    "lessonId": "physics-lesson-44",
    "lessonKey": "Half-life",
    "question": "A sample falls from 160 g to 20 g in 9 days. What is its half-life?",
+   "topicId": "PHY-06"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "1/3"
+    },
+    {
+     "id": "B",
+     "text": "1/6"
+    },
+    {
+     "id": "C",
+     "text": "1/8"
+    },
+    {
+     "id": "D",
+     "text": "3/4"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Modern physics",
+   "explanation": [
+    "Each half-life halves it: ½ × ½ × ½ = 1/8."
+   ],
+   "id": "physics-practice-1244",
+   "lessonId": "physics-lesson-44",
+   "lessonKey": "Half-life",
+   "question": "What fraction of a radioactive sample is left after three half-lives?",
    "topicId": "PHY-06"
   },
   {

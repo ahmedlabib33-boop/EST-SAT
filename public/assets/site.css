@@ -702,6 +702,9 @@ select.input option, .topic-pick select option { background: #14141F; color: var
 
 /* Exam Arena */
 .exam-setup .modes { width: fit-content; }
+.exam-setup .mini-label { margin-top: 2px; }
+.one-screen .exam-setup { padding: 16px 18px; }
+.one-screen .exam-setup > * + * { margin-top: 8px; }
 .mini-label { display: block; font-size: 13px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.08em; }
 #arena > * + * { margin-top: 20px; }
 #arena { margin-top: 20px; }

@@ -77,7 +77,17 @@
 (function () {
   'use strict';
   var S = window.EstSatStudy, A = window.App, el = A.el;
-  var EXAM_PRESETS = [['mixed-20', 'Mixed, 20 questions'], ['mixed-40', 'Mixed, 40 questions'], ['mixed-60', 'Mixed, 60 questions'], ['math-20', 'Math, 20 questions'], ['math-40', 'Math, 40 questions'], ['english-20', 'English, 20 questions'], ['english-40', 'English, 40 questions']];
+  var EXAM_PRESETS = [
+    ['mixed-20', 'Mixed, 20 questions'], ['mixed-40', 'Mixed, 40 questions'], ['mixed-60', 'Mixed, 60 questions'],
+    ['math-20', 'Math, 20 questions'], ['math-40', 'Math, 40 questions'],
+    ['english-20', 'English, 20 questions'], ['english-40', 'English, 40 questions'],
+    ['physics-20', 'Physics, 20 questions'],
+    ['mixed-20-challenge', 'Mixed, 20 questions · Challenge'],
+    ['mixed-40-challenge', 'Mixed, 40 questions · Challenge'],
+    ['math-20-challenge', 'Math, 20 questions · Challenge'],
+    ['english-20-challenge', 'English, 20 questions · Challenge'],
+    ['physics-20-challenge', 'Physics, 20 questions · Challenge']
+  ];
   var state = null, catalog = null, assignKind = 'lesson', voice = null;
 
   function note(text) { A.byId('saveNote').textContent = text; }

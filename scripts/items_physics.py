@@ -764,3 +764,94 @@ EXTRA = {
                     'The faster one measures a higher speed', 'Neither can measure it at all'],
                    'The speed of light in a vacuum is the same for every observer, however they are moving.'),
 }
+
+# Challenge questions: two formulas in sequence, or one used backwards. Keyed by lesson title.
+HARD = {
+    'Velocity–displacement equation': (
+        'A car travelling at 30 m/s brakes to rest in 75 m. What is its deceleration?',
+        ['6 m/s²', '12 m/s²', '0.4 m/s²', '2.5 m/s²'],
+        '0 = 30² + 2a(75) gives 150a = −900, so a = −6 m/s²: a deceleration of 6 m/s².'),
+    "Newton's second law": (
+        'A 1200 kg car goes from rest to 24 m/s in 8 s. What net force acts on it?',
+        ['3600 N', '28800 N', '400 N', '150 N'],
+        'a = 24 ÷ 8 = 3 m/s², then F = ma = 1200 × 3 = 3600 N.'),
+    'Momentum': (
+        'A 0.2 kg ball hits a wall at 10 m/s and rebounds at 8 m/s. '
+        'What is the size of the change in its momentum?',
+        ['3.6 kg·m/s', '0.4 kg·m/s', '2 kg·m/s', '18 kg·m/s'],
+        'The direction reverses, so Δp = 0.2(−8) − 0.2(10) = −3.6, which is 3.6 kg·m/s in size.'),
+    'Work': (
+        'A crane lifts a 200 kg load through 5 m at a steady speed (g = 10 N/kg). '
+        'How much work does it do?',
+        ['10000 J', '1000 J', '100 J', '40 J'],
+        'The force needed is the weight, 2000 N, and W = 2000 × 5 = 10000 J.'),
+    'Kinetic energy': (
+        'A 1000 kg car travelling at 20 m/s brakes to rest. How much energy is turned into heat?',
+        ['200 kJ', '20 kJ', '400 kJ', '10 kJ'],
+        'KE = ½ × 1000 × 20² = 200000 J, and all of it is lost to the brakes.'),
+    'Power': (
+        'A 60 kg student climbs 4 m of stairs in 8 s (g = 10 N/kg). What is their useful power?',
+        ['300 W', '30 W', '2400 W', '120 W'],
+        'Work = 600 N × 4 m = 2400 J, and P = 2400 ÷ 8 = 300 W.'),
+    'Conservation of energy': (
+        'A pendulum bob is released 0.8 m above its lowest point (g = 10 m/s²). '
+        'How fast is it moving at the bottom?',
+        ['4 m/s', '8 m/s', '16 m/s', '2.8 m/s'],
+        'v = √(2gh) = √(2 × 10 × 0.8) = √16 = 4 m/s.'),
+    'Efficiency': (
+        'A motor uses 500 J to lift a 2 kg mass through 10 m (g = 10 N/kg). What is its efficiency?',
+        ['40%', '25%', '60%', '4%'],
+        'Useful work = mgh = 200 J, and 200 ÷ 500 × 100 = 40%.'),
+    'Wave equation': (
+        'A wave of frequency 250 Hz travels 1500 m in 5 s. What is its wavelength?',
+        ['1.2 m', '6 m', '0.83 m', '300 m'],
+        'v = 1500 ÷ 5 = 300 m/s, then λ = v ÷ f = 300 ÷ 250 = 1.2 m.'),
+    'Period and frequency': (
+        'A sound wave has a period of 0.002 s and travels at 340 m/s. What is its wavelength?',
+        ['0.68 m', '1.7 m', '0.17 m', '680 m'],
+        'f = 1 ÷ 0.002 = 500 Hz, then λ = 340 ÷ 500 = 0.68 m.'),
+    'Echo and the speed of sound': (
+        'A sonar pulse returns to a ship after 4 s. Sound travels at 1500 m/s in water. '
+        'How deep is the sea bed?',
+        ['3000 m', '6000 m', '1500 m', '375 m'],
+        'The pulse covers 6000 m there and back, so the depth is 3000 m.'),
+    "Ohm's law": (
+        'A 12 V battery drives 0.5 A through a lamp for 2 minutes. How much energy is delivered?',
+        ['720 J', '12 J', '6 J', '1440 J'],
+        'P = VI = 6 W, and E = Pt = 6 × 120 = 720 J.'),
+    'Resistors in parallel': (
+        'Two 6 Ω resistors in parallel are joined in series with a 3 Ω resistor across 12 V. '
+        'What current flows from the supply?',
+        ['2 A', '0.8 A', '4 A', '1.33 A'],
+        'The parallel pair is 3 Ω, so the total is 6 Ω and I = 12 ÷ 6 = 2 A.'),
+    'Power and resistance': (
+        'A heater draws 10 A from a 240 V supply. What is its resistance?',
+        ['24 Ω', '2400 Ω', '0.04 Ω', '230 Ω'],
+        'R = V ÷ I = 240 ÷ 10 = 24 Ω.'),
+    'Electrical energy': (
+        'A 2 kW kettle runs for 6 minutes. How much energy does it use in joules?',
+        ['720 000 J', '12 000 J', '200 J', '7 200 J'],
+        'E = Pt = 2000 W × 360 s = 720 000 J.'),
+    'Force on a current': (
+        'A 0.5 m length of wire carries 4 A at right angles to a 0.3 T field. What force acts on it?',
+        ['0.6 N', '2.4 N', '6 N', '0.15 N'],
+        'F = BIL = 0.3 × 4 × 0.5 = 0.6 N.'),
+    'Transformers': (
+        'A transformer steps 240 V down to 12 V. The primary has 1000 turns. '
+        'How many turns does the secondary have?',
+        ['50', '20', '2000', '500'],
+        'Nₛ = Nₚ × Vₛ/Vₚ = 1000 × 12/240 = 50.'),
+    'Half-life': (
+        'What fraction of a radioactive sample is left after three half-lives?',
+        ['1/8', '1/3', '1/6', '3/4'],
+        'Each half-life halves it: ½ × ½ × ½ = 1/8.'),
+    'Photon energy': (
+        'Light has a frequency of 6 × 10¹⁴ Hz and h = 6.6 × 10⁻³⁴ J·s. '
+        'What is the energy of one photon?',
+        ['4.0 × 10⁻¹⁹ J', '1.1 × 10⁻²⁰ J', '4.0 × 10⁻¹⁸ J', '9.1 × 10¹⁴ J'],
+        'E = hf = 6.6 × 10⁻³⁴ × 6 × 10¹⁴ ≈ 4.0 × 10⁻¹⁹ J.'),
+    'Circular motion': (
+        'A 1000 kg car takes a bend of radius 50 m at 10 m/s. What centripetal force is needed?',
+        ['2000 N', '200 N', '20000 N', '500 N'],
+        'a = v²/r = 100 ÷ 50 = 2 m/s², then F = ma = 1000 × 2 = 2000 N.'),
+}

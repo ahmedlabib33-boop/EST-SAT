@@ -26,6 +26,7 @@ CONTENT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'content'
 SUBJECTS = ('math', 'english', 'physics')
 DAY_RE = re.compile(r'^\d{4}-\d{2}-\d{2}$')
 MAX_DAILY = 20
+DIFFICULTIES = ('hard', 'medium', 'easy', 'mixed')
 MAX_GRADE_ITEMS = 100
 MAX_RANDOM = 100
 MAX_BY_ID = 60
@@ -160,7 +161,23 @@ def random_questions():
         pool = [(subject, q) for subject, q in pool if q.get('topicId') in topics]
     if not pool:
         return jsonify({'questions': []})
-    chosen = random.sample(pool, min(count, len(pool)))
+
+    # difficulty is an order of preference, not a filter: "hard,medium" fills the paper
+    # with every hard question it can find, then tops it up with medium ones.
+    tiers = [t.strip().lower() for t in request.args.get('difficulty', '').split(',') if t.strip()]
+    if tiers:
+        chosen, used = [], set()
+        for tier in tiers[:len(DIFFICULTIES)]:
+            if len(chosen) >= count:
+                break
+            group = [(s, q) for s, q in pool
+                     if q.get('difficulty', '').lower() == tier and q['id'] not in used]
+            take = random.sample(group, min(count - len(chosen), len(group)))
+            chosen.extend(take)
+            used.update(q['id'] for _, q in take)
+        random.shuffle(chosen)
+    else:
+        chosen = random.sample(pool, min(count, len(pool)))
     return jsonify({'questions': [strip(q, subject) for subject, q in chosen]})
 
 

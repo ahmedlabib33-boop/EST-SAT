@@ -177,7 +177,8 @@ def test_study_extras_are_cleaned_and_bounded(client):
     assert data['reviews'] == {'math-practice-1': {'stage': 4, 'due': '2026-11-06', 'last': ''}}
     assert data['topics'] == {'math|MATH-01': [10, 10], 'physics|Modern Physics': [2, 1]}
     assert data['lessons'] == ['math-lesson-1', 'english-lesson-2']
-    assert data['attempts'] == [{'date': '2026-11-05', 'subject': 'mixed', 'score': 40, 'total': 40, 'percent': 100, 'seconds': 99}]
+    assert data['attempts'] == [{'date': '2026-11-05', 'subject': 'mixed', 'score': 40, 'total': 40,
+                                 'percent': 100, 'seconds': 99, 'level': 'standard'}]
     assert data['time'] == {'2026-11-04': 86400, '2026-11-05': 600}
     assert data['week'] == {'start': '2026-11-02', 'lessons': 3, 'practice': 0, 'reviews': 0, 'exams': 1}
     assert data['xp'] == 1234
@@ -228,6 +229,19 @@ def test_only_the_most_answered_topics_are_kept(client):
     data = client.get('/api/user/state', headers=auth(token)).get_json()['data']
     assert len(data['topics']) == 80
     assert min(pair[0] for pair in data['topics'].values()) == 21
+
+
+def test_an_exam_remembers_which_paper_it_was(client):
+    token = register(client).get_json()['access_token']
+    sent = {'attempts': [
+        {'date': '2026-11-05', 'subject': 'mixed', 'score': 30, 'total': 40, 'percent': 75, 'seconds': 1200,
+         'level': 'challenge'},
+        {'date': '2026-11-04', 'subject': 'math', 'score': 18, 'total': 20, 'percent': 90, 'seconds': 900,
+         'level': 'nonsense'},
+    ]}
+    assert client.put('/api/user/state', headers=auth(token), json={'data': sent}).status_code == 200
+    kept = client.get('/api/user/state', headers=auth(token)).get_json()['data']['attempts']
+    assert [a['level'] for a in kept] == ['challenge', 'standard']
 
 
 def test_profile_and_password_change(client):

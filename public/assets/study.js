@@ -169,7 +169,8 @@
       if (!r.correct && r.id) addMistake(s, r.id, today);
     });
     addStudyTime(s, exam.seconds, today);
-    s.attempts.unshift({ date: today, subject: exam.subject, score: exam.score, total: exam.total, percent: exam.percent, seconds: exam.seconds });
+    s.attempts.unshift({ date: today, subject: exam.subject, score: exam.score, total: exam.total, percent: exam.percent,
+      seconds: exam.seconds, level: exam.level === 'challenge' ? 'challenge' : 'standard' });
     s.attempts = s.attempts.slice(0, MAX_ATTEMPTS);
     currentWeek(s, today).exams += 1;
     s.xp += XP.exam + Math.round(exam.percent || 0);

@@ -3123,6 +3123,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "The results were clear however the sample was small."
+    },
+    {
+     "id": "B",
+     "text": "The results were clear; however the sample was small, and clear."
+    },
+    {
+     "id": "C",
+     "text": "The results were clear, however, the sample was small."
+    },
+    {
+     "id": "D",
+     "text": "The results were clear; however, the sample was small."
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "'however' is not a joining word, so a comma before it leaves two sentences spliced together."
+   ],
+   "id": "english-practice-1209",
+   "lessonId": "english-lesson-9",
+   "lessonKey": "Fragment and run-on",
+   "question": "Which sentence is written correctly?",
+   "topicId": "eng-01"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
      "text": "is going"
     },
     {
@@ -3739,6 +3770,37 @@
    "topicId": "eng-03"
   },
   {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "The writer describes the method, explains the result and draws a conclusion."
+    },
+    {
+     "id": "B",
+     "text": "The writer describes the method, explains the result and drew a conclusion."
+    },
+    {
+     "id": "C",
+     "text": "The writer described the method, explains the result and drew a conclusion."
+    },
+    {
+     "id": "D",
+     "text": "The writer describes the method, explained the result and draws a conclusion."
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "All three verbs must sit in the same tense unless the meaning really changes."
+   ],
+   "id": "english-practice-1219",
+   "lessonId": "english-lesson-19",
+   "lessonKey": "Tense consistency",
+   "question": "Which version keeps one time frame?",
+   "topicId": "eng-03"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -4177,6 +4239,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "When she met the student, she had already marked the work."
+    },
+    {
+     "id": "B",
+     "text": "When the teacher met the student, they had already marked the work."
+    },
+    {
+     "id": "C",
+     "text": "When the teacher met the student, the teacher had already marked the work."
+    },
+    {
+     "id": "D",
+     "text": "When the teacher met the student, she had already marked the work."
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "With two people of the same gender in the sentence, only repeating the noun removes the doubt."
+   ],
+   "id": "english-practice-1226",
+   "lessonId": "english-lesson-26",
+   "lessonKey": "Clear reference",
+   "question": "Which sentence has no unclear pronoun?",
+   "topicId": "eng-04"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
      "text": "Students should check your answers before they finish."
     },
     {
@@ -4229,6 +4322,37 @@
     "Do not switch between one, you and they inside the same sentence."
    ],
    "id": "english-practice-827",
+   "lessonId": "english-lesson-27",
+   "lessonKey": "Pronoun shift",
+   "question": "Which sentence keeps one person throughout?",
+   "topicId": "eng-04"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "If students want to improve, you should review their mistakes."
+    },
+    {
+     "id": "B",
+     "text": "If students want to improve, one should review your mistakes."
+    },
+    {
+     "id": "C",
+     "text": "If students want to improve, they should review their mistakes."
+    },
+    {
+     "id": "D",
+     "text": "If a student wants to improve, you should review your mistakes."
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "Start in the third person plural and stay there."
+   ],
+   "id": "english-practice-1227",
    "lessonId": "english-lesson-27",
    "lessonKey": "Pronoun shift",
    "question": "Which sentence keeps one person throughout?",
@@ -5227,6 +5351,37 @@
    "topicId": "eng-06"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "You should have brought it and did not"
+    },
+    {
+     "id": "B",
+     "text": "You will not need it next time"
+    },
+    {
+     "id": "C",
+     "text": "You are not allowed to bring it"
+    },
+    {
+     "id": "D",
+     "text": "You brought it, but it was not necessary"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "'needn't have' describes something done that turned out to be unnecessary."
+   ],
+   "id": "english-practice-1243",
+   "lessonId": "english-lesson-43",
+   "lessonKey": "Perfect modals",
+   "question": "What does this sentence mean?  “You needn’t have brought your calculator.”",
+   "topicId": "eng-06"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -5472,6 +5627,37 @@
    "lessonId": "english-lesson-47",
    "lessonKey": "Preposition + gerund",
    "question": "Choose the correct form.  “She apologised for ___ late.”",
+   "topicId": "eng-06"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "sees"
+    },
+    {
+     "id": "B",
+     "text": "see"
+    },
+    {
+     "id": "C",
+     "text": "seeing"
+    },
+    {
+     "id": "D",
+     "text": "have seen"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "In 'look forward to', the 'to' is a preposition, so the -ing form follows."
+   ],
+   "id": "english-practice-1247",
+   "lessonId": "english-lesson-47",
+   "lessonKey": "Preposition + gerund",
+   "question": "Choose the correct form.  “She is looking forward to ___ the results.”",
    "topicId": "eng-06"
   },
   {
@@ -5847,6 +6033,37 @@
    "topicId": "eng-07"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "This is the usefullest of the two methods."
+    },
+    {
+     "id": "B",
+     "text": "This is the more useful of the two methods."
+    },
+    {
+     "id": "C",
+     "text": "This is the most useful of the two methods."
+    },
+    {
+     "id": "D",
+     "text": "This is the more useful of the three methods."
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "Two things take the comparative with 'the'; three or more would take the superlative."
+   ],
+   "id": "english-practice-1253",
+   "lessonId": "english-lesson-53",
+   "lessonKey": "No double comparison",
+   "question": "Which sentence is correct?",
+   "topicId": "eng-07"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -5913,6 +6130,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "The course teaches students reading closely, clear arguments and to revise."
+    },
+    {
+     "id": "B",
+     "text": "The course teaches students to read closely, to argue clearly and to revise carefully."
+    },
+    {
+     "id": "C",
+     "text": "The course teaches students to read closely, arguing clearly and careful revision."
+    },
+    {
+     "id": "D",
+     "text": "The course teaches students close reading, to argue clearly and revising carefully."
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "Every item in the list takes the same form: here, three 'to + verb' phrases."
+   ],
+   "id": "english-practice-1254",
+   "lessonId": "english-lesson-54",
+   "lessonKey": "Parallel lists",
+   "question": "Which sentence is parallel?",
+   "topicId": "eng-07"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "or"
     },
     {
@@ -5968,6 +6216,37 @@
    "lessonId": "english-lesson-55",
    "lessonKey": "Paired conjunctions",
    "question": "Choose the correct option.  “Not only ___ the rule, but she also explained why it works.”",
+   "topicId": "eng-07"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "She is interested not only in physics but also in chemistry."
+    },
+    {
+     "id": "B",
+     "text": "She is interested not only in physics but also chemistry."
+    },
+    {
+     "id": "C",
+     "text": "She is not only interested in physics but also chemistry."
+    },
+    {
+     "id": "D",
+     "text": "She not only is interested in physics but also in chemistry."
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "What follows 'not only' and 'but also' must match: here, two 'in + subject' phrases."
+   ],
+   "id": "english-practice-1255",
+   "lessonId": "english-lesson-55",
+   "lessonKey": "Paired conjunctions",
+   "question": "Which sentence is correct?",
    "topicId": "eng-07"
   },
   {
@@ -6405,6 +6684,37 @@
    "topicId": "eng-08"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "If she revises, she will pass."
+    },
+    {
+     "id": "B",
+     "text": "If she revised, she would pass."
+    },
+    {
+     "id": "C",
+     "text": "If she had revised, she would pass."
+    },
+    {
+     "id": "D",
+     "text": "If she had revised, she would have passed."
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "The third conditional pairs 'had + past participle' with 'would have + past participle'."
+   ],
+   "id": "english-practice-1262",
+   "lessonId": "english-lesson-62",
+   "lessonKey": "Third conditional",
+   "question": "Which sentence describes a past situation that did not happen?",
+   "topicId": "eng-08"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -6464,6 +6774,37 @@
    "lessonId": "english-lesson-63",
    "lessonKey": "Unless",
    "question": "Which sentence means the same as “You will fail unless you revise”?",
+   "topicId": "eng-08"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "She will pass whether or not she revises."
+    },
+    {
+     "id": "B",
+     "text": "She will not pass if she revises."
+    },
+    {
+     "id": "C",
+     "text": "She will pass only if she revises."
+    },
+    {
+     "id": "D",
+     "text": "She will pass unless she revises."
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "'unless' means 'if not', so passing depends on revising."
+   ],
+   "id": "english-practice-1263",
+   "lessonId": "english-lesson-63",
+   "lessonKey": "Unless",
+   "question": "Which sentence means the same as “She will not pass unless she revises”?",
    "topicId": "eng-08"
   },
   {
@@ -6529,6 +6870,37 @@
    "topicId": "eng-08"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Omar said I had been waiting here since noon."
+    },
+    {
+     "id": "B",
+     "text": "Omar said he had been waiting here since noon."
+    },
+    {
+     "id": "C",
+     "text": "Omar said he has been waiting there since noon."
+    },
+    {
+     "id": "D",
+     "text": "Omar said he had been waiting there since noon."
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "The tense shifts back and 'here' becomes 'there' when the place changes."
+   ],
+   "id": "english-practice-1264",
+   "lessonId": "english-lesson-64",
+   "lessonKey": "Reported statements",
+   "question": "Report this correctly.  Omar said, “I have been waiting here since noon.”",
+   "topicId": "eng-08"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -6588,6 +6960,37 @@
    "lessonId": "english-lesson-65",
    "lessonKey": "Reported questions",
    "question": "Report this correctly.  He asked, “Are you ready?”",
+   "topicId": "eng-08"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "The examiner asked did I check my working."
+    },
+    {
+     "id": "B",
+     "text": "The examiner asked whether did I check my working."
+    },
+    {
+     "id": "C",
+     "text": "The examiner asked if I did checked my working."
+    },
+    {
+     "id": "D",
+     "text": "The examiner asked whether I had checked my working."
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "A reported question keeps statement order, and the past shifts back to the past perfect."
+   ],
+   "id": "english-practice-1265",
+   "lessonId": "english-lesson-65",
+   "lessonKey": "Reported questions",
+   "question": "Report this correctly.  The examiner asked, “Did you check your working?”",
    "topicId": "eng-08"
   },
   {
@@ -6709,6 +7112,37 @@
     "'whom' is the object of 'invited', so nothing else follows as the object."
    ],
    "id": "english-practice-867",
+   "lessonId": "english-lesson-67",
+   "lessonKey": "Whom",
+   "question": "Which sentence is correct?",
+   "topicId": "eng-09"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "The candidate to whom the letter was sent to has replied."
+    },
+    {
+     "id": "B",
+     "text": "The candidate to who the letter was sent has replied."
+    },
+    {
+     "id": "C",
+     "text": "The candidate to whom the letter was sent has replied."
+    },
+    {
+     "id": "D",
+     "text": "The candidate whom the letter was sent has replied."
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "After a preposition the object form 'whom' is used, and the preposition is not repeated."
+   ],
+   "id": "english-practice-1267",
    "lessonId": "english-lesson-67",
    "lessonKey": "Whom",
    "question": "Which sentence is correct?",
@@ -6901,6 +7335,37 @@
    "topicId": "eng-09"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "The only book that she recommended it is out of print."
+    },
+    {
+     "id": "B",
+     "text": "The only book what she recommended is out of print."
+    },
+    {
+     "id": "C",
+     "text": "The only book that she recommended is out of print."
+    },
+    {
+     "id": "D",
+     "text": "The only book, that she recommended, is out of print."
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "An essential clause takes 'that' with no commas and no repeated object."
+   ],
+   "id": "english-practice-1270",
+   "lessonId": "english-lesson-70",
+   "lessonKey": "That",
+   "question": "Which sentence is correct?",
+   "topicId": "eng-09"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -7022,6 +7487,37 @@
    "lessonId": "english-lesson-72",
    "lessonKey": "Essential vs nonessential",
    "question": "Which sentence needs no commas?",
+   "topicId": "eng-09"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "The students passed before they revised"
+    },
+    {
+     "id": "B",
+     "text": "All the students passed, and all had revised"
+    },
+    {
+     "id": "C",
+     "text": "None of the students revised"
+    },
+    {
+     "id": "D",
+     "text": "Only the students who had revised passed"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "With no commas the clause is essential: it narrows which students are meant."
+   ],
+   "id": "english-practice-1272",
+   "lessonId": "english-lesson-72",
+   "lessonKey": "Essential vs nonessential",
+   "question": "What does this sentence mean?  “The students who had revised passed the test.”",
    "topicId": "eng-09"
   },
   {
@@ -7273,6 +7769,37 @@
    "topicId": "eng-10"
   },
   {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Having checked every answer, she handed in the paper."
+    },
+    {
+     "id": "B",
+     "text": "Having checked every answer she handed in the paper."
+    },
+    {
+     "id": "C",
+     "text": "Having checked, every answer she handed in the paper."
+    },
+    {
+     "id": "D",
+     "text": "Having checked every answer; she handed in the paper."
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "A long introductory phrase is followed by a comma."
+   ],
+   "id": "english-practice-1276",
+   "lessonId": "english-lesson-76",
+   "lessonKey": "Intro comma",
+   "question": "Which sentence is punctuated correctly?",
+   "topicId": "eng-10"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -7332,6 +7859,37 @@
    "lessonId": "english-lesson-77",
    "lessonKey": "Compound sentence",
    "question": "Which sentence is correct?",
+   "topicId": "eng-10"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "The theory is old, but it still explains the data."
+    },
+    {
+     "id": "B",
+     "text": "The theory is old but, it still explains the data."
+    },
+    {
+     "id": "C",
+     "text": "The theory is old; but it still explains the data."
+    },
+    {
+     "id": "D",
+     "text": "The theory is old, it still explains the data."
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "A comma goes before the joining word when it links two complete clauses."
+   ],
+   "id": "english-practice-1277",
+   "lessonId": "english-lesson-77",
+   "lessonKey": "Compound sentence",
+   "question": "Which sentence is punctuated correctly?",
    "topicId": "eng-10"
   },
   {
@@ -7453,6 +8011,37 @@
     "What comes before the colon must be a complete thought."
    ],
    "id": "english-practice-879",
+   "lessonId": "english-lesson-79",
+   "lessonKey": "Colon",
+   "question": "Which sentence uses the colon correctly?",
+   "topicId": "eng-10"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "The result: was clear the method had failed."
+    },
+    {
+     "id": "B",
+     "text": "The result was: clear, the method had failed."
+    },
+    {
+     "id": "C",
+     "text": "The result was clear: because the method had failed."
+    },
+    {
+     "id": "D",
+     "text": "The result was clear: the method had failed."
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "A complete thought comes before the colon, and what follows explains it."
+   ],
+   "id": "english-practice-1279",
    "lessonId": "english-lesson-79",
    "lessonKey": "Colon",
    "question": "Which sentence uses the colon correctly?",
@@ -7707,6 +8296,37 @@
    "topicId": "eng-10"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "The data were incomplete, therefore, the study was repeated."
+    },
+    {
+     "id": "B",
+     "text": "The data were incomplete therefore the study was repeated."
+    },
+    {
+     "id": "C",
+     "text": "The data were incomplete; therefore, the study was repeated."
+    },
+    {
+     "id": "D",
+     "text": "The data were incomplete; therefore the study was repeated, and incomplete."
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "'therefore' needs a semicolon or a full stop before it, not a comma."
+   ],
+   "id": "english-practice-1283",
+   "lessonId": "english-lesson-83",
+   "lessonKey": "Comma splice",
+   "question": "Which sentence is correct?",
+   "topicId": "eng-10"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -7766,6 +8386,37 @@
    "lessonId": "english-lesson-84",
    "lessonKey": "Main idea",
    "question": "A passage opens with a claim, gives three studies that support it, and ends by repeating the claim. Where is the main idea most likely to be?",
+   "topicId": "eng-12"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Homework helps when students get feedback on it"
+    },
+    {
+     "id": "B",
+     "text": "Two studies disagreed about homework"
+    },
+    {
+     "id": "C",
+     "text": "Teachers should set less homework"
+    },
+    {
+     "id": "D",
+     "text": "Homework does not help students at all"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "The main idea covers the whole passage, and every part points at feedback."
+   ],
+   "id": "english-practice-1284",
+   "lessonId": "english-lesson-84",
+   "lessonKey": "Main idea",
+   "question": "A passage argues that homework helps only when it is marked, gives two studies where unmarked homework made no difference, and ends by urging quick feedback. What is its main idea?",
    "topicId": "eng-12"
   },
   {
@@ -7893,6 +8544,37 @@
    "topicId": "eng-12"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "The longer hours caused the rise"
+    },
+    {
+     "id": "B",
+     "text": "Students borrow more when they have more free time"
+    },
+    {
+     "id": "C",
+     "text": "The longer hours may have contributed to the rise"
+    },
+    {
+     "id": "D",
+     "text": "The library will keep the longer hours next year"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "Two things happening together is not proof that one caused the other."
+   ],
+   "id": "english-practice-1286",
+   "lessonId": "english-lesson-86",
+   "lessonKey": "Inference",
+   "question": "A passage says a library extended its opening hours and borrowing rose by 30% in the same term. Which statement does the passage support?",
+   "topicId": "eng-12"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -7955,6 +8637,37 @@
    "topicId": "eng-12"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Many teachers prefer handwritten notes"
+    },
+    {
+     "id": "B",
+     "text": "Students who wrote by hand recalled 20% more a week later in a controlled trial"
+    },
+    {
+     "id": "C",
+     "text": "Typing is faster than handwriting"
+    },
+    {
+     "id": "D",
+     "text": "Handwriting has been used for centuries"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "The strongest evidence measures exactly what the claim says, under controlled conditions."
+   ],
+   "id": "english-practice-1287",
+   "lessonId": "english-lesson-87",
+   "lessonKey": "Evidence",
+   "question": "A writer claims that handwriting notes helps memory more than typing them. Which is the strongest evidence?",
+   "topicId": "eng-12"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -8014,6 +8727,37 @@
    "lessonId": "english-lesson-88",
    "lessonKey": "Purpose",
    "question": "Why might a writer begin a paragraph with a question?",
+   "topicId": "eng-12"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "To give an example of the rule"
+    },
+    {
+     "id": "B",
+     "text": "To restate the rule more simply"
+    },
+    {
+     "id": "C",
+     "text": "To limit the rule just stated"
+    },
+    {
+     "id": "D",
+     "text": "To introduce a new topic"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "It marks an exception, which narrows the rule rather than supporting it."
+   ],
+   "id": "english-practice-1288",
+   "lessonId": "english-lesson-88",
+   "lessonKey": "Purpose",
+   "question": "A paragraph explains a rule, then adds: “This is not true of irregular verbs.”  Why is that sentence there?",
    "topicId": "eng-12"
   },
   {
@@ -8141,6 +8885,37 @@
    "topicId": "eng-12"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "It repeats the first half in other words"
+    },
+    {
+     "id": "B",
+     "text": "It concludes the argument"
+    },
+    {
+     "id": "C",
+     "text": "It gives an example of the first method"
+    },
+    {
+     "id": "D",
+     "text": "It weighs a drawback against an advantage"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "'though costly' admits a drawback before giving the stronger advantage."
+   ],
+   "id": "english-practice-1290",
+   "lessonId": "english-lesson-90",
+   "lessonKey": "Function",
+   "question": "A sentence reads: “The first method is cheap; the second, though costly, is far more accurate.”  What does the second half do?",
+   "topicId": "eng-12"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -8203,6 +8978,37 @@
    "topicId": "eng-12"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "nevertheless"
+    },
+    {
+     "id": "B",
+     "text": "consequently"
+    },
+    {
+     "id": "C",
+     "text": "similarly"
+    },
+    {
+     "id": "D",
+     "text": "for example"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "The small sample is the reason for the caution, so the link shows a result."
+   ],
+   "id": "english-practice-1291",
+   "lessonId": "english-lesson-91",
+   "lessonKey": "Transitions",
+   "question": "Choose the best transition.  “The trial used only ten subjects; ___, its findings should be treated with care.”",
+   "topicId": "eng-12"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -8259,6 +9065,37 @@
     "Say it in the fewest clear words."
    ],
    "id": "english-practice-892",
+   "lessonId": "english-lesson-92",
+   "lessonKey": "Conciseness",
+   "question": "Choose the most concise version.",
+   "topicId": "eng-12"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "The committee came to the decision that the proposal should be rejected."
+    },
+    {
+     "id": "B",
+     "text": "The proposal was rejected by the committee at that time."
+    },
+    {
+     "id": "C",
+     "text": "The committee rejected the proposal."
+    },
+    {
+     "id": "D",
+     "text": "It was the committee that made the decision to reject the proposal."
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "Say who did what in as few words as the meaning allows."
+   ],
+   "id": "english-practice-1292",
    "lessonId": "english-lesson-92",
    "lessonKey": "Conciseness",
    "question": "Choose the most concise version.",
@@ -8572,6 +9409,37 @@
    "lessonId": "english-lesson-97",
    "lessonKey": "04. Or / nor nearest subject",
    "question": "Choose the correct verb.  “Neither the students nor the teacher ___ the answer.”",
+   "topicId": "eng-02"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "were"
+    },
+    {
+     "id": "B",
+     "text": "has been"
+    },
+    {
+     "id": "C",
+     "text": "is"
+    },
+    {
+     "id": "D",
+     "text": "was"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "With nor, the verb agrees with the nearest subject, and 'employees' is plural."
+   ],
+   "id": "english-practice-1297",
+   "lessonId": "english-lesson-97",
+   "lessonKey": "04. Or / nor nearest subject",
+   "question": "Choose the correct verb.  “Neither the manager nor the employees ___ aware of the change.”",
    "topicId": "eng-02"
   },
   {
@@ -9009,6 +9877,37 @@
    "topicId": "eng-02"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "were"
+    },
+    {
+     "id": "B",
+     "text": "have"
+    },
+    {
+     "id": "C",
+     "text": "are"
+    },
+    {
+     "id": "D",
+     "text": "has"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "'equipment' is uncountable, so 'all of' takes a singular verb."
+   ],
+   "id": "english-practice-1304",
+   "lessonId": "english-lesson-104",
+   "lessonKey": "11. Some / all / most / none",
+   "question": "Choose the correct verb.  “All of the equipment ___ been checked.”",
+   "topicId": "eng-02"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -9316,6 +10215,37 @@
    "lessonId": "english-lesson-109",
    "lessonKey": "16. Ignore prepositional phrase",
    "question": "Choose the correct verb.  “The box of old photographs ___ in the attic.”",
+   "topicId": "eng-02"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "are"
+    },
+    {
+     "id": "B",
+     "text": "is"
+    },
+    {
+     "id": "C",
+     "text": "were"
+    },
+    {
+     "id": "D",
+     "text": "have been"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "",
+   "explanation": [
+    "The subject is 'collection'. Everything from 'of' onwards is extra."
+   ],
+   "id": "english-practice-1309",
+   "lessonId": "english-lesson-109",
+   "lessonKey": "16. Ignore prepositional phrase",
+   "question": "Choose the correct verb.  “The collection of rare coins and stamps ___ kept in a safe.”",
    "topicId": "eng-02"
   },
   {
