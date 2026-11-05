@@ -170,11 +170,11 @@
     face.setAttribute('aria-label', flipped ? 'Show the question' : 'Show the answer');
     face.appendChild(el('span', 'flash-tag', A.subjectLabel(q.subject) + ' · card ' + (cardIndex + 1) + ' of ' + list.length + ' · ' + S.reviewLabel(st, day)));
     if (!flipped) {
-      face.appendChild(el('strong', null, (ai && ai.front) || q.question));
+      face.appendChild(el('strong', null, (ai && S.replyPlain(ai.front)) || q.question));
     } else {
-      face.appendChild(el('strong', null, (ai && ai.back) || 'Answer: ' + answerText(q, a)));
+      face.appendChild(el('strong', null, (ai && S.replyPlain(ai.back)) || 'Answer: ' + answerText(q, a)));
       if (!ai && a.explanation && a.explanation.length) face.appendChild(el('p', null, a.explanation.join(' ')));
-      if (ai && ai.hook) face.appendChild(el('em', null, ai.hook));
+      if (ai && ai.hook) face.appendChild(el('em', null, S.replyPlain(ai.hook)));
     }
     face.appendChild(el('small', null, flipped ? 'Tap to see the question' : 'Tap to flip'));
     face.addEventListener('click', function () { flipped = !flipped; paintCard(list); });

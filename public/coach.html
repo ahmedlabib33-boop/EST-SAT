@@ -71,7 +71,7 @@
   'use strict';
   var E = window.EstSat, A = window.App, el = A.el;
   var MAX_SIDE = 1100, MAX_DATA_URL = 200 * 1024;
-  var photo = '', recognition = null, listening = false, status = null;
+  var photo = '', recognition = null, listening = false, status = null, lastReply = '';
 
   function showError(text) {
     var box = A.byId('coachError');
@@ -144,7 +144,8 @@
     var box = A.byId('replyBox');
     box.hidden = false;
     A.byId('askedLine').textContent = question ? 'You asked: ' + question : 'You sent a photo.';
-    A.clear(A.byId('replyText')).textContent = reply;
+    lastReply = reply;
+    A.richText(A.byId('replyText'), reply);
     A.byId('readBtn').hidden = !('speechSynthesis' in window);
     box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     var rel = A.clear(A.byId('related'));
@@ -169,7 +170,7 @@
   A.byId('readBtn').addEventListener('click', function () {
     var synth = window.speechSynthesis;
     if (synth.speaking) { synth.cancel(); return; }
-    var text = A.byId('replyText').textContent;
+    var text = window.EstSatStudy.replyPlain(lastReply);
     var talk = new SpeechSynthesisUtterance(text);
     if (/[؀-ۿ]/.test(text)) talk.lang = 'ar-EG';
     synth.speak(talk);

@@ -340,3 +340,45 @@ test('nothing related means nothing is shown', () => {
   assert.deepEqual(titles('Hello, can you help me?', 'Of course!'), []);
   assert.deepEqual(S.relatedLessons('hello', 'hi', null).picks, []);
 });
+
+test('bold marks in an AI reply become bold text, with no asterisks left', () => {
+  const blocks = S.replyBlocks('**Rule:** The area is half base times height.');
+  assert.deepEqual(blocks, [{ type: 'para', parts: [{ text: 'Rule:', bold: true }, { text: ' The area is half base times height.' }] }]);
+  assert.equal(S.replyPlain('**What you need to know:**  \nUse **v = u + at**.'), 'What you need to know:\nUse v = u + at.');
+});
+
+test('an unfinished bold mark never shows', () => {
+  assert.equal(S.replyPlain('**Rule: add the numbers'), 'Rule: add the numbers');
+});
+
+test('lists and headings are recognised, and a numbered list keeps its numbers', () => {
+  const blocks = S.replyBlocks('## Worked example\n1. Find v0\n   - v0 = 0 m/s\n2. Plug in\n\nDone.');
+  assert.deepEqual(blocks.map((b) => b.type), ['heading', 'list', 'list', 'list', 'para']);
+  assert.equal(blocks[1].ordered, true);
+  assert.equal(blocks[2].ordered, false);
+  assert.equal(blocks[3].start, 2);
+  assert.equal(S.replyBlocks('- one\n* two\n• three')[0].items.length, 3);
+});
+
+test('maths and fill-in-the-blank questions are left alone', () => {
+  ['3*4*5 = 60', 'x * y * z', '2*3 + 4*5', 'She ____ to school and ____ home.', '3.14 is close to pi', 'a_1 + a_2'].forEach((text) => {
+    assert.equal(S.replyPlain(text), text);
+  });
+});
+
+test('single stars and backticks are understood', () => {
+  assert.deepEqual(S.replyInline('Use *past* tense and `had`.'), [
+    { text: 'Use ' }, { text: 'past', italic: true }, { text: ' tense and ' }, { text: 'had', code: true }, { text: '.' }
+  ]);
+});
+
+test('HTML in a reply stays as text for the page to draw', () => {
+  const text = '<img src=x onerror=alert(1)> **<script>alert(1)</script>**';
+  assert.equal(S.replyPlain(text), '<img src=x onerror=alert(1)> <script>alert(1)</script>');
+});
+
+test('Arabic replies and empty replies are safe', () => {
+  assert.equal(S.replyPlain('**القاعدة:** اجمع الأرقام'), 'القاعدة: اجمع الأرقام');
+  assert.deepEqual(S.replyBlocks(''), []);
+  assert.deepEqual(S.replyBlocks(null), []);
+});

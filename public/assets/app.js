@@ -342,6 +342,30 @@
     E.renderAuthLinks();
   }
 
+  // ---------- AI replies ----------
+  // Draws a reply with text nodes only, so nothing in it can become HTML.
+  function richText(box, text) {
+    function fill(node, parts) {
+      parts.forEach(function (part) {
+        if (part.bold) node.appendChild(el('strong', null, part.text));
+        else if (part.italic) node.appendChild(el('em', null, part.text));
+        else if (part.code) node.appendChild(el('code', null, part.text));
+        else node.appendChild(document.createTextNode(part.text));
+      });
+      node.setAttribute('dir', 'auto');
+      return node;
+    }
+    clear(box);
+    S.replyBlocks(text).forEach(function (block) {
+      if (block.type === 'heading') { box.appendChild(fill(el('h3'), block.parts)); return; }
+      if (block.type === 'para') { box.appendChild(fill(el('p'), block.parts)); return; }
+      var list = el(block.ordered ? 'ol' : 'ul');
+      if (block.ordered && block.start > 1) list.start = block.start;
+      block.items.forEach(function (parts) { list.appendChild(fill(el('li'), parts)); });
+      box.appendChild(list);
+    });
+  }
+
   // ---------- One screen at a time ----------
   // Panels become tabs so a page never grows past the window. Every panel needs an
   // id and a data-view attribute holding its tab label.
@@ -484,6 +508,6 @@
     el: el, clear: clear, byId: byId, icon: icon, param: param, formatDate: formatDate, clock: clock, subjectLabel: subjectLabel,
     ring: ring, meter: meter, modes: modes, toast: toast, load: load, save: save, commit: commit, boot: boot, catalog: catalog,
     chunks: chunks, questionsById: questionsById, questionCard: questionCard,
-    tabs: tabs, pager: pager, showView: function (id) { showView(id); }
+    richText: richText, tabs: tabs, pager: pager, showView: function (id) { showView(id); }
   };
 })();

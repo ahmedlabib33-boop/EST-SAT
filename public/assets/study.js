@@ -481,6 +481,68 @@
     };
   }
 
+  // ---------- Formatting AI replies ----------
+  // The model sometimes writes Markdown even when told not to. This turns a reply into plain
+  // data, and the page draws it with text nodes, so nothing in a reply can become HTML.
+  // Underscores are left alone because fill-in-the-blank questions use them.
+  function replyInline(text) {
+    var parts = [], last = 0, match;
+    var pattern = /\*\*([^\n]+?)\*\*|`([^`\n]+)`|(^|[^\w*])\*(?!\*)(\S(?:[^*\n]*\S)?)\*(?![\w*])/g;
+    function plain(value) {
+      var clean = value.replace(/\*\*/g, '');
+      if (clean) parts.push({ text: clean });
+    }
+    while ((match = pattern.exec(text))) {
+      var lead = match[3] || '';
+      plain(text.slice(last, match.index + lead.length));
+      if (match[1] !== undefined) parts.push({ text: match[1].replace(/\*\*/g, ''), bold: true });
+      else if (match[2] !== undefined) parts.push({ text: match[2], code: true });
+      else parts.push({ text: match[4], italic: true });
+      last = pattern.lastIndex;
+    }
+    plain(text.slice(last));
+    return parts;
+  }
+  function replyBlocks(text) {
+    var blocks = [], lines = [], list = null;
+    function endPara() {
+      if (lines.length) blocks.push({ type: 'para', parts: replyInline(lines.join('\n')) });
+      lines = [];
+    }
+    function endList() { list = null; }
+    String(text || '').replace(/\r\n?/g, '\n').split('\n').forEach(function (raw) {
+      var line = raw.replace(/\s+$/, ''), match;
+      if (!line.trim() || /^\s*([-*_])\1{2,}$/.test(line) || /^\s*```/.test(line)) {
+        endPara();
+        endList();
+      } else if ((match = /^\s{0,3}#{1,6}\s+(.*?)[\s#]*$/.exec(line))) {
+        endPara();
+        endList();
+        blocks.push({ type: 'heading', parts: replyInline(match[1]) });
+      } else if ((match = /^\s*[-*•–—]\s+(.*)$/.exec(line))) {
+        endPara();
+        if (!list || list.ordered) { list = { type: 'list', ordered: false, items: [] }; blocks.push(list); }
+        list.items.push(replyInline(match[1]));
+      } else if ((match = /^\s*(\d{1,3})[.)]\s+(.*)$/.exec(line))) {
+        endPara();
+        if (!list || !list.ordered) { list = { type: 'list', ordered: true, start: Number(match[1]), items: [] }; blocks.push(list); }
+        list.items.push(replyInline(match[2]));
+      } else {
+        endList();
+        lines.push(line.replace(/^\s*>\s?/, '').replace(/^\s+/, ''));
+      }
+    });
+    endPara();
+    return blocks;
+  }
+  function partsText(parts) { return parts.map(function (p) { return p.text; }).join(''); }
+  // The same reply as clean text, for reading aloud and for flashcards.
+  function replyPlain(text) {
+    return replyBlocks(text).map(function (block) {
+      return block.type === 'list' ? block.items.map(partsText).join('\n') : partsText(block.parts);
+    }).join('\n');
+  }
+
   // ---------- Small rewards (browser only; every one can be turned off) ----------
   var SETTINGS_KEY = 'estsat.settings';
   function getSettings() {
@@ -584,7 +646,7 @@
     reviewState: reviewState, scheduleReview: scheduleReview, reviewQueue: reviewQueue, reviewSummary: reviewSummary, reviewLabel: reviewLabel,
     topicRows: topicRows, topGains: topGains, readiness: readiness, dailyPlan: dailyPlan, levelFor: levelFor, streak: streak, freezesLeft: freezesLeft, updateFreezes: updateFreezes, badges: badges,
     weeklyChallenge: weeklyChallenge, minutesStudied: minutesStudied, goalLabel: goalLabel, goalReached: goalReached, unlockGoals: unlockGoals, assignmentDone: assignmentDone,
-    relatedLessons: relatedLessons,
+    relatedLessons: relatedLessons, replyInline: replyInline, replyBlocks: replyBlocks, replyPlain: replyPlain,
     getSettings: getSettings, setSetting: setSetting, celebrate: celebrate, vibrate: vibrate, saveVoice: saveVoice, loadVoice: loadVoice, deleteVoice: deleteVoice
   };
 }));
