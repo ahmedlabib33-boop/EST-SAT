@@ -43,8 +43,8 @@ def first_lesson_with_questions(client, subject):
 def test_banks_are_loaded(client):
     counts = {s['subject']: s for s in client.get('/api/practice/subjects').get_json()['subjects']}
     # 155, not the workbook's 159: four math rows repeat an earlier lesson verbatim.
-    assert counts['math'] == {'subject': 'math', 'topics': 5, 'lessons': 155, 'questions': 308}
-    assert counts['english'] == {'subject': 'english', 'topics': 12, 'lessons': 157, 'questions': 314}
+    assert counts['math'] == {'subject': 'math', 'topics': 5, 'lessons': 155, 'questions': 191}
+    assert counts['english'] == {'subject': 'english', 'topics': 12, 'lessons': 157, 'questions': 157}
 
 
 def test_unknown_subject_is_rejected(client):
@@ -62,7 +62,7 @@ def test_every_english_lesson_has_its_own_questions(client):
     all 157 rules share 12 question pairs. The importer keys on the rule instead."""
     data = client.get('/api/practice/english/topics').get_json()
     assert len(data['lessons']) == 157
-    assert all(l['questions'] == 2 for l in data['lessons'])
+    assert all(l['questions'] >= 1 for l in data['lessons'])
 
     topic = data['topics'][0]['id']
     in_topic = [l for l in data['lessons'] if l['topicId'] == topic]
@@ -110,13 +110,38 @@ def test_random_can_be_limited_to_topics(client):
 
 
 def test_questions_by_id_keep_order_and_never_carry_answers(client):
-    body = client.get('/api/practice/questions?ids=english-practice-7,math-practice-1,does-not-exist').get_json()
-    assert [q['id'] for q in body['questions']] == ['english-practice-7', 'math-practice-1']
+    body = client.get('/api/practice/questions?ids=english-practice-401,math-practice-401,does-not-exist').get_json()
+    assert [q['id'] for q in body['questions']] == ['english-practice-401', 'math-practice-401']
     assert [q['subject'] for q in body['questions']] == ['english', 'math']
     assert all('answer' not in q and 'explanation' not in q for q in body['questions'])
     assert client.get('/api/practice/questions').get_json() == {'questions': []}
-    ids = ','.join('math-practice-%d' % i for i in range(1, 100))
+    ids = ','.join('math-practice-%d' % i for i in range(401, 500))
     assert len(client.get('/api/practice/questions?ids=' + ids).get_json()['questions']) == 60
+
+
+@pytest.mark.parametrize('subject', ['math', 'english'])
+def test_no_question_is_a_generated_placeholder(client, subject):
+    """The imported banks were mostly four templates with the same wrong answers
+    every time, which a student could pass without reading the question."""
+    templates = ('Which formula or statement correctly represents', 'An EST-style problem requires',
+                 'Which choice best shows the rule', 'In an EST question about')
+    topics = client.get('/api/practice/' + subject + '/topics').get_json()
+    seen = {}
+    total = 0
+    for lesson in topics['lessons']:
+        body = client.get('/api/practice/%s/lessons/%s' % (subject, lesson['id'])).get_json()
+        for question in body['questions']:
+            total += 1
+            assert not question['question'].startswith(templates), question['id']
+            texts = [c['text'] for c in question['choices']]
+            assert len(set(texts)) == 4, '%s repeats a choice' % question['id']
+            for text in texts:
+                # Short options repeat by nature: "are", "9", "0.5". Whole phrases should not.
+                if len(text) > 15:
+                    seen[text] = seen.get(text, 0) + 1
+    # The templates offered the same three wrong sentences in all 157 questions.
+    worst, count = max(seen.items(), key=lambda pair: pair[1])
+    assert count <= max(6, total // 20), 'choice %r is reused in %d of %d questions' % (worst, count, total)
 
 
 def test_revision_sheet_has_lessons_but_no_questions(client):

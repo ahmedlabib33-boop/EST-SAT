@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EST · SAT — Math, English &amp; Physics with Ahmed Labib</title>
-<meta name="description" content="Master SAT 1 and EST 1 Math, English and Physics with Ahmed Labib: a daily mission, timed practice with instant explanations, 316 lessons, a formula vault and progress you can see.">
+<meta name="description" content="Master SAT 1 and EST 1 Math, English and Physics with Ahmed Labib: a daily mission, timed practice with instant explanations, 312 lessons, a formula vault and progress you can see.">
 <meta name="theme-color" content="#07070F">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
@@ -53,7 +53,7 @@
       <div class="reveal">
         <span class="pill"><b>NEW</b> SAT 1 · EST 1 · Math, English &amp; Physics</span>
         <h1>Master SAT 1 &amp; EST 1.<br><span class="grad-text">One mission at a time.</span></h1>
-        <p class="lead">Math, English and Physics with Ahmed Labib: a short daily mission, 600+ practice questions with instant explanations, and progress you can actually see.</p>
+        <p class="lead">Math, English and Physics with Ahmed Labib: a short daily mission, practice questions with instant explanations, and progress you can actually see.</p>
         <div class="hero-actions">
           <button class="btn btn-primary" type="button" data-launch>
             <svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>Start today’s mission
@@ -110,7 +110,7 @@
         <div><b>3</b><span>subjects</span></div>
         <div><b>23</b><span>chapters</span></div>
         <div><b>312</b><span>lessons</span></div>
-        <div><b>600+</b><span>practice questions</span></div>
+        <div><b id="bankCount">348</b><span>practice questions</span></div>
       </div>
     </div>
   </section>
@@ -787,6 +787,12 @@
   // built-in questions above stay put, so the page still works with no network and
   // the daily mission keeps its fixed, curated set.
   if (window.EstSat) {
+    // Keep the headline count honest, whatever is in the bank today.
+    window.EstSat.api('/practice/subjects', { auth: false }).then(function (res) {
+      var total = (res.subjects || []).reduce(function (sum, s) { return sum + (s.questions || 0); }, 0);
+      if (total) $('#bankCount').textContent = total;
+    }).catch(function () { /* the printed number stays */ });
+
     window.EstSat.api('/practice/random?subject=all&n=50', { auth: false }).then(function (res) {
       var added = (res.questions || []).filter(function (q) {
         return q.choices && q.choices.length === 4 && q.question;

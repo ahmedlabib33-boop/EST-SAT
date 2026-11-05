@@ -265,6 +265,15 @@
     A.questionsById(state.mistakes.map(function (m) { return m.id; })).then(function (list) {
       questions = {};
       list.forEach(function (q) { questions[q.id] = q; });
+      // A question that is no longer in the bank cannot be reviewed, so it should not
+      // keep counting towards the totals either. The list loaded, so it really is gone.
+      var left = state.mistakes.filter(function (m) { return questions[m.id]; });
+      if (left.length !== state.mistakes.length) {
+        state.mistakes.forEach(function (m) { if (!questions[m.id]) delete state.reviews[m.id]; });
+        state.mistakes = left;
+        A.save(state);
+        renderTop();
+      }
       renderView();
     }).catch(function () {
       A.clear(box).appendChild(el('div', 'card tool-card empty', 'Could not load your mistakes. Check your connection and try again.'));
