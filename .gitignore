@@ -2,6 +2,14 @@ __pycache__/
 *.pyc
 .pytest_cache/
 .env
+.env.*
+!.env.example
 *.db
 venv/
 .venv/
+node_modules/
+*.pem
+*.key
+.vercel
+.DS_Store
+.claude/auto-push.log
