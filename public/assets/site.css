@@ -1146,6 +1146,9 @@ main:has(.exam-stage) .page-head { display: none; }
   .one-screen .exam-side .btn { grid-column: 3; grid-row: 1; }
   .one-screen #examQuestion { padding: 14px; }
   .view .badge-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .view .gain-list { margin-top: 4px; padding-left: 18px; }
+  .view .gain-list li { margin-bottom: 4px; }
+  .view .gain-list small { font-size: 11.5px; line-height: 1.35; }
   .view .badge .ico { display: none; }
   .view .badge small { font-size: 11.5px; line-height: 1.35; }
   .view.tool-card, .view-cards .tool-card { padding: 14px; }
