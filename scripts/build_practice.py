@@ -28,11 +28,14 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 
-from items_english import ITEMS as ENGLISH_ITEMS  # noqa: E402
-from items_math import ITEMS as MATH_ITEMS  # noqa: E402
-from items_physics import LESSONS as PHYSICS_LESSONS, TOPICS as PHYSICS_TOPICS  # noqa: E402
+from items_english import EXTRA as ENGLISH_EXTRA, ITEMS as ENGLISH_ITEMS  # noqa: E402
+from items_math import EXTRA as MATH_EXTRA, ITEMS as MATH_ITEMS  # noqa: E402
+from items_physics import EXTRA as PHYSICS_EXTRA, LESSONS as PHYSICS_LESSONS, TOPICS as PHYSICS_TOPICS  # noqa: E402
 
 NEW_ID_FROM = 400
+# A lesson can carry more than one question: the first is 400 + the lesson number, the
+# second 800 + it, and so on. Fixed ids mean a saved mistake always finds its question.
+ID_BASES = (400, 800, 1200)
 LETTERS = 'ABCD'
 # The four generated templates, in the order they appeared in the banks.
 PLACEHOLDERS = (
@@ -70,25 +73,31 @@ def build(subject, items):
 
     written = []
     for number in sorted(items):
-        stem, options, why = items[number]
+        entries = items[number]
+        if entries and isinstance(entries[0], str):
+            entries = [entries]
+        if len(entries) > len(ID_BASES):
+            sys.exit('%s: lesson %d has more questions than there are id slots' % (subject, number))
         lesson = lessons[number]
-        question_id = '%s-practice-%d' % (subject, NEW_ID_FROM + number)
-        # Shuffled from the id, so the answer is in a different place for each
-        # question but never moves between rebuilds.
-        order = list(options)
-        random.Random(question_id).shuffle(order)
-        written.append({
-            'id': question_id,
-            'lessonId': lesson['id'],
-            'lessonKey': lesson.get('key', ''),
-            'topicId': lesson.get('topicId', ''),
-            'domain': lesson.get('domain', ''),
-            'difficulty': lesson.get('difficulty', '') or 'Medium',
-            'question': stem,
-            'choices': [{'id': LETTERS[i], 'text': text} for i, text in enumerate(order)],
-            'answer': LETTERS[order.index(options[0])],
-            'explanation': [why],
-        })
+        for slot, entry in enumerate(entries):
+            stem, options, why = entry
+            question_id = '%s-practice-%d' % (subject, ID_BASES[slot] + number)
+            # Shuffled from the id, so the answer is in a different place for each
+            # question but never moves between rebuilds.
+            order = list(options)
+            random.Random(question_id).shuffle(order)
+            written.append({
+                'id': question_id,
+                'lessonId': lesson['id'],
+                'lessonKey': lesson.get('key', ''),
+                'topicId': lesson.get('topicId', ''),
+                'domain': lesson.get('domain', ''),
+                'difficulty': lesson.get('difficulty', '') or 'Medium',
+                'question': stem,
+                'choices': [{'id': LETTERS[i], 'text': text} for i, text in enumerate(order)],
+                'answer': LETTERS[order.index(options[0])],
+                'explanation': [why],
+            })
 
     practice = kept + written
     practice.sort(key=lambda q: (lesson_number(q['lessonId']), int(q['id'].rsplit('-', 1)[-1])))
@@ -145,7 +154,9 @@ def build_physics():
             'domain': dict(PHYSICS_TOPICS)[topic],
             'difficulty': difficulty,
         })
-        items[index] = (stem, options, why)
+        items[index] = [(stem, options, why)]
+        if title in PHYSICS_EXTRA:
+            items[index].append(PHYSICS_EXTRA[title])
     payload = {'subject': 'physics', 'topics': topics, 'lessons': lessons, 'practice': []}
     path = os.path.join(ROOT, 'backend', 'content', 'physics.json')
     with io.open(path, 'w', encoding='utf-8', newline='\n') as handle:
@@ -154,10 +165,27 @@ def build_physics():
     return items
 
 
+def merge(items, extra):
+    """One lesson, its first question and any second one, in order."""
+    stray = sorted(set(extra) - set(items))
+    if stray:
+        sys.exit('second questions written for lessons with no first question: %s' % stray)
+    out = {}
+    for number, first in items.items():
+        out[number] = [first] + ([extra[number]] if number in extra else [])
+    return out
+
+
 def main():
+    stray = _unused_titles()
+    if stray:
+        sys.exit('physics: extra questions for lessons that do not exist: %s' % stray)
     physics_items = build_physics()
     total = 0
-    for subject, items in (('math', MATH_ITEMS), ('english', ENGLISH_ITEMS), ('physics', physics_items)):
+    banks = (('math', merge(MATH_ITEMS, MATH_EXTRA)),
+             ('english', merge(ENGLISH_ITEMS, ENGLISH_EXTRA)),
+             ('physics', physics_items))
+    for subject, items in banks:
         payload, dropped, kept, written = build(subject, items)
         empty = check(subject, payload)
         total += len(payload['practice'])
@@ -166,6 +194,11 @@ def main():
         if empty:
             print('         lessons with no question yet: %d (%s)' % (len(empty), ', '.join(empty[:5])))
     print('%d practice questions in all' % total)
+
+
+def _unused_titles():
+    titles = {row[1] for row in PHYSICS_LESSONS}
+    return sorted(set(PHYSICS_EXTRA) - titles)
 
 
 if __name__ == '__main__':

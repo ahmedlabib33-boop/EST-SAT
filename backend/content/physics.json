@@ -872,6 +872,37 @@
    "topicId": "PHY-01"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "33 m"
+    },
+    {
+     "id": "B",
+     "text": "100 m"
+    },
+    {
+     "id": "C",
+     "text": "200 m"
+    },
+    {
+     "id": "D",
+     "text": "3.1 m"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "Rearranged, d = v × t = 25 × 8 = 200 m."
+   ],
+   "id": "physics-practice-801",
+   "lessonId": "physics-lesson-1",
+   "lessonKey": "Speed",
+   "question": "A train travels at a steady 25 m/s for 8 s. How far does it go?",
+   "topicId": "PHY-01"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -907,6 +938,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "7 km travelled, 7 km north of the start"
+    },
+    {
+     "id": "B",
+     "text": "1 km travelled, 1 km north of the start"
+    },
+    {
+     "id": "C",
+     "text": "7 km travelled, 1 km north of the start"
+    },
+    {
+     "id": "D",
+     "text": "7 km travelled, back at the start"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "Distance adds up every kilometre ridden; displacement is only how far the finish is from the start."
+   ],
+   "id": "physics-practice-802",
+   "lessonId": "physics-lesson-2",
+   "lessonKey": "Velocity and displacement",
+   "question": "A cyclist rides 4 km north, then 3 km back south. What distance and what displacement?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
      "text": "36 m/s²"
     },
     {
@@ -931,6 +993,37 @@
    "lessonId": "physics-lesson-3",
    "lessonKey": "Acceleration",
    "question": "A car speeds up from 0 to 30 m/s in 6 s. What is its acceleration?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "−5 m/s²"
+    },
+    {
+     "id": "B",
+     "text": "−1.67 m/s²"
+    },
+    {
+     "id": "C",
+     "text": "−15 m/s²"
+    },
+    {
+     "id": "D",
+     "text": "5 m/s²"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "a = (5 − 20) ÷ 3 = −5 m/s². The minus sign shows it is slowing down."
+   ],
+   "id": "physics-practice-803",
+   "lessonId": "physics-lesson-3",
+   "lessonKey": "Acceleration",
+   "question": "A car slows from 20 m/s to 5 m/s in 3 s. What is its acceleration?",
    "topicId": "PHY-01"
   },
   {
@@ -965,6 +1058,37 @@
    "topicId": "PHY-01"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "10 s"
+    },
+    {
+     "id": "B",
+     "text": "6 s"
+    },
+    {
+     "id": "C",
+     "text": "4 s"
+    },
+    {
+     "id": "D",
+     "text": "14 s"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "From v = u + at: 20 = 8 + 2t, so 2t = 12 and t = 6 s."
+   ],
+   "id": "physics-practice-804",
+   "lessonId": "physics-lesson-4",
+   "lessonKey": "Velocity–time equation",
+   "question": "A car at 8 m/s accelerates at 2 m/s² until it reaches 20 m/s. How long does that take?",
+   "topicId": "PHY-01"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -993,6 +1117,37 @@
    "lessonId": "physics-lesson-5",
    "lessonKey": "Displacement equation",
    "question": "A trolley starts from rest and accelerates at 2 m/s² for 5 s. How far does it travel?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "12 m"
+    },
+    {
+     "id": "B",
+     "text": "21 m"
+    },
+    {
+     "id": "C",
+     "text": "18 m"
+    },
+    {
+     "id": "D",
+     "text": "30 m"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "s = ut + ½at² = 4(3) + ½(2)(9) = 12 + 9 = 21 m."
+   ],
+   "id": "physics-practice-805",
+   "lessonId": "physics-lesson-5",
+   "lessonKey": "Displacement equation",
+   "question": "A car already moving at 4 m/s accelerates at 2 m/s² for 3 s. How far does it travel?",
    "topicId": "PHY-01"
   },
   {
@@ -1027,6 +1182,37 @@
    "topicId": "PHY-01"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "5 m"
+    },
+    {
+     "id": "B",
+     "text": "50 m"
+    },
+    {
+     "id": "C",
+     "text": "25 m"
+    },
+    {
+     "id": "D",
+     "text": "100 m"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "0 = 20² + 2(−4)s, so 8s = 400 and s = 50 m."
+   ],
+   "id": "physics-practice-806",
+   "lessonId": "physics-lesson-6",
+   "lessonKey": "Velocity–displacement equation",
+   "question": "A car at 20 m/s brakes at −4 m/s² until it stops. How far does it travel?",
+   "topicId": "PHY-01"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -1055,6 +1241,37 @@
    "lessonId": "physics-lesson-7",
    "lessonKey": "Newton's first law",
    "question": "A car travels at a steady 20 m/s in a straight line. What do you know about the forces on it?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "It falls straight downwards"
+    },
+    {
+     "id": "B",
+     "text": "It keeps moving at the same velocity"
+    },
+    {
+     "id": "C",
+     "text": "It speeds up steadily"
+    },
+    {
+     "id": "D",
+     "text": "It slows down and stops"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "With no net force there is no acceleration, so the velocity never changes."
+   ],
+   "id": "physics-practice-807",
+   "lessonId": "physics-lesson-7",
+   "lessonKey": "Newton's first law",
+   "question": "A spacecraft far from any star switches its engines off. What happens next?",
    "topicId": "PHY-01"
   },
   {
@@ -1089,6 +1306,37 @@
    "topicId": "PHY-01"
   },
   {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "4 m/s²"
+    },
+    {
+     "id": "B",
+     "text": "1 m/s²"
+    },
+    {
+     "id": "C",
+     "text": "6 m/s²"
+    },
+    {
+     "id": "D",
+     "text": "5 m/s²"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "Net force = 20 − 4 = 16 N, so a = F/m = 16 ÷ 4 = 4 m/s²."
+   ],
+   "id": "physics-practice-808",
+   "lessonId": "physics-lesson-8",
+   "lessonKey": "Newton's second law",
+   "question": "A 4 kg box is pushed with 20 N while friction holds it back with 4 N. What is its acceleration?",
+   "topicId": "PHY-01"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -1117,6 +1365,37 @@
    "lessonId": "physics-lesson-9",
    "lessonKey": "Newton's third law",
    "question": "A book of weight 8 N rests on a table. What is the reaction pair of the book’s weight?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Gravity pulls less on a moving rocket"
+    },
+    {
+     "id": "B",
+     "text": "The gas pushes against the air behind the rocket"
+    },
+    {
+     "id": "C",
+     "text": "Burning fuel makes the rocket lighter"
+    },
+    {
+     "id": "D",
+     "text": "The gas pushes the rocket forward with an equal force"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "Action and reaction: the rocket pushes the gas back, so the gas pushes the rocket forward."
+   ],
+   "id": "physics-practice-809",
+   "lessonId": "physics-lesson-9",
+   "lessonKey": "Newton's third law",
+   "question": "A rocket pushes hot gas backwards. Why does the rocket move forward?",
    "topicId": "PHY-01"
   },
   {
@@ -1155,6 +1434,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "Mass 70 kg, weight 700 N"
+    },
+    {
+     "id": "B",
+     "text": "Mass 11.2 kg, weight 70 N"
+    },
+    {
+     "id": "C",
+     "text": "Mass 70 kg, weight 112 N"
+    },
+    {
+     "id": "D",
+     "text": "Mass 112 kg, weight 70 N"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "Mass never changes. Weight = mg = 70 × 1.6 = 112 N."
+   ],
+   "id": "physics-practice-810",
+   "lessonId": "physics-lesson-10",
+   "lessonKey": "Weight and gravity",
+   "question": "An astronaut of mass 70 kg lands on the Moon, where g = 1.6 N/kg. What are their mass and weight there?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
      "text": "2 m/s²"
     },
     {
@@ -1179,6 +1489,37 @@
    "lessonId": "physics-lesson-11",
    "lessonKey": "Circular motion",
    "question": "A ball moves at 6 m/s around a circle of radius 3 m. What is its centripetal acceleration?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "32 N"
+    },
+    {
+     "id": "B",
+     "text": "16 N"
+    },
+    {
+     "id": "C",
+     "text": "8 N"
+    },
+    {
+     "id": "D",
+     "text": "4 N"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "a = v²/r = 16 ÷ 2 = 8 m/s², then F = ma = 2 × 8 = 16 N."
+   ],
+   "id": "physics-practice-811",
+   "lessonId": "physics-lesson-11",
+   "lessonKey": "Circular motion",
+   "question": "A 2 kg ball moves at 4 m/s in a circle of radius 2 m. What force keeps it on the circle?",
    "topicId": "PHY-01"
   },
   {
@@ -1217,6 +1558,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "3 m/s"
+    },
+    {
+     "id": "B",
+     "text": "2 m/s"
+    },
+    {
+     "id": "C",
+     "text": "6 m/s"
+    },
+    {
+     "id": "D",
+     "text": "1.5 m/s"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "Momentum is conserved: 2 × 3 = 6 kg·m/s, shared by 3 kg, so v = 2 m/s."
+   ],
+   "id": "physics-practice-812",
+   "lessonId": "physics-lesson-12",
+   "lessonKey": "Momentum",
+   "question": "A 2 kg trolley at 3 m/s hits a stationary 1 kg trolley and they move off together. How fast do they go?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "16.7 N"
     },
     {
@@ -1241,6 +1613,37 @@
    "lessonId": "physics-lesson-13",
    "lessonKey": "Friction",
    "question": "A box presses on the floor with 50 N and μ = 0.3. What is the friction force?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "0.025"
+    },
+    {
+     "id": "B",
+     "text": "2.5"
+    },
+    {
+     "id": "C",
+     "text": "0.25"
+    },
+    {
+     "id": "D",
+     "text": "4"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "N = mg = 100 N, and μ = F/N = 25 ÷ 100 = 0.25."
+   ],
+   "id": "physics-practice-813",
+   "lessonId": "physics-lesson-13",
+   "lessonKey": "Friction",
+   "question": "A 10 kg box needs 25 N to start sliding on a flat floor (g = 10 N/kg). What is the coefficient of friction?",
    "topicId": "PHY-01"
   },
   {
@@ -1275,6 +1678,37 @@
    "topicId": "PHY-02"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "750 N"
+    },
+    {
+     "id": "B",
+     "text": "0.03 N"
+    },
+    {
+     "id": "C",
+     "text": "145 N"
+    },
+    {
+     "id": "D",
+     "text": "30 N"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Energy and work",
+   "explanation": [
+    "From W = Fd: F = 150 ÷ 5 = 30 N."
+   ],
+   "id": "physics-practice-814",
+   "lessonId": "physics-lesson-14",
+   "lessonKey": "Work",
+   "question": "A force does 150 J of work dragging a crate 5 m. How big was the force?",
+   "topicId": "PHY-02"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -1303,6 +1737,37 @@
    "lessonId": "physics-lesson-15",
    "lessonKey": "Kinetic energy",
    "question": "What is the kinetic energy of a 4 kg object moving at 3 m/s?",
+   "topicId": "PHY-02"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "It doubles"
+    },
+    {
+     "id": "B",
+     "text": "It stays the same"
+    },
+    {
+     "id": "C",
+     "text": "It becomes four times as big"
+    },
+    {
+     "id": "D",
+     "text": "It halves"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Energy and work",
+   "explanation": [
+    "KE = ½mv², and the speed is squared, so twice the speed is four times the energy."
+   ],
+   "id": "physics-practice-815",
+   "lessonId": "physics-lesson-15",
+   "lessonKey": "Kinetic energy",
+   "question": "A car doubles its speed. What happens to its kinetic energy?",
    "topicId": "PHY-02"
   },
   {
@@ -1337,6 +1802,37 @@
    "topicId": "PHY-02"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "2.5 m"
+    },
+    {
+     "id": "B",
+     "text": "5 m"
+    },
+    {
+     "id": "C",
+     "text": "12.5 m"
+    },
+    {
+     "id": "D",
+     "text": "50 m"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Energy and work",
+   "explanation": [
+    "From PE = mgh: h = 250 ÷ (5 × 10) = 5 m."
+   ],
+   "id": "physics-practice-816",
+   "lessonId": "physics-lesson-16",
+   "lessonKey": "Potential energy",
+   "question": "Lifting a 5 kg mass gives it 250 J of potential energy (g = 10 N/kg). How high was it lifted?",
+   "topicId": "PHY-02"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -1365,6 +1861,37 @@
    "lessonId": "physics-lesson-17",
    "lessonKey": "Conservation of energy",
    "question": "An object is dropped from 20 m (g = 10 m/s²). How fast is it moving as it lands?",
+   "topicId": "PHY-02"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "40 m"
+    },
+    {
+     "id": "B",
+     "text": "2 m"
+    },
+    {
+     "id": "C",
+     "text": "20 m"
+    },
+    {
+     "id": "D",
+     "text": "10 m"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Energy and work",
+   "explanation": [
+    "All the kinetic energy becomes potential: ½v² = gh, so h = 400 ÷ 20 = 20 m."
+   ],
+   "id": "physics-practice-817",
+   "lessonId": "physics-lesson-17",
+   "lessonKey": "Conservation of energy",
+   "question": "A ball is thrown straight up at 20 m/s (g = 10 m/s²). How high does it go?",
    "topicId": "PHY-02"
   },
   {
@@ -1403,6 +1930,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "100 W"
+    },
+    {
+     "id": "B",
+     "text": "250 W"
+    },
+    {
+     "id": "C",
+     "text": "1000 W"
+    },
+    {
+     "id": "D",
+     "text": "500 W"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Energy and work",
+   "explanation": [
+    "Work = 500 × 10 = 5000 J, and P = 5000 ÷ 20 = 250 W."
+   ],
+   "id": "physics-practice-818",
+   "lessonId": "physics-lesson-18",
+   "lessonKey": "Power",
+   "question": "A crane lifts a 500 N load through 10 m in 20 s. What is its power?",
+   "topicId": "PHY-02"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "10%"
     },
     {
@@ -1427,6 +1985,37 @@
    "lessonId": "physics-lesson-19",
    "lessonKey": "Efficiency",
    "question": "A machine takes in 50 J and does 40 J of useful work. What is its efficiency?",
+   "topicId": "PHY-02"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "20%"
+    },
+    {
+     "id": "B",
+     "text": "80%"
+    },
+    {
+     "id": "C",
+     "text": "48%"
+    },
+    {
+     "id": "D",
+     "text": "25%"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Energy and work",
+   "explanation": [
+    "Useful output = 60 − 48 = 12 J, and 12 ÷ 60 × 100 = 20%."
+   ],
+   "id": "physics-practice-819",
+   "lessonId": "physics-lesson-19",
+   "lessonKey": "Efficiency",
+   "question": "A lamp takes in 60 J and wastes 48 J as heat. What is its efficiency?",
    "topicId": "PHY-02"
   },
   {
@@ -1461,6 +2050,37 @@
    "topicId": "PHY-03"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "170 Hz"
+    },
+    {
+     "id": "B",
+     "text": "680 Hz"
+    },
+    {
+     "id": "C",
+     "text": "0.0015 Hz"
+    },
+    {
+     "id": "D",
+     "text": "340 Hz"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Waves and oscillations",
+   "explanation": [
+    "From v = fλ: f = 340 ÷ 0.5 = 680 Hz."
+   ],
+   "id": "physics-practice-820",
+   "lessonId": "physics-lesson-20",
+   "lessonKey": "Wave equation",
+   "question": "Sound travels at 340 m/s. What is the frequency of a sound of wavelength 0.5 m?",
+   "topicId": "PHY-03"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -1489,6 +2109,37 @@
    "lessonId": "physics-lesson-21",
    "lessonKey": "Period and frequency",
    "question": "A vibration has a frequency of 50 Hz. What is its period?",
+   "topicId": "PHY-03"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "0.5 Hz"
+    },
+    {
+     "id": "B",
+     "text": "5 Hz"
+    },
+    {
+     "id": "C",
+     "text": "2 Hz"
+    },
+    {
+     "id": "D",
+     "text": "50 Hz"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Waves and oscillations",
+   "explanation": [
+    "f = 1/T = 1 ÷ 0.5 = 2 Hz."
+   ],
+   "id": "physics-practice-821",
+   "lessonId": "physics-lesson-21",
+   "lessonKey": "Period and frequency",
+   "question": "A pendulum takes 0.5 s for one complete swing. What is its frequency?",
    "topicId": "PHY-03"
   },
   {
@@ -1523,6 +2174,37 @@
    "topicId": "PHY-03"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Pushing it harder to start"
+    },
+    {
+     "id": "B",
+     "text": "Using a heavier bob"
+    },
+    {
+     "id": "C",
+     "text": "Making the string shorter"
+    },
+    {
+     "id": "D",
+     "text": "Making the string longer"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Waves and oscillations",
+   "explanation": [
+    "T = 2π√(L/g): only the length (and gravity) changes the period."
+   ],
+   "id": "physics-practice-822",
+   "lessonId": "physics-lesson-22",
+   "lessonKey": "Simple harmonic motion",
+   "question": "Which change makes a pendulum take longer for each swing?",
+   "topicId": "PHY-03"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -1551,6 +2233,37 @@
    "lessonId": "physics-lesson-23",
    "lessonKey": "Transverse and longitudinal waves",
    "question": "Why can light cross empty space while sound cannot?",
+   "topicId": "PHY-03"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "A radio wave"
+    },
+    {
+     "id": "B",
+     "text": "Light from a lamp"
+    },
+    {
+     "id": "C",
+     "text": "Sound travelling through air"
+    },
+    {
+     "id": "D",
+     "text": "A ripple on water"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Waves and oscillations",
+   "explanation": [
+    "In sound the air vibrates back and forth along the direction the wave travels."
+   ],
+   "id": "physics-practice-823",
+   "lessonId": "physics-lesson-23",
+   "lessonKey": "Transverse and longitudinal waves",
+   "question": "Which of these is a longitudinal wave?",
    "topicId": "PHY-03"
   },
   {
@@ -1585,6 +2298,37 @@
    "topicId": "PHY-03"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "6 s"
+    },
+    {
+     "id": "B",
+     "text": "1.5 s"
+    },
+    {
+     "id": "C",
+     "text": "3 s"
+    },
+    {
+     "id": "D",
+     "text": "0.67 s"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Waves and oscillations",
+   "explanation": [
+    "The sound covers 1020 m there and back, and 1020 ÷ 340 = 3 s."
+   ],
+   "id": "physics-practice-824",
+   "lessonId": "physics-lesson-24",
+   "lessonKey": "Echo and the speed of sound",
+   "question": "A cliff is 510 m away and sound travels at 340 m/s. How long until the echo returns?",
+   "topicId": "PHY-03"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -1616,6 +2360,37 @@
    "topicId": "PHY-03"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "The same as the driver hears"
+    },
+    {
+     "id": "B",
+     "text": "Lower than the driver hears"
+    },
+    {
+     "id": "C",
+     "text": "Higher than the driver hears"
+    },
+    {
+     "id": "D",
+     "text": "The same pitch but quieter only"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Waves and oscillations",
+   "explanation": [
+    "Moving away stretches the waves, so the frequency you receive is lower."
+   ],
+   "id": "physics-practice-825",
+   "lessonId": "physics-lesson-25",
+   "lessonKey": "The Doppler effect",
+   "question": "A train moves away from you with its horn sounding. How does the pitch you hear compare with the pitch the driver hears?",
+   "topicId": "PHY-03"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -1644,6 +2419,37 @@
    "lessonId": "physics-lesson-26",
    "lessonKey": "Reflection and refraction",
    "question": "Light passes from air into glass. What happens?",
+   "topicId": "PHY-03"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "It speeds up and bends towards the normal"
+    },
+    {
+     "id": "B",
+     "text": "It speeds up and bends away from the normal"
+    },
+    {
+     "id": "C",
+     "text": "It slows down and bends away from the normal"
+    },
+    {
+     "id": "D",
+     "text": "It carries straight on without bending"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Waves and oscillations",
+   "explanation": [
+    "Air is less dense, so light speeds up and bends away from the normal."
+   ],
+   "id": "physics-practice-826",
+   "lessonId": "physics-lesson-26",
+   "lessonKey": "Reflection and refraction",
+   "question": "Light passes out of glass into air. What happens?",
    "topicId": "PHY-03"
   },
   {
@@ -1682,6 +2488,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "30 C"
+    },
+    {
+     "id": "B",
+     "text": "0.5 C"
+    },
+    {
+     "id": "C",
+     "text": "120 C"
+    },
+    {
+     "id": "D",
+     "text": "60 C"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Electricity and current",
+   "explanation": [
+    "Q = It = 0.5 × 60 = 30 C. The time must be in seconds."
+   ],
+   "id": "physics-practice-827",
+   "lessonId": "physics-lesson-27",
+   "lessonKey": "Electric current",
+   "question": "A current of 0.5 A flows for one minute. How much charge passes?",
+   "topicId": "PHY-04"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
      "text": "4 Ω"
     },
     {
@@ -1706,6 +2543,37 @@
    "lessonId": "physics-lesson-28",
    "lessonKey": "Ohm's law",
    "question": "A 12 V supply drives 3 A through a resistor. What is its resistance?",
+   "topicId": "PHY-04"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "2 A"
+    },
+    {
+     "id": "B",
+     "text": "6 A"
+    },
+    {
+     "id": "C",
+     "text": "4 A"
+    },
+    {
+     "id": "D",
+     "text": "1 A"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Electricity and current",
+   "explanation": [
+    "Total resistance = 6 Ω, so I = V/R = 12 ÷ 6 = 2 A."
+   ],
+   "id": "physics-practice-828",
+   "lessonId": "physics-lesson-28",
+   "lessonKey": "Ohm's law",
+   "question": "A 12 V supply is connected across two 3 Ω resistors in series. What current flows?",
    "topicId": "PHY-04"
   },
   {
@@ -1744,6 +2612,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "10 A"
+    },
+    {
+     "id": "B",
+     "text": "6 A"
+    },
+    {
+     "id": "C",
+     "text": "1.5 A"
+    },
+    {
+     "id": "D",
+     "text": "2 A"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Electricity and current",
+   "explanation": [
+    "R = 5 + 5 + 5 = 15 Ω, so I = 30 ÷ 15 = 2 A."
+   ],
+   "id": "physics-practice-829",
+   "lessonId": "physics-lesson-29",
+   "lessonKey": "Resistors in series",
+   "question": "Three 5 Ω resistors are in series across a 30 V supply. What current flows?",
+   "topicId": "PHY-04"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
      "text": "24 Ω"
     },
     {
@@ -1768,6 +2667,37 @@
    "lessonId": "physics-lesson-30",
    "lessonKey": "Resistors in parallel",
    "question": "Two 12 Ω resistors are connected in parallel. What is the total resistance?",
+   "topicId": "PHY-04"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "2 Ω"
+    },
+    {
+     "id": "B",
+     "text": "4.5 Ω"
+    },
+    {
+     "id": "C",
+     "text": "9 Ω"
+    },
+    {
+     "id": "D",
+     "text": "18 Ω"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Electricity and current",
+   "explanation": [
+    "1/R = 1/6 + 1/3 = 3/6, so R = 2 Ω — less than either one."
+   ],
+   "id": "physics-practice-830",
+   "lessonId": "physics-lesson-30",
+   "lessonKey": "Resistors in parallel",
+   "question": "What is the total resistance of a 6 Ω and a 3 Ω resistor in parallel?",
    "topicId": "PHY-04"
   },
   {
@@ -1799,6 +2729,37 @@
    "lessonId": "physics-lesson-31",
    "lessonKey": "Electrical power",
    "question": "A lamp runs at 12 V and draws 2 A. What is its power?",
+   "topicId": "PHY-04"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "720 A"
+    },
+    {
+     "id": "B",
+     "text": "5 A"
+    },
+    {
+     "id": "C",
+     "text": "0.2 A"
+    },
+    {
+     "id": "D",
+     "text": "48 A"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Electricity and current",
+   "explanation": [
+    "From P = VI: I = 60 ÷ 12 = 5 A."
+   ],
+   "id": "physics-practice-831",
+   "lessonId": "physics-lesson-31",
+   "lessonKey": "Electrical power",
+   "question": "A 60 W lamp runs from a 12 V supply. What current does it draw?",
    "topicId": "PHY-04"
   },
   {
@@ -1845,6 +2806,37 @@
     },
     {
      "id": "C",
+     "text": "It falls to a quarter"
+    },
+    {
+     "id": "D",
+     "text": "It doubles"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Electricity and current",
+   "explanation": [
+    "P = I²R, and the current is squared, so half the current is a quarter of the power."
+   ],
+   "id": "physics-practice-832",
+   "lessonId": "physics-lesson-32",
+   "lessonKey": "Power and resistance",
+   "question": "The current through a resistor is halved. What happens to the power it wastes?",
+   "topicId": "PHY-04"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "It stays the same"
+    },
+    {
+     "id": "B",
+     "text": "It halves"
+    },
+    {
+     "id": "C",
      "text": "It drops to a quarter"
     },
     {
@@ -1861,6 +2853,37 @@
    "lessonId": "physics-lesson-33",
    "lessonKey": "Coulomb's law",
    "question": "The distance between two charges is doubled. What happens to the force between them?",
+   "topicId": "PHY-04"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "It halves"
+    },
+    {
+     "id": "B",
+     "text": "It drops to a quarter"
+    },
+    {
+     "id": "C",
+     "text": "It becomes four times as big"
+    },
+    {
+     "id": "D",
+     "text": "It doubles"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Electricity and current",
+   "explanation": [
+    "F ∝ q₁q₂, so doubling both multiplies the force by 2 × 2 = 4."
+   ],
+   "id": "physics-practice-833",
+   "lessonId": "physics-lesson-33",
+   "lessonKey": "Coulomb's law",
+   "question": "Both charges are doubled, with the distance unchanged. What happens to the force between them?",
    "topicId": "PHY-04"
   },
   {
@@ -1899,6 +2922,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "0.1 kWh"
+    },
+    {
+     "id": "B",
+     "text": "10 kWh"
+    },
+    {
+     "id": "C",
+     "text": "1 kWh"
+    },
+    {
+     "id": "D",
+     "text": "1000 kWh"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Electricity and current",
+   "explanation": [
+    "100 W = 0.1 kW, and 0.1 × 10 = 1 kWh."
+   ],
+   "id": "physics-practice-834",
+   "lessonId": "physics-lesson-34",
+   "lessonKey": "Electrical energy",
+   "question": "A 100 W bulb is left on for 10 hours. How much energy does it use in kWh?",
+   "topicId": "PHY-04"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
      "text": "12 N"
     },
     {
@@ -1923,6 +2977,37 @@
    "lessonId": "physics-lesson-35",
    "lessonKey": "Force on a current",
    "question": "A 3 m wire carries 2 A at right angles to a 0.5 T field. What force acts on it?",
+   "topicId": "PHY-05"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "4 A"
+    },
+    {
+     "id": "B",
+     "text": "10 A"
+    },
+    {
+     "id": "C",
+     "text": "1 A"
+    },
+    {
+     "id": "D",
+     "text": "0.064 A"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Magnetism and electromagnetism",
+   "explanation": [
+    "From F = BIL: I = 0.8 ÷ (0.2 × 0.4) = 10 A."
+   ],
+   "id": "physics-practice-835",
+   "lessonId": "physics-lesson-35",
+   "lessonKey": "Force on a current",
+   "question": "A 0.4 m wire at right angles to a 0.2 T field feels a force of 0.8 N. What current is it carrying?",
    "topicId": "PHY-05"
   },
   {
@@ -1961,6 +3046,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "A force along the field lines"
+    },
+    {
+     "id": "B",
+     "text": "A force equal to qB"
+    },
+    {
+     "id": "C",
+     "text": "None, because it is not moving"
+    },
+    {
+     "id": "D",
+     "text": "The largest force it could feel"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Magnetism and electromagnetism",
+   "explanation": [
+    "F = qvB, and v = 0, so the magnetic force is zero."
+   ],
+   "id": "physics-practice-836",
+   "lessonId": "physics-lesson-36",
+   "lessonKey": "Force on a moving charge",
+   "question": "A charged particle sits at rest in a magnetic field. What force acts on it?",
+   "topicId": "PHY-05"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
      "text": "A voltage that grows with time"
     },
     {
@@ -1985,6 +3101,37 @@
    "lessonId": "physics-lesson-37",
    "lessonKey": "Electromagnetic induction",
    "question": "A magnet is held still inside a coil. What voltage is induced?",
+   "topicId": "PHY-05"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Use a weaker magnet"
+    },
+    {
+     "id": "B",
+     "text": "Move the magnet into it faster"
+    },
+    {
+     "id": "C",
+     "text": "Hold the magnet still inside it"
+    },
+    {
+     "id": "D",
+     "text": "Use fewer turns on the coil"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Magnetism and electromagnetism",
+   "explanation": [
+    "A faster change, more turns or a stronger magnet all induce a bigger voltage."
+   ],
+   "id": "physics-practice-837",
+   "lessonId": "physics-lesson-37",
+   "lessonKey": "Electromagnetic induction",
+   "question": "How can you make the voltage induced in a coil bigger?",
    "topicId": "PHY-05"
   },
   {
@@ -2016,6 +3163,37 @@
    "lessonId": "physics-lesson-38",
    "lessonKey": "Lenz's law",
    "question": "A magnet is dropped down a copper tube. What happens?",
+   "topicId": "PHY-05"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "North, pushing back against it"
+    },
+    {
+     "id": "B",
+     "text": "South, pulling it in"
+    },
+    {
+     "id": "C",
+     "text": "Neither, the coil stays unmagnetised"
+    },
+    {
+     "id": "D",
+     "text": "North at first, then south"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Magnetism and electromagnetism",
+   "explanation": [
+    "The induced current opposes the change, so the coil repels the pole coming in."
+   ],
+   "id": "physics-practice-838",
+   "lessonId": "physics-lesson-38",
+   "lessonKey": "Lenz's law",
+   "question": "A north pole is pushed into a coil. Which pole does the coil show to the magnet?",
    "topicId": "PHY-05"
   },
   {
@@ -2054,6 +3232,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "24 V"
+    },
+    {
+     "id": "B",
+     "text": "60 V"
+    },
+    {
+     "id": "C",
+     "text": "120 V"
+    },
+    {
+     "id": "D",
+     "text": "960 V"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Magnetism and electromagnetism",
+   "explanation": [
+    "Vₛ = 240 × 100/400 = 60 V. Fewer turns out means a lower voltage."
+   ],
+   "id": "physics-practice-839",
+   "lessonId": "physics-lesson-39",
+   "lessonKey": "Transformers",
+   "question": "A transformer has 400 turns on the primary and 100 on the secondary. With 240 V in, what comes out?",
+   "topicId": "PHY-05"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "Straight lines along the wire"
     },
     {
@@ -2078,6 +3287,37 @@
    "lessonId": "physics-lesson-40",
    "lessonKey": "Magnetic field of a wire",
    "question": "What is the shape of the magnetic field around a straight current-carrying wire?",
+   "topicId": "PHY-05"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "The field becomes straight lines along the wire"
+    },
+    {
+     "id": "B",
+     "text": "The field gets stronger"
+    },
+    {
+     "id": "C",
+     "text": "The circles stay the same shape but point the other way"
+    },
+    {
+     "id": "D",
+     "text": "The field disappears"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Magnetism and electromagnetism",
+   "explanation": [
+    "Reverse the current and the right-hand grip rule gives the opposite direction."
+   ],
+   "id": "physics-practice-840",
+   "lessonId": "physics-lesson-40",
+   "lessonKey": "Magnetic field of a wire",
+   "question": "The current in a straight wire is reversed. What happens to its magnetic field?",
    "topicId": "PHY-05"
   },
   {
@@ -2112,6 +3352,37 @@
    "topicId": "PHY-06"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Red, because it has the longer wavelength"
+    },
+    {
+     "id": "B",
+     "text": "It depends only on how bright the light is"
+    },
+    {
+     "id": "C",
+     "text": "They are equal, because both are light"
+    },
+    {
+     "id": "D",
+     "text": "Blue, because it has the higher frequency"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Modern physics",
+   "explanation": [
+    "E = hf, and blue light has the higher frequency, so each blue photon carries more energy."
+   ],
+   "id": "physics-practice-841",
+   "lessonId": "physics-lesson-41",
+   "lessonKey": "Photon energy",
+   "question": "Which carries more energy, one photon of blue light or one of red light?",
+   "topicId": "PHY-06"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -2140,6 +3411,37 @@
    "lessonId": "physics-lesson-42",
    "lessonKey": "The photoelectric effect",
    "question": "Red light shines on a metal and no electrons are released. What happens if the light is made much brighter?",
+   "topicId": "PHY-06"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "How bright the light is"
+    },
+    {
+     "id": "B",
+     "text": "The frequency of the light"
+    },
+    {
+     "id": "C",
+     "text": "How long the light is left on"
+    },
+    {
+     "id": "D",
+     "text": "How big the metal plate is"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Modern physics",
+   "explanation": [
+    "Each photon must carry enough energy on its own, and that depends on frequency."
+   ],
+   "id": "physics-practice-842",
+   "lessonId": "physics-lesson-42",
+   "lessonKey": "The photoelectric effect",
+   "question": "What decides whether light can release electrons from a metal at all?",
    "topicId": "PHY-06"
   },
   {
@@ -2178,6 +3480,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "11"
+    },
+    {
+     "id": "B",
+     "text": "23"
+    },
+    {
+     "id": "C",
+     "text": "34"
+    },
+    {
+     "id": "D",
+     "text": "22"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Modern physics",
+   "explanation": [
+    "The mass number counts protons and neutrons: 11 + 12 = 23."
+   ],
+   "id": "physics-practice-843",
+   "lessonId": "physics-lesson-43",
+   "lessonKey": "Atomic structure",
+   "question": "An atom has 11 protons, 12 neutrons and 11 electrons. What is its mass number?",
+   "topicId": "PHY-06"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "5 g"
     },
     {
@@ -2202,6 +3535,37 @@
    "lessonId": "physics-lesson-44",
    "lessonKey": "Half-life",
    "question": "A sample of 80 g has a half-life of 4 days. How much is left after 12 days?",
+   "topicId": "PHY-06"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "1.5 days"
+    },
+    {
+     "id": "B",
+     "text": "9 days"
+    },
+    {
+     "id": "C",
+     "text": "4.5 days"
+    },
+    {
+     "id": "D",
+     "text": "3 days"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Modern physics",
+   "explanation": [
+    "160 → 80 → 40 → 20 is 3 halvings in 9 days, so each takes 3 days."
+   ],
+   "id": "physics-practice-844",
+   "lessonId": "physics-lesson-44",
+   "lessonKey": "Half-life",
+   "question": "A sample falls from 160 g to 20 g in 9 days. What is its half-life?",
    "topicId": "PHY-06"
   },
   {
@@ -2240,6 +3604,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "It falls by 1"
+    },
+    {
+     "id": "B",
+     "text": "It does not change"
+    },
+    {
+     "id": "C",
+     "text": "It rises by 1"
+    },
+    {
+     "id": "D",
+     "text": "It falls by 2"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Modern physics",
+   "explanation": [
+    "A neutron becomes a proton, so the nucleus has one more proton than before."
+   ],
+   "id": "physics-practice-845",
+   "lessonId": "physics-lesson-45",
+   "lessonKey": "Nuclear decay",
+   "question": "A nucleus emits a beta particle. What happens to its atomic number?",
+   "topicId": "PHY-06"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
      "text": "Mass is destroyed, so energy is not conserved"
     },
     {
@@ -2264,6 +3659,37 @@
    "lessonId": "physics-lesson-46",
    "lessonKey": "Mass and energy",
    "question": "Why does the Sun lose mass as it shines?",
+   "topicId": "PHY-06"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "It was destroyed, so energy is not conserved"
+    },
+    {
+     "id": "B",
+     "text": "It was released as energy"
+    },
+    {
+     "id": "C",
+     "text": "It escaped as extra neutrons"
+    },
+    {
+     "id": "D",
+     "text": "It is still there but cannot be measured"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Modern physics",
+   "explanation": [
+    "E = mc²: the lost mass appears as the energy the reaction gives out."
+   ],
+   "id": "physics-practice-846",
+   "lessonId": "physics-lesson-46",
+   "lessonKey": "Mass and energy",
+   "question": "In fusion the products have slightly less mass than the nuclei that went in. Where has the missing mass gone?",
    "topicId": "PHY-06"
   },
   {
@@ -2295,6 +3721,37 @@
    "lessonId": "physics-lesson-47",
    "lessonKey": "Relativity",
    "question": "Why can a spacecraft never reach the speed of light?",
+   "topicId": "PHY-06"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "The faster one measures a lower speed"
+    },
+    {
+     "id": "B",
+     "text": "Both measure exactly the same speed"
+    },
+    {
+     "id": "C",
+     "text": "Neither can measure it at all"
+    },
+    {
+     "id": "D",
+     "text": "The faster one measures a higher speed"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Modern physics",
+   "explanation": [
+    "The speed of light in a vacuum is the same for every observer, however they are moving."
+   ],
+   "id": "physics-practice-847",
+   "lessonId": "physics-lesson-47",
+   "lessonKey": "Relativity",
+   "question": "Two spacecraft moving at different speeds both measure the speed of the same light beam. What do they find?",
    "topicId": "PHY-06"
   }
  ],

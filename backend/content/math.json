@@ -3195,6 +3195,37 @@
    "topicId": "MATH-01"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "12"
+    },
+    {
+     "id": "B",
+     "text": "30"
+    },
+    {
+     "id": "C",
+     "text": "24"
+    },
+    {
+     "id": "D",
+     "text": "150"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "(2 ÷ 5) × 60 = 0.4 × 60 = 24."
+   ],
+   "id": "math-practice-805",
+   "lessonId": "math-lesson-5",
+   "lessonKey": "Fraction meaning",
+   "question": "What is 2/5 of 60?",
+   "topicId": "MATH-01"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -3223,6 +3254,37 @@
    "lessonId": "math-lesson-6",
    "lessonKey": "Adding fractions",
    "question": "What is 1/4 + 3/8?",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "1/18"
+    },
+    {
+     "id": "B",
+     "text": "2/9"
+    },
+    {
+     "id": "C",
+     "text": "1/2"
+    },
+    {
+     "id": "D",
+     "text": "5/6"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "1/3 = 2/6, and 2/6 + 1/6 = 3/6 = 1/2."
+   ],
+   "id": "math-practice-806",
+   "lessonId": "math-lesson-6",
+   "lessonKey": "Adding fractions",
+   "question": "What is 1/3 + 1/6?",
    "topicId": "MATH-01"
   },
   {
@@ -3257,6 +3319,37 @@
    "topicId": "MATH-01"
   },
   {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "1/2"
+    },
+    {
+     "id": "B",
+     "text": "9/8"
+    },
+    {
+     "id": "C",
+     "text": "2/7"
+    },
+    {
+     "id": "D",
+     "text": "5/7"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "Multiply across: (3 × 2)/(4 × 3) = 6/12 = 1/2."
+   ],
+   "id": "math-practice-807",
+   "lessonId": "math-lesson-7",
+   "lessonKey": "Multiplying fractions",
+   "question": "What is 3/4 of 2/3?",
+   "topicId": "MATH-01"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -3285,6 +3378,37 @@
    "lessonId": "math-lesson-8",
    "lessonKey": "Dividing fractions",
    "question": "What is (5/6) ÷ (2/3)?",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "3/8"
+    },
+    {
+     "id": "B",
+     "text": "1/4"
+    },
+    {
+     "id": "C",
+     "text": "2/3"
+    },
+    {
+     "id": "D",
+     "text": "3/2"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "Flip the second fraction and multiply: (3/4) × (2/1) = 6/4 = 3/2."
+   ],
+   "id": "math-practice-808",
+   "lessonId": "math-lesson-8",
+   "lessonKey": "Dividing fractions",
+   "question": "What is 3/4 ÷ 1/2?",
    "topicId": "MATH-01"
   },
   {
@@ -3319,6 +3443,37 @@
    "topicId": "MATH-01"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "24"
+    },
+    {
+     "id": "B",
+     "text": "12"
+    },
+    {
+     "id": "C",
+     "text": "36"
+    },
+    {
+     "id": "D",
+     "text": "16"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "1 + 3 = 4 parts, so one part is 12. The larger share is 3 × 12 = 36."
+   ],
+   "id": "math-practice-809",
+   "lessonId": "math-lesson-9",
+   "lessonKey": "Ratio",
+   "question": "Share 48 in the ratio 1 : 3. How big is the larger share?",
+   "topicId": "MATH-01"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -3350,6 +3505,37 @@
    "topicId": "MATH-01"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "21 pounds"
+    },
+    {
+     "id": "B",
+     "text": "4 pounds"
+    },
+    {
+     "id": "C",
+     "text": "36 pounds"
+    },
+    {
+     "id": "D",
+     "text": "28 pounds"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "One pen costs 4, so 7 pens cost 28."
+   ],
+   "id": "math-practice-810",
+   "lessonId": "math-lesson-10",
+   "lessonKey": "Proportion",
+   "question": "If 3 pens cost 12 pounds, what do 7 pens cost?",
+   "topicId": "MATH-01"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -3378,6 +3564,37 @@
    "lessonId": "math-lesson-11",
    "lessonKey": "Percent formula",
    "question": "45 is what percent of 180?",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "300"
+    },
+    {
+     "id": "B",
+     "text": "15"
+    },
+    {
+     "id": "C",
+     "text": "30"
+    },
+    {
+     "id": "D",
+     "text": "3"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "0.15 × 200 = 30."
+   ],
+   "id": "math-practice-811",
+   "lessonId": "math-lesson-11",
+   "lessonKey": "Percent formula",
+   "question": "What is 15% of 200?",
    "topicId": "MATH-01"
   },
   {
@@ -3416,6 +3633,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "20%"
+    },
+    {
+     "id": "B",
+     "text": "80%"
+    },
+    {
+     "id": "C",
+     "text": "25%"
+    },
+    {
+     "id": "D",
+     "text": "125%"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "Change ÷ original = 20/80 = 0.25, so 25%."
+   ],
+   "id": "math-practice-812",
+   "lessonId": "math-lesson-12",
+   "lessonKey": "Percent increase",
+   "question": "A number rises from 80 to 100. What is the percent increase?",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
      "text": "43%"
     },
     {
@@ -3440,6 +3688,37 @@
    "lessonId": "math-lesson-13",
    "lessonKey": "Percent decrease",
    "question": "A price falls from 50 to 35. What is the percent decrease?",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "200"
+    },
+    {
+     "id": "B",
+     "text": "230"
+    },
+    {
+     "id": "C",
+     "text": "300"
+    },
+    {
+     "id": "D",
+     "text": "50"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "20% of 250 is 50, so the new price is 250 − 50 = 200."
+   ],
+   "id": "math-practice-813",
+   "lessonId": "math-lesson-13",
+   "lessonKey": "Percent decrease",
+   "question": "A price of 250 falls by 20%. What is the new price?",
    "topicId": "MATH-01"
   },
   {
@@ -3567,6 +3846,37 @@
    "topicId": "MATH-01"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "y = −2x + 3"
+    },
+    {
+     "id": "B",
+     "text": "y = 3x − 2"
+    },
+    {
+     "id": "C",
+     "text": "y = 2x − 3"
+    },
+    {
+     "id": "D",
+     "text": "y = 3x + 2"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "y = mx + b with m = 3 and b = −2."
+   ],
+   "id": "math-practice-815",
+   "lessonId": "math-lesson-15",
+   "lessonKey": "Slope Intercept Form",
+   "question": "A line has slope 3 and passes through (0, −2). What is its equation?",
+   "topicId": "MATH-01"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -3691,6 +4001,37 @@
    "topicId": "MATH-01"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "x = 5, y = 5"
+    },
+    {
+     "id": "B",
+     "text": "x = 6, y = 4"
+    },
+    {
+     "id": "C",
+     "text": "x = 7, y = 3"
+    },
+    {
+     "id": "D",
+     "text": "x = 8, y = 2"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Algebra",
+   "explanation": [
+    "Add the equations: 2x = 14, so x = 7, and then y = 3."
+   ],
+   "id": "math-practice-817",
+   "lessonId": "math-lesson-17",
+   "lessonKey": "Solving System (Substitution)",
+   "question": "Solve the system: x + y = 10 and x − y = 4.",
+   "topicId": "MATH-01"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -3722,6 +4063,37 @@
    "topicId": "MATH-01"
   },
   {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "y = 2x + 1 and y = 2x − 3"
+    },
+    {
+     "id": "B",
+     "text": "y = x + 1 and y = −x + 1"
+    },
+    {
+     "id": "C",
+     "text": "y = 2x and y = 3x"
+    },
+    {
+     "id": "D",
+     "text": "y = 2x and 2y = 4x"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Algebra",
+   "explanation": [
+    "Same slope, different intercept: the lines are parallel and never meet."
+   ],
+   "id": "math-practice-818",
+   "lessonId": "math-lesson-18",
+   "lessonKey": "No Solution Case",
+   "question": "Which system has no solution?",
+   "topicId": "MATH-01"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -3750,6 +4122,37 @@
    "lessonId": "math-lesson-19",
    "lessonKey": "Infinite Solutions Case",
    "question": "How many solutions does this system have?  2y = 4x and y = 2x",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Exactly one"
+    },
+    {
+     "id": "B",
+     "text": "Infinitely many"
+    },
+    {
+     "id": "C",
+     "text": "Exactly two"
+    },
+    {
+     "id": "D",
+     "text": "None"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Algebra",
+   "explanation": [
+    "Divide the first by 3 and you get the second, so every point on the line works."
+   ],
+   "id": "math-practice-819",
+   "lessonId": "math-lesson-19",
+   "lessonKey": "Infinite Solutions Case",
+   "question": "How many solutions does 3x + 3y = 9 and x + y = 3 have?",
    "topicId": "MATH-01"
   },
   {
@@ -3788,6 +4191,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "x = 1 or x = 6"
+    },
+    {
+     "id": "B",
+     "text": "x = −2 or x = −3"
+    },
+    {
+     "id": "C",
+     "text": "x = −1 or x = −6"
+    },
+    {
+     "id": "D",
+     "text": "x = 2 or x = 3"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "(x + 2)(x + 3) = 0, so x = −2 or x = −3."
+   ],
+   "id": "math-practice-820",
+   "lessonId": "math-lesson-20",
+   "lessonKey": "Quadratic Standard Form",
+   "question": "Solve x² + 5x + 6 = 0.",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "x = 18"
     },
     {
@@ -3812,6 +4246,37 @@
    "lessonId": "math-lesson-21",
    "lessonKey": "Square Root Rule",
    "question": "If x² = 36, what are all the values of x?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "0"
+    },
+    {
+     "id": "B",
+     "text": "7"
+    },
+    {
+     "id": "C",
+     "text": "14"
+    },
+    {
+     "id": "D",
+     "text": "49"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "The solutions are 7 and −7, and they cancel out."
+   ],
+   "id": "math-practice-821",
+   "lessonId": "math-lesson-21",
+   "lessonKey": "Square Root Rule",
+   "question": "If x² = 49, what do the two solutions add up to?",
    "topicId": "MATH-02"
   },
   {
@@ -3846,6 +4311,37 @@
    "topicId": "MATH-02"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Two"
+    },
+    {
+     "id": "B",
+     "text": "None"
+    },
+    {
+     "id": "C",
+     "text": "Infinitely many"
+    },
+    {
+     "id": "D",
+     "text": "One"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "b² − 4ac = 36 − 36 = 0, and a zero discriminant means one repeated root."
+   ],
+   "id": "math-practice-822",
+   "lessonId": "math-lesson-22",
+   "lessonKey": "Discriminant",
+   "question": "How many real roots does x² − 6x + 9 = 0 have?",
+   "topicId": "MATH-02"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -3874,6 +4370,37 @@
    "lessonId": "math-lesson-23",
    "lessonKey": "Vertex Form",
    "question": "What is the vertex of y = (x − 3)² + 2?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "(4, −1)"
+    },
+    {
+     "id": "B",
+     "text": "(1, −4)"
+    },
+    {
+     "id": "C",
+     "text": "(−1, −4)"
+    },
+    {
+     "id": "D",
+     "text": "(−1, 4)"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "y = a(x − h)² + k, and x + 1 means h = −1, with k = −4."
+   ],
+   "id": "math-practice-823",
+   "lessonId": "math-lesson-23",
+   "lessonKey": "Vertex Form",
+   "question": "What is the vertex of y = (x + 1)² − 4?",
    "topicId": "MATH-02"
   },
   {
@@ -3908,6 +4435,37 @@
    "topicId": "MATH-02"
   },
   {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "x⁸"
+    },
+    {
+     "id": "B",
+     "text": "x²"
+    },
+    {
+     "id": "C",
+     "text": "2x⁸"
+    },
+    {
+     "id": "D",
+     "text": "x¹⁵"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Advanced Math",
+   "explanation": [
+    "Same base: add the powers, 5 + 3 = 8."
+   ],
+   "id": "math-practice-824",
+   "lessonId": "math-lesson-24",
+   "lessonKey": "Product Rule",
+   "question": "Simplify x⁵ × x³.",
+   "topicId": "MATH-02"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -3936,6 +4494,37 @@
    "lessonId": "math-lesson-25",
    "lessonKey": "Quotient Rule",
    "question": "What is 5⁶ ÷ 5²?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "x¹⁰"
+    },
+    {
+     "id": "B",
+     "text": "x²¹"
+    },
+    {
+     "id": "C",
+     "text": "x³"
+    },
+    {
+     "id": "D",
+     "text": "x⁴"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Advanced Math",
+   "explanation": [
+    "Same base: subtract the powers, 7 − 3 = 4."
+   ],
+   "id": "math-practice-825",
+   "lessonId": "math-lesson-25",
+   "lessonKey": "Quotient Rule",
+   "question": "Simplify x⁷ ÷ x³.",
    "topicId": "MATH-02"
   },
   {
@@ -3970,6 +4559,37 @@
    "topicId": "MATH-02"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "4x⁹"
+    },
+    {
+     "id": "B",
+     "text": "4x⁶"
+    },
+    {
+     "id": "C",
+     "text": "2x⁶"
+    },
+    {
+     "id": "D",
+     "text": "2x⁵"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Advanced Math",
+   "explanation": [
+    "Square both parts: 2² = 4 and (x³)² = x⁶."
+   ],
+   "id": "math-practice-826",
+   "lessonId": "math-lesson-26",
+   "lessonKey": "Power Rule",
+   "question": "Simplify (2x³)².",
+   "topicId": "MATH-02"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -3998,6 +4618,37 @@
    "lessonId": "math-lesson-27",
    "lessonKey": "Square Root",
    "question": "What is √49?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "14"
+    },
+    {
+     "id": "B",
+     "text": "72"
+    },
+    {
+     "id": "C",
+     "text": "24"
+    },
+    {
+     "id": "D",
+     "text": "12"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Advanced Math",
+   "explanation": [
+    "12 × 12 = 144."
+   ],
+   "id": "math-practice-827",
+   "lessonId": "math-lesson-27",
+   "lessonKey": "Square Root",
+   "question": "What is √144?",
    "topicId": "MATH-02"
   },
   {
@@ -4036,6 +4687,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "2√10"
+    },
+    {
+     "id": "B",
+     "text": "16"
+    },
+    {
+     "id": "C",
+     "text": "√10"
+    },
+    {
+     "id": "D",
+     "text": "4"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Advanced Math",
+   "explanation": [
+    "√8 × √2 = √16 = 4."
+   ],
+   "id": "math-practice-828",
+   "lessonId": "math-lesson-28",
+   "lessonKey": "Radical Product",
+   "question": "What is √8 × √2?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
      "text": "110"
     },
     {
@@ -4060,6 +4742,37 @@
    "lessonId": "math-lesson-29",
    "lessonKey": "Growth Model",
    "question": "A quantity starts at 100 and grows by 5% each year. What is it after 2 years?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "230"
+    },
+    {
+     "id": "B",
+     "text": "260"
+    },
+    {
+     "id": "C",
+     "text": "600"
+    },
+    {
+     "id": "D",
+     "text": "266.2"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "200 × 1.1³ = 200 × 1.331 = 266.2."
+   ],
+   "id": "math-practice-829",
+   "lessonId": "math-lesson-29",
+   "lessonKey": "Growth Model",
+   "question": "A quantity of 200 grows by 10% each year. What is it after 3 years?",
    "topicId": "MATH-02"
   },
   {
@@ -4091,6 +4804,37 @@
    "lessonId": "math-lesson-30",
    "lessonKey": "exponential model",
    "question": "Using y = a(b)ˣ with a = 200 and b = 1.1, what is y when x = 2?",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "150"
+    },
+    {
+     "id": "B",
+     "text": "400"
+    },
+    {
+     "id": "C",
+     "text": "250"
+    },
+    {
+     "id": "D",
+     "text": "300"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Algebra",
+   "explanation": [
+    "50 × 2³ = 50 × 8 = 400."
+   ],
+   "id": "math-practice-830",
+   "lessonId": "math-lesson-30",
+   "lessonKey": "exponential model",
+   "question": "Using y = 50(2)ˣ, what is y when x = 3?",
    "topicId": "MATH-01"
   },
   {
@@ -4404,6 +5148,37 @@
    "topicId": "MATH-03"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "45°"
+    },
+    {
+     "id": "B",
+     "text": "55°"
+    },
+    {
+     "id": "C",
+     "text": "65°"
+    },
+    {
+     "id": "D",
+     "text": "145°"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Geometry",
+   "explanation": [
+    "The right angle is 90°, so the third is 180 − 90 − 35 = 55°."
+   ],
+   "id": "math-practice-834",
+   "lessonId": "math-lesson-34",
+   "lessonKey": "Triangle Angle Sum",
+   "question": "A right-angled triangle has one angle of 35°. What is the third angle?",
+   "topicId": "MATH-03"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -4525,6 +5300,37 @@
    "lessonId": "math-lesson-36",
    "lessonKey": "Circle Equation",
    "question": "What is the equation of a circle with centre (0, 0) and radius 4?",
+   "topicId": "MATH-03"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Centre (2, 3), radius 5"
+    },
+    {
+     "id": "B",
+     "text": "Centre (−2, 3), radius 5"
+    },
+    {
+     "id": "C",
+     "text": "Centre (2, −3), radius 5"
+    },
+    {
+     "id": "D",
+     "text": "Centre (2, −3), radius 25"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Geometry",
+   "explanation": [
+    "The signs flip inside the brackets, and the radius is √25 = 5."
+   ],
+   "id": "math-practice-836",
+   "lessonId": "math-lesson-36",
+   "lessonKey": "Circle Equation",
+   "question": "What are the centre and radius of (x − 2)² + (y + 3)² = 25?",
    "topicId": "MATH-03"
   },
   {
@@ -5210,6 +6016,37 @@
    "topicId": "MATH-02"
   },
   {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "π/2"
+    },
+    {
+     "id": "B",
+     "text": "π"
+    },
+    {
+     "id": "C",
+     "text": "2π"
+    },
+    {
+     "id": "D",
+     "text": "π/4"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "90 × π/180 = π/2."
+   ],
+   "id": "math-practice-844",
+   "lessonId": "math-lesson-44",
+   "lessonKey": "Degree to Radian Conversion",
+   "question": "How many radians is 90°?",
+   "topicId": "MATH-02"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -5241,6 +6078,37 @@
    "topicId": "MATH-03"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "0.05"
+    },
+    {
+     "id": "B",
+     "text": "5"
+    },
+    {
+     "id": "C",
+     "text": "20"
+    },
+    {
+     "id": "D",
+     "text": "2"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Geometry",
+   "explanation": [
+    "sin = opposite ÷ hypotenuse, so opposite = 0.5 × 10 = 5."
+   ],
+   "id": "math-practice-845",
+   "lessonId": "math-lesson-45",
+   "lessonKey": "Sine Ratio",
+   "question": "In a right triangle sin θ = 0.5 and the hypotenuse is 10. How long is the opposite side?",
+   "topicId": "MATH-03"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -5269,6 +6137,37 @@
    "lessonId": "math-lesson-46",
    "lessonKey": "Cosine Ratio",
    "question": "The side next to an angle is 4 and the hypotenuse is 5. What is cos of that angle?",
+   "topicId": "MATH-03"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "0.6"
+    },
+    {
+     "id": "B",
+     "text": "1.67"
+    },
+    {
+     "id": "C",
+     "text": "0.75"
+    },
+    {
+     "id": "D",
+     "text": "0.8"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Geometry",
+   "explanation": [
+    "cos = adjacent ÷ hypotenuse = 6/10 = 0.6."
+   ],
+   "id": "math-practice-846",
+   "lessonId": "math-lesson-46",
+   "lessonKey": "Cosine Ratio",
+   "question": "The adjacent side is 6 and the hypotenuse is 10. What is cos θ?",
    "topicId": "MATH-03"
   },
   {
@@ -5307,6 +6206,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "cos x"
+    },
+    {
+     "id": "B",
+     "text": "sin x"
+    },
+    {
+     "id": "C",
+     "text": "tan x"
+    },
+    {
+     "id": "D",
+     "text": "−cos x"
+    }
+   ],
+   "difficulty": "Mixed",
+   "domain": "Geometry",
+   "explanation": [
+    "Sine and cosine swap over for complementary angles."
+   ],
+   "id": "math-practice-847",
+   "lessonId": "math-lesson-47",
+   "lessonKey": "Complementary Identity",
+   "question": "What is sin(90° − x) equal to?",
+   "topicId": "MATH-03"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
      "text": "4"
     },
     {
@@ -5331,6 +6261,37 @@
    "lessonId": "math-lesson-48",
    "lessonKey": "Function Notation",
    "question": "If f(x) = 2x, what is f(2)?",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "0"
+    },
+    {
+     "id": "B",
+     "text": "3"
+    },
+    {
+     "id": "C",
+     "text": "2"
+    },
+    {
+     "id": "D",
+     "text": "−1"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "f(0) = 3(0) − 1 = −1."
+   ],
+   "id": "math-practice-848",
+   "lessonId": "math-lesson-48",
+   "lessonKey": "Function Notation",
+   "question": "If f(x) = 3x − 1, what is f(0)?",
    "topicId": "MATH-01"
   },
   {
@@ -5369,6 +6330,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "0"
+    },
+    {
+     "id": "B",
+     "text": "4"
+    },
+    {
+     "id": "C",
+     "text": "8"
+    },
+    {
+     "id": "D",
+     "text": "−8"
+    }
+   ],
+   "difficulty": "Mixed",
+   "domain": "Algebra",
+   "explanation": [
+    "f(−2) = 4 − (−4) = 4 + 4 = 8."
+   ],
+   "id": "math-practice-849",
+   "lessonId": "math-lesson-49",
+   "lessonKey": "Evaluate Function",
+   "question": "If f(x) = x² − 2x, what is f(−2)?",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
      "text": "2x²"
     },
     {
@@ -5393,6 +6385,37 @@
    "lessonId": "math-lesson-50",
    "lessonKey": "Composite Function",
    "question": "If f(x) = x² and g(x) = 2x, what is f(g(x))?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "8"
+    },
+    {
+     "id": "B",
+     "text": "4"
+    },
+    {
+     "id": "C",
+     "text": "7"
+    },
+    {
+     "id": "D",
+     "text": "6"
+    }
+   ],
+   "difficulty": "Mixed",
+   "domain": "Advanced Math",
+   "explanation": [
+    "f(3) = 4, and g(4) = 8. Work from the inside out."
+   ],
+   "id": "math-practice-850",
+   "lessonId": "math-lesson-50",
+   "lessonKey": "Composite Function",
+   "question": "If f(x) = x + 1 and g(x) = 2x, what is g(f(3))?",
    "topicId": "MATH-02"
   },
   {
@@ -5427,6 +6450,37 @@
    "topicId": "MATH-01"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "x ≤ 13"
+    },
+    {
+     "id": "B",
+     "text": "x ≤ 4"
+    },
+    {
+     "id": "C",
+     "text": "x ≥ 3"
+    },
+    {
+     "id": "D",
+     "text": "x ≤ 3"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "3x ≤ 9, so x ≤ 3."
+   ],
+   "id": "math-practice-851",
+   "lessonId": "math-lesson-51",
+   "lessonKey": "Linear Inequality",
+   "question": "Solve 3x + 2 ≤ 11.",
+   "topicId": "MATH-01"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -5455,6 +6509,37 @@
    "lessonId": "math-lesson-52",
    "lessonKey": "Inequality Sign Change",
    "question": "Solve −2x > 6.",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "x ≤ 3"
+    },
+    {
+     "id": "B",
+     "text": "x ≤ −3"
+    },
+    {
+     "id": "C",
+     "text": "x ≥ 3"
+    },
+    {
+     "id": "D",
+     "text": "x ≥ −3"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "Dividing by a negative flips the sign: x ≥ −3."
+   ],
+   "id": "math-practice-852",
+   "lessonId": "math-lesson-52",
+   "lessonKey": "Inequality Sign Change",
+   "question": "Solve −3x ≤ 9.",
    "topicId": "MATH-01"
   },
   {
@@ -5489,6 +6574,37 @@
    "topicId": "MATH-01"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "x = 5 only"
+    },
+    {
+     "id": "B",
+     "text": "x = 0"
+    },
+    {
+     "id": "C",
+     "text": "x = 5 or x = −5"
+    },
+    {
+     "id": "D",
+     "text": "x = 25"
+    }
+   ],
+   "difficulty": "Mixed",
+   "domain": "Algebra",
+   "explanation": [
+    "Two numbers are 5 away from zero: 5 and −5."
+   ],
+   "id": "math-practice-853",
+   "lessonId": "math-lesson-53",
+   "lessonKey": "Absolute Value Equation",
+   "question": "Solve |x| = 5.",
+   "topicId": "MATH-01"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -5520,6 +6636,37 @@
    "topicId": "MATH-02"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "43"
+    },
+    {
+     "id": "B",
+     "text": "39"
+    },
+    {
+     "id": "C",
+     "text": "40"
+    },
+    {
+     "id": "D",
+     "text": "36"
+    }
+   ],
+   "difficulty": "Mixed",
+   "domain": "Advanced Math",
+   "explanation": [
+    "a₁ + 9d = 3 + 9(4) = 39."
+   ],
+   "id": "math-practice-854",
+   "lessonId": "math-lesson-54",
+   "lessonKey": "Arithmetic Sequence",
+   "question": "A sequence runs 3, 7, 11, 15, …  What is the 10th term?",
+   "topicId": "MATH-02"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -5548,6 +6695,37 @@
    "lessonId": "math-lesson-55",
    "lessonKey": "Geometric Sequence",
    "question": "A sequence starts at 3 and doubles each time. What is the 4th term?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "54"
+    },
+    {
+     "id": "B",
+     "text": "162"
+    },
+    {
+     "id": "C",
+     "text": "108"
+    },
+    {
+     "id": "D",
+     "text": "486"
+    }
+   ],
+   "difficulty": "Mixed",
+   "domain": "Advanced Math",
+   "explanation": [
+    "Each term is 3 times the last: 2, 6, 18, 54, 162."
+   ],
+   "id": "math-practice-855",
+   "lessonId": "math-lesson-55",
+   "lessonKey": "Geometric Sequence",
+   "question": "A sequence runs 2, 6, 18, …  What is the 5th term?",
    "topicId": "MATH-02"
   },
   {
@@ -5586,6 +6764,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "27"
+    },
+    {
+     "id": "B",
+     "text": "4"
+    },
+    {
+     "id": "C",
+     "text": "9"
+    },
+    {
+     "id": "D",
+     "text": "3"
+    }
+   ],
+   "difficulty": "Mixed",
+   "domain": "Advanced Math",
+   "explanation": [
+    "3⁴ = 81."
+   ],
+   "id": "math-practice-856",
+   "lessonId": "math-lesson-56",
+   "lessonKey": "Log Definition",
+   "question": "What is log₃ 81?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "log 5"
     },
     {
@@ -5610,6 +6819,37 @@
    "lessonId": "math-lesson-57",
    "lessonKey": "Log Product Rule",
    "question": "Write log 2 + log 3 as one logarithm.",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "29"
+    },
+    {
+     "id": "B",
+     "text": "log 0.16"
+    },
+    {
+     "id": "C",
+     "text": "log 29"
+    },
+    {
+     "id": "D",
+     "text": "2"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "log 4 + log 25 = log 100 = 2."
+   ],
+   "id": "math-practice-857",
+   "lessonId": "math-lesson-57",
+   "lessonKey": "Log Product Rule",
+   "question": "What is log 4 + log 25?",
    "topicId": "MATH-02"
   },
   {
@@ -5648,6 +6888,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "10"
+    },
+    {
+     "id": "B",
+     "text": "100"
+    },
+    {
+     "id": "C",
+     "text": "48"
+    },
+    {
+     "id": "D",
+     "text": "14"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Geometry",
+   "explanation": [
+    "√(6² + 8²) = √100 = 10."
+   ],
+   "id": "math-practice-858",
+   "lessonId": "math-lesson-58",
+   "lessonKey": "Distance Formula",
+   "question": "How far is (6, 8) from the origin?",
+   "topicId": "MATH-03"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
      "text": "(4, 4)"
     },
     {
@@ -5679,6 +6950,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "(4, 4)"
+    },
+    {
+     "id": "B",
+     "text": "(8, −4)"
+    },
+    {
+     "id": "C",
+     "text": "(2, 4)"
+    },
+    {
+     "id": "D",
+     "text": "(2, 2)"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Geometry",
+   "explanation": [
+    "Average each coordinate: ((−2+6)/2, (4+0)/2) = (2, 2)."
+   ],
+   "id": "math-practice-859",
+   "lessonId": "math-lesson-59",
+   "lessonKey": "Midpoint Formula",
+   "question": "What is the midpoint of (−2, 4) and (6, 0)?",
+   "topicId": "MATH-03"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
      "text": "2.4"
     },
     {
@@ -5703,6 +7005,37 @@
    "lessonId": "math-lesson-60",
    "lessonKey": "Direct Variation",
    "question": "y varies directly with x, and y = 15 when x = 5. What is y when x = 8?",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "3"
+    },
+    {
+     "id": "B",
+     "text": "8"
+    },
+    {
+     "id": "C",
+     "text": "48"
+    },
+    {
+     "id": "D",
+     "text": "1/3"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "k = y/x = 12 ÷ 4 = 3."
+   ],
+   "id": "math-practice-860",
+   "lessonId": "math-lesson-60",
+   "lessonKey": "Direct Variation",
+   "question": "y varies directly with x, and y = 12 when x = 4. What is k?",
    "topicId": "MATH-01"
   },
   {
@@ -5741,6 +7074,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "0.8"
+    },
+    {
+     "id": "B",
+     "text": "20"
+    },
+    {
+     "id": "C",
+     "text": "9"
+    },
+    {
+     "id": "D",
+     "text": "1.25"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Algebra",
+   "explanation": [
+    "k = xy = 4 × 5 = 20."
+   ],
+   "id": "math-practice-861",
+   "lessonId": "math-lesson-61",
+   "lessonKey": "Inverse Variation",
+   "question": "y varies inversely with x, and y = 5 when x = 4. What is k?",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "5 hours"
     },
     {
@@ -5765,6 +7129,37 @@
    "lessonId": "math-lesson-62",
    "lessonKey": "Work Formula",
    "question": "One tap fills a tank in 2 hours and another fills it in 3 hours. How long do they take together?",
+   "topicId": "MATH-05"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "2 hours"
+    },
+    {
+     "id": "B",
+     "text": "8 hours"
+    },
+    {
+     "id": "C",
+     "text": "4 hours"
+    },
+    {
+     "id": "D",
+     "text": "1 hour"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Problem Solving",
+   "explanation": [
+    "Together they do 1/4 + 1/4 = 1/2 a tank per hour, so the job takes 2 hours."
+   ],
+   "id": "math-practice-862",
+   "lessonId": "math-lesson-62",
+   "lessonKey": "Work Formula",
+   "question": "Two taps each fill a tank in 4 hours. How long do they take together?",
    "topicId": "MATH-05"
   },
   {
@@ -5896,6 +7291,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "0"
+    },
+    {
+     "id": "B",
+     "text": "2"
+    },
+    {
+     "id": "C",
+     "text": "1"
+    },
+    {
+     "id": "D",
+     "text": "−2"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Algebra",
+   "explanation": [
+    "i² = −1 and i⁴ = 1, so the sum is 0."
+   ],
+   "id": "math-practice-864",
+   "lessonId": "math-lesson-64",
+   "lessonKey": "Definition of i",
+   "question": "What is i² + i⁴?",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
      "text": "8"
     },
     {
@@ -5920,6 +7346,37 @@
    "lessonId": "math-lesson-65",
    "lessonKey": "Interquartile Range",
    "question": "If Q1 = 10 and Q3 = 18, what is the interquartile range?",
+   "topicId": "MATH-04"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "15"
+    },
+    {
+     "id": "B",
+     "text": "44"
+    },
+    {
+     "id": "C",
+     "text": "7"
+    },
+    {
+     "id": "D",
+     "text": "11"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Statistics",
+   "explanation": [
+    "Q3 = Q1 + IQR = 4 + 11 = 15."
+   ],
+   "id": "math-practice-865",
+   "lessonId": "math-lesson-65",
+   "lessonKey": "Interquartile Range",
+   "question": "If Q1 = 4 and the interquartile range is 11, what is Q3?",
    "topicId": "MATH-04"
   },
   {
@@ -5954,6 +7411,37 @@
    "topicId": "MATH-05"
   },
   {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "20%"
+    },
+    {
+     "id": "B",
+     "text": "25%"
+    },
+    {
+     "id": "C",
+     "text": "15%"
+    },
+    {
+     "id": "D",
+     "text": "40%"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Problem Solving",
+   "explanation": [
+    "Pure amount = 0.2 + 0.6 = 0.8 litres in 4 litres, which is 20%."
+   ],
+   "id": "math-practice-866",
+   "lessonId": "math-lesson-66",
+   "lessonKey": "Mixture Concentration",
+   "question": "2 litres of a 10% solution is mixed with 2 litres of a 30% solution. What is the concentration?",
+   "topicId": "MATH-05"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -5982,6 +7470,37 @@
    "lessonId": "math-lesson-67",
    "lessonKey": "Complement Probability",
    "question": "If P(A) = 0.3, what is the probability that A does not happen?",
+   "topicId": "MATH-04"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "1.65"
+    },
+    {
+     "id": "B",
+     "text": "0.65"
+    },
+    {
+     "id": "C",
+     "text": "0"
+    },
+    {
+     "id": "D",
+     "text": "0.35"
+    }
+   ],
+   "difficulty": "Mixed",
+   "domain": "Statistics",
+   "explanation": [
+    "P(A) = 1 − 0.65 = 0.35."
+   ],
+   "id": "math-practice-867",
+   "lessonId": "math-lesson-67",
+   "lessonKey": "Complement Probability",
+   "question": "If the probability that A does not happen is 0.65, what is P(A)?",
    "topicId": "MATH-04"
   },
   {
@@ -6020,6 +7539,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "2/6"
+    },
+    {
+     "id": "B",
+     "text": "1/12"
+    },
+    {
+     "id": "C",
+     "text": "1/6"
+    },
+    {
+     "id": "D",
+     "text": "1/36"
+    }
+   ],
+   "difficulty": "Mixed",
+   "domain": "Statistics",
+   "explanation": [
+    "The rolls are independent: 1/6 × 1/6 = 1/36."
+   ],
+   "id": "math-practice-868",
+   "lessonId": "math-lesson-68",
+   "lessonKey": "Independent Events",
+   "question": "Two fair dice are rolled. What is the probability of two sixes?",
+   "topicId": "MATH-04"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
      "text": "0.7"
     },
     {
@@ -6044,6 +7594,37 @@
    "lessonId": "math-lesson-69",
    "lessonKey": "Union Probability",
    "question": "P(A) = 0.4, P(B) = 0.3 and P(A and B) = 0.1. What is P(A or B)?",
+   "topicId": "MATH-04"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "0.2"
+    },
+    {
+     "id": "B",
+     "text": "1"
+    },
+    {
+     "id": "C",
+     "text": "0.1"
+    },
+    {
+     "id": "D",
+     "text": "0.9"
+    }
+   ],
+   "difficulty": "Mixed",
+   "domain": "Statistics",
+   "explanation": [
+    "With no overlap you simply add: 0.5 + 0.4 = 0.9."
+   ],
+   "id": "math-practice-869",
+   "lessonId": "math-lesson-69",
+   "lessonKey": "Union Probability",
+   "question": "A and B cannot both happen. P(A) = 0.5 and P(B) = 0.4. What is P(A or B)?",
    "topicId": "MATH-04"
   },
   {
@@ -6078,6 +7659,37 @@
    "topicId": "MATH-02"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Moved 1 left and 4 down"
+    },
+    {
+     "id": "B",
+     "text": "Moved 4 left and 1 down"
+    },
+    {
+     "id": "C",
+     "text": "Moved 4 left and 1 up"
+    },
+    {
+     "id": "D",
+     "text": "Moved 4 right and 1 down"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "Inside the bracket the sign flips, so + 4 moves left; − 1 outside moves down."
+   ],
+   "id": "math-practice-870",
+   "lessonId": "math-lesson-70",
+   "lessonKey": "Translation",
+   "question": "How does y = (x + 4)² − 1 compare with y = x²?",
+   "topicId": "MATH-02"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -6106,6 +7718,37 @@
    "lessonId": "math-lesson-71",
    "lessonKey": "Reflection",
    "question": "The graph of −f(x) is the graph of f(x) reflected in which line?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "the line y = −1"
+    },
+    {
+     "id": "B",
+     "text": "the x-axis"
+    },
+    {
+     "id": "C",
+     "text": "the line y = x"
+    },
+    {
+     "id": "D",
+     "text": "the y-axis"
+    }
+   ],
+   "difficulty": "Mixed",
+   "domain": "Advanced Math",
+   "explanation": [
+    "Changing the sign of the input flips the graph left to right, across the y-axis."
+   ],
+   "id": "math-practice-871",
+   "lessonId": "math-lesson-71",
+   "lessonKey": "Reflection",
+   "question": "The graph of f(−x) is the graph of f(x) reflected in which line?",
    "topicId": "MATH-02"
   },
   {
@@ -6140,6 +7783,37 @@
    "topicId": "MATH-02"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Squashes it to half its width"
+    },
+    {
+     "id": "B",
+     "text": "Moves it down by a half"
+    },
+    {
+     "id": "C",
+     "text": "Squashes it to half its height"
+    },
+    {
+     "id": "D",
+     "text": "Doubles its height"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "Multiplying the output by ½ halves every y-value."
+   ],
+   "id": "math-practice-872",
+   "lessonId": "math-lesson-72",
+   "lessonKey": "Vertical Stretch",
+   "question": "What does y = ½f(x) do to the graph of f?",
+   "topicId": "MATH-02"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -6168,6 +7842,37 @@
    "lessonId": "math-lesson-73",
    "lessonKey": "Log Quotient Rule",
    "question": "Write log 6 − log 2 as one logarithm.",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "log 90"
+    },
+    {
+     "id": "B",
+     "text": "2"
+    },
+    {
+     "id": "C",
+     "text": "1"
+    },
+    {
+     "id": "D",
+     "text": "10"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "log(100 ÷ 10) = log 10 = 1."
+   ],
+   "id": "math-practice-873",
+   "lessonId": "math-lesson-73",
+   "lessonKey": "Log Quotient Rule",
+   "question": "What is log 100 − log 10?",
    "topicId": "MATH-02"
   },
   {
@@ -6202,6 +7907,37 @@
    "topicId": "MATH-02"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "log 10"
+    },
+    {
+     "id": "B",
+     "text": "10"
+    },
+    {
+     "id": "C",
+     "text": "log 7"
+    },
+    {
+     "id": "D",
+     "text": "log 25"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "n log a = log(aⁿ), so 2 log 5 = log 5² = log 25."
+   ],
+   "id": "math-practice-874",
+   "lessonId": "math-lesson-74",
+   "lessonKey": "Log Power Rule",
+   "question": "Write 2 log 5 as a single logarithm.",
+   "topicId": "MATH-02"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -6230,6 +7966,37 @@
    "lessonId": "math-lesson-75",
    "lessonKey": "Similar Triangles Ratio",
    "question": "Two triangles are similar. One has sides 3 and 5; the matching side of the other is 6. How long is its other side?",
+   "topicId": "MATH-03"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "36 cm²"
+    },
+    {
+     "id": "B",
+     "text": "9 cm²"
+    },
+    {
+     "id": "C",
+     "text": "12 cm²"
+    },
+    {
+     "id": "D",
+     "text": "16 cm²"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Geometry",
+   "explanation": [
+    "Area scales by the square of the factor: 4 × 3² = 36 cm²."
+   ],
+   "id": "math-practice-875",
+   "lessonId": "math-lesson-75",
+   "lessonKey": "Similar Triangles Ratio",
+   "question": "Two similar triangles have a scale factor of 3. The smaller has area 4 cm². What is the area of the larger?",
    "topicId": "MATH-03"
   },
   {
@@ -6264,6 +8031,37 @@
    "topicId": "MATH-03"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "20"
+    },
+    {
+     "id": "B",
+     "text": "5"
+    },
+    {
+     "id": "C",
+     "text": "2.5"
+    },
+    {
+     "id": "D",
+     "text": "50"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Geometry",
+   "explanation": [
+    "Arc length = rθ = 10 × 0.5 = 5."
+   ],
+   "id": "math-practice-876",
+   "lessonId": "math-lesson-76",
+   "lessonKey": "Arc Length",
+   "question": "A circle has radius 10. What is the length of an arc of 0.5 radians?",
+   "topicId": "MATH-03"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -6292,6 +8090,37 @@
    "lessonId": "math-lesson-77",
    "lessonKey": "Sector Area",
    "question": "A circle has radius 3. What is the area of a sector of angle π radians?",
+   "topicId": "MATH-03"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "4"
+    },
+    {
+     "id": "B",
+     "text": "2"
+    },
+    {
+     "id": "C",
+     "text": "16"
+    },
+    {
+     "id": "D",
+     "text": "8"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Geometry",
+   "explanation": [
+    "Sector area = ½r²θ = ½ × 16 × 0.5 = 4."
+   ],
+   "id": "math-practice-877",
+   "lessonId": "math-lesson-77",
+   "lessonKey": "Sector Area",
+   "question": "A circle has radius 4. What is the area of a sector of 0.5 radians?",
    "topicId": "MATH-03"
   },
   {
@@ -6330,6 +8159,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "6"
+    },
+    {
+     "id": "B",
+     "text": "120"
+    },
+    {
+     "id": "C",
+     "text": "1"
+    },
+    {
+     "id": "D",
+     "text": "30"
+    }
+   ],
+   "difficulty": "Mixed",
+   "domain": "Advanced Math",
+   "explanation": [
+    "6! = 6 × 5!, so the 5! cancels and 6 is left."
+   ],
+   "id": "math-practice-878",
+   "lessonId": "math-lesson-78",
+   "lessonKey": "Factorial",
+   "question": "What is 6! ÷ 5!?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
      "text": "20"
     },
     {
@@ -6354,6 +8214,37 @@
    "lessonId": "math-lesson-79",
    "lessonKey": "Permutations",
    "question": "In how many ways can 2 students be chosen from 5 and placed 1st and 2nd?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "15"
+    },
+    {
+     "id": "B",
+     "text": "10"
+    },
+    {
+     "id": "C",
+     "text": "60"
+    },
+    {
+     "id": "D",
+     "text": "125"
+    }
+   ],
+   "difficulty": "Mixed",
+   "domain": "Advanced Math",
+   "explanation": [
+    "Order matters: 5 × 4 × 3 = 60."
+   ],
+   "id": "math-practice-879",
+   "lessonId": "math-lesson-79",
+   "lessonKey": "Permutations",
+   "question": "How many different 3-letter codes can be made from 5 letters with no repeats?",
    "topicId": "MATH-02"
   },
   {
@@ -6392,6 +8283,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "216"
+    },
+    {
+     "id": "B",
+     "text": "20"
+    },
+    {
+     "id": "C",
+     "text": "18"
+    },
+    {
+     "id": "D",
+     "text": "120"
+    }
+   ],
+   "difficulty": "Mixed",
+   "domain": "Advanced Math",
+   "explanation": [
+    "Order does not matter: 6C3 = (6 × 5 × 4)/(3 × 2 × 1) = 20."
+   ],
+   "id": "math-practice-880",
+   "lessonId": "math-lesson-80",
+   "lessonKey": "Combinations",
+   "question": "How many ways can 3 students be chosen from 6?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "3"
     },
     {
@@ -6416,6 +8338,37 @@
    "lessonId": "math-lesson-81",
    "lessonKey": "Expected Value",
    "question": "A score is 1, 2 or 3 with probabilities 0.2, 0.3 and 0.5. What is the expected value?",
+   "topicId": "MATH-04"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "5"
+    },
+    {
+     "id": "B",
+     "text": "2"
+    },
+    {
+     "id": "C",
+     "text": "10"
+    },
+    {
+     "id": "D",
+     "text": "0.2"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Statistics",
+   "explanation": [
+    "10 × 0.2 + 0 × 0.8 = 2."
+   ],
+   "id": "math-practice-881",
+   "lessonId": "math-lesson-81",
+   "lessonKey": "Expected Value",
+   "question": "A game pays 10 with probability 0.2 and nothing otherwise. What is the expected payout?",
    "topicId": "MATH-04"
   },
   {
@@ -6447,6 +8400,37 @@
    "lessonId": "math-lesson-82",
    "lessonKey": "sin 0°",
    "question": "What is sin 0°?",
+   "topicId": "MATH-03"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "1"
+    },
+    {
+     "id": "B",
+     "text": "0.5"
+    },
+    {
+     "id": "C",
+     "text": "0"
+    },
+    {
+     "id": "D",
+     "text": "−1"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Geometry",
+   "explanation": [
+    "At 180° the point on the unit circle is (−1, 0), and sin is the y-value."
+   ],
+   "id": "math-practice-882",
+   "lessonId": "math-lesson-82",
+   "lessonKey": "sin 0°",
+   "question": "What is sin 180°?",
    "topicId": "MATH-03"
   },
   {
@@ -6485,6 +8469,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "1"
+    },
+    {
+     "id": "B",
+     "text": "−1"
+    },
+    {
+     "id": "C",
+     "text": "0.5"
+    },
+    {
+     "id": "D",
+     "text": "0"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Geometry",
+   "explanation": [
+    "At 180° the point on the unit circle is (−1, 0), and cos is the x-value."
+   ],
+   "id": "math-practice-883",
+   "lessonId": "math-lesson-83",
+   "lessonKey": "cos 0°",
+   "question": "What is cos 180°?",
+   "topicId": "MATH-03"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "(0, −1)"
     },
     {
@@ -6509,6 +8524,37 @@
    "lessonId": "math-lesson-88",
    "lessonKey": "unit circle values",
    "question": "On the unit circle, what are (cos θ, sin θ) at θ = 90°?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "(−1, 0)"
+    },
+    {
+     "id": "B",
+     "text": "(1, 0)"
+    },
+    {
+     "id": "C",
+     "text": "(0, −1)"
+    },
+    {
+     "id": "D",
+     "text": "(0, 1)"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "At 180° the point is at the far left of the circle."
+   ],
+   "id": "math-practice-888",
+   "lessonId": "math-lesson-88",
+   "lessonKey": "unit circle values",
+   "question": "On the unit circle, what are (cos θ, sin θ) at θ = 180°?",
    "topicId": "MATH-02"
   },
   {
@@ -6543,6 +8589,37 @@
    "topicId": "MATH-02"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "sine"
+    },
+    {
+     "id": "B",
+     "text": "cosine"
+    },
+    {
+     "id": "C",
+     "text": "none of them"
+    },
+    {
+     "id": "D",
+     "text": "tangent"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Advanced Math",
+   "explanation": [
+    "CAH: cos = adjacent ÷ hypotenuse."
+   ],
+   "id": "math-practice-889",
+   "lessonId": "math-lesson-89",
+   "lessonKey": "SOH CAH TOA",
+   "question": "Which ratio uses the adjacent side and the hypotenuse?",
+   "topicId": "MATH-02"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -6571,6 +8648,37 @@
    "lessonId": "math-lesson-90",
    "lessonKey": "Domain Restriction (Radical)",
    "question": "What is the domain of √(x − 3)?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "x ≥ 6"
+    },
+    {
+     "id": "B",
+     "text": "x ≥ 0"
+    },
+    {
+     "id": "C",
+     "text": "x ≥ 3"
+    },
+    {
+     "id": "D",
+     "text": "x ≤ 3"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "2x − 6 ≥ 0 gives 2x ≥ 6, so x ≥ 3."
+   ],
+   "id": "math-practice-890",
+   "lessonId": "math-lesson-90",
+   "lessonKey": "Domain Restriction (Radical)",
+   "question": "What is the domain of √(2x − 6)?",
    "topicId": "MATH-02"
   },
   {
@@ -6605,6 +8713,37 @@
    "topicId": "MATH-02"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "x = 0"
+    },
+    {
+     "id": "B",
+     "text": "x = 4"
+    },
+    {
+     "id": "C",
+     "text": "x = 2 and x = −2"
+    },
+    {
+     "id": "D",
+     "text": "x = 2 only"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Advanced Math",
+   "explanation": [
+    "The denominator is zero when x² = 4, which happens at both 2 and −2."
+   ],
+   "id": "math-practice-891",
+   "lessonId": "math-lesson-91",
+   "lessonKey": "Domain Restriction (Denominator)",
+   "question": "For which values of x is x/(x² − 4) undefined?",
+   "topicId": "MATH-02"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -6633,6 +8772,37 @@
    "lessonId": "math-lesson-92",
    "lessonKey": "Range Concept",
    "question": "What is the range of y = x²?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "y ≥ 0"
+    },
+    {
+     "id": "B",
+     "text": "y > 3"
+    },
+    {
+     "id": "C",
+     "text": "y ≥ 3"
+    },
+    {
+     "id": "D",
+     "text": "all real numbers"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "x² is at least 0, so y is at least 3."
+   ],
+   "id": "math-practice-892",
+   "lessonId": "math-lesson-92",
+   "lessonKey": "Range Concept",
+   "question": "What is the range of y = x² + 3?",
    "topicId": "MATH-02"
   },
   {
@@ -6667,6 +8837,37 @@
    "topicId": "MATH-01"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "y = −x + 4"
+    },
+    {
+     "id": "B",
+     "text": "y = −2x"
+    },
+    {
+     "id": "C",
+     "text": "y = 3x + 1"
+    },
+    {
+     "id": "D",
+     "text": "y = 5"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "Only a positive slope rises from left to right."
+   ],
+   "id": "math-practice-893",
+   "lessonId": "math-lesson-93",
+   "lessonKey": "Increasing Function",
+   "question": "Which function is increasing?",
+   "topicId": "MATH-01"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -6695,6 +8896,37 @@
    "lessonId": "math-lesson-94",
    "lessonKey": "Decreasing Function",
    "question": "For y = −x, what happens to y as x increases?",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "y = x²"
+    },
+    {
+     "id": "B",
+     "text": "y = 4x"
+    },
+    {
+     "id": "C",
+     "text": "y = 2"
+    },
+    {
+     "id": "D",
+     "text": "y = −4x + 2"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "Only a negative slope falls from left to right."
+   ],
+   "id": "math-practice-894",
+   "lessonId": "math-lesson-94",
+   "lessonKey": "Decreasing Function",
+   "question": "Which function is decreasing?",
    "topicId": "MATH-01"
   },
   {
@@ -6733,6 +8965,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "9.1%"
+    },
+    {
+     "id": "B",
+     "text": "110%"
+    },
+    {
+     "id": "C",
+     "text": "5%"
+    },
+    {
+     "id": "D",
+     "text": "10%"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Problem Solving",
+   "explanation": [
+    "|55 − 50| ÷ 50 × 100 = 10%."
+   ],
+   "id": "math-practice-895",
+   "lessonId": "math-lesson-95",
+   "lessonKey": "Percent Error",
+   "question": "The true value is 50 and the measurement is 55. What is the percent error?",
+   "topicId": "MATH-05"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
      "text": "80"
     },
     {
@@ -6757,6 +9020,37 @@
    "lessonId": "math-lesson-96",
    "lessonKey": "Markup Formula",
    "question": "An item costing 100 is marked up by 20%. What is the new price?",
+   "topicId": "MATH-05"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "25%"
+    },
+    {
+     "id": "B",
+     "text": "20%"
+    },
+    {
+     "id": "C",
+     "text": "80%"
+    },
+    {
+     "id": "D",
+     "text": "125%"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Problem Solving",
+   "explanation": [
+    "Markup ÷ cost = 20/80 = 0.25, so 25%."
+   ],
+   "id": "math-practice-896",
+   "lessonId": "math-lesson-96",
+   "lessonKey": "Markup Formula",
+   "question": "An item costing 80 is sold for 100. What is the markup?",
    "topicId": "MATH-05"
   },
   {
@@ -6791,6 +9085,37 @@
    "topicId": "MATH-04"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "The largest value is 7"
+    },
+    {
+     "id": "B",
+     "text": "Seven values lie between 10 and 20"
+    },
+    {
+     "id": "C",
+     "text": "The average of the data is 7"
+    },
+    {
+     "id": "D",
+     "text": "There are seven bars in total"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Statistics",
+   "explanation": [
+    "The height of a bar is the frequency for that interval."
+   ],
+   "id": "math-practice-897",
+   "lessonId": "math-lesson-97",
+   "lessonKey": "Histogram Interpretation",
+   "question": "On a histogram, the bar covering 10 to 20 has a height of 7. What does that tell you?",
+   "topicId": "MATH-04"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -6819,6 +9144,37 @@
    "lessonId": "math-lesson-98",
    "lessonKey": "Scatter Plot Trend",
    "question": "The points (1, 2), (2, 3) and (3, 5) are plotted. What is the trend?",
+   "topicId": "MATH-04"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Positive"
+    },
+    {
+     "id": "B",
+     "text": "Perfect and positive"
+    },
+    {
+     "id": "C",
+     "text": "There is none"
+    },
+    {
+     "id": "D",
+     "text": "Negative"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Statistics",
+   "explanation": [
+    "y falls as x rises, which is a negative correlation."
+   ],
+   "id": "math-practice-898",
+   "lessonId": "math-lesson-98",
+   "lessonKey": "Scatter Plot Trend",
+   "question": "On a scatter plot the points fall steadily as you move right. What is the correlation?",
    "topicId": "MATH-04"
   },
   {
@@ -6853,6 +9209,37 @@
    "topicId": "MATH-04"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "8"
+    },
+    {
+     "id": "B",
+     "text": "10"
+    },
+    {
+     "id": "C",
+     "text": "12"
+    },
+    {
+     "id": "D",
+     "text": "40"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Statistics",
+   "explanation": [
+    "(4 + 8 + 12 + 16) ÷ 4 = 40 ÷ 4 = 10."
+   ],
+   "id": "math-practice-899",
+   "lessonId": "math-lesson-99",
+   "lessonKey": "Distribution Mean",
+   "question": "What is the mean of 4, 8, 12 and 16?",
+   "topicId": "MATH-04"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -6881,6 +9268,37 @@
    "lessonId": "math-lesson-100",
    "lessonKey": "Distribution Variance Concept",
    "question": "Which set is more spread out: {2, 4, 6} or {3, 4, 5}?",
+   "topicId": "MATH-04"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "49"
+    },
+    {
+     "id": "B",
+     "text": "1"
+    },
+    {
+     "id": "C",
+     "text": "0"
+    },
+    {
+     "id": "D",
+     "text": "7"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Statistics",
+   "explanation": [
+    "Nothing differs from the mean, so the spread is zero."
+   ],
+   "id": "math-practice-900",
+   "lessonId": "math-lesson-100",
+   "lessonKey": "Distribution Variance Concept",
+   "question": "Every value in a data set is 7. What is the variance?",
    "topicId": "MATH-04"
   },
   {
@@ -6915,6 +9333,37 @@
    "topicId": "MATH-02"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "5²"
+    },
+    {
+     "id": "B",
+     "text": "1/√5"
+    },
+    {
+     "id": "C",
+     "text": "∛5"
+    },
+    {
+     "id": "D",
+     "text": "√5"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "A power of one half is a square root."
+   ],
+   "id": "math-practice-901",
+   "lessonId": "math-lesson-101",
+   "lessonKey": "Radical Exponent Form",
+   "question": "Write 5^(1/2) as a radical.",
+   "topicId": "MATH-02"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -6946,6 +9395,37 @@
    "topicId": "MATH-02"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "24"
+    },
+    {
+     "id": "B",
+     "text": "4"
+    },
+    {
+     "id": "C",
+     "text": "2"
+    },
+    {
+     "id": "D",
+     "text": "512"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "A power of one third is a cube root, and 2 × 2 × 2 = 8."
+   ],
+   "id": "math-practice-902",
+   "lessonId": "math-lesson-102",
+   "lessonKey": "Cube Root Exponent",
+   "question": "What is 8^(1/3)?",
+   "topicId": "MATH-02"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -6974,6 +9454,37 @@
    "lessonId": "math-lesson-103",
    "lessonKey": "log 1",
    "question": "What is log 1?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "0"
+    },
+    {
+     "id": "B",
+     "text": "1"
+    },
+    {
+     "id": "C",
+     "text": "undefined"
+    },
+    {
+     "id": "D",
+     "text": "5"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Advanced Math",
+   "explanation": [
+    "Any base to the power 0 gives 1, so the answer is 0 for every base."
+   ],
+   "id": "math-practice-903",
+   "lessonId": "math-lesson-103",
+   "lessonKey": "log 1",
+   "question": "What is log₅ 1?",
    "topicId": "MATH-02"
   },
   {
@@ -7012,6 +9523,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "2"
+    },
+    {
+     "id": "B",
+     "text": "100"
+    },
+    {
+     "id": "C",
+     "text": "10"
+    },
+    {
+     "id": "D",
+     "text": "3"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Advanced Math",
+   "explanation": [
+    "10³ = 1000."
+   ],
+   "id": "math-practice-904",
+   "lessonId": "math-lesson-104",
+   "lessonKey": "log base 10",
+   "question": "What is log₁₀ 1000?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
      "text": "36"
     },
     {
@@ -7036,6 +9578,37 @@
    "lessonId": "math-lesson-105",
    "lessonKey": "Vertical Stretch Factor",
    "question": "If f(x) = x², what is 2f(x) when x = 3?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "3"
+    },
+    {
+     "id": "B",
+     "text": "5"
+    },
+    {
+     "id": "C",
+     "text": "15"
+    },
+    {
+     "id": "D",
+     "text": "8"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "The stretch multiplies the output: 3 × 5 = 15."
+   ],
+   "id": "math-practice-905",
+   "lessonId": "math-lesson-105",
+   "lessonKey": "Vertical Stretch Factor",
+   "question": "If f(2) = 5, what is 3f(2)?",
    "topicId": "MATH-02"
   },
   {
@@ -7067,6 +9640,37 @@
    "lessonId": "math-lesson-106",
    "lessonKey": "Horizontal Stretch Factor",
    "question": "What does y = f(x/2) do to the graph of f?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Moves it 2 to the left"
+    },
+    {
+     "id": "B",
+     "text": "Squashes it to half its width"
+    },
+    {
+     "id": "C",
+     "text": "Stretches it to twice its width"
+    },
+    {
+     "id": "D",
+     "text": "Doubles its height"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "Doubling the input means the same output is reached in half the distance."
+   ],
+   "id": "math-practice-906",
+   "lessonId": "math-lesson-106",
+   "lessonKey": "Horizontal Stretch Factor",
+   "question": "What does y = f(2x) do to the graph of f?",
    "topicId": "MATH-02"
   },
   {
@@ -7105,6 +9709,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "(0, −6)"
+    },
+    {
+     "id": "B",
+     "text": "(−6, 0)"
+    },
+    {
+     "id": "C",
+     "text": "(6, 0)"
+    },
+    {
+     "id": "D",
+     "text": "(0, 6)"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "Set y = 0: 0 = −x + 6, so x = 6."
+   ],
+   "id": "math-practice-907",
+   "lessonId": "math-lesson-107",
+   "lessonKey": "Intercepts Rule",
+   "question": "What is the x-intercept of y = −x + 6?",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
      "text": "(5, 0)"
     },
     {
@@ -7129,6 +9764,37 @@
    "lessonId": "math-lesson-108",
    "lessonKey": "Y-intercept Rule",
    "question": "What is the y-intercept of y = 3x + 5?",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "(0, 3)"
+    },
+    {
+     "id": "B",
+     "text": "(6, 0)"
+    },
+    {
+     "id": "C",
+     "text": "(0, 12)"
+    },
+    {
+     "id": "D",
+     "text": "(0, 4)"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "Set x = 0: 3y = 12, so y = 4."
+   ],
+   "id": "math-practice-908",
+   "lessonId": "math-lesson-108",
+   "lessonKey": "Y-intercept Rule",
+   "question": "What is the y-intercept of 2x + 3y = 12?",
    "topicId": "MATH-01"
   },
   {
@@ -7163,6 +9829,37 @@
    "topicId": "MATH-05"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "6 years"
+    },
+    {
+     "id": "B",
+     "text": "3 years"
+    },
+    {
+     "id": "C",
+     "text": "2 years"
+    },
+    {
+     "id": "D",
+     "text": "1.5 years"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Problem Solving",
+   "explanation": [
+    "Interest each year is 2000 × 0.05 = 100, so 300 takes 3 years."
+   ],
+   "id": "math-practice-909",
+   "lessonId": "math-lesson-109",
+   "lessonKey": "Simple Interest",
+   "question": "How long does 2000 take to earn 300 in simple interest at 5% a year?",
+   "topicId": "MATH-05"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -7191,6 +9888,37 @@
    "lessonId": "math-lesson-110",
    "lessonKey": "Compound Interest",
    "question": "What is 1000 worth after 2 years at 10% compound interest?",
+   "topicId": "MATH-05"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "550"
+    },
+    {
+     "id": "B",
+     "text": "610"
+    },
+    {
+     "id": "C",
+     "text": "605"
+    },
+    {
+     "id": "D",
+     "text": "600"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Problem Solving",
+   "explanation": [
+    "500 × 1.1² = 500 × 1.21 = 605."
+   ],
+   "id": "math-practice-910",
+   "lessonId": "math-lesson-110",
+   "lessonKey": "Compound Interest",
+   "question": "What is 500 worth after 2 years at 10% compound interest?",
    "topicId": "MATH-05"
   },
   {
@@ -7225,6 +9953,37 @@
    "topicId": "MATH-05"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "2000"
+    },
+    {
+     "id": "B",
+     "text": "1200"
+    },
+    {
+     "id": "C",
+     "text": "1020"
+    },
+    {
+     "id": "D",
+     "text": "1002"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Problem Solving",
+   "explanation": [
+    "1000 × 1.02 = 1020."
+   ],
+   "id": "math-practice-911",
+   "lessonId": "math-lesson-111",
+   "lessonKey": "Growth Rate Formula",
+   "question": "A town of 1000 people grows by 2% in a year. What is the population then?",
+   "topicId": "MATH-05"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -7253,6 +10012,37 @@
    "lessonId": "math-lesson-112",
    "lessonKey": "Depreciation Formula",
    "question": "A machine worth 100 loses 10% of its value each year. What is it worth after 2 years?",
+   "topicId": "MATH-05"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "19600"
+    },
+    {
+     "id": "B",
+     "text": "18000"
+    },
+    {
+     "id": "C",
+     "text": "4000"
+    },
+    {
+     "id": "D",
+     "text": "16000"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Problem Solving",
+   "explanation": [
+    "20000 × 0.8 = 16000."
+   ],
+   "id": "math-practice-912",
+   "lessonId": "math-lesson-112",
+   "lessonKey": "Depreciation Formula",
+   "question": "A car worth 20000 loses 20% of its value in a year. What is it worth then?",
    "topicId": "MATH-05"
   },
   {
@@ -7287,6 +10077,37 @@
    "topicId": "MATH-04"
   },
   {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Rolling a 2 and rolling a 5 on one throw"
+    },
+    {
+     "id": "B",
+     "text": "Drawing a red card and drawing a king"
+    },
+    {
+     "id": "C",
+     "text": "Rolling an even number and rolling a 2"
+    },
+    {
+     "id": "D",
+     "text": "Being cold and being wet"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Statistics",
+   "explanation": [
+    "One throw cannot be both a 2 and a 5, so the two cannot happen together."
+   ],
+   "id": "math-practice-913",
+   "lessonId": "math-lesson-113",
+   "lessonKey": "Mutually Exclusive Events",
+   "question": "Which pair of events is mutually exclusive?",
+   "topicId": "MATH-04"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -7315,6 +10136,37 @@
    "lessonId": "math-lesson-114",
    "lessonKey": "Total Probability Rule",
    "question": "The only outcomes have probabilities 0.2, 0.3 and 0.5. What do they add to?",
+   "topicId": "MATH-04"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "0.3"
+    },
+    {
+     "id": "B",
+     "text": "0"
+    },
+    {
+     "id": "C",
+     "text": "0.7"
+    },
+    {
+     "id": "D",
+     "text": "1.3"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Statistics",
+   "explanation": [
+    "All the probabilities add to 1, so the other is 1 − 0.3 = 0.7."
+   ],
+   "id": "math-practice-914",
+   "lessonId": "math-lesson-114",
+   "lessonKey": "Total Probability Rule",
+   "question": "An experiment has only two outcomes and one has probability 0.3. What is the other?",
    "topicId": "MATH-04"
   },
   {
@@ -7349,6 +10201,37 @@
    "topicId": "MATH-04"
   },
   {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "86"
+    },
+    {
+     "id": "B",
+     "text": "88"
+    },
+    {
+     "id": "C",
+     "text": "170"
+    },
+    {
+     "id": "D",
+     "text": "85"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Statistics",
+   "explanation": [
+    "(2 × 80 + 3 × 90) ÷ 5 = 430 ÷ 5 = 86."
+   ],
+   "id": "math-practice-915",
+   "lessonId": "math-lesson-115",
+   "lessonKey": "Weighted Mean",
+   "question": "A test scores 80 with weight 2 and an exam scores 90 with weight 3. What is the weighted mean?",
+   "topicId": "MATH-04"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -7380,6 +10263,37 @@
    "topicId": "MATH-04"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "60"
+    },
+    {
+     "id": "B",
+     "text": "12"
+    },
+    {
+     "id": "C",
+     "text": "17"
+    },
+    {
+     "id": "D",
+     "text": "7"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Statistics",
+   "explanation": [
+    "Largest = smallest + range = 5 + 12 = 17."
+   ],
+   "id": "math-practice-916",
+   "lessonId": "math-lesson-116",
+   "lessonKey": "Data Range",
+   "question": "The range of a data set is 12 and the smallest value is 5. What is the largest?",
+   "topicId": "MATH-04"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -7408,6 +10322,37 @@
    "lessonId": "math-lesson-117",
    "lessonKey": "Sum of Interior Angles Polygon",
    "question": "What do the interior angles of a pentagon add to?",
+   "topicId": "MATH-03"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "1080°"
+    },
+    {
+     "id": "B",
+     "text": "720°"
+    },
+    {
+     "id": "C",
+     "text": "540°"
+    },
+    {
+     "id": "D",
+     "text": "900°"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Geometry",
+   "explanation": [
+    "(n − 2) × 180 with n = 6: 4 × 180 = 720°."
+   ],
+   "id": "math-practice-917",
+   "lessonId": "math-lesson-117",
+   "lessonKey": "Sum of Interior Angles Polygon",
+   "question": "What do the interior angles of a hexagon add up to?",
    "topicId": "MATH-03"
   },
   {
@@ -7446,6 +10391,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "20"
+    },
+    {
+     "id": "B",
+     "text": "1.6"
+    },
+    {
+     "id": "C",
+     "text": "6.5"
+    },
+    {
+     "id": "D",
+     "text": "10"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Geometry",
+   "explanation": [
+    "4 × 2.5 = 10."
+   ],
+   "id": "math-practice-918",
+   "lessonId": "math-lesson-118",
+   "lessonKey": "Similar Triangle Rule",
+   "question": "Two similar shapes have a scale factor of 2.5. A side of 4 on the smaller matches which side?",
+   "topicId": "MATH-03"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
      "text": "A line through (4, 4) only"
     },
     {
@@ -7470,6 +10446,37 @@
    "lessonId": "math-lesson-119",
    "lessonKey": "Horizontal Line Equation",
    "question": "What does the graph of y = 4 look like?",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "x = 5"
+    },
+    {
+     "id": "B",
+     "text": "y = 5"
+    },
+    {
+     "id": "C",
+     "text": "x = 1"
+    },
+    {
+     "id": "D",
+     "text": "y = x + 4"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "Both points have y = 5, so the line is horizontal."
+   ],
+   "id": "math-practice-919",
+   "lessonId": "math-lesson-119",
+   "lessonKey": "Horizontal Line Equation",
+   "question": "What is the equation of the line through (1, 5) and (4, 5)?",
    "topicId": "MATH-01"
   },
   {
@@ -7501,6 +10508,37 @@
    "lessonId": "math-lesson-120",
    "lessonKey": "Vertical Line Equation",
    "question": "What does the graph of x = 2 look like?",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "x = 7"
+    },
+    {
+     "id": "B",
+     "text": "y = 3"
+    },
+    {
+     "id": "C",
+     "text": "y = x"
+    },
+    {
+     "id": "D",
+     "text": "x = 3"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "Both points have x = 3, so the line is vertical."
+   ],
+   "id": "math-practice-920",
+   "lessonId": "math-lesson-120",
+   "lessonKey": "Vertical Line Equation",
+   "question": "What is the equation of the line through (3, 1) and (3, 7)?",
    "topicId": "MATH-01"
   },
   {
@@ -7539,6 +10577,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "10"
+    },
+    {
+     "id": "B",
+     "text": "8"
+    },
+    {
+     "id": "C",
+     "text": "16"
+    },
+    {
+     "id": "D",
+     "text": "32"
+    }
+   ],
+   "difficulty": "Mixed",
+   "domain": "Advanced Math",
+   "explanation": [
+    "1, 2, 4, 8, 16 — each term doubles, so the 5th is 16."
+   ],
+   "id": "math-practice-921",
+   "lessonId": "math-lesson-121",
+   "lessonKey": "Recursive Sequence",
+   "question": "A sequence has a₁ = 1 and aₙ = 2aₙ₋₁. What is a₅?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
      "text": "4.5"
     },
     {
@@ -7563,6 +10632,37 @@
    "lessonId": "math-lesson-122",
    "lessonKey": "Infinite Geometric Series",
    "question": "What is the sum of the infinite series 3 + 1.5 + 0.75 + …?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "32"
+    },
+    {
+     "id": "B",
+     "text": "14"
+    },
+    {
+     "id": "C",
+     "text": "16"
+    },
+    {
+     "id": "D",
+     "text": "12"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Advanced Math",
+   "explanation": [
+    "Sum = a ÷ (1 − r) = 8 ÷ (1 − 0.5) = 16."
+   ],
+   "id": "math-practice-922",
+   "lessonId": "math-lesson-122",
+   "lessonKey": "Infinite Geometric Series",
+   "question": "What is the sum of 8 + 4 + 2 + 1 + … ?",
    "topicId": "MATH-02"
   },
   {
@@ -7597,6 +10697,37 @@
    "topicId": "MATH-03"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "60°"
+    },
+    {
+     "id": "B",
+     "text": "90°"
+    },
+    {
+     "id": "C",
+     "text": "30°"
+    },
+    {
+     "id": "D",
+     "text": "45°"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Geometry",
+   "explanation": [
+    "tan is opposite ÷ adjacent, and they are equal at 45°."
+   ],
+   "id": "math-practice-923",
+   "lessonId": "math-lesson-123",
+   "lessonKey": "Tangent Ratio",
+   "question": "If tan θ = 1, what is θ between 0° and 90°?",
+   "topicId": "MATH-03"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -7625,6 +10756,37 @@
    "lessonId": "math-lesson-124",
    "lessonKey": "Pythagorean Identity",
    "question": "What does sin²x + cos²x equal?",
+   "topicId": "MATH-03"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "0.8"
+    },
+    {
+     "id": "B",
+     "text": "0.4"
+    },
+    {
+     "id": "C",
+     "text": "0.64"
+    },
+    {
+     "id": "D",
+     "text": "0.36"
+    }
+   ],
+   "difficulty": "Mixed",
+   "domain": "Geometry",
+   "explanation": [
+    "sin²x + cos²x = 1, so cos²x = 1 − 0.36 = 0.64."
+   ],
+   "id": "math-practice-924",
+   "lessonId": "math-lesson-124",
+   "lessonKey": "Pythagorean Identity",
+   "question": "If sin x = 0.6, what is cos²x?",
    "topicId": "MATH-03"
   },
   {
@@ -7659,6 +10821,37 @@
    "topicId": "MATH-02"
   },
   {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "7, at x = 1"
+    },
+    {
+     "id": "B",
+     "text": "There is no maximum"
+    },
+    {
+     "id": "C",
+     "text": "−7, at x = 1"
+    },
+    {
+     "id": "D",
+     "text": "1, at x = 7"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "The squared term is never positive here, so y is largest when it is zero, at x = 1."
+   ],
+   "id": "math-practice-925",
+   "lessonId": "math-lesson-125",
+   "lessonKey": "Maximum Value Concept",
+   "question": "What is the maximum value of y = −2(x − 1)² + 7?",
+   "topicId": "MATH-02"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -7687,6 +10880,37 @@
    "lessonId": "math-lesson-126",
    "lessonKey": "Minimum Value Concept",
    "question": "What is the minimum value of y = x²?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "−2, at x = −5"
+    },
+    {
+     "id": "B",
+     "text": "5, at x = 2"
+    },
+    {
+     "id": "C",
+     "text": "0, at x = 0"
+    },
+    {
+     "id": "D",
+     "text": "−5, at x = −2"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "The square is smallest at zero, when x = −2, leaving y = −5."
+   ],
+   "id": "math-practice-926",
+   "lessonId": "math-lesson-126",
+   "lessonKey": "Minimum Value Concept",
+   "question": "What is the minimum value of y = (x + 2)² − 5?",
    "topicId": "MATH-02"
   },
   {
@@ -7725,6 +10949,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "(4x − 25)(x + 1)"
+    },
+    {
+     "id": "B",
+     "text": "(2x − 5)(2x + 5)"
+    },
+    {
+     "id": "C",
+     "text": "(2x − 5)²"
+    },
+    {
+     "id": "D",
+     "text": "(4x − 5)(x + 5)"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "A difference of squares with a = 2x and b = 5."
+   ],
+   "id": "math-practice-927",
+   "lessonId": "math-lesson-127",
+   "lessonKey": "Difference of Squares",
+   "question": "Factor 4x² − 25.",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "x² + 4"
     },
     {
@@ -7749,6 +11004,37 @@
    "lessonId": "math-lesson-128",
    "lessonKey": "Perfect Square Formula",
    "question": "Expand (x + 2)².",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "x² − 6x + 9"
+    },
+    {
+     "id": "B",
+     "text": "x² − 6x − 9"
+    },
+    {
+     "id": "C",
+     "text": "x² + 9"
+    },
+    {
+     "id": "D",
+     "text": "x² − 9"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "(a − b)² = a² − 2ab + b², so x² − 6x + 9."
+   ],
+   "id": "math-practice-928",
+   "lessonId": "math-lesson-128",
+   "lessonKey": "Perfect Square Formula",
+   "question": "Expand (x − 3)².",
    "topicId": "MATH-02"
   },
   {
@@ -7783,6 +11069,37 @@
    "topicId": "MATH-02"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "5√10"
+    },
+    {
+     "id": "B",
+     "text": "25√2"
+    },
+    {
+     "id": "C",
+     "text": "5√2"
+    },
+    {
+     "id": "D",
+     "text": "2√5"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "50 = 25 × 2, so √50 = 5√2."
+   ],
+   "id": "math-practice-929",
+   "lessonId": "math-lesson-129",
+   "lessonKey": "Simplifying Radicals",
+   "question": "Simplify √50.",
+   "topicId": "MATH-02"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -7811,6 +11128,37 @@
    "lessonId": "math-lesson-130",
    "lessonKey": "Rationalizing Denominator",
    "question": "Rationalise 1/√5.",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "3√3"
+    },
+    {
+     "id": "B",
+     "text": "9"
+    },
+    {
+     "id": "C",
+     "text": "√3"
+    },
+    {
+     "id": "D",
+     "text": "1/√3"
+    }
+   ],
+   "difficulty": "Hard",
+   "domain": "Advanced Math",
+   "explanation": [
+    "Multiply top and bottom by √3: 3√3 ÷ 3 = √3."
+   ],
+   "id": "math-practice-930",
+   "lessonId": "math-lesson-130",
+   "lessonKey": "Rationalizing Denominator",
+   "question": "Simplify 3/√3.",
    "topicId": "MATH-02"
   },
   {
@@ -7845,6 +11193,37 @@
    "topicId": "MATH-02"
   },
   {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "3"
+    },
+    {
+     "id": "B",
+     "text": "9"
+    },
+    {
+     "id": "C",
+     "text": "27"
+    },
+    {
+     "id": "D",
+     "text": "1/3"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "3³ = 27."
+   ],
+   "id": "math-practice-931",
+   "lessonId": "math-lesson-131",
+   "lessonKey": "Log Change of Base",
+   "question": "What is log₃ 27?",
+   "topicId": "MATH-02"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -7876,6 +11255,37 @@
    "topicId": "MATH-02"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "2.718"
+    },
+    {
+     "id": "B",
+     "text": "0"
+    },
+    {
+     "id": "C",
+     "text": "e"
+    },
+    {
+     "id": "D",
+     "text": "1"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "ln e asks what power of e gives e, which is 1."
+   ],
+   "id": "math-practice-932",
+   "lessonId": "math-lesson-132",
+   "lessonKey": "Natural Log Relation",
+   "question": "What is ln e?",
+   "topicId": "MATH-02"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -7904,6 +11314,37 @@
    "lessonId": "math-lesson-133",
    "lessonKey": "Sample Space Counting",
    "question": "Two coins are tossed. How many outcomes are in the sample space?",
+   "topicId": "MATH-04"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "6"
+    },
+    {
+     "id": "B",
+     "text": "8"
+    },
+    {
+     "id": "C",
+     "text": "12"
+    },
+    {
+     "id": "D",
+     "text": "2"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Statistics",
+   "explanation": [
+    "6 outcomes for the die × 2 for the coin = 12."
+   ],
+   "id": "math-practice-933",
+   "lessonId": "math-lesson-133",
+   "lessonKey": "Sample Space Counting",
+   "question": "A die is rolled and a coin is tossed. How many outcomes are there?",
    "topicId": "MATH-04"
   },
   {
@@ -7942,6 +11383,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "1/16"
+    },
+    {
+     "id": "B",
+     "text": "1/2"
+    },
+    {
+     "id": "C",
+     "text": "1/4"
+    },
+    {
+     "id": "D",
+     "text": "1/52"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Statistics",
+   "explanation": [
+    "Hearts are 1/4 of the pack, and with replacement the draws are independent: ¼ × ¼."
+   ],
+   "id": "math-practice-934",
+   "lessonId": "math-lesson-134",
+   "lessonKey": "Compound Probability",
+   "question": "Two cards are drawn from a full pack, the first put back before the second. What is the probability both are hearts?",
+   "topicId": "MATH-04"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
      "text": "y = (x − 3)²"
     },
     {
@@ -7966,6 +11438,37 @@
    "lessonId": "math-lesson-135",
    "lessonKey": "Horizontal Shift",
    "question": "The graph of y = x² is moved 3 to the right. What is the new equation?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Moved 5 up"
+    },
+    {
+     "id": "B",
+     "text": "Moved 5 to the left"
+    },
+    {
+     "id": "C",
+     "text": "Moved 5 down"
+    },
+    {
+     "id": "D",
+     "text": "Moved 5 to the right"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "A horizontal move takes the opposite sign to the one in the bracket."
+   ],
+   "id": "math-practice-935",
+   "lessonId": "math-lesson-135",
+   "lessonKey": "Horizontal Shift",
+   "question": "How does y = (x + 5)² compare with y = x²?",
    "topicId": "MATH-02"
   },
   {
@@ -8004,6 +11507,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "Moved 7 right"
+    },
+    {
+     "id": "B",
+     "text": "Moved 7 down"
+    },
+    {
+     "id": "C",
+     "text": "Moved 7 left"
+    },
+    {
+     "id": "D",
+     "text": "Moved 7 up"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "A number outside the squared term moves the graph vertically."
+   ],
+   "id": "math-practice-936",
+   "lessonId": "math-lesson-136",
+   "lessonKey": "Vertical Shift",
+   "question": "How does y = x² − 7 compare with y = x²?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "They cross once at the origin"
     },
     {
@@ -8028,6 +11562,37 @@
    "lessonId": "math-lesson-137",
    "lessonKey": "Parallel Lines Rule",
    "question": "Two lines both have slope 2. How are they related?",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "y = 3x + 4"
+    },
+    {
+     "id": "B",
+     "text": "y = 4x + 3"
+    },
+    {
+     "id": "C",
+     "text": "y = 4x − 1"
+    },
+    {
+     "id": "D",
+     "text": "y = −¼x + 3"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Algebra",
+   "explanation": [
+    "Parallel means the same slope, and the intercept is 3."
+   ],
+   "id": "math-practice-937",
+   "lessonId": "math-lesson-137",
+   "lessonKey": "Parallel Lines Rule",
+   "question": "What is the equation of the line parallel to y = 4x − 1 through (0, 3)?",
    "topicId": "MATH-01"
   },
   {
@@ -8062,6 +11627,37 @@
    "topicId": "MATH-01"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "−1/3"
+    },
+    {
+     "id": "B",
+     "text": "1/3"
+    },
+    {
+     "id": "C",
+     "text": "3"
+    },
+    {
+     "id": "D",
+     "text": "−3"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Algebra",
+   "explanation": [
+    "Perpendicular slopes multiply to −1: −3 × 1/3 = −1."
+   ],
+   "id": "math-practice-938",
+   "lessonId": "math-lesson-138",
+   "lessonKey": "Perpendicular Lines Rule",
+   "question": "A line has slope −3. What is the slope of a line perpendicular to it?",
+   "topicId": "MATH-01"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -8090,6 +11686,37 @@
    "lessonId": "math-lesson-139",
    "lessonKey": "Domain Definition",
    "question": "What is the domain of f(x) = √x?",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "All real numbers"
+    },
+    {
+     "id": "B",
+     "text": "All real numbers except 0"
+    },
+    {
+     "id": "C",
+     "text": "x > 0"
+    },
+    {
+     "id": "D",
+     "text": "x ≥ 0"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Advanced Math",
+   "explanation": [
+    "Only division by zero is barred, and that happens at x = 0."
+   ],
+   "id": "math-practice-939",
+   "lessonId": "math-lesson-139",
+   "lessonKey": "Domain Definition",
+   "question": "What is the domain of f(x) = 1/x?",
    "topicId": "MATH-02"
   },
   {
@@ -8124,6 +11751,37 @@
    "topicId": "MATH-02"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "y ≥ 0"
+    },
+    {
+     "id": "B",
+     "text": "y ≤ 0"
+    },
+    {
+     "id": "C",
+     "text": "All real numbers"
+    },
+    {
+     "id": "D",
+     "text": "y < 0"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Advanced Math",
+   "explanation": [
+    "x² is never negative, so −x² is never positive, and it reaches 0."
+   ],
+   "id": "math-practice-940",
+   "lessonId": "math-lesson-140",
+   "lessonKey": "Range Definition",
+   "question": "What is the range of f(x) = −x²?",
+   "topicId": "MATH-02"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -8155,6 +11813,37 @@
    "topicId": "MATH-04"
   },
   {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "5"
+    },
+    {
+     "id": "B",
+     "text": "9"
+    },
+    {
+     "id": "C",
+     "text": "4.6"
+    },
+    {
+     "id": "D",
+     "text": "3"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Statistics",
+   "explanation": [
+    "5 appears three times, more often than any other value."
+   ],
+   "id": "math-practice-941",
+   "lessonId": "math-lesson-141",
+   "lessonKey": "Mode",
+   "question": "What is the mode of 2, 3, 3, 5, 5, 5, 9?",
+   "topicId": "MATH-04"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -8183,6 +11872,37 @@
    "lessonId": "math-lesson-142",
    "lessonKey": "Data Distribution Concept",
    "question": "A distribution has a long tail stretching to the right. What is its shape called?",
+   "topicId": "MATH-04"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Symmetric"
+    },
+    {
+     "id": "B",
+     "text": "Skewed left"
+    },
+    {
+     "id": "C",
+     "text": "Skewed right"
+    },
+    {
+     "id": "D",
+     "text": "It has two peaks"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Statistics",
+   "explanation": [
+    "When all three averages agree, the two halves mirror each other."
+   ],
+   "id": "math-practice-942",
+   "lessonId": "math-lesson-142",
+   "lessonKey": "Data Distribution Concept",
+   "question": "In a data set the mean, median and mode are all equal. What shape is the distribution?",
    "topicId": "MATH-04"
   },
   {
@@ -8221,6 +11941,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "x = 0 or x = 4"
+    },
+    {
+     "id": "B",
+     "text": "x = 0 only"
+    },
+    {
+     "id": "C",
+     "text": "x = 4 only"
+    },
+    {
+     "id": "D",
+     "text": "x = −4"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Advanced Math",
+   "explanation": [
+    "If a product is zero, one of the factors is zero."
+   ],
+   "id": "math-practice-943",
+   "lessonId": "math-lesson-143",
+   "lessonKey": "Zero Product Rule",
+   "question": "Solve x(x − 4) = 0.",
+   "topicId": "MATH-02"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
      "text": "The identity property"
     },
     {
@@ -8245,6 +11996,37 @@
    "lessonId": "math-lesson-144",
    "lessonKey": "Identity Property",
    "question": "5 × 1 = 5 is an example of which property?",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "The associative property"
+    },
+    {
+     "id": "B",
+     "text": "The distributive property"
+    },
+    {
+     "id": "C",
+     "text": "The commutative property"
+    },
+    {
+     "id": "D",
+     "text": "The identity property"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "Adding 0 leaves the number unchanged, so 0 is the additive identity."
+   ],
+   "id": "math-practice-944",
+   "lessonId": "math-lesson-144",
+   "lessonKey": "Identity Property",
+   "question": "7 + 0 = 7 is an example of which property?",
    "topicId": "MATH-01"
   },
   {
@@ -8279,6 +12061,37 @@
    "topicId": "MATH-01"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "2(3 + 4) = 6 + 8"
+    },
+    {
+     "id": "B",
+     "text": "4 × 5 = 5 × 4"
+    },
+    {
+     "id": "C",
+     "text": "(2 + 3) + 4 = 2 + (3 + 4)"
+    },
+    {
+     "id": "D",
+     "text": "5 × 1 = 5"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "Commutative means the order can be swapped."
+   ],
+   "id": "math-practice-945",
+   "lessonId": "math-lesson-145",
+   "lessonKey": "Commutative Property",
+   "question": "Which one shows the commutative property?",
+   "topicId": "MATH-01"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -8307,6 +12120,37 @@
    "lessonId": "math-lesson-146",
    "lessonKey": "Associative Property",
    "question": "(1 + 2) + 3 = 1 + (2 + 3) is an example of which property?",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "(2 × 3) × 4 = 2 × (3 × 4)"
+    },
+    {
+     "id": "B",
+     "text": "3 + 0 = 3"
+    },
+    {
+     "id": "C",
+     "text": "2(3 + 4) = 6 + 8"
+    },
+    {
+     "id": "D",
+     "text": "2 × 3 = 3 × 2"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "Associative means the grouping can change."
+   ],
+   "id": "math-practice-946",
+   "lessonId": "math-lesson-146",
+   "lessonKey": "Associative Property",
+   "question": "Which one shows the associative property?",
    "topicId": "MATH-01"
   },
   {
@@ -8345,6 +12189,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "x + 15"
+    },
+    {
+     "id": "B",
+     "text": "3x + 5"
+    },
+    {
+     "id": "C",
+     "text": "8x"
+    },
+    {
+     "id": "D",
+     "text": "3x + 15"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "Multiply both terms in the bracket: 3x + 15."
+   ],
+   "id": "math-practice-947",
+   "lessonId": "math-lesson-147",
+   "lessonKey": "Distributive Property",
+   "question": "Expand 3(x + 5).",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
      "text": "0.6"
     },
     {
@@ -8369,6 +12244,37 @@
    "lessonId": "math-lesson-148",
    "lessonKey": "Expected Probability Concept",
    "question": "A value is 1 with probability 0.4 and 2 with probability 0.6. What is the expected value?",
+   "topicId": "MATH-04"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "6"
+    },
+    {
+     "id": "B",
+     "text": "1/6"
+    },
+    {
+     "id": "C",
+     "text": "3.5"
+    },
+    {
+     "id": "D",
+     "text": "3"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Statistics",
+   "explanation": [
+    "(1 + 2 + 3 + 4 + 5 + 6) ÷ 6 = 3.5."
+   ],
+   "id": "math-practice-948",
+   "lessonId": "math-lesson-148",
+   "lessonKey": "Expected Probability Concept",
+   "question": "What is the expected value of one roll of a fair die?",
    "topicId": "MATH-04"
   },
   {
@@ -8403,6 +12309,37 @@
    "topicId": "MATH-04"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "0.5"
+    },
+    {
+     "id": "B",
+     "text": "0.36"
+    },
+    {
+     "id": "C",
+     "text": "1.67"
+    },
+    {
+     "id": "D",
+     "text": "0.6"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Statistics",
+   "explanation": [
+    "36 ÷ 60 = 0.6. The theoretical probability is 0.5, but this is what happened."
+   ],
+   "id": "math-practice-949",
+   "lessonId": "math-lesson-149",
+   "lessonKey": "Relative Frequency",
+   "question": "A coin lands heads 36 times in 60 tosses. What is the relative frequency of heads?",
+   "topicId": "MATH-04"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -8431,6 +12368,37 @@
    "lessonId": "math-lesson-150",
    "lessonKey": "Diameter Relation",
    "question": "A circle has radius 5. What is its diameter?",
+   "topicId": "MATH-03"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "3.5"
+    },
+    {
+     "id": "B",
+     "text": "44"
+    },
+    {
+     "id": "C",
+     "text": "14"
+    },
+    {
+     "id": "D",
+     "text": "49"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Geometry",
+   "explanation": [
+    "Diameter = 2 × radius = 14."
+   ],
+   "id": "math-practice-950",
+   "lessonId": "math-lesson-150",
+   "lessonKey": "Diameter Relation",
+   "question": "A circle has radius 7. What is its diameter?",
    "topicId": "MATH-03"
   },
   {
@@ -8465,6 +12433,37 @@
    "topicId": "MATH-03"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "25"
+    },
+    {
+     "id": "B",
+     "text": "5"
+    },
+    {
+     "id": "C",
+     "text": "10"
+    },
+    {
+     "id": "D",
+     "text": "12.5"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Geometry",
+   "explanation": [
+    "πr² = 25π gives r² = 25, so r = 5."
+   ],
+   "id": "math-practice-951",
+   "lessonId": "math-lesson-151",
+   "lessonKey": "Radius Relation",
+   "question": "A circle has area 25π. What is its radius?",
+   "topicId": "MATH-03"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -8493,6 +12492,37 @@
    "lessonId": "math-lesson-152",
    "lessonKey": "Complementary Angles",
    "question": "Two angles are complementary and one is 30°. What is the other?",
+   "topicId": "MATH-03"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "45°"
+    },
+    {
+     "id": "B",
+     "text": "60°"
+    },
+    {
+     "id": "C",
+     "text": "30°"
+    },
+    {
+     "id": "D",
+     "text": "90°"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Geometry",
+   "explanation": [
+    "They add to 90°, so each is 45°."
+   ],
+   "id": "math-practice-952",
+   "lessonId": "math-lesson-152",
+   "lessonKey": "Complementary Angles",
+   "question": "Two complementary angles are equal. How big is each?",
    "topicId": "MATH-03"
   },
   {
@@ -8527,6 +12557,37 @@
    "topicId": "MATH-03"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "45°"
+    },
+    {
+     "id": "B",
+     "text": "90°"
+    },
+    {
+     "id": "C",
+     "text": "60°"
+    },
+    {
+     "id": "D",
+     "text": "180°"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Geometry",
+   "explanation": [
+    "They add to 180°, so each is 90°."
+   ],
+   "id": "math-practice-953",
+   "lessonId": "math-lesson-153",
+   "lessonKey": "Supplementary Angles",
+   "question": "Two supplementary angles are equal. How big is each?",
+   "topicId": "MATH-03"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -8555,6 +12616,37 @@
    "lessonId": "math-lesson-154",
    "lessonKey": "Opposite Numbers",
    "question": "What is the opposite of 5?",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "12"
+    },
+    {
+     "id": "B",
+     "text": "1/12"
+    },
+    {
+     "id": "C",
+     "text": "0"
+    },
+    {
+     "id": "D",
+     "text": "−12"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "The opposite is the same distance from zero on the other side."
+   ],
+   "id": "math-practice-954",
+   "lessonId": "math-lesson-154",
+   "lessonKey": "Opposite Numbers",
+   "question": "What is the opposite of −12?",
    "topicId": "MATH-01"
   },
   {
@@ -8589,6 +12681,37 @@
    "topicId": "MATH-01"
   },
   {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "7"
+    },
+    {
+     "id": "B",
+     "text": "−7"
+    },
+    {
+     "id": "C",
+     "text": "13"
+    },
+    {
+     "id": "D",
+     "text": "30"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "3 − 10 = −7, and the absolute value of −7 is 7."
+   ],
+   "id": "math-practice-955",
+   "lessonId": "math-lesson-155",
+   "lessonKey": "Absolute Distance Concept",
+   "question": "What is |3 − 10|?",
+   "topicId": "MATH-01"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -8620,6 +12743,37 @@
    "topicId": "MATH-01"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "(0, 2)"
+    },
+    {
+     "id": "B",
+     "text": "(4, 0)"
+    },
+    {
+     "id": "C",
+     "text": "(0, −4)"
+    },
+    {
+     "id": "D",
+     "text": "(2, 0) and (−2, 0)"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Algebra",
+   "explanation": [
+    "Set y = 0: x² = 4, so x = 2 or x = −2."
+   ],
+   "id": "math-practice-956",
+   "lessonId": "math-lesson-156",
+   "lessonKey": "Function Intercept Concept",
+   "question": "Where does y = x² − 4 cross the x-axis?",
+   "topicId": "MATH-01"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -8648,6 +12802,37 @@
    "lessonId": "math-lesson-157",
    "lessonKey": "Rate of Change",
    "question": "If y changes by 6 while x changes by 3, what is the rate of change?",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "13"
+    },
+    {
+     "id": "B",
+     "text": "3"
+    },
+    {
+     "id": "C",
+     "text": "9"
+    },
+    {
+     "id": "D",
+     "text": "1/3"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Algebra",
+   "explanation": [
+    "Δy ÷ Δx = (11 − 2) ÷ (4 − 1) = 9 ÷ 3 = 3."
+   ],
+   "id": "math-practice-957",
+   "lessonId": "math-lesson-157",
+   "lessonKey": "Rate of Change",
+   "question": "A line passes through (1, 2) and (4, 11). What is its rate of change?",
    "topicId": "MATH-01"
   },
   {
@@ -8686,6 +12871,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "50"
+    },
+    {
+     "id": "B",
+     "text": "2"
+    },
+    {
+     "id": "C",
+     "text": "51"
+    },
+    {
+     "id": "D",
+     "text": "48"
+    }
+   ],
+   "difficulty": "Mixed",
+   "domain": "Statistics",
+   "explanation": [
+    "2 sits far away from the rest, which cluster around 50."
+   ],
+   "id": "math-practice-958",
+   "lessonId": "math-lesson-158",
+   "lessonKey": "Outlier Concept",
+   "question": "Which value is the outlier in 48, 51, 50, 2, 49?",
+   "topicId": "MATH-04"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "the origin only"
     },
     {
@@ -8710,6 +12926,37 @@
    "lessonId": "math-lesson-159",
    "lessonKey": "Symmetry Concept",
    "question": "The graph of y = x² is symmetric about which line?",
+   "topicId": "MATH-01"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "the y-axis"
+    },
+    {
+     "id": "B",
+     "text": "the x-axis"
+    },
+    {
+     "id": "C",
+     "text": "the line y = x"
+    },
+    {
+     "id": "D",
+     "text": "the origin"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Algebra",
+   "explanation": [
+    "f(−x) = −f(x), so turning the graph half a turn about the origin leaves it unchanged."
+   ],
+   "id": "math-practice-959",
+   "lessonId": "math-lesson-159",
+   "lessonKey": "Symmetry Concept",
+   "question": "The graph of y = x³ is symmetric about what?",
    "topicId": "MATH-01"
   }
  ],

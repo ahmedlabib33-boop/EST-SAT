@@ -2592,6 +2592,37 @@
    "topicId": "eng-01"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Run to catch the early bus."
+    },
+    {
+     "id": "B",
+     "text": "She ran to catch the early bus."
+    },
+    {
+     "id": "C",
+     "text": "Running to catch the early bus."
+    },
+    {
+     "id": "D",
+     "text": "The bus left early today."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "There is no subject doing the running and no finished verb idea, so it cannot stand alone."
+   ],
+   "id": "english-practice-801",
+   "lessonId": "english-lesson-1",
+   "lessonKey": "Complete sentence",
+   "question": "Which one is NOT a complete sentence?",
+   "topicId": "eng-01"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -2620,6 +2651,37 @@
    "lessonId": "english-lesson-2",
    "lessonKey": "Noun",
    "question": "Which word in this sentence is a noun?  “Omar carefully revised his notes.”",
+   "topicId": "eng-01"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Cairo"
+    },
+    {
+     "id": "B",
+     "text": "teacher"
+    },
+    {
+     "id": "C",
+     "text": "notebook"
+    },
+    {
+     "id": "D",
+     "text": "honesty"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "An abstract noun names something you cannot see or touch, such as honesty or freedom."
+   ],
+   "id": "english-practice-802",
+   "lessonId": "english-lesson-2",
+   "lessonKey": "Noun",
+   "question": "Which word is an abstract noun (an idea rather than a thing you can touch)?",
    "topicId": "eng-01"
   },
   {
@@ -2654,6 +2716,37 @@
    "topicId": "eng-01"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "their"
+    },
+    {
+     "id": "B",
+     "text": "it’s"
+    },
+    {
+     "id": "C",
+     "text": "they’re"
+    },
+    {
+     "id": "D",
+     "text": "its"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "One committee is singular, and 'its' shows possession without an apostrophe."
+   ],
+   "id": "english-practice-803",
+   "lessonId": "english-lesson-3",
+   "lessonKey": "Pronoun",
+   "question": "Choose the correct pronoun.  “The committee published ___ decision on Monday.”",
+   "topicId": "eng-01"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -2682,6 +2775,37 @@
    "lessonId": "english-lesson-4",
    "lessonKey": "Verb",
    "question": "Which word is the verb?  “The teacher explained the rule slowly.”",
+   "topicId": "eng-01"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "One: revising"
+    },
+    {
+     "id": "B",
+     "text": "Three: has been revising"
+    },
+    {
+     "id": "C",
+     "text": "Two: been revising"
+    },
+    {
+     "id": "D",
+     "text": "Two: has revising"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A verb phrase can be several words: helper verbs plus the main verb."
+   ],
+   "id": "english-practice-804",
+   "lessonId": "english-lesson-4",
+   "lessonKey": "Verb",
+   "question": "How many words make up the verb phrase?  “She has been revising since Friday.”",
    "topicId": "eng-01"
   },
   {
@@ -2720,6 +2844,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "slowly"
+    },
+    {
+     "id": "B",
+     "text": "students"
+    },
+    {
+     "id": "C",
+     "text": "answered"
+    },
+    {
+     "id": "D",
+     "text": "tired"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'tired' describes the students. 'slowly' describes how they answered, so it is an adverb."
+   ],
+   "id": "english-practice-805",
+   "lessonId": "english-lesson-5",
+   "lessonKey": "Adjective",
+   "question": "Which word is the adjective?  “The tired students answered the final question slowly.”",
+   "topicId": "eng-01"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
      "text": "quicker than"
     },
     {
@@ -2744,6 +2899,37 @@
    "lessonId": "english-lesson-6",
    "lessonKey": "Adverb",
    "question": "Choose the correct word.  “She answered the question ___.”",
+   "topicId": "eng-01"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "perfectly"
+    },
+    {
+     "id": "B",
+     "text": "perfect"
+    },
+    {
+     "id": "C",
+     "text": "perfection"
+    },
+    {
+     "id": "D",
+     "text": "more perfect"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "An adverb is needed to describe the adjective 'clear'."
+   ],
+   "id": "english-practice-806",
+   "lessonId": "english-lesson-6",
+   "lessonKey": "Adverb",
+   "question": "Choose the correct word.  “The explanation was ___ clear.”",
    "topicId": "eng-01"
   },
   {
@@ -2782,6 +2968,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "across"
+    },
+    {
+     "id": "B",
+     "text": "into"
+    },
+    {
+     "id": "C",
+     "text": "on"
+    },
+    {
+     "id": "D",
+     "text": "at"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'across' shows movement from one side to the other."
+   ],
+   "id": "english-practice-807",
+   "lessonId": "english-lesson-7",
+   "lessonKey": "Preposition",
+   "question": "Choose the correct preposition.  “She walked ___ the bridge to reach the school.”",
+   "topicId": "eng-01"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
      "text": "She studied for an hour, and she took a short break."
     },
     {
@@ -2806,6 +3023,37 @@
    "lessonId": "english-lesson-8",
    "lessonKey": "Sentence types",
    "question": "Which sentence is compound (two independent clauses joined)?",
+   "topicId": "eng-01"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "She revised hard for the final paper."
+    },
+    {
+     "id": "B",
+     "text": "Because she revised, she passed easily."
+    },
+    {
+     "id": "C",
+     "text": "She revised, and she passed easily."
+    },
+    {
+     "id": "D",
+     "text": "She revised; she passed easily."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'Because she revised' cannot stand alone, so it is dependent."
+   ],
+   "id": "english-practice-808",
+   "lessonId": "english-lesson-8",
+   "lessonKey": "Sentence types",
+   "question": "Which sentence is complex (one independent and one dependent clause)?",
    "topicId": "eng-01"
   },
   {
@@ -2840,6 +3088,37 @@
    "topicId": "eng-01"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Explain it twice, please."
+    },
+    {
+     "id": "B",
+     "text": "The teacher explained it; we understood."
+    },
+    {
+     "id": "C",
+     "text": "Which the teacher explained twice."
+    },
+    {
+     "id": "D",
+     "text": "The teacher explained it twice."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'Which the teacher explained twice' is a relative clause with no main clause to attach to."
+   ],
+   "id": "english-practice-809",
+   "lessonId": "english-lesson-9",
+   "lessonKey": "Fragment and run-on",
+   "question": "Which sentence is a fragment?",
+   "topicId": "eng-01"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -2871,6 +3150,37 @@
    "topicId": "eng-03"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "has boiled"
+    },
+    {
+     "id": "B",
+     "text": "is boiling"
+    },
+    {
+     "id": "C",
+     "text": "boiled"
+    },
+    {
+     "id": "D",
+     "text": "boils"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A fact that is always true takes the simple present."
+   ],
+   "id": "english-practice-810",
+   "lessonId": "english-lesson-10",
+   "lessonKey": "Simple present",
+   "question": "Choose the correct form.  “Water ___ at 100°C at sea level.”",
+   "topicId": "eng-03"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -2899,6 +3209,37 @@
    "lessonId": "english-lesson-11",
    "lessonKey": "Present continuous",
    "question": "Choose the correct form.  “Be quiet — the class ___ a test right now.”",
+   "topicId": "eng-03"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "They study for the exam at the moment."
+    },
+    {
+     "id": "B",
+     "text": "They studying for the exam at the moment."
+    },
+    {
+     "id": "C",
+     "text": "They are studying for the exam at the moment."
+    },
+    {
+     "id": "D",
+     "text": "They are study for the exam at the moment."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'at the moment' needs am/is/are + -ing."
+   ],
+   "id": "english-practice-811",
+   "lessonId": "english-lesson-11",
+   "lessonKey": "Present continuous",
+   "question": "Which sentence is correct?",
    "topicId": "eng-03"
   },
   {
@@ -2937,6 +3278,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "had left"
+    },
+    {
+     "id": "B",
+     "text": "have left"
+    },
+    {
+     "id": "C",
+     "text": "leave"
+    },
+    {
+     "id": "D",
+     "text": "left"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'last night' is a finished past time, so use the simple past."
+   ],
+   "id": "english-practice-812",
+   "lessonId": "english-lesson-12",
+   "lessonKey": "Simple past",
+   "question": "Choose the correct form.  “I ___ my keys on the bus last night.”",
+   "topicId": "eng-03"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
      "text": "am reading"
     },
     {
@@ -2961,6 +3333,37 @@
    "lessonId": "english-lesson-13",
    "lessonKey": "Past continuous",
    "question": "Choose the correct form.  “I ___ when the phone rang.”",
+   "topicId": "eng-03"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "wrote … went"
+    },
+    {
+     "id": "B",
+     "text": "wrote … were going"
+    },
+    {
+     "id": "C",
+     "text": "was writing … went"
+    },
+    {
+     "id": "D",
+     "text": "was writing … were going"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "The longer action takes was/were + -ing; the short interruption takes the simple past."
+   ],
+   "id": "english-practice-813",
+   "lessonId": "english-lesson-13",
+   "lessonKey": "Past continuous",
+   "question": "Choose the correct pair.  “While she ___, the lights ___ out.”",
    "topicId": "eng-03"
   },
   {
@@ -2995,6 +3398,37 @@
    "topicId": "eng-03"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "I have lived here since two years."
+    },
+    {
+     "id": "B",
+     "text": "I have lived here since 2020."
+    },
+    {
+     "id": "C",
+     "text": "I am living here since 2020."
+    },
+    {
+     "id": "D",
+     "text": "I live here since 2020."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'since' plus a starting point goes with the present perfect."
+   ],
+   "id": "english-practice-814",
+   "lessonId": "english-lesson-14",
+   "lessonKey": "Present perfect",
+   "question": "Which sentence is correct?",
+   "topicId": "eng-03"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -3023,6 +3457,37 @@
    "lessonId": "english-lesson-15",
    "lessonKey": "Past perfect",
    "question": "Choose the correct form.  “The class ___ before I arrived.”",
+   "topicId": "eng-03"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "was already starting"
+    },
+    {
+     "id": "B",
+     "text": "had already started"
+    },
+    {
+     "id": "C",
+     "text": "already started"
+    },
+    {
+     "id": "D",
+     "text": "has already started"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "The film started before we arrived, so the earlier past takes had + past participle."
+   ],
+   "id": "english-practice-815",
+   "lessonId": "english-lesson-15",
+   "lessonKey": "Past perfect",
+   "question": "Choose the correct form.  “By the time we arrived, the film ___.”",
    "topicId": "eng-03"
   },
   {
@@ -3061,6 +3526,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "am going to get"
+    },
+    {
+     "id": "B",
+     "text": "get"
+    },
+    {
+     "id": "C",
+     "text": "will get"
+    },
+    {
+     "id": "D",
+     "text": "would get"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A decision made at that moment takes 'will'; 'going to' is for a plan made earlier."
+   ],
+   "id": "english-practice-816",
+   "lessonId": "english-lesson-16",
+   "lessonKey": "Future",
+   "question": "Choose the best form.  “The phone is ringing — I ___ it.”",
+   "topicId": "eng-03"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
      "text": "am finishing"
     },
     {
@@ -3085,6 +3581,37 @@
    "lessonId": "english-lesson-17",
    "lessonKey": "Future time clauses",
    "question": "Choose the correct form.  “I will call you when I ___ the exercise.”",
+   "topicId": "eng-03"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "arrived"
+    },
+    {
+     "id": "B",
+     "text": "will arrive"
+    },
+    {
+     "id": "C",
+     "text": "arrives"
+    },
+    {
+     "id": "D",
+     "text": "is going to arrive"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "After as soon as, when, before and until, a future idea takes the present tense."
+   ],
+   "id": "english-practice-817",
+   "lessonId": "english-lesson-17",
+   "lessonKey": "Future time clauses",
+   "question": "Choose the correct form.  “We will start as soon as everyone ___.”",
    "topicId": "eng-03"
   },
   {
@@ -3119,6 +3646,37 @@
    "topicId": "eng-03"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "This cake is tasting delicious."
+    },
+    {
+     "id": "B",
+     "text": "This cake tasting delicious."
+    },
+    {
+     "id": "C",
+     "text": "This cake tastes delicious."
+    },
+    {
+     "id": "D",
+     "text": "This cake is taste delicious."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'taste' is a state verb here, so it is not used in the -ing form."
+   ],
+   "id": "english-practice-818",
+   "lessonId": "english-lesson-18",
+   "lessonKey": "Stative verbs",
+   "question": "Which sentence is correct?",
+   "topicId": "eng-03"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -3147,6 +3705,37 @@
    "lessonId": "english-lesson-19",
    "lessonKey": "Tense consistency",
    "question": "Which sentence keeps one time frame?",
+   "topicId": "eng-03"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "She had opened the book before she started to read."
+    },
+    {
+     "id": "B",
+     "text": "She opened the book and starts to read."
+    },
+    {
+     "id": "C",
+     "text": "She opened the book and started to read."
+    },
+    {
+     "id": "D",
+     "text": "She opens the book and starts to read."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "The sentence moves from past to present inside one action for no reason."
+   ],
+   "id": "english-practice-819",
+   "lessonId": "english-lesson-19",
+   "lessonKey": "Tense consistency",
+   "question": "Which sentence shifts tense for no reason?",
    "topicId": "eng-03"
   },
   {
@@ -3185,6 +3774,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "its"
+    },
+    {
+     "id": "B",
+     "text": "them"
+    },
+    {
+     "id": "C",
+     "text": "their"
+    },
+    {
+     "id": "D",
+     "text": "theirs"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'their' is now standard for a single person of unspecified gender, and it matches 'own calculator'."
+   ],
+   "id": "english-practice-820",
+   "lessonId": "english-lesson-20",
+   "lessonKey": "Antecedent agreement",
+   "question": "Choose the correct pronoun.  “Every student must bring ___ own calculator.”",
+   "topicId": "eng-04"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
      "text": "Hers"
     },
     {
@@ -3209,6 +3829,37 @@
    "lessonId": "english-lesson-21",
    "lessonKey": "Subject pronouns",
    "question": "Choose the correct pronoun.  “___ and I finished the project.”",
+   "topicId": "eng-04"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "My brother and me finished the project."
+    },
+    {
+     "id": "B",
+     "text": "My brother and I finished the project."
+    },
+    {
+     "id": "C",
+     "text": "Myself and my brother finished the project."
+    },
+    {
+     "id": "D",
+     "text": "Me and my brother finished the project."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "Take the other person away: 'I finished' is right, so the subject form is needed."
+   ],
+   "id": "english-practice-821",
+   "lessonId": "english-lesson-21",
+   "lessonKey": "Subject pronouns",
+   "question": "Which sentence is correct?",
    "topicId": "eng-04"
   },
   {
@@ -3247,6 +3898,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "me"
+    },
+    {
+     "id": "B",
+     "text": "mine"
+    },
+    {
+     "id": "C",
+     "text": "myself"
+    },
+    {
+     "id": "D",
+     "text": "I"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "After a preposition such as 'between', use the object form."
+   ],
+   "id": "english-practice-822",
+   "lessonId": "english-lesson-22",
+   "lessonKey": "Object pronouns",
+   "question": "Choose the correct pronoun.  “Between you and ___, the paper was easy.”",
+   "topicId": "eng-04"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
      "text": "hers"
     },
     {
@@ -3271,6 +3953,37 @@
    "lessonId": "english-lesson-23",
    "lessonKey": "Possessives",
    "question": "Choose the correct word.  “That calculator is ___.”",
+   "topicId": "eng-04"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "their"
+    },
+    {
+     "id": "B",
+     "text": "its"
+    },
+    {
+     "id": "C",
+     "text": "its’"
+    },
+    {
+     "id": "D",
+     "text": "it’s"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'its' shows possession. 'it's' means 'it is'."
+   ],
+   "id": "english-practice-823",
+   "lessonId": "english-lesson-23",
+   "lessonKey": "Possessives",
+   "question": "Choose the correct word.  “The dog wagged ___ tail.”",
    "topicId": "eng-04"
   },
   {
@@ -3305,6 +4018,37 @@
    "topicId": "eng-04"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "I checked the answers me."
+    },
+    {
+     "id": "B",
+     "text": "I checked the answers my self."
+    },
+    {
+     "id": "C",
+     "text": "Myself checked the answers."
+    },
+    {
+     "id": "D",
+     "text": "I checked the answers myself."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A reflexive pronoun is used when the subject and object are the same person."
+   ],
+   "id": "english-practice-824",
+   "lessonId": "english-lesson-24",
+   "lessonKey": "Reflexives",
+   "question": "Which sentence is correct?",
+   "topicId": "eng-04"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -3333,6 +4077,37 @@
    "lessonId": "english-lesson-25",
    "lessonKey": "Who / whom",
    "question": "Choose the correct word.  “___ did you call last night?”",
+   "topicId": "eng-04"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "whose"
+    },
+    {
+     "id": "B",
+     "text": "who"
+    },
+    {
+     "id": "C",
+     "text": "whom"
+    },
+    {
+     "id": "D",
+     "text": "which"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "The student is doing the winning, so the subject form 'who' is right."
+   ],
+   "id": "english-practice-825",
+   "lessonId": "english-lesson-25",
+   "lessonKey": "Who / whom",
+   "question": "Choose the correct word.  “The student ___ won the prize is in my class.”",
    "topicId": "eng-04"
   },
   {
@@ -3367,6 +4142,37 @@
    "topicId": "eng-04"
   },
   {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "When Sara met Lina, Sara was already late."
+    },
+    {
+     "id": "B",
+     "text": "When Sara met Lina, she was already late."
+    },
+    {
+     "id": "C",
+     "text": "When she met Lina, she was already late."
+    },
+    {
+     "id": "D",
+     "text": "When Sara met Lina, they were already late."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "With two people in the sentence, repeating the name removes the doubt."
+   ],
+   "id": "english-practice-826",
+   "lessonId": "english-lesson-26",
+   "lessonKey": "Clear reference",
+   "question": "Which sentence is clearest?",
+   "topicId": "eng-04"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -3392,6 +4198,37 @@
     "Do not slide between they, you and one inside the same sentence."
    ],
    "id": "english-practice-427",
+   "lessonId": "english-lesson-27",
+   "lessonKey": "Pronoun shift",
+   "question": "Which sentence keeps one person throughout?",
+   "topicId": "eng-04"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "If one wants to improve, they must practises."
+    },
+    {
+     "id": "B",
+     "text": "If one wants to improve, you must practise."
+    },
+    {
+     "id": "C",
+     "text": "If one wants to improve, one must practise."
+    },
+    {
+     "id": "D",
+     "text": "If you want to improve, one must practise."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "Do not switch between one, you and they inside the same sentence."
+   ],
+   "id": "english-practice-827",
    "lessonId": "english-lesson-27",
    "lessonKey": "Pronoun shift",
    "question": "Which sentence keeps one person throughout?",
@@ -3426,6 +4263,37 @@
    "lessonId": "english-lesson-28",
    "lessonKey": "A / an",
    "question": "Choose the correct article.  “She waited ___ hour for the results.”",
+   "topicId": "eng-05"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "an"
+    },
+    {
+     "id": "B",
+     "text": "— (no article)"
+    },
+    {
+     "id": "C",
+     "text": "the"
+    },
+    {
+     "id": "D",
+     "text": "a"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'university' starts with a 'yoo' sound, which is a consonant sound, so it takes 'a'."
+   ],
+   "id": "english-practice-828",
+   "lessonId": "english-lesson-28",
+   "lessonKey": "A / an",
+   "question": "Choose the correct article.  “He is ___ university student.”",
    "topicId": "eng-05"
   },
   {
@@ -3464,6 +4332,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "a"
+    },
+    {
+     "id": "B",
+     "text": "the"
+    },
+    {
+     "id": "C",
+     "text": "an"
+    },
+    {
+     "id": "D",
+     "text": "— (no article)"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "Musical instruments take 'the' after 'play'."
+   ],
+   "id": "english-practice-829",
+   "lessonId": "english-lesson-29",
+   "lessonKey": "The",
+   "question": "Choose the correct option.  “She plays ___ piano every evening.”",
+   "topicId": "eng-05"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "The waters"
     },
     {
@@ -3488,6 +4387,37 @@
    "lessonId": "english-lesson-30",
    "lessonKey": "Zero article",
    "question": "Choose the correct option.  “___ is essential for the brain.”",
+   "topicId": "eng-05"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "A students need practice to improve."
+    },
+    {
+     "id": "B",
+     "text": "Students need a practice to improve."
+    },
+    {
+     "id": "C",
+     "text": "Students need practice to improve."
+    },
+    {
+     "id": "D",
+     "text": "The students need the practice to improve in general."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A general plural and an uncountable noun take no article."
+   ],
+   "id": "english-practice-830",
+   "lessonId": "english-lesson-30",
+   "lessonKey": "Zero article",
+   "question": "Which sentence is correct?",
    "topicId": "eng-05"
   },
   {
@@ -3526,6 +4456,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "several"
+    },
+    {
+     "id": "B",
+     "text": "much"
+    },
+    {
+     "id": "C",
+     "text": "many"
+    },
+    {
+     "id": "D",
+     "text": "a few"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'information' is uncountable, so it takes 'much'."
+   ],
+   "id": "english-practice-831",
+   "lessonId": "english-lesson-31",
+   "lessonKey": "Countable / uncountable",
+   "question": "Choose the correct option.  “How ___ information do you need?”",
+   "topicId": "eng-05"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "some"
     },
     {
@@ -3550,6 +4511,37 @@
    "lessonId": "english-lesson-32",
    "lessonKey": "Some / any",
    "question": "Choose the correct word.  “I do not have ___ questions left.”",
+   "topicId": "eng-05"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "a"
+    },
+    {
+     "id": "B",
+     "text": "some"
+    },
+    {
+     "id": "C",
+     "text": "any"
+    },
+    {
+     "id": "D",
+     "text": "many"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A polite offer takes 'some', even though it is a question."
+   ],
+   "id": "english-practice-832",
+   "lessonId": "english-lesson-32",
+   "lessonKey": "Some / any",
+   "question": "Choose the correct word.  “Would you like ___ tea?”",
    "topicId": "eng-05"
   },
   {
@@ -3581,6 +4573,37 @@
    "lessonId": "english-lesson-33",
    "lessonKey": "Many / much",
    "question": "Choose the correct word.  “How ___ time do we have left?”",
+   "topicId": "eng-05"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "much"
+    },
+    {
+     "id": "B",
+     "text": "many"
+    },
+    {
+     "id": "C",
+     "text": "any much"
+    },
+    {
+     "id": "D",
+     "text": "a lot"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'students' is countable and plural, so it takes 'many'."
+   ],
+   "id": "english-practice-833",
+   "lessonId": "english-lesson-33",
+   "lessonKey": "Many / much",
+   "question": "Choose the correct word.  “There were not ___ students in the hall.”",
    "topicId": "eng-05"
   },
   {
@@ -3619,6 +4642,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "in"
+    },
+    {
+     "id": "B",
+     "text": "to"
+    },
+    {
+     "id": "C",
+     "text": "on"
+    },
+    {
+     "id": "D",
+     "text": "at"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "Months and years take 'in'."
+   ],
+   "id": "english-practice-834",
+   "lessonId": "english-lesson-34",
+   "lessonKey": "At / on / in time",
+   "question": "Choose the correct preposition.  “The course begins ___ September.”",
+   "topicId": "eng-05"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
      "text": "at"
     },
     {
@@ -3643,6 +4697,37 @@
    "lessonId": "english-lesson-35",
    "lessonKey": "At / on / in place",
    "question": "Choose the correct preposition.  “Wait for me ___ the door.”",
+   "topicId": "eng-05"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "on"
+    },
+    {
+     "id": "B",
+     "text": "in"
+    },
+    {
+     "id": "C",
+     "text": "to"
+    },
+    {
+     "id": "D",
+     "text": "at"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "Buses, trains and planes take 'on'."
+   ],
+   "id": "english-practice-835",
+   "lessonId": "english-lesson-35",
+   "lessonKey": "At / on / in place",
+   "question": "Choose the correct preposition.  “He left his bag ___ the bus.”",
    "topicId": "eng-05"
   },
   {
@@ -3681,6 +4766,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "since"
+    },
+    {
+     "id": "B",
+     "text": "from"
+    },
+    {
+     "id": "C",
+     "text": "during"
+    },
+    {
+     "id": "D",
+     "text": "for"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'for' is used with a length of time; 'since' needs a starting point."
+   ],
+   "id": "english-practice-836",
+   "lessonId": "english-lesson-36",
+   "lessonKey": "For / since / during",
+   "question": "Choose the correct word.  “She revised ___ three hours.”",
+   "topicId": "eng-05"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
      "text": "in"
     },
     {
@@ -3705,6 +4821,37 @@
    "lessonId": "english-lesson-37",
    "lessonKey": "Fixed prepositions",
    "question": "Choose the correct preposition.  “She is very good ___ mental maths.”",
+   "topicId": "eng-05"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "on"
+    },
+    {
+     "id": "B",
+     "text": "from"
+    },
+    {
+     "id": "C",
+     "text": "of"
+    },
+    {
+     "id": "D",
+     "text": "at"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'depend on' is fixed. These pairs have to be learned, not translated."
+   ],
+   "id": "english-practice-837",
+   "lessonId": "english-lesson-37",
+   "lessonKey": "Fixed prepositions",
+   "question": "Choose the correct preposition.  “The result depends ___ how much you revise.”",
    "topicId": "eng-05"
   },
   {
@@ -3743,6 +4890,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "She must to finish before noon."
+    },
+    {
+     "id": "B",
+     "text": "She must finishes before noon."
+    },
+    {
+     "id": "C",
+     "text": "She must finishing before noon."
+    },
+    {
+     "id": "D",
+     "text": "She must finish before noon."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A modal is always followed by the base verb."
+   ],
+   "id": "english-practice-838",
+   "lessonId": "english-lesson-38",
+   "lessonKey": "Modal + base verb",
+   "question": "Which sentence is correct?",
+   "topicId": "eng-06"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
      "text": "You can explain this part again."
     },
     {
@@ -3767,6 +4945,37 @@
    "lessonId": "english-lesson-39",
    "lessonKey": "Can / could",
    "question": "Which is the most polite request?",
+   "topicId": "eng-06"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Permission she was given once"
+    },
+    {
+     "id": "B",
+     "text": "An ability she had in the past"
+    },
+    {
+     "id": "C",
+     "text": "Something that might happen"
+    },
+    {
+     "id": "D",
+     "text": "A polite request"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'could' often means a past ability as well as a polite possibility."
+   ],
+   "id": "english-practice-839",
+   "lessonId": "english-lesson-39",
+   "lessonKey": "Can / could",
+   "question": "What does this sentence express?  “She could solve puzzles like this at the age of six.”",
    "topicId": "eng-06"
   },
   {
@@ -3801,6 +5010,37 @@
    "topicId": "eng-06"
   },
   {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "It might rain later."
+    },
+    {
+     "id": "B",
+     "text": "It must be raining."
+    },
+    {
+     "id": "C",
+     "text": "It is going to rain later."
+    },
+    {
+     "id": "D",
+     "text": "It will rain later."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'might' is the least certain of these."
+   ],
+   "id": "english-practice-840",
+   "lessonId": "english-lesson-40",
+   "lessonKey": "May / might",
+   "question": "Which sentence shows the least certainty?",
+   "topicId": "eng-06"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -3829,6 +5069,37 @@
    "lessonId": "english-lesson-41",
    "lessonKey": "Must / have to",
    "question": "Choose the best option.  “You ___ touch that wire — it is dangerous.”",
+   "topicId": "eng-06"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Staying is optional"
+    },
+    {
+     "id": "B",
+     "text": "Staying is forbidden"
+    },
+    {
+     "id": "C",
+     "text": "You are required to stay"
+    },
+    {
+     "id": "D",
+     "text": "You should stay if you can"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'do not have to' means it is not necessary. 'must not' would forbid it."
+   ],
+   "id": "english-practice-841",
+   "lessonId": "english-lesson-41",
+   "lessonKey": "Must / have to",
+   "question": "What does this mean?  “You do not have to stay until the end.”",
    "topicId": "eng-06"
   },
   {
@@ -3867,6 +5138,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "could not"
+    },
+    {
+     "id": "B",
+     "text": "must not"
+    },
+    {
+     "id": "C",
+     "text": "should"
+    },
+    {
+     "id": "D",
+     "text": "might not"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'should' gives advice without forcing it."
+   ],
+   "id": "english-practice-842",
+   "lessonId": "english-lesson-42",
+   "lessonKey": "Should",
+   "question": "Choose the best advice form.  “You ___ check your working before you hand it in.”",
+   "topicId": "eng-06"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
      "text": "should checked"
     },
     {
@@ -3891,6 +5193,37 @@
    "lessonId": "english-lesson-43",
    "lessonKey": "Perfect modals",
    "question": "Choose the correct form.  “She got the formula wrong; she ___ her working.”",
+   "topicId": "eng-06"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "She ought to leave soon"
+    },
+    {
+     "id": "B",
+     "text": "She was obliged to leave"
+    },
+    {
+     "id": "C",
+     "text": "I am fairly sure she has gone"
+    },
+    {
+     "id": "D",
+     "text": "She is leaving now"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "modal + have + past participle is a conclusion about the past."
+   ],
+   "id": "english-practice-843",
+   "lessonId": "english-lesson-43",
+   "lessonKey": "Perfect modals",
+   "question": "What does this mean?  “She must have left already.”",
    "topicId": "eng-06"
   },
   {
@@ -3925,6 +5258,37 @@
    "topicId": "eng-06"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "are improving"
+    },
+    {
+     "id": "B",
+     "text": "improves"
+    },
+    {
+     "id": "C",
+     "text": "improve"
+    },
+    {
+     "id": "D",
+     "text": "have improved"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A gerund subject names one activity, so the verb is singular."
+   ],
+   "id": "english-practice-844",
+   "lessonId": "english-lesson-44",
+   "lessonKey": "Gerund subject",
+   "question": "Choose the correct verb.  “Swimming every morning ___ her fitness.”",
+   "topicId": "eng-06"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -3953,6 +5317,37 @@
    "lessonId": "english-lesson-45",
    "lessonKey": "Verb + gerund",
    "question": "Choose the correct form.  “I enjoy ___ past papers.”",
+   "topicId": "eng-06"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "answer"
+    },
+    {
+     "id": "B",
+     "text": "answered"
+    },
+    {
+     "id": "C",
+     "text": "to answer"
+    },
+    {
+     "id": "D",
+     "text": "answering"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "avoid, enjoy, finish and suggest all take the -ing form."
+   ],
+   "id": "english-practice-845",
+   "lessonId": "english-lesson-45",
+   "lessonKey": "Verb + gerund",
+   "question": "Choose the correct form.  “She avoided ___ the hardest question.”",
    "topicId": "eng-06"
   },
   {
@@ -3987,6 +5382,37 @@
    "topicId": "eng-06"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "finishing"
+    },
+    {
+     "id": "B",
+     "text": "finished"
+    },
+    {
+     "id": "C",
+     "text": "finish"
+    },
+    {
+     "id": "D",
+     "text": "to finish"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "hope, plan, decide and want take to + base verb."
+   ],
+   "id": "english-practice-846",
+   "lessonId": "english-lesson-46",
+   "lessonKey": "Verb + infinitive",
+   "question": "Choose the correct form.  “They hope ___ the course in June.”",
+   "topicId": "eng-06"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -4015,6 +5441,37 @@
    "lessonId": "english-lesson-47",
    "lessonKey": "Preposition + gerund",
    "question": "Choose the correct form.  “He is interested in ___ physics.”",
+   "topicId": "eng-06"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "been"
+    },
+    {
+     "id": "B",
+     "text": "to be"
+    },
+    {
+     "id": "C",
+     "text": "being"
+    },
+    {
+     "id": "D",
+     "text": "be"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "After a preposition such as 'for', a verb takes the -ing form."
+   ],
+   "id": "english-practice-847",
+   "lessonId": "english-lesson-47",
+   "lessonKey": "Preposition + gerund",
+   "question": "Choose the correct form.  “She apologised for ___ late.”",
    "topicId": "eng-06"
   },
   {
@@ -4049,6 +5506,37 @@
    "topicId": "eng-07"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "efficienter"
+    },
+    {
+     "id": "B",
+     "text": "more efficienter"
+    },
+    {
+     "id": "C",
+     "text": "more efficient"
+    },
+    {
+     "id": "D",
+     "text": "most efficient"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "Longer adjectives take 'more', not '-er'."
+   ],
+   "id": "english-practice-848",
+   "lessonId": "english-lesson-48",
+   "lessonKey": "Comparative",
+   "question": "Choose the correct form.  “This method is ___ than the one we used before.”",
+   "topicId": "eng-07"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -4080,6 +5568,37 @@
    "topicId": "eng-07"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "the better"
+    },
+    {
+     "id": "B",
+     "text": "better"
+    },
+    {
+     "id": "C",
+     "text": "the best"
+    },
+    {
+     "id": "D",
+     "text": "best of two"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "Three or more take the superlative with 'the'."
+   ],
+   "id": "english-practice-849",
+   "lessonId": "english-lesson-49",
+   "lessonKey": "Superlative",
+   "question": "Choose the correct form.  “Of the three answers, this one is ___.”",
+   "topicId": "eng-07"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -4108,6 +5627,37 @@
    "lessonId": "english-lesson-50",
    "lessonKey": "Irregular forms",
    "question": "Choose the correct form.  “Her second attempt was ___ than her first.”",
+   "topicId": "eng-07"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "worser"
+    },
+    {
+     "id": "B",
+     "text": "the worst"
+    },
+    {
+     "id": "C",
+     "text": "more bad"
+    },
+    {
+     "id": "D",
+     "text": "worse"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "bad, worse, worst is irregular."
+   ],
+   "id": "english-practice-850",
+   "lessonId": "english-lesson-50",
+   "lessonKey": "Irregular forms",
+   "question": "Choose the correct form.  “His handwriting is ___ than mine.”",
    "topicId": "eng-07"
   },
   {
@@ -4146,6 +5696,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "She scored more higher than him."
+    },
+    {
+     "id": "B",
+     "text": "She scored higher from him."
+    },
+    {
+     "id": "C",
+     "text": "She scored higher than he did."
+    },
+    {
+     "id": "D",
+     "text": "She scored higher then him."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A comparison uses 'than', and 'then' is about time."
+   ],
+   "id": "english-practice-851",
+   "lessonId": "english-lesson-51",
+   "lessonKey": "Than",
+   "question": "Which sentence is correct?",
+   "topicId": "eng-07"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
      "text": "as more useful as"
     },
     {
@@ -4177,6 +5758,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "harder as"
+    },
+    {
+     "id": "B",
+     "text": "as hard as"
+    },
+    {
+     "id": "C",
+     "text": "as hard than"
+    },
+    {
+     "id": "D",
+     "text": "so hard than"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "The pattern is (not) as + adjective + as."
+   ],
+   "id": "english-practice-852",
+   "lessonId": "english-lesson-52",
+   "lessonKey": "As ... as",
+   "question": "Choose the correct form.  “The second paper was not ___ the first.”",
+   "topicId": "eng-07"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "This question is more hard than the last one."
     },
     {
@@ -4198,6 +5810,37 @@
     "Use one marker only: either -er or 'more', never both."
    ],
    "id": "english-practice-453",
+   "lessonId": "english-lesson-53",
+   "lessonKey": "No double comparison",
+   "question": "Which sentence is correct?",
+   "topicId": "eng-07"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "This question is difficulter than the last."
+    },
+    {
+     "id": "B",
+     "text": "This question is most difficult than the last."
+    },
+    {
+     "id": "C",
+     "text": "This question is more difficult than the last."
+    },
+    {
+     "id": "D",
+     "text": "This question is more difficulter than the last."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "Use 'more' with a long adjective, and never with '-er' as well."
+   ],
+   "id": "english-practice-853",
    "lessonId": "english-lesson-53",
    "lessonKey": "No double comparison",
    "question": "Which sentence is correct?",
@@ -4235,6 +5878,37 @@
    "topicId": "eng-07"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "speech practice twice"
+    },
+    {
+     "id": "B",
+     "text": "how you speak"
+    },
+    {
+     "id": "C",
+     "text": "to speak"
+    },
+    {
+     "id": "D",
+     "text": "speaking"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "All three items in the list need the same form."
+   ],
+   "id": "english-practice-854",
+   "lessonId": "english-lesson-54",
+   "lessonKey": "Parallel lists",
+   "question": "Choose the option that keeps the sentence parallel.  “The course covers reading, writing and ___.”",
+   "topicId": "eng-07"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -4263,6 +5937,37 @@
    "lessonId": "english-lesson-55",
    "lessonKey": "Paired conjunctions",
    "question": "Choose the correct option.  “She is both careful ___ creative.”",
+   "topicId": "eng-07"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "did she state"
+    },
+    {
+     "id": "B",
+     "text": "she did state"
+    },
+    {
+     "id": "C",
+     "text": "stated she"
+    },
+    {
+     "id": "D",
+     "text": "she stated"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "After 'not only' at the start of a clause, the subject and helper verb swap places."
+   ],
+   "id": "english-practice-855",
+   "lessonId": "english-lesson-55",
+   "lessonKey": "Paired conjunctions",
+   "question": "Choose the correct option.  “Not only ___ the rule, but she also explained why it works.”",
    "topicId": "eng-07"
   },
   {
@@ -4297,6 +6002,37 @@
    "topicId": "eng-08"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "One"
+    },
+    {
+     "id": "B",
+     "text": "Two"
+    },
+    {
+     "id": "C",
+     "text": "None"
+    },
+    {
+     "id": "D",
+     "text": "Three"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "Each half has a subject and a verb and could stand alone."
+   ],
+   "id": "english-practice-856",
+   "lessonId": "english-lesson-56",
+   "lessonKey": "Independent clause",
+   "question": "How many independent clauses are here?  “Omar revised, and Sara rested.”",
+   "topicId": "eng-08"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -4328,6 +6064,37 @@
    "topicId": "eng-08"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "So"
+    },
+    {
+     "id": "B",
+     "text": "And"
+    },
+    {
+     "id": "C",
+     "text": "Because"
+    },
+    {
+     "id": "D",
+     "text": "Then"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'Because' opens a clause that cannot stand alone."
+   ],
+   "id": "english-practice-857",
+   "lessonId": "english-lesson-57",
+   "lessonKey": "Dependent clause",
+   "question": "Which word turns this into a dependent clause?  “___ she practised, her score rose.”",
+   "topicId": "eng-08"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -4356,6 +6123,37 @@
    "lessonId": "english-lesson-58",
    "lessonKey": "Adverb clause",
    "question": "Choose the correctly punctuated sentence.",
+   "topicId": "eng-08"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "She continued, although it was hard, ."
+    },
+    {
+     "id": "B",
+     "text": "She, continued although it was hard."
+    },
+    {
+     "id": "C",
+     "text": "Although, it was hard she continued."
+    },
+    {
+     "id": "D",
+     "text": "She continued although it was hard."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "An adverb clause at the end needs no comma before it when it is essential."
+   ],
+   "id": "english-practice-858",
+   "lessonId": "english-lesson-58",
+   "lessonKey": "Adverb clause",
+   "question": "Which sentence is punctuated correctly?",
    "topicId": "eng-08"
   },
   {
@@ -4394,6 +6192,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "If you heat ice, it melts."
+    },
+    {
+     "id": "B",
+     "text": "If you had heated ice, it would have melted."
+    },
+    {
+     "id": "C",
+     "text": "If you heat ice, it will melt."
+    },
+    {
+     "id": "D",
+     "text": "If you heated ice, it would melt."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A general truth uses present in both halves."
+   ],
+   "id": "english-practice-859",
+   "lessonId": "english-lesson-59",
+   "lessonKey": "Zero conditional",
+   "question": "Which sentence is a zero conditional?",
+   "topicId": "eng-08"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
      "text": "will do"
     },
     {
@@ -4418,6 +6247,37 @@
    "lessonId": "english-lesson-60",
    "lessonKey": "First conditional",
    "question": "Choose the correct form.  “If I revise tonight, I ___ better tomorrow.”",
+   "topicId": "eng-08"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "rained"
+    },
+    {
+     "id": "B",
+     "text": "would rain"
+    },
+    {
+     "id": "C",
+     "text": "will rain"
+    },
+    {
+     "id": "D",
+     "text": "rains"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "No 'will' in the if-clause of a first conditional."
+   ],
+   "id": "english-practice-860",
+   "lessonId": "english-lesson-60",
+   "lessonKey": "First conditional",
+   "question": "Choose the correct form.  “If it ___ tomorrow, we will move the lesson online.”",
    "topicId": "eng-08"
   },
   {
@@ -4456,6 +6316,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "I do not know the answer"
+    },
+    {
+     "id": "B",
+     "text": "I refuse to tell you"
+    },
+    {
+     "id": "C",
+     "text": "I will know the answer soon"
+    },
+    {
+     "id": "D",
+     "text": "I knew the answer in the past"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "The past form in a second conditional shows the situation is not real now."
+   ],
+   "id": "english-practice-861",
+   "lessonId": "english-lesson-61",
+   "lessonKey": "Second conditional",
+   "question": "What does this sentence mean?  “If I knew the answer, I would tell you.”",
+   "topicId": "eng-08"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
      "text": "would have scored"
     },
     {
@@ -4480,6 +6371,37 @@
    "lessonId": "english-lesson-62",
    "lessonKey": "Third conditional",
    "question": "Choose the correct form.  “If she had practised, she ___ a higher score.”",
+   "topicId": "eng-08"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "had left"
+    },
+    {
+     "id": "B",
+     "text": "have left"
+    },
+    {
+     "id": "C",
+     "text": "would leave"
+    },
+    {
+     "id": "D",
+     "text": "left"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "An unreal past takes had + past participle in the if-clause."
+   ],
+   "id": "english-practice-862",
+   "lessonId": "english-lesson-62",
+   "lessonKey": "Third conditional",
+   "question": "Choose the correct form.  “If they ___ earlier, they would have caught the bus.”",
    "topicId": "eng-08"
   },
   {
@@ -4514,6 +6436,37 @@
    "topicId": "eng-08"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "You will fail if you revise."
+    },
+    {
+     "id": "B",
+     "text": "You will fail whether you revise or not."
+    },
+    {
+     "id": "C",
+     "text": "You will not fail if you do not revise."
+    },
+    {
+     "id": "D",
+     "text": "You will fail if you do not revise."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'unless' already means 'if not'."
+   ],
+   "id": "english-practice-863",
+   "lessonId": "english-lesson-63",
+   "lessonKey": "Unless",
+   "question": "Which sentence means the same as “You will fail unless you revise”?",
+   "topicId": "eng-08"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -4542,6 +6495,37 @@
    "lessonId": "english-lesson-64",
    "lessonKey": "Reported statements",
    "question": "Report this correctly.  Omar said, “I am tired.”",
+   "topicId": "eng-08"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "She said she would call me the next day."
+    },
+    {
+     "id": "B",
+     "text": "She said she will call me tomorrow."
+    },
+    {
+     "id": "C",
+     "text": "She said she would call me tomorrow."
+    },
+    {
+     "id": "D",
+     "text": "She said I would call you tomorrow."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A past reporting verb shifts 'will' to 'would', and 'tomorrow' becomes 'the next day'."
+   ],
+   "id": "english-practice-864",
+   "lessonId": "english-lesson-64",
+   "lessonKey": "Reported statements",
+   "question": "Report this correctly.  She said, “I will call you tomorrow.”",
    "topicId": "eng-08"
   },
   {
@@ -4576,6 +6560,37 @@
    "topicId": "eng-08"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "He asked whether was I ready."
+    },
+    {
+     "id": "B",
+     "text": "He asked whether I was ready."
+    },
+    {
+     "id": "C",
+     "text": "He asked am I ready."
+    },
+    {
+     "id": "D",
+     "text": "He asked was I ready."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A reported yes/no question uses 'if' or 'whether' and statement word order."
+   ],
+   "id": "english-practice-865",
+   "lessonId": "english-lesson-65",
+   "lessonKey": "Reported questions",
+   "question": "Report this correctly.  He asked, “Are you ready?”",
+   "topicId": "eng-08"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -4604,6 +6619,37 @@
    "lessonId": "english-lesson-66",
    "lessonKey": "Who",
    "question": "Choose the correct word.  “The teacher ___ helped me is retiring.”",
+   "topicId": "eng-09"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "which"
+    },
+    {
+     "id": "B",
+     "text": "who"
+    },
+    {
+     "id": "C",
+     "text": "whom"
+    },
+    {
+     "id": "D",
+     "text": "what"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A person acting as the subject of the clause takes 'who'."
+   ],
+   "id": "english-practice-866",
+   "lessonId": "english-lesson-66",
+   "lessonKey": "Who",
+   "question": "Choose the correct word.  “The scientist ___ discovered the method won a prize.”",
    "topicId": "eng-09"
   },
   {
@@ -4638,6 +6684,37 @@
    "topicId": "eng-09"
   },
   {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "The friend whom I invited could not come."
+    },
+    {
+     "id": "B",
+     "text": "The friend whom invited me could not come."
+    },
+    {
+     "id": "C",
+     "text": "The friend which I invited could not come."
+    },
+    {
+     "id": "D",
+     "text": "The friend who I invited him could not come."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'whom' is the object of 'invited', so nothing else follows as the object."
+   ],
+   "id": "english-practice-867",
+   "lessonId": "english-lesson-67",
+   "lessonKey": "Whom",
+   "question": "Which sentence is correct?",
+   "topicId": "eng-09"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -4666,6 +6743,37 @@
    "lessonId": "english-lesson-68",
    "lessonKey": "Whose",
    "question": "Choose the correct word.  “The student ___ essay won is in my class.”",
+   "topicId": "eng-09"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "that’s"
+    },
+    {
+     "id": "B",
+     "text": "which"
+    },
+    {
+     "id": "C",
+     "text": "whose"
+    },
+    {
+     "id": "D",
+     "text": "who’s"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'whose' shows that the books belong to the writer."
+   ],
+   "id": "english-practice-868",
+   "lessonId": "english-lesson-68",
+   "lessonKey": "Whose",
+   "question": "Choose the correct word.  “I met a writer ___ books I had read at school.”",
    "topicId": "eng-09"
   },
   {
@@ -4704,6 +6812,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "My phone, which I bought last year has stopped working."
+    },
+    {
+     "id": "B",
+     "text": "My phone that I bought last year, has stopped working."
+    },
+    {
+     "id": "C",
+     "text": "My phone which I bought last year, has stopped working."
+    },
+    {
+     "id": "D",
+     "text": "My phone, which I bought last year, has stopped working."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "Extra information sits between two commas, and 'which' is used, not 'that'."
+   ],
+   "id": "english-practice-869",
+   "lessonId": "english-lesson-69",
+   "lessonKey": "Which",
+   "question": "Choose the correctly punctuated sentence.",
+   "topicId": "eng-09"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
      "text": "who"
     },
     {
@@ -4735,6 +6874,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "The book that she recommended was useful."
+    },
+    {
+     "id": "B",
+     "text": "The book that she recommended it was useful."
+    },
+    {
+     "id": "C",
+     "text": "The book, that she recommended, was useful."
+    },
+    {
+     "id": "D",
+     "text": "The book what she recommended was useful."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'that' introduces an essential clause with no commas and no extra object."
+   ],
+   "id": "english-practice-870",
+   "lessonId": "english-lesson-70",
+   "lessonKey": "That",
+   "question": "Which sentence is correct?",
+   "topicId": "eng-09"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
      "text": "where"
     },
     {
@@ -4759,6 +6929,37 @@
    "lessonId": "english-lesson-71",
    "lessonKey": "Where / when",
    "question": "Choose the correct word.  “This is the room ___ we sat the mock exam.”",
+   "topicId": "eng-09"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "when"
+    },
+    {
+     "id": "B",
+     "text": "which"
+    },
+    {
+     "id": "C",
+     "text": "who"
+    },
+    {
+     "id": "D",
+     "text": "where"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'when' points to a time."
+   ],
+   "id": "english-practice-871",
+   "lessonId": "english-lesson-71",
+   "lessonKey": "Where / when",
+   "question": "Choose the correct word.  “I remember the day ___ we started this course.”",
    "topicId": "eng-09"
   },
   {
@@ -4797,6 +6998,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "Omar who arrives late misses the warm-up."
+    },
+    {
+     "id": "B",
+     "text": "Students who arrive late miss the warm-up."
+    },
+    {
+     "id": "C",
+     "text": "My brother who lives in Cairo called me."
+    },
+    {
+     "id": "D",
+     "text": "The Nile which flows north is long."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "Here the clause is essential: it says which students, so no commas."
+   ],
+   "id": "english-practice-872",
+   "lessonId": "english-lesson-72",
+   "lessonKey": "Essential vs nonessential",
+   "question": "Which sentence needs no commas?",
+   "topicId": "eng-09"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "The girl which she won the prize is here."
     },
     {
@@ -4818,6 +7050,37 @@
     "'who' is already the subject, so do not add 'she' as well."
    ],
    "id": "english-practice-473",
+   "lessonId": "english-lesson-73",
+   "lessonKey": "No double subject",
+   "question": "Which sentence is correct?",
+   "topicId": "eng-09"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "The teacher who she helped me has retired."
+    },
+    {
+     "id": "B",
+     "text": "The teacher who helped me has retired."
+    },
+    {
+     "id": "C",
+     "text": "The teacher which helped me has retired."
+    },
+    {
+     "id": "D",
+     "text": "The teacher who he helped me has retired."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'who' is already the subject, so do not add another pronoun."
+   ],
+   "id": "english-practice-873",
    "lessonId": "english-lesson-73",
    "lessonKey": "No double subject",
    "question": "Which sentence is correct?",
@@ -4855,6 +7118,37 @@
    "topicId": "eng-10"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "What a difficult paper that was,"
+    },
+    {
+     "id": "B",
+     "text": "What a difficult paper that was!"
+    },
+    {
+     "id": "C",
+     "text": "What a difficult paper that was."
+    },
+    {
+     "id": "D",
+     "text": "What a difficult paper that was?"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "An exclamation beginning with 'What a' ends with an exclamation mark."
+   ],
+   "id": "english-practice-874",
+   "lessonId": "english-lesson-74",
+   "lessonKey": "End punctuation",
+   "question": "Which sentence is punctuated correctly?",
+   "topicId": "eng-10"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -4883,6 +7177,37 @@
    "lessonId": "english-lesson-75",
    "lessonKey": "Comma in list",
    "question": "Choose the correctly punctuated list.",
+   "topicId": "eng-10"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "We need pens, paper and, a calculator."
+    },
+    {
+     "id": "B",
+     "text": "We need pens paper and a calculator."
+    },
+    {
+     "id": "C",
+     "text": "We need pens, paper, and a calculator."
+    },
+    {
+     "id": "D",
+     "text": "We need, pens, paper and a calculator."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "Commas separate the items, including before 'and' in the Oxford style."
+   ],
+   "id": "english-practice-875",
+   "lessonId": "english-lesson-75",
+   "lessonKey": "Comma in list",
+   "question": "Which list is punctuated correctly?",
    "topicId": "eng-10"
   },
   {
@@ -4921,6 +7246,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "We went home and slept."
+    },
+    {
+     "id": "B",
+     "text": "After the long exam we went home."
+    },
+    {
+     "id": "C",
+     "text": "We went home after the long exam."
+    },
+    {
+     "id": "D",
+     "text": "The long exam ended at noon."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "An introductory phrase before the main clause is followed by a comma."
+   ],
+   "id": "english-practice-876",
+   "lessonId": "english-lesson-76",
+   "lessonKey": "Intro comma",
+   "question": "Which sentence needs a comma?",
+   "topicId": "eng-10"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "She revised every evening and her score, improved."
     },
     {
@@ -4945,6 +7301,37 @@
    "lessonId": "english-lesson-77",
    "lessonKey": "Compound sentence",
    "question": "Choose the correctly punctuated sentence.",
+   "topicId": "eng-10"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "It rained all morning but the match, went ahead."
+    },
+    {
+     "id": "B",
+     "text": "It rained all morning but, the match went ahead."
+    },
+    {
+     "id": "C",
+     "text": "It rained all morning, the match went ahead."
+    },
+    {
+     "id": "D",
+     "text": "It rained all morning, but the match went ahead."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A comma goes before the joining word, not after it."
+   ],
+   "id": "english-practice-877",
+   "lessonId": "english-lesson-77",
+   "lessonKey": "Compound sentence",
+   "question": "Which sentence is correct?",
    "topicId": "eng-10"
   },
   {
@@ -4976,6 +7363,37 @@
    "lessonId": "english-lesson-78",
    "lessonKey": "Semicolon",
    "question": "Choose the correct sentence.",
+   "topicId": "eng-10"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "The bus was late; because of traffic."
+    },
+    {
+     "id": "B",
+     "text": "The bus was late; and we missed the lesson."
+    },
+    {
+     "id": "C",
+     "text": "The bus; was late this morning."
+    },
+    {
+     "id": "D",
+     "text": "The bus was late; we missed the first lesson."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "Both sides of a semicolon must be complete sentences."
+   ],
+   "id": "english-practice-878",
+   "lessonId": "english-lesson-78",
+   "lessonKey": "Semicolon",
+   "question": "Which sentence uses the semicolon correctly?",
    "topicId": "eng-10"
   },
   {
@@ -5014,6 +7432,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "She packed: a pen, a ruler and water."
+    },
+    {
+     "id": "B",
+     "text": "She packed: three things a pen, a ruler and water."
+    },
+    {
+     "id": "C",
+     "text": "She packed three things, a pen: a ruler and water."
+    },
+    {
+     "id": "D",
+     "text": "She packed three things: a pen, a ruler and water."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "What comes before the colon must be a complete thought."
+   ],
+   "id": "english-practice-879",
+   "lessonId": "english-lesson-79",
+   "lessonKey": "Colon",
+   "question": "Which sentence uses the colon correctly?",
+   "topicId": "eng-10"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
      "text": "student’s"
     },
     {
@@ -5038,6 +7487,37 @@
    "lessonId": "english-lesson-80",
    "lessonKey": "Apostrophe possession",
    "question": "Choose the correct form.  “These are the ___ books.”  (they belong to several students)",
+   "topicId": "eng-10"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "sisters"
+    },
+    {
+     "id": "B",
+     "text": "sisters’s"
+    },
+    {
+     "id": "C",
+     "text": "sisters’"
+    },
+    {
+     "id": "D",
+     "text": "sister’s"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "One owner takes apostrophe + s."
+   ],
+   "id": "english-practice-880",
+   "lessonId": "english-lesson-80",
+   "lessonKey": "Apostrophe possession",
+   "question": "Choose the correct form.  “This is my ___ bag.”  (it belongs to one sister)",
    "topicId": "eng-10"
   },
   {
@@ -5072,6 +7552,37 @@
    "topicId": "eng-10"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "There revising for their exam over they’re."
+    },
+    {
+     "id": "B",
+     "text": "Their revising for they’re exam over there."
+    },
+    {
+     "id": "C",
+     "text": "They’re revising for there exam over their."
+    },
+    {
+     "id": "D",
+     "text": "They’re revising for their exam over there."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "they're = they are, their = belonging to them, there = that place."
+   ],
+   "id": "english-practice-881",
+   "lessonId": "english-lesson-81",
+   "lessonKey": "Contractions",
+   "question": "Which sentence is correct?",
+   "topicId": "eng-10"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -5103,6 +7614,37 @@
    "topicId": "eng-10"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Change the full stop to a question mark."
+    },
+    {
+     "id": "B",
+     "text": "Nothing: it is already a sentence."
+    },
+    {
+     "id": "C",
+     "text": "Add a main clause: … she finished it in time."
+    },
+    {
+     "id": "D",
+     "text": "Add a comma after 'Although'."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A dependent clause needs a main clause to complete the idea."
+   ],
+   "id": "english-practice-882",
+   "lessonId": "english-lesson-82",
+   "lessonKey": "Fragment",
+   "question": "How can this fragment be fixed?  “Although the paper was long.”",
+   "topicId": "eng-10"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -5131,6 +7673,37 @@
    "lessonId": "english-lesson-83",
    "lessonKey": "Comma splice",
    "question": "Which sentence is a comma splice?",
+   "topicId": "eng-10"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "The test was hard; but I still passed,"
+    },
+    {
+     "id": "B",
+     "text": "The test was hard, so, I still passed."
+    },
+    {
+     "id": "C",
+     "text": "The test was hard, but I still passed."
+    },
+    {
+     "id": "D",
+     "text": "The test was hard I still passed."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A comma alone cannot join two sentences: add a joining word or use a semicolon."
+   ],
+   "id": "english-practice-883",
+   "lessonId": "english-lesson-83",
+   "lessonKey": "Comma splice",
+   "question": "How should this be fixed?  “The test was hard, I still passed.”",
    "topicId": "eng-10"
   },
   {
@@ -5169,6 +7742,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "In the first study only"
+    },
+    {
+     "id": "B",
+     "text": "In the middle of the second study"
+    },
+    {
+     "id": "C",
+     "text": "In the first and last sentences"
+    },
+    {
+     "id": "D",
+     "text": "In the longest sentence"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "Writers usually state the main idea at the start and again at the end."
+   ],
+   "id": "english-practice-884",
+   "lessonId": "english-lesson-84",
+   "lessonKey": "Main idea",
+   "question": "A passage opens with a claim, gives three studies that support it, and ends by repeating the claim. Where is the main idea most likely to be?",
+   "topicId": "eng-12"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
      "text": "Answer from what usually happens in a lesson."
     },
     {
@@ -5193,6 +7797,37 @@
    "lessonId": "english-lesson-85",
    "lessonKey": "Detail",
    "question": "A passage states: “The review session lasted fifteen minutes.”  A question asks how long the session lasted. What should you do?",
+   "topicId": "eng-12"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Answer from what similar programmes usually cost"
+    },
+    {
+     "id": "B",
+     "text": "Pick the only answer with a number in it"
+    },
+    {
+     "id": "C",
+     "text": "Find the sentence that mentions cost and read it again"
+    },
+    {
+     "id": "D",
+     "text": "Choose the answer that sounds most reasonable"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A detail is stated in the passage: go back and read the exact sentence."
+   ],
+   "id": "english-practice-885",
+   "lessonId": "english-lesson-85",
+   "lessonKey": "Detail",
+   "question": "A detail question asks what a passage says about the cost of the programme. What is the safest method?",
    "topicId": "eng-12"
   },
   {
@@ -5231,6 +7866,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "Crime will keep falling every year"
+    },
+    {
+     "id": "B",
+     "text": "The lights may have played a part in the fall"
+    },
+    {
+     "id": "C",
+     "text": "The lights caused the fall in crime"
+    },
+    {
+     "id": "D",
+     "text": "The town has no other safety measures"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "An inference must stay inside the evidence. 'May have played a part' does; claiming cause does not."
+   ],
+   "id": "english-practice-886",
+   "lessonId": "english-lesson-86",
+   "lessonKey": "Inference",
+   "question": "A passage says a town installed street lights and crime fell the next year. Which inference does the passage support?",
+   "topicId": "eng-12"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "Many students say weekends feel more relaxed."
     },
     {
@@ -5255,6 +7921,37 @@
    "lessonId": "english-lesson-87",
    "lessonKey": "Evidence",
    "question": "A writer claims that short daily revision beats long weekend sessions. Which sentence is the best evidence?",
+   "topicId": "eng-12"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Two teachers recorded fewer errors in their classes"
+    },
+    {
+     "id": "B",
+     "text": "A study measured clearer vowels after eight weeks"
+    },
+    {
+     "id": "C",
+     "text": "A test showed higher scores for students who read aloud"
+    },
+    {
+     "id": "D",
+     "text": "The writer enjoys reading aloud at home"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A personal preference supports nothing. Evidence has to be measured and connected to the claim."
+   ],
+   "id": "english-practice-887",
+   "lessonId": "english-lesson-87",
+   "lessonKey": "Evidence",
+   "question": "A writer argues that reading aloud improves pronunciation. Which is the weakest evidence?",
    "topicId": "eng-12"
   },
   {
@@ -5293,6 +7990,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "To focus the reader on the problem the paragraph answers"
+    },
+    {
+     "id": "B",
+     "text": "To avoid giving any evidence"
+    },
+    {
+     "id": "C",
+     "text": "To change the subject completely"
+    },
+    {
+     "id": "D",
+     "text": "To show that the writer is unsure"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A purpose question asks what the writer is doing, not what the words mean."
+   ],
+   "id": "english-practice-888",
+   "lessonId": "english-lesson-88",
+   "lessonKey": "Purpose",
+   "question": "Why might a writer begin a paragraph with a question?",
+   "topicId": "eng-12"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
      "text": "cautious"
     },
     {
@@ -5317,6 +8045,37 @@
    "lessonId": "english-lesson-89",
    "lessonKey": "Tone",
    "question": "“The plan may work, though the evidence so far is thin.”  What is the tone?",
+   "topicId": "eng-12"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "enthusiastic"
+    },
+    {
+     "id": "B",
+     "text": "critical"
+    },
+    {
+     "id": "C",
+     "text": "neutral"
+    },
+    {
+     "id": "D",
+     "text": "cautious"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'a waste of everyone's time' is a clear judgement, so the tone is critical."
+   ],
+   "id": "english-practice-889",
+   "lessonId": "english-lesson-89",
+   "lessonKey": "Tone",
+   "question": "“The proposal is, frankly, a waste of everyone’s time.”  What is the tone?",
    "topicId": "eng-12"
   },
   {
@@ -5355,6 +8114,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "It introduces the writer's evidence"
+    },
+    {
+     "id": "B",
+     "text": "It qualifies the claim made before it"
+    },
+    {
+     "id": "C",
+     "text": "It restates the main idea"
+    },
+    {
+     "id": "D",
+     "text": "It gives an example of the claim"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'However' signals a limit or an exception to what came before."
+   ],
+   "id": "english-practice-890",
+   "lessonId": "english-lesson-90",
+   "lessonKey": "Function",
+   "question": "A sentence reads: “However, the results were not repeated in the second trial.”  What does it do?",
+   "topicId": "eng-12"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "for example"
     },
     {
@@ -5386,6 +8176,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "therefore"
+    },
+    {
+     "id": "B",
+     "text": "similarly"
+    },
+    {
+     "id": "C",
+     "text": "nevertheless"
+    },
+    {
+     "id": "D",
+     "text": "for example"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "The second half contrasts with the first, so a contrast link is needed."
+   ],
+   "id": "english-practice-891",
+   "lessonId": "english-lesson-91",
+   "lessonKey": "Transitions",
+   "question": "Choose the best transition.  “The method is slow; ___, it is the most accurate one available.”",
+   "topicId": "eng-12"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
      "text": "The reason she finished early was because the paper was short."
     },
     {
@@ -5407,6 +8228,37 @@
     "Say it once, in the fewest clear words."
    ],
    "id": "english-practice-492",
+   "lessonId": "english-lesson-92",
+   "lessonKey": "Conciseness",
+   "question": "Choose the most concise version.",
+   "topicId": "eng-12"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "What we should do is begin now."
+    },
+    {
+     "id": "B",
+     "text": "We should begin now."
+    },
+    {
+     "id": "C",
+     "text": "We should begin at this point in time."
+    },
+    {
+     "id": "D",
+     "text": "It is now that we should begin to start."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "Say it in the fewest clear words."
+   ],
+   "id": "english-practice-892",
    "lessonId": "english-lesson-92",
    "lessonKey": "Conciseness",
    "question": "Choose the most concise version.",
@@ -5448,6 +8300,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "a sudden gift"
+    },
+    {
+     "id": "B",
+     "text": "a free gift"
+    },
+    {
+     "id": "C",
+     "text": "a small gift"
+    },
+    {
+     "id": "D",
+     "text": "a useful gift"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A gift is free by definition, so 'free gift' says it twice."
+   ],
+   "id": "english-practice-893",
+   "lessonId": "english-lesson-93",
+   "lessonKey": "Redundancy",
+   "question": "Which phrase is redundant?",
+   "topicId": "eng-12"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "have studied"
     },
     {
@@ -5472,6 +8355,37 @@
    "lessonId": "english-lesson-94",
    "lessonKey": "01. Singular subject -> singular verb",
    "question": "Choose the correct verb.  “The student ___ every evening.”",
+   "topicId": "eng-02"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "The engineer have checked the drawings every morning."
+    },
+    {
+     "id": "B",
+     "text": "The engineer checks the drawings every morning."
+    },
+    {
+     "id": "C",
+     "text": "The engineer are checking the drawings every morning."
+    },
+    {
+     "id": "D",
+     "text": "The engineer check the drawings every morning."
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "One engineer is singular, so the verb takes -s in the present."
+   ],
+   "id": "english-practice-894",
+   "lessonId": "english-lesson-94",
+   "lessonKey": "01. Singular subject -> singular verb",
+   "question": "Which sentence is correct?",
    "topicId": "eng-02"
   },
   {
@@ -5503,6 +8417,37 @@
    "lessonId": "english-lesson-95",
    "lessonKey": "02. Plural subject -> plural verb",
    "question": "Choose the correct verb.  “The engineers ___ on the same project.”",
+   "topicId": "eng-02"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "is sharing"
+    },
+    {
+     "id": "B",
+     "text": "share"
+    },
+    {
+     "id": "C",
+     "text": "shares"
+    },
+    {
+     "id": "D",
+     "text": "has shared"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A plural subject takes the plural verb."
+   ],
+   "id": "english-practice-895",
+   "lessonId": "english-lesson-95",
+   "lessonKey": "02. Plural subject -> plural verb",
+   "question": "Choose the correct verb.  “The teachers ___ their notes before each lesson.”",
    "topicId": "eng-02"
   },
   {
@@ -5541,6 +8486,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "has been"
+    },
+    {
+     "id": "B",
+     "text": "are"
+    },
+    {
+     "id": "C",
+     "text": "is"
+    },
+    {
+     "id": "D",
+     "text": "was"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "Two subjects joined by 'and' make a plural subject."
+   ],
+   "id": "english-practice-896",
+   "lessonId": "english-lesson-96",
+   "lessonKey": "03. Subjects joined by and",
+   "question": "Choose the correct verb.  “The teacher and the student ___ waiting in the hall.”",
+   "topicId": "eng-02"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "is bringing"
     },
     {
@@ -5565,6 +8541,37 @@
    "lessonId": "english-lesson-97",
    "lessonKey": "04. Or / nor nearest subject",
    "question": "Choose the correct verb.  “Ahmed or his friends ___ the notes.”",
+   "topicId": "eng-02"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "have known"
+    },
+    {
+     "id": "B",
+     "text": "knows"
+    },
+    {
+     "id": "C",
+     "text": "know"
+    },
+    {
+     "id": "D",
+     "text": "are knowing"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "With nor the verb agrees with the nearest subject, here the singular 'teacher'."
+   ],
+   "id": "english-practice-897",
+   "lessonId": "english-lesson-97",
+   "lessonKey": "04. Or / nor nearest subject",
+   "question": "Choose the correct verb.  “Neither the students nor the teacher ___ the answer.”",
    "topicId": "eng-02"
   },
   {
@@ -5603,6 +8610,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "earns"
+    },
+    {
+     "id": "B",
+     "text": "are earning"
+    },
+    {
+     "id": "C",
+     "text": "earn"
+    },
+    {
+     "id": "D",
+     "text": "have earned"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'Each' is singular, even when 'of the answers' follows it."
+   ],
+   "id": "english-practice-898",
+   "lessonId": "english-lesson-98",
+   "lessonKey": "05. Each / everyone / someone / anybody",
+   "question": "Choose the correct verb.  “Each of the answers ___ one mark.”",
+   "topicId": "eng-02"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
      "text": "take"
     },
     {
@@ -5627,6 +8665,37 @@
    "lessonId": "english-lesson-99",
    "lessonKey": "06. The number vs a number",
    "question": "Choose the correct verb.  “A number of students ___ the early bus every day.”",
+   "topicId": "eng-02"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "is"
+    },
+    {
+     "id": "B",
+     "text": "are"
+    },
+    {
+     "id": "C",
+     "text": "were"
+    },
+    {
+     "id": "D",
+     "text": "have been"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'the number of' is singular; 'a number of' would be plural."
+   ],
+   "id": "english-practice-899",
+   "lessonId": "english-lesson-99",
+   "lessonKey": "06. The number vs a number",
+   "question": "Choose the correct verb.  “The number of applicants ___ rising.”",
    "topicId": "eng-02"
   },
   {
@@ -5665,6 +8734,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "present"
+    },
+    {
+     "id": "B",
+     "text": "have presented"
+    },
+    {
+     "id": "C",
+     "text": "are presenting"
+    },
+    {
+     "id": "D",
+     "text": "presents"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A group acting as one unit takes a singular verb, which 'its' already signals."
+   ],
+   "id": "english-practice-900",
+   "lessonId": "english-lesson-100",
+   "lessonKey": "07. Collective nouns",
+   "question": "Choose the correct verb.  “The class ___ its project next week.”",
+   "topicId": "eng-02"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
      "text": "were"
     },
     {
@@ -5689,6 +8789,37 @@
    "lessonId": "english-lesson-101",
    "lessonKey": "08. Words ending in s but singular",
    "question": "Choose the correct verb.  “Mathematics ___ my favourite subject.”",
+   "topicId": "eng-02"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "have been"
+    },
+    {
+     "id": "B",
+     "text": "were"
+    },
+    {
+     "id": "C",
+     "text": "is"
+    },
+    {
+     "id": "D",
+     "text": "are"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "news looks plural but is singular, like mathematics and physics."
+   ],
+   "id": "english-practice-901",
+   "lessonId": "english-lesson-101",
+   "lessonKey": "08. Words ending in s but singular",
+   "question": "Choose the correct verb.  “The news ___ better this morning.”",
    "topicId": "eng-02"
   },
   {
@@ -5723,6 +8854,37 @@
    "topicId": "eng-02"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "are studying"
+    },
+    {
+     "id": "B",
+     "text": "studies"
+    },
+    {
+     "id": "C",
+     "text": "study"
+    },
+    {
+     "id": "D",
+     "text": "have studied"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'Each' is singular however many people it covers."
+   ],
+   "id": "english-practice-902",
+   "lessonId": "english-lesson-102",
+   "lessonKey": "09. Singular indefinite pronouns",
+   "question": "Choose the correct verb.  “Each of the twins ___ a different subject.”",
+   "topicId": "eng-02"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -5751,6 +8913,37 @@
    "lessonId": "english-lesson-103",
    "lessonKey": "10. Plural indefinite pronouns",
    "question": "Choose the correct verb.  “Several of the answers ___ the same mistake.”",
+   "topicId": "eng-02"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "is"
+    },
+    {
+     "id": "B",
+     "text": "was"
+    },
+    {
+     "id": "C",
+     "text": "has been"
+    },
+    {
+     "id": "D",
+     "text": "were"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "few, many, several and both are plural."
+   ],
+   "id": "english-practice-903",
+   "lessonId": "english-lesson-103",
+   "lessonKey": "10. Plural indefinite pronouns",
+   "question": "Choose the correct verb.  “Few of the questions ___ easy.”",
    "topicId": "eng-02"
   },
   {
@@ -5785,6 +8978,37 @@
    "topicId": "eng-02"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "has been"
+    },
+    {
+     "id": "B",
+     "text": "was"
+    },
+    {
+     "id": "C",
+     "text": "is"
+    },
+    {
+     "id": "D",
+     "text": "are"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "With most/some/all the noun decides, and 'chairs' is plural."
+   ],
+   "id": "english-practice-904",
+   "lessonId": "english-lesson-104",
+   "lessonKey": "11. Some / all / most / none",
+   "question": "Choose the correct verb.  “Most of the chairs ___ broken.”",
+   "topicId": "eng-02"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -5813,6 +9037,37 @@
    "lessonId": "english-lesson-105",
    "lessonKey": "12. Distance / time / money",
    "question": "Choose the correct verb.  “Five kilometres ___ a long way to walk.”",
+   "topicId": "eng-02"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "is"
+    },
+    {
+     "id": "B",
+     "text": "were"
+    },
+    {
+     "id": "C",
+     "text": "are"
+    },
+    {
+     "id": "D",
+     "text": "have been"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "An amount treated as one idea takes a singular verb."
+   ],
+   "id": "english-practice-905",
+   "lessonId": "english-lesson-105",
+   "lessonKey": "12. Distance / time / money",
+   "question": "Choose the correct verb.  “Twenty pounds ___ a fair price for it.”",
    "topicId": "eng-02"
   },
   {
@@ -5851,6 +9106,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "were"
+    },
+    {
+     "id": "B",
+     "text": "has"
+    },
+    {
+     "id": "C",
+     "text": "have"
+    },
+    {
+     "id": "D",
+     "text": "are"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A title names one work, so the verb is singular."
+   ],
+   "id": "english-practice-906",
+   "lessonId": "english-lesson-106",
+   "lessonKey": "13. Titles",
+   "question": "Choose the correct verb.  “The Lord of the Rings ___ three volumes.”",
+   "topicId": "eng-02"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "was"
     },
     {
@@ -5882,6 +9168,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "are"
+    },
+    {
+     "id": "B",
+     "text": "were"
+    },
+    {
+     "id": "C",
+     "text": "have been"
+    },
+    {
+     "id": "D",
+     "text": "is"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "A fraction agrees with the noun after it, and 'milk' is uncountable."
+   ],
+   "id": "english-practice-907",
+   "lessonId": "english-lesson-107",
+   "lessonKey": "14. Fractions",
+   "question": "Choose the correct verb.  “Two thirds of the milk ___ gone.”",
+   "topicId": "eng-02"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
      "text": "has been"
     },
     {
@@ -5906,6 +9223,37 @@
    "lessonId": "english-lesson-108",
    "lessonKey": "15. There is / there are",
    "question": "Choose the correct verb.  “There ___ several mistakes on this page.”",
+   "topicId": "eng-02"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "was"
+    },
+    {
+     "id": "B",
+     "text": "is"
+    },
+    {
+     "id": "C",
+     "text": "has been"
+    },
+    {
+     "id": "D",
+     "text": "are"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "The real subject comes after 'there': reasons are."
+   ],
+   "id": "english-practice-908",
+   "lessonId": "english-lesson-108",
+   "lessonKey": "15. There is / there are",
+   "question": "Choose the correct verb.  “There ___ three reasons for the delay.”",
    "topicId": "eng-02"
   },
   {
@@ -5952,6 +9300,37 @@
     },
     {
      "id": "C",
+     "text": "were"
+    },
+    {
+     "id": "D",
+     "text": "have been"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "The subject is 'box'. Ignore 'of old photographs'."
+   ],
+   "id": "english-practice-909",
+   "lessonId": "english-lesson-109",
+   "lessonKey": "16. Ignore prepositional phrase",
+   "question": "Choose the correct verb.  “The box of old photographs ___ in the attic.”",
+   "topicId": "eng-02"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "is"
+    },
+    {
+     "id": "B",
+     "text": "are"
+    },
+    {
+     "id": "C",
      "text": "have been"
     },
     {
@@ -5968,6 +9347,37 @@
    "lessonId": "english-lesson-110",
    "lessonKey": "17. Gerund subject",
    "question": "Choose the correct verb.  “Swimming before breakfast ___ harder than it sounds.”",
+   "topicId": "eng-02"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "are taking"
+    },
+    {
+     "id": "B",
+     "text": "takes"
+    },
+    {
+     "id": "C",
+     "text": "take"
+    },
+    {
+     "id": "D",
+     "text": "have taken"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "An -ing subject names one activity, so the verb is singular."
+   ],
+   "id": "english-practice-910",
+   "lessonId": "english-lesson-110",
+   "lessonKey": "17. Gerund subject",
+   "question": "Choose the correct verb.  “Reading long passages ___ practice.”",
    "topicId": "eng-02"
   },
   {
@@ -5999,6 +9409,37 @@
    "lessonId": "english-lesson-111",
    "lessonKey": "18. Either / neither",
    "question": "Choose the correct verb.  “Neither answer ___ complete.”",
+   "topicId": "eng-02"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "were"
+    },
+    {
+     "id": "B",
+     "text": "are"
+    },
+    {
+     "id": "C",
+     "text": "have been"
+    },
+    {
+     "id": "D",
+     "text": "is"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "either and neither on their own are singular."
+   ],
+   "id": "english-practice-911",
+   "lessonId": "english-lesson-111",
+   "lessonKey": "18. Either / neither",
+   "question": "Choose the correct verb.  “Neither of the answers ___ complete.”",
    "topicId": "eng-02"
   },
   {
@@ -6037,6 +9478,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "rapid"
+    },
+    {
+     "id": "B",
+     "text": "objective"
+    },
+    {
+     "id": "C",
+     "text": "significant"
+    },
+    {
+     "id": "D",
+     "text": "brief"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'significant' means important enough to matter, which fits a small but meaningful drop."
+   ],
+   "id": "english-practice-912",
+   "lessonId": "english-lesson-112",
+   "lessonKey": "significant",
+   "question": "Which word best completes the sentence?  “The drop in errors was small but ___.”",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
      "text": "carefully tested"
     },
     {
@@ -6061,6 +9533,37 @@
    "lessonId": "english-lesson-113",
    "lessonKey": "novel",
    "question": "Read the sentence: “The team proposed a novel solution to the problem.”  As it is used here, “novel” most nearly means…",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "novel"
+    },
+    {
+     "id": "B",
+     "text": "reliable"
+    },
+    {
+     "id": "C",
+     "text": "brief"
+    },
+    {
+     "id": "D",
+     "text": "evident"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'novel' means new and original."
+   ],
+   "id": "english-practice-913",
+   "lessonId": "english-lesson-113",
+   "lessonKey": "novel",
+   "question": "Which word best completes the sentence?  “The team tried a ___ approach that nobody had used before.”",
    "topicId": "eng-11"
   },
   {
@@ -6092,6 +9595,37 @@
    "lessonId": "english-lesson-114",
    "lessonKey": "efficient",
    "question": "Read the sentence: “The new workflow is far more efficient.”  As it is used here, “efficient” most nearly means…",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "precise"
+    },
+    {
+     "id": "B",
+     "text": "subjective"
+    },
+    {
+     "id": "C",
+     "text": "efficient"
+    },
+    {
+     "id": "D",
+     "text": "feasible"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'efficient' means getting the result with little waste."
+   ],
+   "id": "english-practice-914",
+   "lessonId": "english-lesson-114",
+   "lessonKey": "efficient",
+   "question": "Which word best completes the sentence?  “The new route is more ___: it uses less fuel and less time.”",
    "topicId": "eng-11"
   },
   {
@@ -6130,6 +9664,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "novel"
+    },
+    {
+     "id": "B",
+     "text": "sufficient"
+    },
+    {
+     "id": "C",
+     "text": "consistent"
+    },
+    {
+     "id": "D",
+     "text": "primary"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'consistent' means they agreed with each other each time."
+   ],
+   "id": "english-practice-915",
+   "lessonId": "english-lesson-115",
+   "lessonKey": "consistent",
+   "question": "Which word best completes the sentence?  “Her results were ___ across all three tests.”",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
      "text": "strongly felt"
     },
     {
@@ -6154,6 +9719,37 @@
    "lessonId": "english-lesson-116",
    "lessonKey": "valid",
    "question": "Read the sentence: “The conclusion is valid.”  As it is used here, “valid” most nearly means…",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "rapid"
+    },
+    {
+     "id": "B",
+     "text": "substantial"
+    },
+    {
+     "id": "C",
+     "text": "brief"
+    },
+    {
+     "id": "D",
+     "text": "valid"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'valid' describes reasoning that holds together."
+   ],
+   "id": "english-practice-916",
+   "lessonId": "english-lesson-116",
+   "lessonKey": "valid",
+   "question": "Which word best completes the sentence?  “The argument is ___: each step follows from the last.”",
    "topicId": "eng-11"
   },
   {
@@ -6188,6 +9784,37 @@
    "topicId": "eng-11"
   },
   {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "accurate"
+    },
+    {
+     "id": "B",
+     "text": "relevant"
+    },
+    {
+     "id": "C",
+     "text": "feasible"
+    },
+    {
+     "id": "D",
+     "text": "complex"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'accurate' means correct in every detail."
+   ],
+   "id": "english-practice-917",
+   "lessonId": "english-lesson-117",
+   "lessonKey": "accurate",
+   "question": "Which word best completes the sentence?  “Check that your figures are ___ before you hand the work in.”",
+   "topicId": "eng-11"
+  },
+  {
    "answer": "B",
    "choices": [
     {
@@ -6216,6 +9843,37 @@
    "lessonId": "english-lesson-118",
    "lessonKey": "brief",
    "question": "Read the sentence: “She gave a brief summary of the chapter.”  As it is used here, “brief” most nearly means…",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "subjective"
+    },
+    {
+     "id": "B",
+     "text": "evident"
+    },
+    {
+     "id": "C",
+     "text": "rapid"
+    },
+    {
+     "id": "D",
+     "text": "brief"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'brief' means short."
+   ],
+   "id": "english-practice-918",
+   "lessonId": "english-lesson-118",
+   "lessonKey": "brief",
+   "question": "Which word best completes the sentence?  “Keep the summary ___: one paragraph is enough.”",
    "topicId": "eng-11"
   },
   {
@@ -6250,6 +9908,37 @@
    "topicId": "eng-11"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "brief"
+    },
+    {
+     "id": "B",
+     "text": "valid"
+    },
+    {
+     "id": "C",
+     "text": "objective"
+    },
+    {
+     "id": "D",
+     "text": "rapid"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'rapid' means very fast."
+   ],
+   "id": "english-practice-919",
+   "lessonId": "english-lesson-119",
+   "lessonKey": "rapid",
+   "question": "Which word best completes the sentence?  “The ___ growth of the city surprised the planners.”",
+   "topicId": "eng-11"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -6278,6 +9967,37 @@
    "lessonId": "english-lesson-120",
    "lessonKey": "decline",
    "question": "Read the sentence: “Profits declined for a second year.”  As it is used here, “decline” most nearly means…",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "decline"
+    },
+    {
+     "id": "B",
+     "text": "obtain"
+    },
+    {
+     "id": "C",
+     "text": "maintain"
+    },
+    {
+     "id": "D",
+     "text": "demonstrate"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'decline' means to go down."
+   ],
+   "id": "english-practice-920",
+   "lessonId": "english-lesson-120",
+   "lessonKey": "decline",
+   "question": "Which word best completes the sentence?  “Sales began to ___ after the price rise.”",
    "topicId": "eng-11"
   },
   {
@@ -6312,6 +10032,37 @@
    "topicId": "eng-11"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "occur"
+    },
+    {
+     "id": "B",
+     "text": "increase"
+    },
+    {
+     "id": "C",
+     "text": "require"
+    },
+    {
+     "id": "D",
+     "text": "indicate"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'increase' means to make greater."
+   ],
+   "id": "english-practice-921",
+   "lessonId": "english-lesson-121",
+   "lessonKey": "increase",
+   "question": "Which word best completes the sentence?  “Regular practice will ___ your reading speed.”",
+   "topicId": "eng-11"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -6343,6 +10094,37 @@
    "topicId": "eng-11"
   },
   {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "benefit"
+    },
+    {
+     "id": "B",
+     "text": "approach"
+    },
+    {
+     "id": "C",
+     "text": "perspective"
+    },
+    {
+     "id": "D",
+     "text": "contrast"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'benefit' means an advantage."
+   ],
+   "id": "english-practice-922",
+   "lessonId": "english-lesson-122",
+   "lessonKey": "benefit",
+   "question": "Which word best completes the sentence?  “One ___ of the new timetable is a longer break.”",
+   "topicId": "eng-11"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -6371,6 +10153,37 @@
    "lessonId": "english-lesson-123",
    "lessonKey": "impact",
    "question": "Read the sentence: “The policy had a real impact on attendance.”  As it is used here, “impact” most nearly means…",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "impact"
+    },
+    {
+     "id": "B",
+     "text": "perspective"
+    },
+    {
+     "id": "C",
+     "text": "factor"
+    },
+    {
+     "id": "D",
+     "text": "approach"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'impact' means an effect."
+   ],
+   "id": "english-practice-923",
+   "lessonId": "english-lesson-123",
+   "lessonKey": "impact",
+   "question": "Which word best completes the sentence?  “The campaign had a measurable ___ on attendance.”",
    "topicId": "eng-11"
   },
   {
@@ -6409,6 +10222,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "evaluate"
+    },
+    {
+     "id": "B",
+     "text": "maintain"
+    },
+    {
+     "id": "C",
+     "text": "obtain"
+    },
+    {
+     "id": "D",
+     "text": "emerge"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'maintain' means to keep it at the same level."
+   ],
+   "id": "english-practice-924",
+   "lessonId": "english-lesson-124",
+   "lessonKey": "maintain",
+   "question": "Which word best completes the sentence?  “The team worked hard to ___ its lead.”",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
      "text": "estimated"
     },
     {
@@ -6433,6 +10277,37 @@
    "lessonId": "english-lesson-125",
    "lessonKey": "obtain",
    "question": "Read the sentence: “She obtained the figures from the registry.”  As it is used here, “obtain” most nearly means…",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "occur"
+    },
+    {
+     "id": "B",
+     "text": "indicate"
+    },
+    {
+     "id": "C",
+     "text": "obtain"
+    },
+    {
+     "id": "D",
+     "text": "maintain"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'obtain' means to get."
+   ],
+   "id": "english-practice-925",
+   "lessonId": "english-lesson-125",
+   "lessonKey": "obtain",
+   "question": "Which word best completes the sentence?  “You can ___ a copy of the form from the office.”",
    "topicId": "eng-11"
   },
   {
@@ -6467,6 +10342,37 @@
    "topicId": "eng-11"
   },
   {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "require"
+    },
+    {
+     "id": "B",
+     "text": "emerge"
+    },
+    {
+     "id": "C",
+     "text": "expand"
+    },
+    {
+     "id": "D",
+     "text": "suggest"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'require' means to need."
+   ],
+   "id": "english-practice-926",
+   "lessonId": "english-lesson-126",
+   "lessonKey": "require",
+   "question": "Which word best completes the sentence?  “These machines ___ regular servicing.”",
+   "topicId": "eng-11"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -6495,6 +10401,37 @@
    "lessonId": "english-lesson-127",
    "lessonKey": "demonstrate",
    "question": "Read the sentence: “The chart demonstrates steady growth.”  As it is used here, “demonstrate” most nearly means…",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "demonstrate"
+    },
+    {
+     "id": "B",
+     "text": "require"
+    },
+    {
+     "id": "C",
+     "text": "reduce"
+    },
+    {
+     "id": "D",
+     "text": "obtain"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'demonstrate' means to show clearly."
+   ],
+   "id": "english-practice-927",
+   "lessonId": "english-lesson-127",
+   "lessonKey": "demonstrate",
+   "question": "Which word best completes the sentence?  “The experiment will ___ how pressure affects volume.”",
    "topicId": "eng-11"
   },
   {
@@ -6529,6 +10466,37 @@
    "topicId": "eng-11"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "enhance"
+    },
+    {
+     "id": "B",
+     "text": "obtain"
+    },
+    {
+     "id": "C",
+     "text": "maintain"
+    },
+    {
+     "id": "D",
+     "text": "indicate"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'indicate' means to point to something."
+   ],
+   "id": "english-practice-928",
+   "lessonId": "english-lesson-128",
+   "lessonKey": "indicate",
+   "question": "Which word best completes the sentence?  “Dark clouds ___ that rain is on the way.”",
+   "topicId": "eng-11"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -6557,6 +10525,37 @@
    "lessonId": "english-lesson-129",
    "lessonKey": "suggest",
    "question": "Read the sentence: “The results suggest a delay in the effect.”  As it is used here, “suggest” most nearly means…",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "demonstrate"
+    },
+    {
+     "id": "B",
+     "text": "require"
+    },
+    {
+     "id": "C",
+     "text": "obtain"
+    },
+    {
+     "id": "D",
+     "text": "suggest"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'suggest' implies without proving, which is why 'demonstrate' is too strong here."
+   ],
+   "id": "english-practice-929",
+   "lessonId": "english-lesson-129",
+   "lessonKey": "suggest",
+   "question": "Which word best completes the sentence?  “The findings ___ a link, though they do not prove one.”",
    "topicId": "eng-11"
   },
   {
@@ -6595,6 +10594,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "obtain"
+    },
+    {
+     "id": "B",
+     "text": "maintain"
+    },
+    {
+     "id": "C",
+     "text": "indicate"
+    },
+    {
+     "id": "D",
+     "text": "occur"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'occur' means to happen."
+   ],
+   "id": "english-practice-930",
+   "lessonId": "english-lesson-130",
+   "lessonKey": "occur",
+   "question": "Which word best completes the sentence?  “Power cuts ___ most often in winter.”",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
      "text": "makes longer"
     },
     {
@@ -6619,6 +10649,37 @@
    "lessonId": "english-lesson-131",
    "lessonKey": "improve",
    "question": "Read the sentence: “Daily practice improves accuracy.”  As it is used here, “improve” most nearly means…",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "occur"
+    },
+    {
+     "id": "B",
+     "text": "contrast"
+    },
+    {
+     "id": "C",
+     "text": "require"
+    },
+    {
+     "id": "D",
+     "text": "improve"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'improve' means to make better."
+   ],
+   "id": "english-practice-931",
+   "lessonId": "english-lesson-131",
+   "lessonKey": "improve",
+   "question": "Which word best completes the sentence?  “Reading every day will ___ your vocabulary.”",
    "topicId": "eng-11"
   },
   {
@@ -6657,6 +10718,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "indicate"
+    },
+    {
+     "id": "B",
+     "text": "evaluate"
+    },
+    {
+     "id": "C",
+     "text": "maintain"
+    },
+    {
+     "id": "D",
+     "text": "expand"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'expand' means to grow larger."
+   ],
+   "id": "english-practice-932",
+   "lessonId": "english-lesson-132",
+   "lessonKey": "expand",
+   "question": "Which word best completes the sentence?  “The company plans to ___ into three new markets.”",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
      "text": "small"
     },
     {
@@ -6681,6 +10773,37 @@
    "lessonId": "english-lesson-133",
    "lessonKey": "evident",
    "question": "Read the sentence: “The improvement was evident after one term.”  As it is used here, “evident” most nearly means…",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "feasible"
+    },
+    {
+     "id": "B",
+     "text": "subjective"
+    },
+    {
+     "id": "C",
+     "text": "evident"
+    },
+    {
+     "id": "D",
+     "text": "primary"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'evident' means clear to see."
+   ],
+   "id": "english-practice-933",
+   "lessonId": "english-lesson-133",
+   "lessonKey": "evident",
+   "question": "Which word best completes the sentence?  “The difference was ___ to everyone in the room.”",
    "topicId": "eng-11"
   },
   {
@@ -6715,6 +10838,37 @@
    "topicId": "eng-11"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "maintains"
+    },
+    {
+     "id": "B",
+     "text": "obtains"
+    },
+    {
+     "id": "C",
+     "text": "contrasts"
+    },
+    {
+     "id": "D",
+     "text": "requires"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'contrast' means to set out the differences."
+   ],
+   "id": "english-practice-934",
+   "lessonId": "english-lesson-134",
+   "lessonKey": "contrast",
+   "question": "Which word best completes the sentence?  “The second paragraph ___ city life with village life.”",
+   "topicId": "eng-11"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -6743,6 +10897,37 @@
    "lessonId": "english-lesson-135",
    "lessonKey": "analyze",
    "question": "Read the sentence: “Analyse the passage before answering.”  As it is used here, “analyze” most nearly means…",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "occur"
+    },
+    {
+     "id": "B",
+     "text": "maintain"
+    },
+    {
+     "id": "C",
+     "text": "obtain"
+    },
+    {
+     "id": "D",
+     "text": "analyze"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'analyze' means to examine something in parts."
+   ],
+   "id": "english-practice-935",
+   "lessonId": "english-lesson-135",
+   "lessonKey": "analyze",
+   "question": "Which word best completes the sentence?  “Before answering, ___ the structure of the argument.”",
    "topicId": "eng-11"
   },
   {
@@ -6781,6 +10966,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "approach"
+    },
+    {
+     "id": "B",
+     "text": "impact"
+    },
+    {
+     "id": "C",
+     "text": "consequence"
+    },
+    {
+     "id": "D",
+     "text": "benefit"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'approach' means a way of doing something."
+   ],
+   "id": "english-practice-936",
+   "lessonId": "english-lesson-136",
+   "lessonKey": "approach",
+   "question": "Which word best completes the sentence?  “Her ___ to revision is to start with her weakest topic.”",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
      "text": "something that affects the result"
     },
     {
@@ -6805,6 +11021,37 @@
    "lessonId": "english-lesson-137",
    "lessonKey": "factor",
    "question": "Read the sentence: “Sleep is one factor in exam performance.”  As it is used here, “factor” most nearly means…",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "factor"
+    },
+    {
+     "id": "B",
+     "text": "approach"
+    },
+    {
+     "id": "C",
+     "text": "perspective"
+    },
+    {
+     "id": "D",
+     "text": "contrast"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'factor' means something that affects the result."
+   ],
+   "id": "english-practice-937",
+   "lessonId": "english-lesson-137",
+   "lessonKey": "factor",
+   "question": "Which word best completes the sentence?  “Sleep is an important ___ in exam performance.”",
    "topicId": "eng-11"
   },
   {
@@ -6839,6 +11086,37 @@
    "topicId": "eng-11"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "approach"
+    },
+    {
+     "id": "B",
+     "text": "consequence"
+    },
+    {
+     "id": "C",
+     "text": "factor"
+    },
+    {
+     "id": "D",
+     "text": "benefit"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'consequence' means a result. A factor would be a cause, not the outcome."
+   ],
+   "id": "english-practice-938",
+   "lessonId": "english-lesson-138",
+   "lessonKey": "consequence",
+   "question": "Which word best completes the sentence?  “Missing the deadline was a ___ of poor planning.”",
+   "topicId": "eng-11"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -6867,6 +11145,37 @@
    "lessonId": "english-lesson-139",
    "lessonKey": "emerge",
    "question": "Read the sentence: “A clear pattern emerged from the data.”  As it is used here, “emerge” most nearly means…",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "emerge"
+    },
+    {
+     "id": "B",
+     "text": "require"
+    },
+    {
+     "id": "C",
+     "text": "maintain"
+    },
+    {
+     "id": "D",
+     "text": "obtain"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'emerge' means to become visible."
+   ],
+   "id": "english-practice-939",
+   "lessonId": "english-lesson-139",
+   "lessonKey": "emerge",
+   "question": "Which word best completes the sentence?  “A clear pattern began to ___ after ten trials.”",
    "topicId": "eng-11"
   },
   {
@@ -6901,6 +11210,37 @@
    "topicId": "eng-11"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "evident"
+    },
+    {
+     "id": "B",
+     "text": "sufficient"
+    },
+    {
+     "id": "C",
+     "text": "rapid"
+    },
+    {
+     "id": "D",
+     "text": "primary"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'sufficient' means enough."
+   ],
+   "id": "english-practice-940",
+   "lessonId": "english-lesson-140",
+   "lessonKey": "sufficient",
+   "question": "Which word best completes the sentence?  “One example is not ___ to prove a rule.”",
+   "topicId": "eng-11"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -6932,6 +11272,37 @@
    "topicId": "eng-11"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "feasible"
+    },
+    {
+     "id": "B",
+     "text": "brief"
+    },
+    {
+     "id": "C",
+     "text": "primary"
+    },
+    {
+     "id": "D",
+     "text": "subjective"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'primary' means main."
+   ],
+   "id": "english-practice-941",
+   "lessonId": "english-lesson-141",
+   "lessonKey": "primary",
+   "question": "Which word best completes the sentence?  “The ___ aim of the lesson is to fix one common error.”",
+   "topicId": "eng-11"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -6960,6 +11331,37 @@
    "lessonId": "english-lesson-142",
    "lessonKey": "relevant",
    "question": "Read the sentence: “Use relevant evidence in your answer.”  As it is used here, “relevant” most nearly means…",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "brief"
+    },
+    {
+     "id": "B",
+     "text": "rapid"
+    },
+    {
+     "id": "C",
+     "text": "feasible"
+    },
+    {
+     "id": "D",
+     "text": "relevant"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'relevant' means connected to the point being made."
+   ],
+   "id": "english-practice-942",
+   "lessonId": "english-lesson-142",
+   "lessonKey": "relevant",
+   "question": "Which word best completes the sentence?  “Only ___ evidence should appear in your answer.”",
    "topicId": "eng-11"
   },
   {
@@ -6998,6 +11400,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "accurate"
+    },
+    {
+     "id": "B",
+     "text": "evident"
+    },
+    {
+     "id": "C",
+     "text": "complex"
+    },
+    {
+     "id": "D",
+     "text": "brief"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'complex' means made of many connected parts."
+   ],
+   "id": "english-practice-943",
+   "lessonId": "english-lesson-143",
+   "lessonKey": "complex",
+   "question": "Which word best completes the sentence?  “The problem is ___: several parts affect each other.”",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
      "text": "cheap"
     },
     {
@@ -7022,6 +11455,37 @@
    "lessonId": "english-lesson-144",
    "lessonKey": "feasible",
    "question": "Read the sentence: “The plan is feasible within the budget.”  As it is used here, “feasible” most nearly means…",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "rapid"
+    },
+    {
+     "id": "B",
+     "text": "subjective"
+    },
+    {
+     "id": "C",
+     "text": "feasible"
+    },
+    {
+     "id": "D",
+     "text": "evident"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'feasible' means it can actually be done."
+   ],
+   "id": "english-practice-944",
+   "lessonId": "english-lesson-144",
+   "lessonKey": "feasible",
+   "question": "Which word best completes the sentence?  “The plan is ___ within the time we have.”",
    "topicId": "eng-11"
   },
   {
@@ -7056,6 +11520,37 @@
    "topicId": "eng-11"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "rapid"
+    },
+    {
+     "id": "B",
+     "text": "objective"
+    },
+    {
+     "id": "C",
+     "text": "complex"
+    },
+    {
+     "id": "D",
+     "text": "brief"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'objective' means based on facts rather than feelings."
+   ],
+   "id": "english-practice-945",
+   "lessonId": "english-lesson-145",
+   "lessonKey": "objective",
+   "question": "Which word best completes the sentence?  “A good report stays ___ and sticks to the data.”",
+   "topicId": "eng-11"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -7087,6 +11582,37 @@
    "topicId": "eng-11"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "accurate"
+    },
+    {
+     "id": "B",
+     "text": "subjective"
+    },
+    {
+     "id": "C",
+     "text": "sufficient"
+    },
+    {
+     "id": "D",
+     "text": "feasible"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'subjective' means based on personal opinion."
+   ],
+   "id": "english-practice-946",
+   "lessonId": "english-lesson-146",
+   "lessonKey": "subjective",
+   "question": "Which word best completes the sentence?  “A film review is largely ___.”",
+   "topicId": "eng-11"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -7115,6 +11641,37 @@
    "lessonId": "english-lesson-147",
    "lessonKey": "enhance",
    "question": "Read the sentence: “Practice enhances speed.”  As it is used here, “enhance” most nearly means…",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "enhance"
+    },
+    {
+     "id": "B",
+     "text": "indicate"
+    },
+    {
+     "id": "C",
+     "text": "occur"
+    },
+    {
+     "id": "D",
+     "text": "obtain"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'enhance' means to improve."
+   ],
+   "id": "english-practice-947",
+   "lessonId": "english-lesson-147",
+   "lessonKey": "enhance",
+   "question": "Which word best completes the sentence?  “Good lighting can ___ the quality of a photograph.”",
    "topicId": "eng-11"
   },
   {
@@ -7153,6 +11710,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "obtain"
+    },
+    {
+     "id": "B",
+     "text": "indicate"
+    },
+    {
+     "id": "C",
+     "text": "reduce"
+    },
+    {
+     "id": "D",
+     "text": "emerge"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'reduce' means to make less."
+   ],
+   "id": "english-practice-948",
+   "lessonId": "english-lesson-148",
+   "lessonKey": "reduce",
+   "question": "Which word best completes the sentence?  “Planning your time will ___ stress before the exam.”",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
      "text": "describe it"
     },
     {
@@ -7177,6 +11765,37 @@
    "lessonId": "english-lesson-149",
    "lessonKey": "evaluate",
    "question": "Read the sentence: “Evaluate the strength of the evidence.”  As it is used here, “evaluate” most nearly means…",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "maintain"
+    },
+    {
+     "id": "B",
+     "text": "evaluate"
+    },
+    {
+     "id": "C",
+     "text": "occur"
+    },
+    {
+     "id": "D",
+     "text": "expand"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'evaluate' means to judge how good something is."
+   ],
+   "id": "english-practice-949",
+   "lessonId": "english-lesson-149",
+   "lessonKey": "evaluate",
+   "question": "Which word best completes the sentence?  “Read both sources and ___ which one is more reliable.”",
    "topicId": "eng-11"
   },
   {
@@ -7211,6 +11830,37 @@
    "topicId": "eng-11"
   },
   {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "consequence"
+    },
+    {
+     "id": "B",
+     "text": "benefit"
+    },
+    {
+     "id": "C",
+     "text": "perspective"
+    },
+    {
+     "id": "D",
+     "text": "factor"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'perspective' means a point of view."
+   ],
+   "id": "english-practice-950",
+   "lessonId": "english-lesson-150",
+   "lessonKey": "perspective",
+   "question": "Which word best completes the sentence?  “The article offers a teacher’s ___ on homework.”",
+   "topicId": "eng-11"
+  },
+  {
    "answer": "A",
    "choices": [
     {
@@ -7242,6 +11892,37 @@
    "topicId": "eng-11"
   },
   {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "substantial"
+    },
+    {
+     "id": "B",
+     "text": "feasible"
+    },
+    {
+     "id": "C",
+     "text": "brief"
+    },
+    {
+     "id": "D",
+     "text": "subjective"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'substantial' means large and important."
+   ],
+   "id": "english-practice-951",
+   "lessonId": "english-lesson-151",
+   "lessonKey": "substantial",
+   "question": "Which word best completes the sentence?  “The team made ___ progress this term.”",
+   "topicId": "eng-11"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -7270,6 +11951,37 @@
    "lessonId": "english-lesson-152",
    "lessonKey": "precise",
    "question": "Read the sentence: “Use precise language in your answer.”  As it is used here, “precise” most nearly means…",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "relevant"
+    },
+    {
+     "id": "B",
+     "text": "precise"
+    },
+    {
+     "id": "C",
+     "text": "feasible"
+    },
+    {
+     "id": "D",
+     "text": "complex"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'precise' means exact."
+   ],
+   "id": "english-practice-952",
+   "lessonId": "english-lesson-152",
+   "lessonKey": "precise",
+   "question": "Which word best completes the sentence?  “Give a ___ figure, not an estimate.”",
    "topicId": "eng-11"
   },
   {
@@ -7308,6 +12020,37 @@
    "choices": [
     {
      "id": "A",
+     "text": "brief"
+    },
+    {
+     "id": "B",
+     "text": "rapid"
+    },
+    {
+     "id": "C",
+     "text": "complex"
+    },
+    {
+     "id": "D",
+     "text": "reliable"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'reliable' means it can be trusted."
+   ],
+   "id": "english-practice-953",
+   "lessonId": "english-lesson-153",
+   "lessonKey": "reliable",
+   "question": "Which word best completes the sentence?  “Choose a ___ source that other researchers cite.”",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
      "text": "at the same time"
     },
     {
@@ -7332,6 +12075,37 @@
    "lessonId": "english-lesson-154",
    "lessonKey": "nevertheless",
    "question": "Read the sentence: “The paper was hard; nevertheless, she finished it.”  As it is used here, “nevertheless” most nearly means…",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "therefore"
+    },
+    {
+     "id": "B",
+     "text": "moreover"
+    },
+    {
+     "id": "C",
+     "text": "nevertheless"
+    },
+    {
+     "id": "D",
+     "text": "for example"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "The two halves disagree, and 'nevertheless' means 'in spite of that'."
+   ],
+   "id": "english-practice-954",
+   "lessonId": "english-lesson-154",
+   "lessonKey": "nevertheless",
+   "question": "Which word best completes the sentence?  “The task was hard; ___, she finished on time.”",
    "topicId": "eng-11"
   },
   {
@@ -7366,6 +12140,37 @@
    "topicId": "eng-11"
   },
   {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "nevertheless"
+    },
+    {
+     "id": "B",
+     "text": "consequently"
+    },
+    {
+     "id": "C",
+     "text": "however"
+    },
+    {
+     "id": "D",
+     "text": "whereas"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "The second half is the result of the first, and 'consequently' means 'as a result'."
+   ],
+   "id": "english-practice-955",
+   "lessonId": "english-lesson-155",
+   "lessonKey": "consequently",
+   "question": "Which word best completes the sentence?  “He missed the bus; ___, he arrived late.”",
+   "topicId": "eng-11"
+  },
+  {
    "answer": "D",
    "choices": [
     {
@@ -7397,6 +12202,37 @@
    "topicId": "eng-11"
   },
   {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "consequently"
+    },
+    {
+     "id": "B",
+     "text": "moreover"
+    },
+    {
+     "id": "C",
+     "text": "therefore"
+    },
+    {
+     "id": "D",
+     "text": "whereas"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'whereas' sets two things side by side in contrast."
+   ],
+   "id": "english-practice-956",
+   "lessonId": "english-lesson-156",
+   "lessonKey": "whereas",
+   "question": "Which word best completes the sentence?  “Some students revise alone, ___ others prefer groups.”",
+   "topicId": "eng-11"
+  },
+  {
    "answer": "C",
    "choices": [
     {
@@ -7425,6 +12261,37 @@
    "lessonId": "english-lesson-157",
    "lessonKey": "moreover",
    "question": "Read the sentence: “The answer is clear; moreover, it is concise.”  As it is used here, “moreover” most nearly means…",
+   "topicId": "eng-11"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "however"
+    },
+    {
+     "id": "B",
+     "text": "nevertheless"
+    },
+    {
+     "id": "C",
+     "text": "whereas"
+    },
+    {
+     "id": "D",
+     "text": "moreover"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "",
+   "explanation": [
+    "'moreover' adds another point in the same direction."
+   ],
+   "id": "english-practice-957",
+   "lessonId": "english-lesson-157",
+   "lessonKey": "moreover",
+   "question": "Which word best completes the sentence?  “The plan is cheap; ___, it is quick to set up.”",
    "topicId": "eng-11"
   }
  ],

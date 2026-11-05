@@ -43,8 +43,9 @@ def first_lesson_with_questions(client, subject):
 def test_banks_are_loaded(client):
     counts = {s['subject']: s for s in client.get('/api/practice/subjects').get_json()['subjects']}
     # 155, not the workbook's 159: four math rows repeat an earlier lesson verbatim.
-    assert counts['math'] == {'subject': 'math', 'topics': 5, 'lessons': 155, 'questions': 191}
-    assert counts['english'] == {'subject': 'english', 'topics': 12, 'lessons': 157, 'questions': 157}
+    assert counts['math'] == {'subject': 'math', 'topics': 5, 'lessons': 155, 'questions': 328}
+    assert counts['english'] == {'subject': 'english', 'topics': 12, 'lessons': 157, 'questions': 314}
+    assert counts['physics'] == {'subject': 'physics', 'topics': 6, 'lessons': 47, 'questions': 94}
 
 
 def test_unknown_subject_is_rejected(client):
@@ -59,7 +60,7 @@ def test_physics_is_a_full_subject(client):
     counts = {s['subject']: s for s in client.get('/api/practice/subjects').get_json()['subjects']}
     assert counts['physics']['topics'] == 6
     assert counts['physics']['lessons'] >= 40
-    assert counts['physics']['questions'] >= 40
+    assert counts['physics']['questions'] >= 2 * counts['physics']['lessons']
 
     topics = client.get('/api/practice/physics/topics').get_json()
     lesson = topics['lessons'][0]
@@ -95,7 +96,7 @@ def test_every_english_lesson_has_its_own_questions(client):
     all 157 rules share 12 question pairs. The importer keys on the rule instead."""
     data = client.get('/api/practice/english/topics').get_json()
     assert len(data['lessons']) == 157
-    assert all(l['questions'] >= 1 for l in data['lessons'])
+    assert all(l['questions'] >= 2 for l in data['lessons'])
 
     topic = data['topics'][0]['id']
     in_topic = [l for l in data['lessons'] if l['topicId'] == topic]
