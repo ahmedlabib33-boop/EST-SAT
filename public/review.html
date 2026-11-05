@@ -15,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
-<body>
+<body class="one-screen">
 <div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
 <header class="nav" data-app-header></header>
 
@@ -92,8 +92,10 @@
   }
 
   // ---------- List ----------
+  var listPages = A.pager(A.byId('vault'), [1, 4, 3]);
   function renderList() {
-    var box = A.clear(A.byId('vault')), list = dueFirst(visible()), day = today();
+    listPages.set([]);
+    var box = A.byId('vault'), list = dueFirst(visible()), day = today(), cards = [];
     if (!list.length) {
       box.appendChild(el('div', 'card tool-card empty', state.mistakes.length ? 'Nothing saved for this subject.' : 'No mistakes saved yet. Wrong answers appear here automatically.'));
       return;
@@ -123,8 +125,9 @@
       });
       slot.appendChild(retry);
       card.appendChild(slot);
-      box.appendChild(card);
+      cards.push(card);
     });
+    listPages.set(cards);
   }
 
   // ---------- Flashcards ----------
@@ -145,7 +148,8 @@
     return match ? match.text : a.answer;
   }
   function renderCards() {
-    var box = A.clear(A.byId('vault')), list = dueFirst(visible());
+    listPages.set([]);
+    var box = A.byId('vault'), list = dueFirst(visible());
     if (!list.length) {
       box.appendChild(el('div', 'card tool-card empty', 'No mistakes saved yet, so there are no flashcards. Wrong answers become cards automatically.'));
       return;

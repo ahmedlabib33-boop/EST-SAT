@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Revision — EST · SAT with Ahmed Labib</title>
-<meta name="description" content="Every rule and formula from the lesson library on one searchable, printable page.">
+<meta name="description" content="Every rule and formula from the lesson library, searchable and printable.">
 <meta name="theme-color" content="#07070F">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
@@ -15,14 +15,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
-<body>
+<body class="one-screen">
 <div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
 <header class="nav" data-app-header></header>
 
-<main id="top" class="wrap page">
+<main id="top" class="wrap page fill-page">
   <section class="page-head">
     <p class="eyebrow">Revision</p>
-    <h1>Everything <span class="grad-text">on one page.</span></h1>
+    <h1>Every rule, <span class="grad-text">one tap away.</span></h1>
     <p class="lede">Every rule and formula from the lessons, so nothing is new on exam day. Physics formulas are in the <a href="index.html#formulas">formula vault</a>.</p>
   </section>
 
@@ -47,33 +47,35 @@
   'use strict';
   var E = window.EstSat, A = window.App, el = A.el;
   var subject = 'math', data = {}, topic = '', query = '';
+  var pages = A.pager(A.byId('sheet'), [2, 6, 4]);
 
   function haystack(l) { return [l.title, l.formula, l.example, l.tip, (l.explanation || []).join(' ')].join(' ').toLowerCase(); }
   function fillTopics() {
     var sel = A.clear(A.byId('topicSel')), all = el('option', null, 'All topics');
+    var topics = data[subject] ? data[subject].topics : [];
     all.value = '';
     sel.appendChild(all);
-    (data[subject] ? data[subject].topics : []).forEach(function (t) {
+    topics.forEach(function (t) {
       var o = el('option', null, t.name);
       o.value = t.id;
       sel.appendChild(o);
     });
+    // Start on the first topic. "All topics" is still there for printing everything.
+    if (!topic && !query && topics.length) topic = topics[0].id;
     sel.value = topic;
   }
   function renderSheet() {
-    var box = A.clear(A.byId('sheet')), payload = data[subject];
-    if (!payload) { box.appendChild(el('p', 'muted', 'Loading…')); return; }
-    var q = query.trim().toLowerCase(), shown = 0;
+    var payload = data[subject], cards = [];
+    if (!payload) { pages.set([el('p', 'muted', 'Loading…')]); return; }
+    var q = query.trim().toLowerCase();
     payload.topics.forEach(function (t) {
-      if (topic && t.id !== topic) return;
+      // A search looks through every topic, so a rule is never hidden by the topic filter.
+      if (!q && topic && t.id !== topic) return;
       var lessons = payload.lessons.filter(function (l) { return l.topicId === t.id && (!q || haystack(l).indexOf(q) >= 0); });
       if (!lessons.length) return;
-      var part = el('section', 'revision-part');
-      part.appendChild(el('h2', null, t.name));
-      var grid = el('div', 'revision-grid');
       lessons.forEach(function (l) {
-        shown += 1;
         var card = el('article', 'card revision-card');
+        card.appendChild(el('span', 'revision-topic', t.name));
         var title = el('a', 'revision-title', l.title);
         title.href = 'learn.html?subject=' + subject + '&lesson=' + encodeURIComponent(l.id);
         card.appendChild(title);
@@ -87,13 +89,11 @@
           ar.lang = 'ar';
           card.appendChild(ar);
         }
-        grid.appendChild(card);
+        cards.push(card);
       });
-      part.appendChild(grid);
-      box.appendChild(part);
     });
-    A.byId('resultCount').textContent = shown + ' rule' + (shown === 1 ? '' : 's');
-    if (!shown) box.appendChild(el('p', 'muted', 'Nothing matches that search.'));
+    A.byId('resultCount').textContent = cards.length + ' rule' + (cards.length === 1 ? '' : 's');
+    pages.set(cards.length ? cards : [el('p', 'muted', 'Nothing matches that search.')]);
   }
   function load() {
     if (data[subject]) { fillTopics(); renderSheet(); return; }
@@ -103,7 +103,7 @@
       fillTopics();
       renderSheet();
     }).catch(function () {
-      A.clear(A.byId('sheet')).appendChild(el('p', 'muted', 'Could not load the revision sheet. Check your connection and try again.'));
+      pages.set([el('p', 'muted', 'Could not load the revision sheet. Check your connection and try again.')]);
     });
   }
 

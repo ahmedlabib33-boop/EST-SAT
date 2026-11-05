@@ -15,34 +15,36 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
-<body>
+<body class="one-screen">
 <div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
 <header class="nav" data-app-header></header>
 
-<main id="top" class="wrap page">
+<main id="top" class="wrap page" data-views="Progress">
   <section class="page-head">
     <p class="eyebrow">Progress</p>
     <h1>The line is <span class="grad-text">moving up.</span></h1>
     <p class="lede">Your timed exams, your readiness estimate and your accuracy in every topic, all from your own work.</p>
   </section>
 
-  <div class="stat-row stat-row-wide" id="kpis"></div>
+  <section id="overview" data-view="Overview">
+    <div class="stat-row stat-row-wide" id="kpis"></div>
+    <section class="card tool-card" id="readiness"></section>
+  </section>
 
-  <div class="two-col two-col-even">
+  <section id="scores" data-view="Exam scores">
     <section class="card tool-card" aria-labelledby="chartTitle">
       <h2 id="chartTitle">Exam scores</h2>
       <p class="muted" id="chartNote"></p>
       <div class="chart-box" id="chart"></div>
     </section>
-    <section class="card tool-card" id="readiness"></section>
-  </div>
+  </section>
 
-  <section class="card tool-card">
+  <section class="card tool-card" id="pastExams" data-view="Your exams">
     <h2>Your exams</h2>
     <div id="attempts"></div>
   </section>
 
-  <section class="card tool-card">
+  <section class="card tool-card" id="accuracy" data-view="Topics">
     <div class="panel-title">
       <h2>Accuracy by topic</h2>
       <div class="modes" id="subjectModes" role="group" aria-label="Subject"></div>
@@ -175,13 +177,16 @@
     if (!state.attempts.length) { box.appendChild(el('p', 'muted', 'Nothing here yet.')); return; }
     var table = el('table', 'score-table'), head = el('tr');
     ['Date', 'Subject', 'Score', 'Percent', 'Time'].forEach(function (h) { var th = el('th', null, h); th.scope = 'col'; head.appendChild(th); });
+    var body = el('tbody'), rows = [];
     table.appendChild(head);
+    table.appendChild(body);
     state.attempts.forEach(function (a) {
       var tr = el('tr');
       [A.formatDate(a.date), A.subjectLabel(a.subject), a.score + '/' + a.total, a.percent + '%', A.clock(a.seconds)].forEach(function (v) { tr.appendChild(el('td', null, v)); });
-      table.appendChild(tr);
+      rows.push(tr);
     });
     box.appendChild(table);
+    A.pager(body, [8, 14, 8], table).set(rows);
   }
 
   function renderTopics() {

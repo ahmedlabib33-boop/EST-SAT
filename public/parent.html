@@ -15,32 +15,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
-<body>
+<body class="one-screen">
 <div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
 <header class="nav" data-app-header></header>
 
-<main id="top" class="wrap page">
+<main id="top" class="wrap page" data-views="Parent view">
   <section class="page-head">
     <p class="eyebrow">Parent view</p>
     <h1>See the progress. <span class="grad-text">Guide the next step.</span></h1>
     <p class="lede">Study time, scores, weak topics and streaks, plus lessons to assign and goals that unlock your messages. This shows the progress of whoever is signed in on this device.</p>
   </section>
 
-  <div class="stat-row stat-row-wide" id="tiles"></div>
-
-  <div class="two-col two-col-even">
-    <section class="card tool-card">
-      <h2>Recent exam scores</h2>
-      <div id="scores"></div>
-    </section>
+  <section id="summary" data-view="Summary">
+    <div class="stat-row stat-row-wide" id="tiles"></div>
     <section class="card tool-card">
       <h2>Topics to focus on</h2>
       <ol class="gain-list" id="weak"></ol>
     </section>
-  </div>
 
-  <div class="two-col two-col-even">
-    <form class="card tool-card form-stack" id="assignForm">
+  </section>
+
+    <section class="card tool-card" id="examScores" data-view="Exam scores">
+      <h2>Recent exam scores</h2>
+      <div id="scores"></div>
+    </section>
+
+    <form class="card tool-card form-stack" id="assignForm" data-view="Assign">
       <h2>Assign a lesson or exam</h2>
       <div class="modes" id="assignKind" role="group" aria-label="What to assign"></div>
       <div class="field"><label for="assignTarget" id="assignLabel">Lesson</label><select class="input" id="assignTarget"></select></div>
@@ -50,7 +50,7 @@
       <div class="assigned-list" id="assignedList"></div>
     </form>
 
-    <form class="card tool-card form-stack" id="goalForm">
+    <form class="card tool-card form-stack" id="goalForm" data-view="Goals">
       <h2>Goals that unlock your message</h2>
       <div class="field"><label for="goalKind">Goal</label>
         <select class="input" id="goalKind">
@@ -67,7 +67,6 @@
       <p class="fine">Text messages follow the account to other devices. A voice note stays on this device, so record it on the device your child studies on.</p>
       <div class="assigned-list" id="goalList"></div>
     </form>
-  </div>
   <p class="save-note" id="saveNote" role="status"></p>
 </main>
 

@@ -876,3 +876,281 @@ select.input option, .topic-pick select option { background: #14141F; color: var
   .revision-title, .revision-formula, .revision-example, .muted, .grad-text, h1, h2 { color: #111 !important; -webkit-text-fill-color: #111; }
   .revision-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ==========================================================================
+   ONE SCREEN
+   Pages fit the window on phones, tablets and laptops. Long content sits behind
+   tabs or pages. A panel scrolls inside itself only if it still cannot fit.
+   ========================================================================== */
+html:has(body.one-screen) { height: 100%; overflow: hidden; scroll-behavior: auto; }
+body.one-screen { height: 100vh; height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }
+.one-screen > .nav { flex: none; position: relative; }
+.one-screen > main { flex: 1 1 auto; min-height: 0; width: 100%; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; padding-bottom: 16px; }
+.one-screen > footer { display: none; }
+.one-screen .reveal { opacity: 1; transform: none; }
+.one-screen .page { padding-bottom: 16px; }
+.one-screen .page-head { padding: 14px 0 0; }
+.one-screen .page-head .eyebrow { display: none; }
+.one-screen .page-head h1 { font-size: clamp(1.25rem, 2.4vw, 1.75rem); margin: 0; }
+.one-screen .page-head .lede { font-size: 14px; margin-top: 2px; }
+.one-screen .page > .card, .one-screen .page > .two-col, .one-screen .page > .stat-row { margin-top: 12px; }
+
+/* Tabs */
+.one-screen > main[data-views] { display: flex; flex-direction: column; overflow: hidden; padding-bottom: 0; }
+.view-bar { flex: none; position: relative; display: flex; gap: 6px; padding: 10px 0; overflow-x: auto; scrollbar-width: none; }
+.view-bar::-webkit-scrollbar { display: none; }
+.view-tab { flex: none; padding: 7px 14px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,0.03); color: var(--muted); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: color 0.2s, background 0.2s, border-color 0.2s; }
+.view-tab:hover { color: var(--text); }
+.view-tab[aria-selected="true"] { color: #fff; background: rgba(139,92,246,0.24); border-color: rgba(139,92,246,0.6); }
+.view-tab:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
+.view-panels { flex: 1 1 auto; min-height: 0; }
+.view { height: 100%; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; padding-bottom: 12px; }
+.view[hidden] { display: none !important; }
+.view > * + * { margin-top: 12px; }
+.view > .two-col, .view > .two-col-even { margin-top: 12px; }
+.view > :first-child { margin-top: 0; }
+.view-cards { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); align-content: start; }
+.view-cards > * + * { margin-top: 0; }
+
+/* Pages of a list */
+.pager { display: flex; align-items: center; justify-content: center; gap: 12px; padding-top: 10px; flex: none; }
+.pager[hidden] { display: none; }
+.pager-status { color: var(--muted); font-size: 13px; min-width: 84px; text-align: center; }
+.pager .btn:disabled { opacity: 0.4; cursor: default; }
+
+/* Home: Mission */
+.view.section, .view.hero { padding-top: 0; }
+.view .wrap { max-width: none; padding: 0; }
+.view.hero { display: flex; flex-direction: column; }
+.view.hero > :first-child { margin-top: auto; }
+.view.hero > :last-child { margin-bottom: auto; }
+.view.hero .hero-grid { gap: 28px; }
+.view.hero h1 { font-size: clamp(1.7rem, 3.6vw, 3rem); margin: 12px 0; }
+.view.hero .lead { font-size: 1rem; }
+.view.hero .hero-actions { margin-top: 16px; }
+.view.hero .perks { margin-top: 14px; }
+.view.hero .mc { padding: 20px 22px; }
+.view.hero .mc-kicker { margin-top: 10px; }
+.view.hero .mc-title { font-size: clamp(1.2rem, 2.2vw, 1.65rem); margin-top: 2px; }
+.view.hero .mc-meta { margin-top: 8px; }
+.view.hero .mc .btn-light { margin-top: 10px; }
+.view.hero .mc-tiles { margin-top: 12px; }
+.view.hero .strip { margin-top: 14px; }
+.view.hero .strip div { padding: 10px; }
+.view.hero .strip b { font-size: 1.35rem; }
+
+/* Home: section headings stay small */
+.view .section-head { margin-bottom: 10px; gap: 10px 16px; align-items: center; }
+.view .section-head h2 { font-size: clamp(1.1rem, 2vw, 1.45rem); margin-top: 0; }
+.view .section-head p { font-size: 14px; max-width: 620px; }
+.view .section-head .eyebrow { display: none; }
+
+/* Home: Practice */
+.view .q-card { padding: 20px; }
+.view .q-text { margin: 6px 0 14px; font-size: clamp(1.05rem, 1.8vw, 1.25rem); }
+.view .q-foot { margin-top: 14px; }
+.view .feedback { margin-top: 10px; padding: 10px 14px; font-size: 14px; }
+.view .side-card { padding: 16px; }
+.view .side-card h3 { margin-bottom: 10px; }
+
+/* Home: Subjects, one at a time */
+.subject-tabs { margin-bottom: 10px; width: fit-content; }
+.view .subjects { grid-template-columns: minmax(0, 1fr); }
+.subjects[data-show="math"] .subject:not(.math),
+.subjects[data-show="english"] .subject:not(.english),
+.subjects[data-show="physics"] .subject:not(.physics) { display: none; }
+.view .subject { padding: 18px; }
+.view .subject-head { margin-bottom: 12px; }
+.view .subject h3 { font-size: 1.25rem; margin: 2px 0; }
+.view .ring-wrap, .view .ring { width: 72px; height: 72px; }
+.view .ring-val b { font-size: 15px; }
+.view .ring-val span { display: none; }
+.view .chapters { grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 6px; }
+.view .chapter { padding: 8px 12px; }
+
+/* Home: Progress */
+.view .heat-card, .view .rhythm { padding: 18px; }
+.view .heat-days { margin-top: 10px; margin-bottom: 4px; }
+.view .heat-days, .view .heat { gap: 6px; max-width: 300px; }
+.view .kpi { padding: 10px 12px; }
+.view .kpi b { font-size: 20px; }
+
+/* Home: Formulas */
+.view .fotd { padding: 12px 16px; margin-bottom: 10px; }
+.view .fotd-code { padding: 10px 16px; font-size: 1.05rem; }
+.view .fotd h3 { font-size: 1.05rem; margin: 2px 0; }
+.view .fgrid { gap: 8px; }
+.view .formula { padding: 10px 14px; }
+.view .formula code { font-size: 15px; margin: 4px 0 2px; }
+
+/* Home: Tools and About */
+.view .tool-links { gap: 8px; }
+.view .tool-links .more-item { padding: 10px 12px; }
+.about-title { font-size: 1.1rem; margin-bottom: 10px; }
+.view .steps { gap: 10px; }
+.view .step { padding: 14px 16px; }
+.view .step-n { margin-bottom: 4px; }
+.view .step h3 { font-size: 1rem; margin-bottom: 2px; }
+.view .step p { font-size: 14px; line-height: 1.45; }
+.view .teacher { padding: 16px 18px; gap: 16px; }
+.view .teacher h2 { font-size: 1.2rem; margin: 0 0 2px; }
+.view .teacher p { font-size: 14px; line-height: 1.45; }
+.view .avatar { width: 56px; height: 56px; border-radius: 16px; font-size: 20px; }
+.about-links { display: flex; flex-wrap: wrap; gap: 8px 18px; color: var(--muted); font-size: 14px; }
+
+/* Lessons: the list and the lesson each fit the window */
+.learn-page { display: flex; flex-direction: column; overflow: hidden !important; padding-bottom: 0 !important; }
+.learn-page .learn-head { flex: none; padding: 12px 24px 8px; }
+.learn-page .learn-head .eyebrow, .learn-page .learn-head .lede { display: none; }
+.learn-page .learn-head h1 { font-size: clamp(1.25rem, 2.4vw, 1.75rem); margin: 0; }
+.learn-page .learn-head #bankLine { font-size: 13px; }
+.learn-body { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; padding-bottom: 12px; }
+.learn-page .learn-controls { flex: none; margin-bottom: 10px; gap: 10px; }
+.learn-page .learn-grid { flex: 1 1 auto; min-height: 0; align-items: stretch; grid-template-rows: minmax(0, 1fr); }
+.learn-page .lesson-list { max-height: none; height: 100%; }
+.learn-page .lesson-main { min-height: 0; gap: 10px; }
+.lesson-tabs { flex: none; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.lesson-back { display: none; }
+.lesson-panel { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.lesson-panel[hidden] { display: none; }
+.learn-page .lesson-card { padding: 20px; }
+#practiceWrap.lesson-panel { display: flex; flex-direction: column; gap: 12px; }
+#practiceWrap.lesson-panel[hidden] { display: none; }
+
+/* Revision: one page of cards at a time */
+.fill-page { display: flex; flex-direction: column; overflow: hidden !important; padding-bottom: 12px !important; }
+.fill-page > * { flex: none; }
+.fill-page .control-row { margin-top: 10px; gap: 8px; }
+.fill-page #resultCount { margin-top: 6px; font-size: 13px; }
+#sheet { flex: 1 1 auto; min-height: 0; margin-top: 8px; display: grid; gap: 10px; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); }
+#sheet > .revision-card { overflow-y: auto; scrollbar-width: thin; }
+.revision-topic { display: block; color: var(--dim); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* Visual Pad: the canvas takes whatever the window has left */
+.one-screen .pad-frame { flex: 1 1 auto; height: auto; min-height: 180px; margin-top: 10px; position: relative; }
+.one-screen .pad-frame canvas { position: absolute; inset: 0; }
+.fill-page .pad-tools { margin-top: 10px; padding: 10px 12px; }
+
+/* Review: mistakes side by side when there is room */
+#vault:has(> .mistake) { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); margin-top: 10px; }
+.one-screen .vault-top { padding: 12px 16px; gap: 14px; flex-wrap: nowrap; }
+.one-screen .vault-top .ring-c { width: 64px; height: 64px; }
+.one-screen .vault-top .ring-c::before { inset: 6px; }
+.one-screen .vault-top .ring-c b { font-size: 15px; }
+.one-screen .vault-top .stat-row { min-width: 0; }
+.one-screen .vault-top .kpi { padding: 8px 10px; }
+.one-screen .vault-top .kpi b { font-size: 18px; }
+.one-screen .control-row { margin-top: 10px; gap: 8px; }
+.one-screen .mistake { padding: 14px; }
+
+/* Exam: results and a running paper */
+#arena .view { height: auto; overflow: visible; }
+.answer-list .answer-item { padding: 8px 0; }
+.one-screen #arena .done-card { padding: 14px 16px; margin-top: 12px; flex-wrap: nowrap; gap: 14px; }
+.one-screen #arena .done-card .ring-c { width: 72px; height: 72px; }
+.one-screen #arena .done-card .ring-c::before { inset: 7px; }
+.one-screen #arena .done-card .ring-c b { font-size: 16px; }
+.one-screen #arena .done-card .exam-nav { margin-top: 8px; }
+main:has(.exam-stage) .page-head { display: none; }
+.one-screen .exam-stage { margin-top: 12px; gap: 12px; }
+.one-screen .exam-side { position: static; }
+
+/* Log in */
+.one-screen .auth-main { min-height: 0; padding: 16px 0; }
+
+/* Rewards */
+.view .map-grid { margin-top: 0; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); }
+.view .map-cell { padding: 8px 12px; }
+.view .map-legend { gap: 10px; }
+.view #mapSubject { width: fit-content; }
+.view .badge { padding: 8px 10px; gap: 10px; }
+
+@media (max-width: 1020px) {
+  .learn-page .learn-grid { grid-template-columns: minmax(0, 1fr); }
+  .learn-page .lesson-list { flex-direction: column; overflow-x: hidden; overflow-y: auto; max-height: none; }
+  .learn-page .lesson-item { min-width: 0; }
+  .learn-page .lesson-main { display: none; }
+  .learn-grid.reading .lesson-main { display: flex; }
+  .learn-grid.reading .lesson-list { display: none; }
+  .lesson-back { display: inline-flex; }
+  #sheet { grid-template-rows: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 860px) {
+  .nav-in { height: 56px; }
+  .view .kpis { gap: 8px; }
+  .view .fotd { grid-template-columns: auto 1fr; gap: 12px; align-items: center; }
+}
+@media (max-width: 600px) {
+  .one-screen .page-head .lede { display: none; }
+  .one-screen .page-head { padding-top: 10px; }
+  .view-bar { padding: 8px 0; }
+  .view-tab { padding: 6px 12px; font-size: 13px; }
+  .view.hero .pill, .view.hero .lead, .view.hero .hero-actions, .view.hero .perks, .view.hero .strip { display: none; }
+  .view.hero h1 { font-size: 1.45rem; margin: 0 0 10px; }
+  .view.hero .hero-grid { gap: 0; }
+  .view .section-head p { display: none; }
+  .view .q-card { padding: 14px; }
+  .view .q-top .modes { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .view .q-top .mode { white-space: nowrap; flex: none; }
+  .view .q-foot .hint { display: none; }
+  .view .q-foot .btn { width: 100%; }
+  .view .side { display: none; }
+  .view .opt { padding: 9px 12px; }
+  .view .chapter small { display: none; }
+  .view .chapter { padding: 3px 10px; min-height: 38px; gap: 10px; }
+  .view .chapter strong { font-size: 14px; }
+  .view .chapters { gap: 4px; }
+  #subjects .section-head { display: none; }
+  .view .subject { padding: 12px; }
+  .view .subject-head { margin-bottom: 8px; gap: 12px; }
+  .view .ring-wrap, .view .ring { width: 52px; height: 52px; }
+  .view .ring-val b { font-size: 12px; }
+  .view .subject-head p { font-size: 13px; }
+  .view .subject-badge { display: none; }
+  .view .subject-tabs { margin-bottom: 8px; }
+  .view .heat-days, .view .heat { max-width: 240px; }
+  .view .progress-grid { gap: 10px; }
+  .view .fotd .eyebrow { display: none; }
+  .view .fotd-code { padding: 8px 10px; font-size: 0.95rem; }
+  .view .tool-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .view .tool-links .more-item small { font-size: 11.5px; line-height: 1.35; }
+  .view .teacher { grid-template-columns: auto 1fr; }
+  .view .teacher .btn { grid-column: 1 / -1; justify-self: stretch; }
+  .learn-page .learn-head { padding: 8px 16px 4px; }
+  .learn-page .learn-head #bankLine, .learn-page #lessonCount { display: none; }
+  .learn-page .topic-pick { flex: 1 1 100%; min-width: 0; }
+  .learn-page .topic-pick select { flex: 1; min-width: 0; width: 100%; }
+  .learn-page .learn-controls { margin-bottom: 8px; }
+  .learn-page .lesson-card { padding: 14px; }
+  .fill-page .control-row .topic-pick { flex: 1 1 60%; min-width: 0; }
+  .fill-page .control-row .topic-pick label { display: none; }
+  .fill-page .control-row select { width: 100%; min-width: 0; }
+  .fill-page .control-row .input-sm { flex: 1 1 60%; max-width: none; min-width: 0; }
+  #sheet { grid-template-columns: minmax(0, 1fr); grid-template-rows: repeat(2, minmax(0, 1fr)); }
+  .one-screen .pad-frame { margin-top: 8px; }
+  .one-screen .auth-pitch { display: none; }
+  .one-screen .vault-top .kpi span { font-size: 11.5px; line-height: 1.3; }
+  .one-screen #arena .done-card .exam-nav .btn { padding: 6px 10px; font-size: 13px; }
+  .one-screen .exam-side.tool-card { padding: 10px 12px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 4px 10px; }
+  .one-screen .exam-side.tool-card > * + * { margin-top: 0; }
+  .one-screen .exam-side .exam-clock { font-size: 24px; }
+  .one-screen .exam-side .palette { grid-column: 1 / -1; grid-row: 2; max-height: 44px; }
+  .one-screen .exam-side .btn { grid-column: 3; grid-row: 1; }
+  .one-screen #examQuestion { padding: 14px; }
+  .view .badge-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .view .badge .ico { display: none; }
+  .view .badge small { font-size: 11.5px; line-height: 1.35; }
+  .view.tool-card, .view-cards .tool-card { padding: 14px; }
+  .view .streak-big strong { font-size: 32px; }
+  .view .step { padding: 10px 12px; }
+  .view .step-n { display: none; }
+  .view .teacher .btn { display: none; }
+  .view .teacher p { font-size: 13px; }
+  .view .avatar { width: 44px; height: 44px; border-radius: 12px; font-size: 16px; }
+}
+@media print {
+  html:has(body.one-screen), body.one-screen { height: auto; overflow: visible; display: block; }
+  .one-screen > main, .one-screen > main[data-views], .fill-page, .view { overflow: visible !important; height: auto; display: block; }
+  #sheet { display: block; }
+  #sheet > .revision-card { overflow: visible; margin-bottom: 10px; }
+}

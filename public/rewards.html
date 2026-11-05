@@ -15,39 +15,41 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
-<body>
+<body class="one-screen">
 <div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
 <header class="nav" data-app-header></header>
 
-<main id="top" class="wrap page">
+<main id="top" class="wrap page" data-views="Rewards">
   <section class="page-head">
     <p class="eyebrow">Rewards</p>
     <h1>Level up <span class="grad-text">your score.</span></h1>
     <p class="lede">XP for every lesson, answer and exam. Badges for real milestones, and a topic map that lights up as you master it.</p>
   </section>
 
-  <section class="card tool-card level-card" id="level"></section>
-
-  <section class="card tool-card" id="messagesBox" hidden>
-    <h2 id="messages">Messages from your parent</h2>
-    <div id="messageList"></div>
+  <section id="you" data-view="Level">
+    <section class="card tool-card level-card" id="level"></section>
+    <section class="card tool-card" id="messagesBox" hidden>
+      <h2 id="messages">Messages from your parent</h2>
+      <div id="messageList"></div>
+    </section>
   </section>
 
-  <section class="card tool-card">
+  <section class="card tool-card" id="badgesView" data-view="Badges">
     <div class="panel-title"><h2>Badges</h2><span class="muted" id="badgeCount"></span></div>
     <div class="badge-grid" id="badges"></div>
   </section>
 
-  <section class="card tool-card">
+  <section class="card tool-card" id="mapView" data-view="Topic map">
     <h2>Topic map</h2>
     <p class="muted">Finish every lesson in a topic to print its certificate.</p>
     <div class="map-legend" aria-hidden="true">
       <span><i class="lvl lvl-new"></i>Not started</span><span><i class="lvl lvl-learning"></i>Learning</span><span><i class="lvl lvl-good"></i>Good</span><span><i class="lvl lvl-mastered"></i>Mastered</span>
     </div>
-    <div id="map"></div>
+    <div class="modes" id="mapSubject" role="group" aria-label="Subject"></div>
+    <div class="map-grid" id="map"></div>
   </section>
 
-  <section class="card tool-card">
+  <section class="card tool-card" id="settingsView" data-view="Settings">
     <div class="panel-title"><h2>Settings</h2><span class="muted">This device</span></div>
     <div class="switches" id="settings"></div>
   </section>
@@ -136,16 +138,11 @@
     setTimeout(function () { page.print(); }, 300);
   }
 
+  var mapSubject = 'math', mapPages = A.pager(A.byId('map'), [6, 16, 12]);
+  A.modes(A.byId('mapSubject'), [['math', 'Math'], ['english', 'English'], ['physics', 'Physics']], mapSubject, function (v) { mapSubject = v; renderMap(); });
   function renderMap() {
-    var box = A.clear(A.byId('map'));
-    if (!catalog) { box.appendChild(el('p', 'muted', 'Loading topics…')); return; }
-    var rows = S.topicRows(state, catalog);
-    ['math', 'english', 'physics'].forEach(function (subject) {
-      var part = rows.filter(function (r) { return r.subject === subject; });
-      if (!part.length) return;
-      box.appendChild(el('h3', 'sub-head', A.subjectLabel(subject)));
-      var grid = el('div', 'map-grid');
-      part.forEach(function (r) {
+    if (!catalog) { mapPages.set([el('p', 'muted', 'Loading topics…')]); return; }
+    var cells = S.topicRows(state, catalog).filter(function (r) { return r.subject === mapSubject; }).map(function (r) {
         var cell = el('div', 'map-cell lvl-' + r.level);
         cell.appendChild(el('strong', null, r.name));
         cell.appendChild(el('small', null, LEVEL_LABELS[r.level] + (r.lessons ? ' · ' + r.lessonsDone + '/' + r.lessons + ' lessons' : '') + (r.answered ? ' · ' + Math.round(r.accuracy * 100) + '%' : '')));
@@ -155,10 +152,9 @@
           cert.addEventListener('click', function () { printCertificate(r); });
           cell.appendChild(cert);
         }
-        grid.appendChild(cell);
-      });
-      box.appendChild(grid);
+        return cell;
     });
+    mapPages.set(cells, true);
   }
 
   function renderSettings() {

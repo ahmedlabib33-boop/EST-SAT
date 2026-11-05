@@ -15,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
-<body>
+<body class="one-screen">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
   <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
@@ -32,26 +32,23 @@
 
 <header class="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="#top" aria-label="EST · SAT home">
+    <a class="brand" href="#mission" aria-label="EST · SAT home">
       <span class="mark" aria-hidden="true">E</span>
       <span class="brand-txt"><b>EST · SAT</b><small>with Ahmed Labib</small></span>
     </a>
     <nav class="links" aria-label="Sections">
       <a href="today.html">Today</a>
-      <a href="#mission">Mission</a>
-      <a href="#practice">Practice</a>
       <a href="learn.html">Lessons</a>
-      <a href="#progress">Progress</a>
-      <a href="#formulas">Formulas</a>
+      <a href="exam.html">Exam</a>
       <a href="live.html">Live class</a>
     </nav>
     <a class="btn btn-ghost btn-sm" href="login.html" data-auth-link>Log in</a>
   </div>
 </header>
 
-<main id="top">
+<main id="top" class="wrap" data-views="Home sections">
   <!-- Hero -->
-  <section class="hero">
+  <section class="hero" id="mission" data-view="Mission">
     <div class="wrap hero-grid">
       <div class="reveal">
         <span class="pill"><b>NEW</b> SAT 1 · EST 1 · Math, English &amp; Physics</span>
@@ -70,7 +67,7 @@
         </ul>
       </div>
 
-      <div class="mc reveal" id="mission">
+      <div class="mc reveal">
         <div class="orbits" aria-hidden="true"><span class="orbit o1"></span><span class="orbit o2"></span><span class="orbit o3"></span></div>
         <div class="mc-head">
           <span class="mc-label"><span class="live" aria-hidden="true"></span>Mission control</span>
@@ -118,30 +115,69 @@
     </div>
   </section>
 
-  <!-- How it works -->
-  <section class="section" id="how">
+  <!-- Practice -->
+  <section class="section" id="practice" data-view="Practice">
     <div class="wrap">
       <div class="section-head reveal">
-        <div><span class="eyebrow">How it works</span><h2>Three steps. Every day.</h2></div>
-        <p>Short, focused sessions beat long, tired ones. The platform keeps you on the right next step.</p>
+        <div><span class="eyebrow">Practice arena</span><h2>Answer. Learn why. Repeat.</h2></div>
+        <p>Every question comes from Ahmed Labib’s problem sets, with a worked explanation the moment you check.</p>
       </div>
-      <div class="steps">
-        <article class="step card reveal"><div class="step-n">01</div><h3>Set your exam date</h3><p>The countdown keeps every session pointed at the real deadline.</p></article>
-        <article class="step card reveal"><div class="step-n">02</div><h3>Run your daily mission</h3><p>Six mixed Math and Physics questions, timed, each with an instant explanation. Then open the lesson library for Math and English.</p></article>
-        <article class="step card reveal"><div class="step-n">03</div><h3>Watch your rhythm</h3><p>Streaks, accuracy and chapter progress show exactly what to study next.</p></article>
+      <div class="practice">
+        <div class="q-card card reveal" id="qCard" tabindex="-1">
+          <div class="q-top">
+            <div class="modes" role="group" aria-label="Question set">
+              <button class="mode" type="button" data-mode="mission" aria-pressed="true">Today’s mission</button>
+              <button class="mode" type="button" data-mode="all" aria-pressed="false">All</button>
+              <button class="mode" type="button" data-mode="math" aria-pressed="false">Math</button>
+              <button class="mode" type="button" data-mode="english" aria-pressed="false">English</button>
+              <button class="mode" type="button" data-mode="physics" aria-pressed="false">Physics</button>
+            </div>
+            <span class="timer" id="timerBox"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span id="qTimer" aria-label="Time left">1:00</span></span>
+          </div>
+          <p class="q-tag"><span id="qTag">Practice</span> · <span id="qCount"></span></p>
+          <h3 class="q-text" id="qText">Turn on JavaScript to practise here, or open the <a href="classic.html">classic study guide</a>.</h3>
+          <div class="opts" id="qOpts"></div>
+          <div class="feedback" id="qFeedback" role="status" aria-live="polite"></div>
+          <div class="q-foot">
+            <span class="hint">Tip: press 1–4 or A–D to pick an answer</span>
+            <button class="btn btn-primary" type="button" id="qAction" disabled>Check answer</button>
+          </div>
+        </div>
+
+        <aside class="side">
+          <div class="side-card card reveal">
+            <h3>Your numbers</h3>
+            <div class="kpis">
+              <div class="kpi"><span>Answered</span><b data-stat="answered">0</b></div>
+              <div class="kpi"><span>Accuracy</span><b data-stat="accuracy">—</b></div>
+              <div class="kpi"><span>Avg. time</span><b data-stat="avg">—</b></div>
+              <div class="kpi"><span>Streak</span><b><span data-stat="streak">0</span>d</b></div>
+            </div>
+            <p class="side-note" id="syncNote">Saved on this device. <a class="link" href="login.html?mode=signup">Create a free account</a> to keep it on every device.</p>
+          </div>
+          <div class="side-card card reveal">
+            <h3>How the timer works</h3>
+            <p class="hint">You get 60 seconds per question, close to real exam pace. When it runs out you can still answer. It just turns red.</p>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
 
   <!-- Subjects -->
-  <section class="section" id="subjects">
+  <section class="section" id="subjects" data-view="Subjects">
     <div class="wrap">
       <div class="section-head reveal">
         <div><span class="eyebrow">Curriculum</span><h2>Your subjects</h2></div>
         <p>Tap a chapter when you’ve finished it. Your rings fill up as you go. Progress is saved on this device.</p>
       </div>
-      <div class="subjects">
-        <article class="subject card reveal">
+      <div class="modes subject-tabs" role="group" aria-label="Subject">
+        <button class="mode" type="button" data-sub="math" aria-pressed="true">Math</button>
+        <button class="mode" type="button" data-sub="english" aria-pressed="false">English</button>
+        <button class="mode" type="button" data-sub="physics" aria-pressed="false">Physics</button>
+      </div>
+      <div class="subjects" data-show="math">
+        <article class="subject math card reveal">
           <div class="subject-head">
             <div class="ring-wrap">
               <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
@@ -227,57 +263,8 @@
     </div>
   </section>
 
-  <!-- Practice -->
-  <section class="section" id="practice">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div><span class="eyebrow">Practice arena</span><h2>Answer. Learn why. Repeat.</h2></div>
-        <p>Every question comes from Ahmed Labib’s problem sets, with a worked explanation the moment you check.</p>
-      </div>
-      <div class="practice">
-        <div class="q-card card reveal" id="qCard" tabindex="-1">
-          <div class="q-top">
-            <div class="modes" role="group" aria-label="Question set">
-              <button class="mode" type="button" data-mode="mission" aria-pressed="true">Today’s mission</button>
-              <button class="mode" type="button" data-mode="all" aria-pressed="false">All</button>
-              <button class="mode" type="button" data-mode="math" aria-pressed="false">Math</button>
-              <button class="mode" type="button" data-mode="english" aria-pressed="false">English</button>
-              <button class="mode" type="button" data-mode="physics" aria-pressed="false">Physics</button>
-            </div>
-            <span class="timer" id="timerBox"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span id="qTimer" aria-label="Time left">1:00</span></span>
-          </div>
-          <p class="q-tag"><span id="qTag">Practice</span> · <span id="qCount"></span></p>
-          <h3 class="q-text" id="qText">Turn on JavaScript to practise here, or open the <a href="classic.html">classic study guide</a>.</h3>
-          <div class="opts" id="qOpts"></div>
-          <div class="feedback" id="qFeedback" role="status" aria-live="polite"></div>
-          <div class="q-foot">
-            <span class="hint">Tip: press 1–4 or A–D to pick an answer</span>
-            <button class="btn btn-primary" type="button" id="qAction" disabled>Check answer</button>
-          </div>
-        </div>
-
-        <aside class="side">
-          <div class="side-card card reveal">
-            <h3>Your numbers</h3>
-            <div class="kpis">
-              <div class="kpi"><span>Answered</span><b data-stat="answered">0</b></div>
-              <div class="kpi"><span>Accuracy</span><b data-stat="accuracy">—</b></div>
-              <div class="kpi"><span>Avg. time</span><b data-stat="avg">—</b></div>
-              <div class="kpi"><span>Streak</span><b><span data-stat="streak">0</span>d</b></div>
-            </div>
-            <p class="side-note" id="syncNote">Saved on this device. <a class="link" href="login.html?mode=signup">Create a free account</a> to keep it on every device.</p>
-          </div>
-          <div class="side-card card reveal">
-            <h3>How the timer works</h3>
-            <p class="hint">You get 60 seconds per question, close to real exam pace. When it runs out you can still answer. It just turns red.</p>
-          </div>
-        </aside>
-      </div>
-    </div>
-  </section>
-
   <!-- Progress -->
-  <section class="section" id="progress">
+  <section class="section" id="progress" data-view="Progress">
     <div class="wrap">
       <div class="section-head reveal">
         <div><span class="eyebrow">Study rhythm</span><h2>See your consistency</h2></div>
@@ -309,7 +296,7 @@
   </section>
 
   <!-- Formulas -->
-  <section class="section" id="formulas">
+  <section class="section" id="formulas" data-view="Formulas">
     <div class="wrap">
       <div class="section-head reveal">
         <div><span class="eyebrow">Formula vault</span><h2>The formulas that matter</h2></div>
@@ -331,24 +318,8 @@
     </div>
   </section>
 
-  <!-- Teacher -->
-  <section class="section" id="teacher">
-    <div class="wrap">
-      <div class="teacher card reveal">
-        <div class="avatar" aria-hidden="true">AL</div>
-        <div>
-          <span class="eyebrow">Your teacher</span>
-          <h2>Ahmed Labib</h2>
-          <p>SAT 1 and EST 1 Mathematics, English and Physics. Every guide, formula and practice question on this platform was written for his students.</p>
-        </div>
-        <a class="btn btn-ghost" href="classic.html">Open the full study guide <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
   <!-- Study tools -->
-  <section class="section" id="tools">
+  <section class="section" id="tools" data-view="Tools">
     <div class="wrap">
       <div class="section-head reveal">
         <div><span class="eyebrow">Study tools</span><h2>Everything for exam day</h2></div>
@@ -360,7 +331,7 @@
         <a class="more-item card" href="review.html"><span><strong>Review Vault</strong><small>Mistakes come back after 1, 3, 7 and 14 days.</small></span></a>
         <a class="more-item card" href="progress.html"><span><strong>Progress</strong><small>Your score line and accuracy in every topic.</small></span></a>
         <a class="more-item card" href="rewards.html"><span><strong>Rewards</strong><small>XP, levels, badges and certificates.</small></span></a>
-        <a class="more-item card" href="revision.html"><span><strong>Revision</strong><small>Every rule and formula on one printable page.</small></span></a>
+        <a class="more-item card" href="revision.html"><span><strong>Revision</strong><small>Every rule and formula, searchable and printable.</small></span></a>
         <a class="more-item card" href="coach.html"><span><strong>AI Coach</strong><small>Type, speak or snap a photo of a question.</small></span></a>
         <a class="more-item card" href="pad.html"><span><strong>Visual Pad</strong><small>Sketch graphs, forces and working.</small></span></a>
         <a class="more-item card" href="focus.html"><span><strong>Focus</strong><small>A study timer with your own music.</small></span></a>
@@ -369,16 +340,33 @@
     </div>
   </section>
 
-  <section class="wrap">
-    <div class="cta card reveal">
-      <span class="eyebrow">Ready for launch</span>
-      <h2>Your exam is a mission. <span class="grad-text">Launch it today.</span></h2>
-      <p>Six questions. About ten minutes. One step closer.</p>
-      <div class="hero-actions">
-        <button class="btn btn-primary" type="button" data-launch><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>Start learning free</button>
-        <a class="btn btn-ghost" href="student-portal.html">Open student portal</a>
+  <!-- About -->
+  <section class="section" id="about" data-view="About">
+    <div id="how">
+      <h2 class="about-title">How it works</h2>
+      <div class="steps">
+        <article class="step card reveal"><div class="step-n">01</div><h3>Set your exam date</h3><p>The countdown keeps every session pointed at the real deadline.</p></article>
+        <article class="step card reveal"><div class="step-n">02</div><h3>Run your daily mission</h3><p>Six mixed Math and Physics questions, timed, each with an instant explanation. Then open the lesson library for Math and English.</p></article>
+        <article class="step card reveal"><div class="step-n">03</div><h3>Watch your rhythm</h3><p>Streaks, accuracy and chapter progress show exactly what to study next.</p></article>
       </div>
     </div>
+    <div id="teacher">
+      <div class="teacher card reveal">
+        <div class="avatar" aria-hidden="true">AL</div>
+        <div>
+          <span class="eyebrow">Your teacher</span>
+          <h2>Ahmed Labib</h2>
+          <p>SAT 1 and EST 1 Mathematics, English and Physics. Every guide, formula and practice question on this platform was written for his students.</p>
+        </div>
+        <a class="btn btn-ghost" href="classic.html">Open the full study guide <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+    <nav class="about-links" aria-label="Other pages">
+      <a href="classic.html">Classic study guide</a>
+      <a href="premium-dashboard.html">Dashboard</a>
+      <a href="student-portal.html">Student portal</a>
+      <a href="live.html">Live class</a>
+    </nav>
   </section>
 </main>
 
@@ -604,6 +592,13 @@
     });
   });
 
+  $$('.mode[data-sub]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      $$('.mode[data-sub]').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      $('.subjects').setAttribute('data-show', b.dataset.sub);
+    });
+  });
+
   // ---------- Practice ----------
   var card = $('#qCard'), action = $('#qAction');
   var mode = 'mission', queue = [], pos = 0, sel = -1, checked = false;
@@ -635,6 +630,7 @@
     }, 1000);
   }
   function showQuestion() {
+    $('#practice').scrollTop = 0;
     var q = QUESTIONS[current()];
     sel = -1; checked = false; started = false; left = 60; stopTimer(); paintTimer();
     $('#qTag').textContent = (LABEL[q.s] || q.s) + (q.t ? ' · ' + q.t : '');
@@ -684,6 +680,7 @@
     fb.querySelector('span').textContent = why;
     action.textContent = mode === 'mission' && missionDone() >= 6 ? 'Keep practising' : 'Next question';
     renderStats(); renderMission();
+    action.scrollIntoView({ block: 'nearest' });
   }
   function check() {
     var qi = current(), q = QUESTIONS[qi];
@@ -733,7 +730,7 @@
   $$('[data-launch]').forEach(function (b) {
     b.addEventListener('click', function () {
       if (mode !== 'mission') setMode('mission');
-      $('#practice').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      window.App.showView('practice');
       card.focus({ preventScroll: true });
     });
   });
@@ -748,8 +745,9 @@
   $('#fotdF').textContent = fotd.f;
   $('#fotdN').textContent = fotd.n;
   $('#fotdC').textContent = (LABEL[fotd.s] || fotd.s) + ' · ' + fotd.c;
+  var formulaPages = window.App.pager($('#fGrid'), [3, 10, 12]);
   function renderFormulas(filter) {
-    var grid = $('#fGrid'); grid.innerHTML = '';
+    var cards = [];
     FORMULAS.filter(function (f) { return filter === 'all' || f.s === filter; }).forEach(function (f) {
       var el = document.createElement('article');
       el.className = 'formula ' + f.s;
@@ -757,8 +755,9 @@
       el.querySelector('.f-chip').textContent = (LABEL[f.s] || f.s) + ' · ' + f.c;
       el.querySelector('code').textContent = f.f;
       el.querySelector('h3').textContent = f.n;
-      grid.appendChild(el);
+      cards.push(el);
     });
+    formulaPages.set(cards);
   }
   $$('[data-f]').forEach(function (b) {
     b.addEventListener('click', function () {

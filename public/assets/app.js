@@ -30,7 +30,7 @@
     { href: 'review.html', label: 'Review', icon: 'vault', note: 'Mistakes and flashcards' },
     { href: 'progress.html', label: 'Progress', icon: 'trend', note: 'Scores and weak topics' },
     { href: 'rewards.html', label: 'Rewards', icon: 'trophy', note: 'XP, levels and badges' },
-    { href: 'revision.html', label: 'Revision', icon: 'layers', note: 'Every rule on one page' },
+    { href: 'revision.html', label: 'Revision', icon: 'layers', note: 'Every rule, searchable' },
     { href: 'coach.html', label: 'AI Coach', icon: 'spark', note: 'Ask, or snap a question' },
     { href: 'pad.html', label: 'Visual Pad', icon: 'pen', note: 'Sketch a solution' },
     { href: 'focus.html', label: 'Focus', icon: 'timer', note: 'Timer and music' },
@@ -342,12 +342,140 @@
     E.renderAuthLinks();
   }
 
+  // ---------- One screen at a time ----------
+  // Panels become tabs so a page never grows past the window. Every panel needs an
+  // id and a data-view attribute holding its tab label.
+  function tabStrip(label, panels, onShow) {
+    var bar = el('div', 'view-bar no-print');
+    bar.setAttribute('role', 'tablist');
+    bar.setAttribute('aria-label', label);
+    var tabs = panels.map(function (panel) {
+      var tab = el('button', 'view-tab', panel.getAttribute('data-view'));
+      tab.type = 'button';
+      tab.id = 'tab-' + panel.id;
+      tab.setAttribute('role', 'tab');
+      tab.setAttribute('aria-controls', panel.id);
+      panel.classList.add('view');
+      panel.setAttribute('role', 'tabpanel');
+      panel.setAttribute('aria-labelledby', tab.id);
+      tab.addEventListener('click', function () { show(panel.id, true); });
+      bar.appendChild(tab);
+      return tab;
+    });
+    function show(id, byUser) {
+      panels.forEach(function (panel, i) {
+        var on = panel.id === id;
+        panel.hidden = !on;
+        tabs[i].setAttribute('aria-selected', on ? 'true' : 'false');
+        tabs[i].tabIndex = on ? 0 : -1;
+        if (on) {
+          panel.scrollTop = 0;
+          bar.scrollLeft = tabs[i].offsetLeft - (bar.clientWidth - tabs[i].offsetWidth) / 2;
+        }
+      });
+      if (onShow) onShow(id, byUser);
+      // Charts measure themselves, so they need to redraw once they are visible.
+      window.dispatchEvent(new Event('resize'));
+    }
+    bar.addEventListener('keydown', function (e) {
+      var step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      var at = tabs.indexOf(document.activeElement);
+      if (!step || at < 0) return;
+      e.preventDefault();
+      var next = tabs[(at + step + tabs.length) % tabs.length];
+      next.click();
+      next.focus();
+    });
+    return { bar: bar, show: show };
+  }
+  // Tabs built by a page's own script, such as the results of an exam.
+  function tabs(parent, label, panels) {
+    var strip = tabStrip(label, panels);
+    var holder = el('div', 'view-panels');
+    parent.appendChild(strip.bar);
+    parent.appendChild(holder);
+    panels.forEach(function (panel) { holder.appendChild(panel); });
+    strip.show(panels[0].id, false);
+    return strip;
+  }
+  // Tabs written in a page's markup: <main data-views="Label"> with data-view children.
+  // The open tab follows the URL hash, so links like index.html#practice still work.
+  var showView = function () {};
+  function initViews() {
+    var root = document.querySelector('[data-views]');
+    if (!root) return;
+    var panels = Array.prototype.filter.call(root.children, function (c) { return c.hasAttribute('data-view'); });
+    if (!panels.length) return;
+    var strip = tabStrip(root.getAttribute('data-views') || 'Sections', panels, function (id, byUser) {
+      if (byUser && window.history && history.replaceState) history.replaceState(null, '', '#' + id);
+    });
+    var holder = el('div', 'view-panels');
+    root.insertBefore(strip.bar, panels[0]);
+    root.insertBefore(holder, panels[0]);
+    panels.forEach(function (panel) { holder.appendChild(panel); });
+    function fromHash() {
+      var target = location.hash.length > 1 && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (!target) return '';
+      var match = panels.filter(function (panel) { return panel === target || panel.contains(target); })[0];
+      return match ? match.id : '';
+    }
+    window.addEventListener('hashchange', function () {
+      var id = fromHash();
+      if (id) strip.show(id, false);
+    });
+    strip.show(fromHash() || panels[0].id, false);
+    showView = function (id) { strip.show(id, true); };
+  }
+  // Splits a list into pages. sizes is [phone, tablet, laptop] items per page.
+  // barAfter is where the Previous and Next buttons go, if not right after the list.
+  function pager(box, sizes, barAfter) {
+    var nodes = [], page = 0, printing = false;
+    var bar = el('div', 'pager no-print');
+    var prev = el('button', 'btn btn-ghost btn-sm', 'Previous');
+    var next = el('button', 'btn btn-ghost btn-sm', 'Next');
+    var status = el('span', 'pager-status');
+    status.setAttribute('aria-live', 'polite');
+    prev.type = next.type = 'button';
+    bar.appendChild(prev);
+    bar.appendChild(status);
+    bar.appendChild(next);
+    var anchor = barAfter || box;
+    anchor.parentNode.insertBefore(bar, anchor.nextSibling);
+    function perPage() {
+      var w = window.innerWidth;
+      return w <= 600 ? sizes[0] : w <= 1020 ? sizes[1] : sizes[2];
+    }
+    var lastSize = perPage();
+    function paint() {
+      var size = perPage(), total = Math.max(1, Math.ceil(nodes.length / size));
+      if (page >= total) page = total - 1;
+      clear(box);
+      nodes.slice(printing ? 0 : page * size, printing ? nodes.length : (page + 1) * size).forEach(function (n) { box.appendChild(n); });
+      bar.hidden = total < 2;
+      status.textContent = 'Page ' + (page + 1) + ' of ' + total;
+      prev.disabled = page === 0;
+      next.disabled = page >= total - 1;
+      box.scrollTop = 0;
+    }
+    prev.addEventListener('click', function () { page -= 1; paint(); });
+    next.addEventListener('click', function () { page += 1; paint(); });
+    window.addEventListener('resize', function () {
+      if (perPage() === lastSize) return;
+      lastSize = perPage();
+      paint();
+    });
+    window.addEventListener('beforeprint', function () { printing = true; paint(); });
+    window.addEventListener('afterprint', function () { printing = false; paint(); });
+    return { set: function (list, keepPage) { nodes = list; if (!keepPage) page = 0; paint(); } };
+  }
+
   function registerWorker() {
     if (!('serviceWorker' in navigator) || /^(localhost|127\.)/.test(location.hostname)) return;
     navigator.serviceWorker.register('sw.js').catch(function () { /* offline support is optional */ });
   }
 
   renderHeader();
+  initViews();
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', renderNav);
   else renderNav();
   registerWorker();
@@ -355,6 +483,7 @@
   window.App = {
     el: el, clear: clear, byId: byId, icon: icon, param: param, formatDate: formatDate, clock: clock, subjectLabel: subjectLabel,
     ring: ring, meter: meter, modes: modes, toast: toast, load: load, save: save, commit: commit, boot: boot, catalog: catalog,
-    chunks: chunks, questionsById: questionsById, questionCard: questionCard
+    chunks: chunks, questionsById: questionsById, questionCard: questionCard,
+    tabs: tabs, pager: pager, showView: function (id) { showView(id); }
   };
 })();

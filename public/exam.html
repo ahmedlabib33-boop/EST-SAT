@@ -15,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
-<body>
+<body class="one-screen">
 <div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
 <header class="nav" data-app-header></header>
 
@@ -307,8 +307,16 @@
     t.appendChild(row);
     head.appendChild(t);
     box.appendChild(head);
-    box.appendChild(timeReview(finished, results, used));
-    box.appendChild(answerReview(finished, byId));
+    var time = timeReview(finished, results, used), checks = answerReview(finished, byId);
+    time.id = 'resultTime';
+    time.setAttribute('data-view', 'Your time');
+    checks.id = 'resultAnswers';
+    checks.setAttribute('data-view', 'Your answers');
+    A.tabs(box, 'Exam results', [checks, time]);
+    var list = el('div', 'answer-list'), items = Array.prototype.slice.call(checks.querySelectorAll('.answer-item'));
+    items.forEach(function (item) { checks.removeChild(item); });
+    checks.appendChild(list);
+    A.pager(list, [4, 12, 6]).set(items);
   }
 
   function timeReview(finished, results, used) {
@@ -336,15 +344,16 @@
     });
     var rows = Object.keys(topics).map(function (k) { return topics[k]; }).sort(function (a, b) { return b.seconds - a.seconds; });
     var longest = rows.length ? Math.max(1, rows[0].seconds) : 1;
-    var bars = el('div', 'time-bars');
+    var bars = el('div', 'time-bars'), lines = [];
     rows.forEach(function (row) {
       var line = el('div', 'time-row');
       line.appendChild(el('span', null, row.name));
       line.appendChild(A.meter(row.seconds / longest));
       line.appendChild(el('b', null, A.clock(row.seconds) + ' · ' + row.right + '/' + row.count));
-      bars.appendChild(line);
+      lines.push(line);
     });
     card.appendChild(bars);
+    A.pager(bars, [4, 12, 5]).set(lines);
 
     var numbered = results.map(function (r, i) { r.number = i + 1; return r; });
     card.appendChild(el('h3', 'sub-head', 'Slowest questions'));

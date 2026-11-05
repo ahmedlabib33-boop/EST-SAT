@@ -15,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
-<body>
+<body class="one-screen">
 
 <div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
 
@@ -36,7 +36,7 @@
   </div>
 </header>
 
-<main id="top">
+<main id="top" class="learn-page">
 
   <section class="wrap learn-head">
     <p class="eyebrow">Lesson library</p>
@@ -45,7 +45,7 @@
     <p class="muted" id="bankLine">Loading the question bank…</p>
   </section>
 
-  <section class="wrap">
+  <section class="wrap learn-body">
     <div class="learn-controls">
       <div class="modes" role="group" aria-label="Subject">
         <button type="button" class="mode" data-subject="math" aria-pressed="true">Math</button>
@@ -61,10 +61,17 @@
     <div class="learn-grid">
       <aside class="card lesson-list" id="lessonList" aria-label="Lessons in this topic"></aside>
       <div class="lesson-main">
-        <article class="card lesson-card" id="lessonCard" aria-live="polite">
+        <div class="lesson-tabs">
+          <button type="button" class="btn btn-ghost btn-sm lesson-back" id="backToList">All lessons</button>
+          <div class="modes" role="group" aria-label="Part of the lesson">
+            <button type="button" class="mode" data-part="rule" aria-pressed="true">The rule</button>
+            <button type="button" class="mode" data-part="practice" aria-pressed="false">Practice</button>
+          </div>
+        </div>
+        <article class="card lesson-card lesson-panel" id="lessonCard" aria-live="polite">
           <p class="muted">Pick a lesson to begin.</p>
         </article>
-        <div id="practiceWrap"></div>
+        <div id="practiceWrap" class="lesson-panel" hidden></div>
       </div>
     </div>
   </section>
@@ -162,7 +169,7 @@
       if (l.difficulty) { meta.appendChild(el('span', 'chip', l.difficulty)); }
       meta.appendChild(el('span', 'chip', l.questions + ' Q'));
       btn.appendChild(meta);
-      btn.addEventListener('click', function () { openLesson(l.id); });
+      btn.addEventListener('click', function () { openLesson(l.id); setReading(true); });
       list.appendChild(btn);
     });
 
@@ -318,8 +325,23 @@
 
   /* ------------------------------------------------------------ loading */
 
+  // On small screens the list and the lesson take turns filling the window.
+  function setReading(on) {
+    document.querySelector('.learn-grid').classList.toggle('reading', on);
+  }
+  function showPart(part) {
+    $('lessonCard').hidden = part !== 'rule';
+    $('practiceWrap').hidden = part !== 'practice';
+    Array.prototype.forEach.call(document.querySelectorAll('.mode[data-part]'), function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-part') === part ? 'true' : 'false');
+    });
+  }
+
   function openLesson(id) {
     currentLesson = id;
+    showPart('rule');
+    $('lessonCard').scrollTop = 0;
+    $('practiceWrap').scrollTop = 0;
     shownAt = Date.now();
     renderLessons();
     $('lessonCard').textContent = '';
@@ -340,6 +362,8 @@
   function loadSubject(next) {
     subject = next;
     currentLesson = '';
+    setReading(false);
+    showPart('rule');
     $('lessonCard').textContent = '';
     $('lessonCard').appendChild(el('p', 'muted', 'Loading…'));
     $('practiceWrap').textContent = '';
@@ -363,6 +387,7 @@
         renderLessons();
         var first = wanted || visibleLessons()[0];
         if (first) { openLesson(first.id); }
+        if (wanted) { setReading(true); }
       })
       .catch(function () {
         $('lessonCard').textContent = '';
@@ -384,8 +409,14 @@
     });
   });
 
+  Array.prototype.forEach.call(document.querySelectorAll('.mode[data-part]'), function (btn) {
+    btn.addEventListener('click', function () { showPart(btn.getAttribute('data-part')); });
+  });
+  $('backToList').addEventListener('click', function () { setReading(false); });
+
   $('topicSel').addEventListener('change', function () {
     currentLesson = '';
+    setReading(false);
     renderLessons();
     var first = visibleLessons()[0];
     if (first) { openLesson(first.id); }

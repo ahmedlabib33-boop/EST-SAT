@@ -15,11 +15,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
-<body>
+<body class="one-screen">
 <div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
 <header class="nav" data-app-header></header>
 
-<main id="top" class="wrap page">
+<main id="top" class="wrap page fill-page">
   <section class="page-head">
     <p class="eyebrow">Visual Pad</p>
     <h1>Sketch <span class="grad-text">the solution.</span></h1>
@@ -173,6 +173,8 @@
   });
   window.addEventListener('resize', function () { if (!drawing) resize(); });
   resize();
+  // The tab bar arrives after this script on some pages, which changes the frame's height.
+  if (window.requestAnimationFrame) requestAnimationFrame(resize);
 })();
 </script>
 </body>

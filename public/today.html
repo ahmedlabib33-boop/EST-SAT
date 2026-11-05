@@ -15,28 +15,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
-<body>
+<body class="one-screen">
 <div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
 <header class="nav" data-app-header></header>
 
-<main id="top" class="wrap page">
+<main id="top" class="wrap page" data-views="Today">
   <section class="page-head">
     <p class="eyebrow">Today</p>
     <h1>Fifteen minutes. <span class="grad-text">Every day.</span></h1>
     <p class="lede" id="dateLine"></p>
   </section>
 
-  <div class="two-col">
-    <section class="stack" aria-label="Today's session">
-      <div id="session"></div>
-    </section>
-    <aside class="stack" aria-label="Your progress">
-      <div class="card tool-card" id="inbox" hidden></div>
-      <div class="card tool-card" id="readiness"></div>
-      <div class="card tool-card" id="streak"></div>
-      <div class="card tool-card" id="challenge"></div>
-    </aside>
-  </div>
+  <section id="plan" data-view="Session" aria-label="Today's session">
+    <div id="session"></div>
+  </section>
+  <section id="ready" class="view-cards" data-view="Readiness" aria-label="Your readiness">
+    <div class="card tool-card" id="readiness"></div>
+    <div class="card tool-card" id="inbox" hidden></div>
+  </section>
+  <section id="week" class="view-cards" data-view="This week" aria-label="Your week">
+    <div class="card tool-card" id="streak"></div>
+    <div class="card tool-card" id="challenge"></div>
+  </section>
 </main>
 
 <script src="assets/auth.js"></script>

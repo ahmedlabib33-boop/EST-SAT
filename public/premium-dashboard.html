@@ -708,6 +708,25 @@
             color: var(--text-secondary);
         }
     </style>
+<style>
+    /* One screen: each part of the dashboard is its own tab. */
+    html, body { height: 100%; }
+    body { height: 100vh; height: 100dvh; display: flex; flex-direction: column; overflow: hidden; min-height: 0; }
+    body > header { flex: none; position: static; }
+    body > footer { display: none; }
+    .dash-tabs { flex: none; display: flex; gap: 6px; padding: 10px 16px; overflow-x: auto; scrollbar-width: none; }
+    .dash-tabs button { flex: none; padding: 7px 14px; border: 1px solid var(--border); border-radius: 999px; background: transparent; color: var(--text-secondary); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+    .dash-tabs button[aria-selected="true"] { background: var(--primary); border-color: var(--primary); color: #fff; }
+    body > .container { flex: 1 1 auto; min-height: 0; width: 100%; max-width: none; margin: 0; overflow-y: auto; padding: 8px max(16px, calc((100% - 1200px) / 2)) 16px; }
+    .container > .section, .container > .welcome-card { margin-bottom: 12px; margin-top: 0; }
+    [data-dash-hidden] { display: none !important; }
+    .welcome-card { padding: 1rem 1.25rem !important; }
+    .welcome-title { font-size: 1.25rem !important; }
+    @media (max-width: 600px) {
+        .stats-container { grid-template-columns: 1fr 1fr !important; gap: 0.5rem !important; }
+        .stats-container > * { padding: 0.75rem !important; }
+    }
+</style>
 </head>
 <body>
     <header>
@@ -1005,6 +1024,38 @@
         if (savedTheme === 'dark') {
             document.querySelector('.theme-toggle').textContent = '☀️ Light Mode';
         }
+
+        // One tab per section, with the welcome card, the stats and the call to action together.
+        (function () {
+            const box = document.querySelector('.container');
+            const parts = Array.from(box.children);
+            const groups = [{ label: 'Overview', items: [] }];
+            parts.forEach(function (part) {
+                const title = part.querySelector(':scope > .section-title');
+                if (title) groups.push({ label: title.textContent.trim().replace(/^Your /, ''), items: [part] });
+                else groups[0].items.push(part);
+            });
+            const bar = document.createElement('div');
+            bar.className = 'dash-tabs';
+            bar.setAttribute('role', 'tablist');
+            box.parentNode.insertBefore(bar, box);
+            function show(index) {
+                groups.forEach(function (group, i) {
+                    group.items.forEach(function (part) { part.toggleAttribute('data-dash-hidden', i !== index); });
+                    group.tab.setAttribute('aria-selected', i === index ? 'true' : 'false');
+                });
+                box.scrollTop = 0;
+            }
+            groups.forEach(function (group, i) {
+                group.tab = document.createElement('button');
+                group.tab.type = 'button';
+                group.tab.setAttribute('role', 'tab');
+                group.tab.textContent = group.label;
+                group.tab.addEventListener('click', function () { show(i); });
+                bar.appendChild(group.tab);
+            });
+            show(0);
+        })();
 
         // Add smooth scroll behavior
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {

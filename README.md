@@ -369,7 +369,7 @@ Every tool shares one progress object. It is saved in the browser and synced to 
 | `review.html` | Spaced review of wrong answers after 1, 3, 7 and 14 days, as a list or flashcards. |
 | `progress.html` | Exam score chart, readiness estimate and accuracy by topic. The estimate is not an official SAT or EST score. |
 | `rewards.html` | XP, levels, badges, a topic map and printable certificates. |
-| `revision.html` | Every rule and formula on one searchable, printable page. |
+| `revision.html` | Every rule and formula, searchable and printable, a page of cards at a time. |
 | `coach.html` | AI coach: type, speak in English or Arabic, or send a photo. |
 | `pad.html` | Drawing pad, saved per account on the device. |
 | `focus.html` | Focus timer that counts towards study time, with a YouTube, Spotify or SoundCloud link. |
