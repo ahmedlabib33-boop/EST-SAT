@@ -358,6 +358,29 @@ docker-compose up -d
 
 ---
 
+## 🧭 Study Tools
+
+Every tool shares one progress object. It is saved in the browser and synced to the account by `PUT /api/user/state`, which accepts only known, bounded fields (`clean_state` in `backend/routes.py`). The logic lives in `public/assets/study.js` and is unit-tested by `npm test`.
+
+| Page | What it does |
+|---|---|
+| `today.html` | A 15-minute session: due reviews first, then fresh questions from the weakest topics. Streak, weekly challenge, readiness estimate. |
+| `exam.html` | Timed exams from the question bank: warnings at 15 and 5 minutes, automatic collection, resumes after a reload, and a review of where the time went. |
+| `review.html` | Spaced review of wrong answers after 1, 3, 7 and 14 days, as a list or flashcards. |
+| `progress.html` | Exam score chart, readiness estimate and accuracy by topic. The estimate is not an official SAT or EST score. |
+| `rewards.html` | XP, levels, badges, a topic map and printable certificates. |
+| `revision.html` | Every rule and formula on one searchable, printable page. |
+| `coach.html` | AI coach: type, speak in English or Arabic, or send a photo. |
+| `pad.html` | Drawing pad, saved per account on the device. |
+| `focus.html` | Focus timer that counts towards study time, with a YouTube, Spotify or SoundCloud link. |
+| `parent.html` | Progress summary, assignments, and goals that unlock a message. Voice notes stay on the device that recorded them. |
+
+The site also installs as a phone app (`manifest.webmanifest`, `sw.js`), with a tab bar on small screens.
+
+**AI setup:** set `GROQ_API_KEY` in Vercel to switch on the coach and AI flashcards. Until then the coach page says it is not switched on and everything else keeps working. Each student gets `AI_DAILY_LIMIT` calls in any 24 hours (default 150); teachers and admins are not counted.
+
+---
+
 ## 🐛 Troubleshooting
 
 | Issue | Solution |

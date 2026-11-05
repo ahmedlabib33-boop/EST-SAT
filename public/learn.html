@@ -6,6 +6,8 @@
 <title>Lesson library — EST · SAT with Ahmed Labib</title>
 <meta name="description" content="316 lessons and 622 practice questions across SAT 1 and EST 1 Math and English. Read the rule, see a worked example, then answer two questions with instant explanations.">
 <meta name="theme-color" content="#07070F">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
 <script>document.documentElement.classList.add('js');</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322D3EE'/%3E%3Cstop offset='1' stop-color='%238B5CF6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='700' font-size='34' fill='white' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,10 +26,10 @@
       <span class="brand-txt"><b>EST · SAT</b><small>with Ahmed Labib</small></span>
     </a>
     <nav class="links" aria-label="Sections">
-      <a href="index.html#mission">Mission</a>
+      <a href="today.html">Today</a>
       <a href="index.html#practice">Practice</a>
       <a href="learn.html" aria-current="page">Lessons</a>
-      <a href="index.html#progress">Progress</a>
+      <a href="progress.html">Progress</a>
       <a href="live.html">Live class</a>
     </nav>
     <a class="btn btn-ghost btn-sm" href="login.html" data-auth-link>Log in</a>
@@ -81,22 +83,20 @@
 </footer>
 
 <script src="assets/auth.js"></script>
+<script src="assets/study.js"></script>
+<script src="assets/app.js"></script>
 <script>
 (function () {
   'use strict';
 
-  var E = window.EstSat;
+  var E = window.EstSat, Study = window.EstSatStudy, App = window.App;
   var $ = function (id) { return document.getElementById(id); };
   var subject = 'math';
   var data = { topics: [], lessons: [] };
   var lessonsById = {};
   var currentLesson = '';
-  var saveTimer = null;
-
-  function today() {
-    var d = new Date();
-    return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
-  }
+  var shownAt = Date.now();
+  var pendingLesson = App.param('lesson'), pendingTopic = App.param('topic');
 
   function el(tag, cls, text) {
     var node = document.createElement(tag);
@@ -107,32 +107,20 @@
 
   /* ---------------------------------------------------------- progress */
 
-  function record(correct, questionId) {
-    var s = E.readState() || {};
-    s.stats = s.stats || { answered: 0, correct: 0, time: 0 };
-    s.days = s.days || {};
-    s.mistakes = s.mistakes || [];
-    s.stats.answered = (s.stats.answered || 0) + 1;
+  function progress() { return Study.normalize(E.readState()); }
+
+  function record(correct, question) {
+    var s = progress();
+    var seconds = Math.min(300, Math.round((Date.now() - shownAt) / 1000));
+    shownAt = Date.now();
+    Study.recordAnswer(s, { id: question.id, subject: subject, topic: question.topicId, correct: correct, seconds: seconds });
     if (correct) {
-      s.stats.correct = (s.stats.correct || 0) + 1;
-    } else {
-      var seen = false, i;
-      for (i = 0; i < s.mistakes.length; i++) {
-        if (s.mistakes[i] && s.mistakes[i].id === questionId) { seen = true; break; }
-      }
-      if (!seen) { s.mistakes.push({ id: questionId, date: today() }); }
-      if (s.mistakes.length > 100) { s.mistakes = s.mistakes.slice(-100); }
+      Study.celebrate(false);
+      Study.completeLesson(s, question.lessonId || currentLesson);
     }
-    var key = today();
-    s.days[key] = (s.days[key] || 0) + 1;
-    E.writeState(s);
-    E.markDirty();
-    if (saveTimer) { clearTimeout(saveTimer); }
-    if (E.loggedIn()) {
-      saveTimer = setTimeout(function () {
-        E.pushState(E.readState()).catch(function () { /* stays dirty, retried later */ });
-      }, 1500);
-    }
+    App.commit(s);
+    renderLessons();
+    paintLessonDone();
   }
 
   /* ------------------------------------------------------------ render */
@@ -160,12 +148,12 @@
 
   function renderLessons() {
     var list = $('lessonList');
-    var lessons = visibleLessons();
+    var lessons = visibleLessons(), done = progress().lessons;
     list.textContent = '';
     $('lessonCount').textContent = lessons.length + ' lesson' + (lessons.length === 1 ? '' : 's');
 
     lessons.forEach(function (l) {
-      var btn = el('button', 'lesson-item');
+      var btn = el('button', 'lesson-item' + (done.indexOf(l.id) >= 0 ? ' done' : ''));
       btn.type = 'button';
       btn.setAttribute('aria-pressed', l.id === currentLesson ? 'true' : 'false');
       btn.appendChild(el('span', 'lesson-item-title', l.title));
@@ -227,6 +215,34 @@
       ar.setAttribute('lang', 'ar');
       card.appendChild(ar);
     }
+
+    var actions = el('div', 'lesson-actions');
+    var mark = el('button', 'btn btn-ghost btn-sm');
+    mark.type = 'button';
+    mark.id = 'lessonDone';
+    mark.addEventListener('click', function () {
+      var s = progress();
+      if (Study.completeLesson(s, lesson.id)) {
+        App.commit(s);
+        Study.celebrate(false);
+        renderLessons();
+      }
+      paintLessonDone();
+    });
+    actions.appendChild(mark);
+    var ask = el('a', 'btn btn-ghost btn-sm', 'Ask the AI coach about this');
+    ask.href = 'coach.html?ask=' + encodeURIComponent('Explain "' + lesson.title + '"' + (lesson.formula ? ' (' + lesson.formula + ')' : '') + ' with a short example.');
+    actions.appendChild(ask);
+    card.appendChild(actions);
+    paintLessonDone();
+  }
+
+  function paintLessonDone() {
+    var mark = document.getElementById('lessonDone');
+    if (!mark) return;
+    var finished = progress().lessons.indexOf(currentLesson) >= 0;
+    mark.textContent = finished ? 'Lesson complete' : 'Mark lesson complete';
+    mark.disabled = finished;
   }
 
   function renderQuestions(questions) {
@@ -290,7 +306,7 @@
         (result.explanation || []).forEach(function (step, n) {
           feedback.appendChild(document.createTextNode((n ? ' ' : '') + step));
         });
-        record(result.correct, question.id);
+        record(result.correct, question);
       })
       .catch(function () {
         feedback.className = 'feedback show no';
@@ -304,6 +320,7 @@
 
   function openLesson(id) {
     currentLesson = id;
+    shownAt = Date.now();
     renderLessons();
     $('lessonCard').textContent = '';
     $('lessonCard').appendChild(el('p', 'muted', 'Loading…'));
@@ -336,7 +353,15 @@
         renderLessons();
         $('lessonCard').textContent = '';
         $('lessonCard').appendChild(el('p', 'muted', 'Pick a lesson to begin.'));
-        var first = visibleLessons()[0];
+        // A link from another page can open a specific lesson or topic.
+        var wanted = data.lessons.filter(function (l) { return l.id === pendingLesson; })[0];
+        if (wanted) $('topicSel').value = wanted.topicId;
+        else if (pendingTopic) $('topicSel').value = pendingTopic;
+        if (!$('topicSel').value && data.topics.length) $('topicSel').value = data.topics[0].id;
+        pendingLesson = '';
+        pendingTopic = '';
+        renderLessons();
+        var first = wanted || visibleLessons()[0];
         if (first) { openLesson(first.id); }
       })
       .catch(function () {
@@ -372,8 +397,12 @@
     $('bankLine').textContent = lessons + ' lessons · ' + questions + ' practice questions · answers checked on the server';
   }).catch(function () { $('bankLine').textContent = ''; });
 
-  if (E.loggedIn()) { E.pullState(true).catch(function () {}); }
-  loadSubject('math');
+  if (E.loggedIn()) { E.pullState(true).then(function () { renderLessons(); paintLessonDone(); }).catch(function () {}); }
+  var startSubject = App.param('subject') === 'english' ? 'english' : 'math';
+  Array.prototype.forEach.call(document.querySelectorAll('.mode[data-subject]'), function (b) {
+    b.setAttribute('aria-pressed', b.getAttribute('data-subject') === startSubject ? 'true' : 'false');
+  });
+  loadSubject(startSubject);
 })();
 </script>
 </body>

@@ -23,7 +23,8 @@ practice_bp = Blueprint('practice', __name__, url_prefix='/api/practice')
 CONTENT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'content')
 SUBJECTS = ('math', 'english')
 MAX_GRADE_ITEMS = 100
-MAX_RANDOM = 50
+MAX_RANDOM = 100
+MAX_BY_ID = 60
 
 
 def _load():
@@ -68,6 +69,10 @@ def strip(question, subject):
 def _subject(name):
     name = (name or '').strip().lower()
     return name if name in SUBJECTS else None
+
+
+def _subject_of(question_id):
+    return 'english' if question_id.startswith('english') else 'math'
 
 
 def error(message, status):
@@ -145,10 +150,45 @@ def random_questions():
     count = max(1, min(count, MAX_RANDOM))
 
     pool = [(subject, q) for subject in names for q in CONTENT[subject].get('practice', [])]
+    topics = {t.strip() for t in request.args.get('topics', '').split(',') if t.strip()}
+    if topics:
+        pool = [(subject, q) for subject, q in pool if q.get('topicId') in topics]
     if not pool:
         return jsonify({'questions': []})
     chosen = random.sample(pool, min(count, len(pool)))
     return jsonify({'questions': [strip(q, subject) for subject, q in chosen]})
+
+
+@practice_bp.get('/questions')
+def questions_by_id():
+    """Specific questions, without their answers. Used to bring back saved mistakes for review."""
+    ids = [i.strip() for i in request.args.get('ids', '').split(',') if i.strip()][:MAX_BY_ID]
+    out = []
+    for question_id in ids:
+        question = BY_ID.get(question_id)
+        if question:
+            out.append(strip(question, _subject_of(question_id)))
+    return jsonify({'questions': out})
+
+
+@practice_bp.get('/<subject>/revision')
+def revision(subject):
+    """Every lesson's rule, formula, example and tip, for the one-page revision sheet."""
+    name = _subject(subject)
+    if not name:
+        return error('Unknown subject.', 400)
+    payload = CONTENT[name]
+    lessons = [{
+        'id': lesson['id'],
+        'topicId': lesson.get('topicId', ''),
+        'title': lesson.get('title', ''),
+        'formula': lesson.get('formula', ''),
+        'example': lesson.get('example', ''),
+        'tip': lesson.get('tip', ''),
+        'arabic': lesson.get('arabic', ''),
+        'explanation': lesson.get('explanation', []),
+    } for lesson in payload.get('lessons', [])]
+    return jsonify({'subject': name, 'topics': payload.get('topics', []), 'lessons': lessons})
 
 
 @practice_bp.post('/grade')
@@ -205,8 +245,7 @@ def review():
         question = BY_ID.get(str(entry.get('id', '')))
         if not question:
             continue
-        subject = 'english' if question['id'].startswith('english') else 'math'
-        detail = strip(question, subject)
+        detail = strip(question, _subject_of(question['id']))
         detail['answer'] = question['answer']
         detail['explanation'] = question.get('explanation', [])
         detail['date'] = entry.get('date', '')

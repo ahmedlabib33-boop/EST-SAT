@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Rewards — EST · SAT with Ahmed Labib</title>
+<meta name="description" content="XP for every lesson, answer and exam, badges for real milestones, and a topic map that lights up as you master it.">
+<meta name="theme-color" content="#07070F">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
+<header class="nav" data-app-header></header>
+
+<main id="top" class="wrap page">
+  <section class="page-head">
+    <p class="eyebrow">Rewards</p>
+    <h1>Level up <span class="grad-text">your score.</span></h1>
+    <p class="lede">XP for every lesson, answer and exam. Badges for real milestones, and a topic map that lights up as you master it.</p>
+  </section>
+
+  <section class="card tool-card level-card" id="level"></section>
+
+  <section class="card tool-card" id="messagesBox" hidden>
+    <h2 id="messages">Messages from your parent</h2>
+    <div id="messageList"></div>
+  </section>
+
+  <section class="card tool-card">
+    <div class="panel-title"><h2>Badges</h2><span class="muted" id="badgeCount"></span></div>
+    <div class="badge-grid" id="badges"></div>
+  </section>
+
+  <section class="card tool-card">
+    <h2>Topic map</h2>
+    <p class="muted">Finish every lesson in a topic to print its certificate.</p>
+    <div class="map-legend" aria-hidden="true">
+      <span><i class="lvl lvl-new"></i>Not started</span><span><i class="lvl lvl-learning"></i>Learning</span><span><i class="lvl lvl-good"></i>Good</span><span><i class="lvl lvl-mastered"></i>Mastered</span>
+    </div>
+    <div id="map"></div>
+  </section>
+
+  <section class="card tool-card">
+    <div class="panel-title"><h2>Settings</h2><span class="muted">This device</span></div>
+    <div class="switches" id="settings"></div>
+  </section>
+</main>
+
+<script src="assets/auth.js"></script>
+<script src="assets/study.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var E = window.EstSat, S = window.EstSatStudy, A = window.App, el = A.el;
+  var LEVEL_LABELS = { 'new': 'Not started', learning: 'Learning', good: 'Good', mastered: 'Mastered' };
+  var state = null, catalog = null;
+
+  function renderLevel() {
+    var box = A.clear(A.byId('level')), l = S.levelFor(state.xp);
+    var badge = el('div', 'level-num');
+    badge.appendChild(el('span', null, 'Level'));
+    badge.appendChild(el('b', null, l.level));
+    box.appendChild(badge);
+    var t = el('div', 'level-text');
+    t.appendChild(el('h2', null, l.rank));
+    t.appendChild(el('p', 'muted', l.xp.toLocaleString() + ' XP · ' + (l.ceiling - l.xp).toLocaleString() + ' to the next level'));
+    t.appendChild(A.meter(l.progress));
+    t.appendChild(el('p', 'fine', 'Lesson +' + S.XP.lesson + ' · right answer +' + S.XP.right + ' · wrong answer +' + S.XP.wrong + ' · review +' + S.XP.reviewRight + ' · exam +' + S.XP.exam + ' plus your percent'));
+    box.appendChild(t);
+  }
+
+  function renderMessages() {
+    var open = state.goals.filter(function (g) { return g.unlockedAt; });
+    var box = A.byId('messagesBox'), list = A.clear(A.byId('messageList'));
+    box.hidden = !open.length;
+    open.forEach(function (g) {
+      var card = el('article', 'message-card');
+      card.appendChild(el('p', 'eyebrow', g.label + ' · unlocked ' + A.formatDate(g.unlockedAt)));
+      if (g.message) card.appendChild(el('p', null, g.message));
+      if (g.hasVoice) {
+        S.loadVoice(g.id).then(function (blob) {
+          if (!blob) return;
+          var audio = el('audio');
+          audio.controls = true;
+          audio.src = URL.createObjectURL(blob);
+          card.appendChild(audio);
+        }).catch(function () { /* voice notes stay on the device that recorded them */ });
+      }
+      list.appendChild(card);
+    });
+  }
+
+  function renderBadges() {
+    var box = A.clear(A.byId('badges')), list = S.badges(state, catalog);
+    A.byId('badgeCount').textContent = list.filter(function (b) { return b.earned; }).length + ' of ' + list.length + ' earned';
+    list.forEach(function (b) {
+      var card = el('div', 'badge' + (b.earned ? ' earned' : ''));
+      card.appendChild(A.icon(b.earned ? 'trophy' : 'vault'));
+      var t = el('div');
+      t.appendChild(el('strong', null, b.name));
+      t.appendChild(el('small', null, (b.earned ? 'Earned: ' : '') + b.hint));
+      card.appendChild(t);
+      box.appendChild(card);
+    });
+  }
+
+  function studentName() {
+    var u = E.user();
+    return (u && (u.full_name || u.username)) || '';
+  }
+  // Opens a print-ready page. Everything inserted is escaped.
+  function escapeHtml(v) { return String(v).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function printCertificate(row) {
+    var name = studentName() || window.prompt('Whose name goes on the certificate?') || '';
+    if (!name.trim()) return;
+    var page = window.open('', '_blank');
+    if (!page) { A.toast('Your browser blocked the certificate window. Allow pop-ups and try again.'); return; }
+    page.document.write('<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Certificate: ' + escapeHtml(row.name) + '</title><style>' +
+      '@page{size:A4;margin:16mm}body{font:15px/1.5 Georgia,serif;color:#1d1a2e;margin:0}' +
+      '.cert{border:6px double #6d4fd8;border-radius:12px;padding:48px 40px;text-align:center;min-height:220mm;display:flex;flex-direction:column;justify-content:center;gap:14px}' +
+      'h1{font:700 38px Arial,sans-serif;color:#4c33b8;margin:0}.name{font-size:32px;font-style:italic;border-bottom:1px solid #999;display:inline-block;padding:0 30px 6px}small{color:#666}' +
+      '.sig{margin-top:40px}.sig div{display:inline-block;border-top:1px solid #555;padding-top:6px;min-width:220px}</style></head><body><div class="cert">' +
+      '<small>EST · SAT practice platform</small><h1>Certificate of Completion</h1><p>This certifies that</p><div><span class="name">' + escapeHtml(name.trim()) + '</span></div>' +
+      '<p>has completed every lesson in</p><h2>' + escapeHtml(A.subjectLabel(row.subject) + ': ' + row.name) + '</h2><p>' + escapeHtml(new Date().toLocaleDateString('en', { day: 'numeric', month: 'long', year: 'numeric' })) + '</p>' +
+      '<div class="sig"><div>Ahmed Labib</div></div><small>A practice milestone. Not an official SAT or EST result.</small></div></body></html>');
+    page.document.close();
+    page.focus();
+    setTimeout(function () { page.print(); }, 300);
+  }
+
+  function renderMap() {
+    var box = A.clear(A.byId('map'));
+    if (!catalog) { box.appendChild(el('p', 'muted', 'Loading topics…')); return; }
+    var rows = S.topicRows(state, catalog);
+    ['math', 'english', 'physics'].forEach(function (subject) {
+      var part = rows.filter(function (r) { return r.subject === subject; });
+      if (!part.length) return;
+      box.appendChild(el('h3', 'sub-head', A.subjectLabel(subject)));
+      var grid = el('div', 'map-grid');
+      part.forEach(function (r) {
+        var cell = el('div', 'map-cell lvl-' + r.level);
+        cell.appendChild(el('strong', null, r.name));
+        cell.appendChild(el('small', null, LEVEL_LABELS[r.level] + (r.lessons ? ' · ' + r.lessonsDone + '/' + r.lessons + ' lessons' : '') + (r.answered ? ' · ' + Math.round(r.accuracy * 100) + '%' : '')));
+        if (r.lessons && r.lessonsDone >= r.lessons) {
+          var cert = el('button', 'btn btn-ghost btn-sm', 'Certificate');
+          cert.type = 'button';
+          cert.addEventListener('click', function () { printCertificate(r); });
+          cell.appendChild(cert);
+        }
+        grid.appendChild(cell);
+      });
+      box.appendChild(grid);
+    });
+  }
+
+  function renderSettings() {
+    var box = A.clear(A.byId('settings')), s = S.getSettings();
+    [['sound', 'Sound on correct answers'], ['confetti', 'Confetti'], ['haptics', 'Vibration (phones)']].forEach(function (opt) {
+      var label = el('label', 'switch-row');
+      label.appendChild(el('span', null, opt[1]));
+      var input = el('input');
+      input.type = 'checkbox';
+      input.setAttribute('role', 'switch');
+      input.checked = s[opt[0]];
+      input.addEventListener('change', function () { S.setSetting(opt[0], input.checked); });
+      label.appendChild(input);
+      box.appendChild(label);
+    });
+  }
+
+  function renderAll() { renderLevel(); renderMessages(); renderBadges(); renderMap(); }
+  renderSettings();
+  A.boot(function (s) { state = s; renderAll(); });
+  A.catalog().then(function (c) {
+    catalog = c;
+    if (!state) return;
+    if (S.unlockGoals(state, catalog).length) A.save(state);
+    renderAll();
+  }).catch(function () {});
+})();
+</script>
+</body>
+</html>

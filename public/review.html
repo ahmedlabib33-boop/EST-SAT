@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Review Vault — EST · SAT with Ahmed Labib</title>
+<meta name="description" content="Every wrong answer comes back after 1, 3, 7 and 14 days, as questions or flashcards.">
+<meta name="theme-color" content="#07070F">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
+<header class="nav" data-app-header></header>
+
+<main id="top" class="wrap page">
+  <section class="page-head">
+    <p class="eyebrow">Review Vault</p>
+    <h1>Bring back <span class="grad-text">what matters.</span></h1>
+    <p class="lede">Every wrong answer is saved here and comes back after 1, 3, 7 and 14 days. Get it right four times in a row and it is mastered.</p>
+  </section>
+
+  <div class="card tool-card vault-top">
+    <div id="vaultRing"></div>
+    <div class="stat-row" id="vaultStats"></div>
+  </div>
+
+  <div class="control-row">
+    <div class="modes" id="viewModes" role="group" aria-label="View"></div>
+    <div class="modes" id="subjectModes" role="group" aria-label="Subject"></div>
+    <button type="button" class="btn btn-ghost btn-sm" id="clearBtn">Clear all</button>
+  </div>
+
+  <div id="vault" aria-live="polite"></div>
+</main>
+
+<script src="assets/auth.js"></script>
+<script src="assets/study.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var E = window.EstSat, S = window.EstSatStudy, A = window.App, el = A.el;
+  var CARD_KEY = 'estsat.cards';
+  var state = null, view = 'list', subject = 'all', questions = {}, answers = {}, cardIndex = 0, flipped = false, aiCards = {};
+  try { aiCards = JSON.parse(localStorage.getItem(CARD_KEY)) || {}; } catch (e) { aiCards = {}; }
+
+  function today() { return S.dayKey(); }
+  function visible() {
+    return state.mistakes.slice().reverse().filter(function (m) {
+      var q = questions[m.id];
+      return q && (subject === 'all' || q.subject === subject);
+    });
+  }
+  function dueFirst(list) {
+    var day = today();
+    return list.slice().sort(function (a, b) {
+      var x = S.reviewState(state, a, day), y = S.reviewState(state, b, day);
+      var xd = x.stage < S.MASTERED_STAGE && x.due <= day, yd = y.stage < S.MASTERED_STAGE && y.due <= day;
+      return (yd ? 1 : 0) - (xd ? 1 : 0);
+    });
+  }
+
+  function renderTop() {
+    var r = S.reviewSummary(state), pct = r.total ? Math.round(r.mastered / r.total * 100) : 100;
+    var ringBox = A.clear(A.byId('vaultRing'));
+    ringBox.appendChild(A.ring(pct, pct + '%'));
+    var stats = A.clear(A.byId('vaultStats'));
+    [[r.total, 'saved mistakes'], [r.due, 'due today'], [r.mastered, 'mastered']].forEach(function (s) {
+      var k = el('div', 'kpi');
+      k.appendChild(el('b', null, s[0]));
+      k.appendChild(el('span', null, s[1]));
+      stats.appendChild(k);
+    });
+    A.byId('clearBtn').hidden = !r.total;
+  }
+
+  function record(m, q, correct, seconds) {
+    var st = S.reviewState(state, m, today());
+    // Only a due review moves the schedule. Trying one early is just extra practice.
+    if (st.stage < S.MASTERED_STAGE && st.due <= today()) {
+      S.recordReview(state, { id: m.id, subject: q.subject, topic: q.topicId, correct: correct, seconds: seconds });
+      A.commit(state);
+    }
+    renderTop();
+  }
+
+  // ---------- List ----------
+  function renderList() {
+    var box = A.clear(A.byId('vault')), list = dueFirst(visible()), day = today();
+    if (!list.length) {
+      box.appendChild(el('div', 'card tool-card empty', state.mistakes.length ? 'Nothing saved for this subject.' : 'No mistakes saved yet. Wrong answers appear here automatically.'));
+      return;
+    }
+    list.forEach(function (m) {
+      var q = questions[m.id], st = S.reviewState(state, m, day);
+      var card = el('article', 'card tool-card mistake');
+      var top = el('div', 'panel-title');
+      top.appendChild(el('span', 'eyebrow', A.subjectLabel(q.subject) + (q.topic ? ' · ' + q.topic : '')));
+      top.appendChild(el('span', 'chip' + (st.stage >= S.MASTERED_STAGE ? ' done' : ''), S.reviewLabel(st, day)));
+      card.appendChild(top);
+      card.appendChild(el('p', 'mistake-q', q.question));
+      var slot = el('div');
+      var retry = el('button', 'btn btn-ghost btn-sm', st.stage < S.MASTERED_STAGE && st.due <= day ? 'Review now' : 'Try it again');
+      retry.type = 'button';
+      retry.addEventListener('click', function () {
+        A.clear(slot);
+        var inner = A.questionCard(q, {
+          onGraded: function (result, seconds) {
+            record(m, q, !!result.correct, seconds);
+            var label = card.querySelector('.chip');
+            label.textContent = S.reviewLabel(S.reviewState(state, m, today()), today());
+          }
+        });
+        inner.classList.remove('card');
+        slot.appendChild(inner);
+      });
+      slot.appendChild(retry);
+      card.appendChild(slot);
+      box.appendChild(card);
+    });
+  }
+
+  // ---------- Flashcards ----------
+  function ensureAnswers(list) {
+    var missing = list.filter(function (m) { return !answers[m.id]; });
+    if (!missing.length) return Promise.resolve();
+    return Promise.all(A.chunks(missing, 100).map(function (part) {
+      // Grading with no answer is how a saved mistake reveals its answer and explanation.
+      return E.api('/practice/grade', { method: 'POST', auth: false, body: { items: part.map(function (m) { return { id: m.id, answer: '' }; }) } });
+    })).then(function (results) {
+      results.forEach(function (res) {
+        (res.results || []).forEach(function (r) { if (!r.error) answers[r.id] = r; });
+      });
+    });
+  }
+  function answerText(q, a) {
+    var match = (q.choices || []).filter(function (c) { return c.id === a.answer; })[0];
+    return match ? match.text : a.answer;
+  }
+  function renderCards() {
+    var box = A.clear(A.byId('vault')), list = dueFirst(visible());
+    if (!list.length) {
+      box.appendChild(el('div', 'card tool-card empty', 'No mistakes saved yet, so there are no flashcards. Wrong answers become cards automatically.'));
+      return;
+    }
+    box.appendChild(el('p', 'muted', 'Loading cards…'));
+    ensureAnswers(list).then(function () { paintCard(list); }).catch(function () {
+      A.clear(box).appendChild(el('div', 'card tool-card empty', 'Could not load your cards. Check your connection and try again.'));
+    });
+  }
+  function paintCard(list) {
+    var box = A.clear(A.byId('vault'));
+    cardIndex = Math.min(cardIndex, list.length - 1);
+    var m = list[cardIndex], q = questions[m.id], a = answers[m.id] || {}, ai = aiCards[m.id], day = today();
+    var st = S.reviewState(state, m, day);
+
+    var face = el('button', 'flashcard' + (flipped ? ' flipped' : ''));
+    face.type = 'button';
+    face.setAttribute('aria-label', flipped ? 'Show the question' : 'Show the answer');
+    face.appendChild(el('span', 'flash-tag', A.subjectLabel(q.subject) + ' · card ' + (cardIndex + 1) + ' of ' + list.length + ' · ' + S.reviewLabel(st, day)));
+    if (!flipped) {
+      face.appendChild(el('strong', null, (ai && ai.front) || q.question));
+    } else {
+      face.appendChild(el('strong', null, (ai && ai.back) || 'Answer: ' + answerText(q, a)));
+      if (!ai && a.explanation && a.explanation.length) face.appendChild(el('p', null, a.explanation.join(' ')));
+      if (ai && ai.hook) face.appendChild(el('em', null, ai.hook));
+    }
+    face.appendChild(el('small', null, flipped ? 'Tap to see the question' : 'Tap to flip'));
+    face.addEventListener('click', function () { flipped = !flipped; paintCard(list); });
+    box.appendChild(face);
+
+    var row = el('div', 'flash-actions');
+    function step(delta) { flipped = false; cardIndex = (cardIndex + delta + list.length) % list.length; paintCard(list); }
+    if (flipped) {
+      var no = el('button', 'btn btn-ghost btn-sm', 'Didn’t know it');
+      no.type = 'button';
+      no.addEventListener('click', function () { record(m, q, false, 0); step(1); });
+      var yes = el('button', 'btn btn-primary btn-sm', 'Knew it');
+      yes.type = 'button';
+      yes.addEventListener('click', function () { record(m, q, true, 0); S.celebrate(false); step(1); });
+      row.appendChild(no);
+      row.appendChild(yes);
+    } else {
+      var prev = el('button', 'btn btn-ghost btn-sm', 'Previous');
+      prev.type = 'button';
+      prev.addEventListener('click', function () { step(-1); });
+      var skip = el('button', 'btn btn-ghost btn-sm', 'Skip');
+      skip.type = 'button';
+      skip.addEventListener('click', function () { step(1); });
+      row.appendChild(prev);
+      row.appendChild(skip);
+    }
+    box.appendChild(row);
+    box.appendChild(el('p', 'fine', 'A card that is due counts as a spaced review: knowing it pushes it further out.'));
+    box.appendChild(aiButton(list));
+  }
+  function aiButton(list) {
+    var wrap = el('div', 'ai-row');
+    var missing = list.filter(function (m) { return !aiCards[m.id]; }).slice(0, 8);
+    if (!missing.length) return wrap;
+    if (!E.loggedIn()) {
+      var login = el('a', 'link-quiet', 'Log in to have the AI rewrite these as short cards with memory hooks.');
+      login.href = 'login.html?next=review.html';
+      wrap.appendChild(login);
+      return wrap;
+    }
+    var btn = el('button', 'btn btn-ghost btn-sm', 'Rewrite ' + missing.length + ' card' + (missing.length === 1 ? '' : 's') + ' with AI');
+    btn.type = 'button';
+    btn.addEventListener('click', function () {
+      btn.disabled = true;
+      btn.textContent = 'Writing your cards…';
+      var items = missing.map(function (m) {
+        var q = questions[m.id], a = answers[m.id] || {};
+        return { id: m.id, question: q.question, answer: answerText(q, a), explanation: (a.explanation || []).join(' ') };
+      });
+      E.api('/ai/cards', { method: 'POST', body: { items: items } }).then(function (res) {
+        (res.cards || []).forEach(function (c) { aiCards[c.id] = c; });
+        try { localStorage.setItem(CARD_KEY, JSON.stringify(aiCards)); } catch (e) { /* cards just last this visit */ }
+        paintCard(list);
+      }).catch(function (err) {
+        btn.disabled = false;
+        btn.textContent = 'Try AI cards again';
+        A.toast(err.message);
+      });
+    });
+    wrap.appendChild(btn);
+    return wrap;
+  }
+
+  function renderView() { if (view === 'list') renderList(); else renderCards(); }
+
+  A.modes(A.byId('viewModes'), [['list', 'Mistake list'], ['cards', 'Flashcards']], view, function (v) { view = v; flipped = false; cardIndex = 0; renderView(); });
+  A.modes(A.byId('subjectModes'), [['all', 'All'], ['math', 'Math'], ['english', 'English']], subject, function (v) { subject = v; flipped = false; cardIndex = 0; renderView(); });
+  A.byId('clearBtn').addEventListener('click', function () {
+    if (!window.confirm('Clear every saved mistake and its review schedule?')) return;
+    state.mistakes = [];
+    state.reviews = {};
+    A.save(state);
+    renderTop();
+    renderView();
+  });
+
+  A.boot(function (s) {
+    state = s;
+    renderTop();
+    var box = A.clear(A.byId('vault'));
+    if (!state.mistakes.length) { renderView(); return; }
+    box.appendChild(el('p', 'muted', 'Loading your mistakes…'));
+    A.questionsById(state.mistakes.map(function (m) { return m.id; })).then(function (list) {
+      questions = {};
+      list.forEach(function (q) { questions[q.id] = q; });
+      renderView();
+    }).catch(function () {
+      A.clear(box).appendChild(el('div', 'card tool-card empty', 'Could not load your mistakes. Check your connection and try again.'));
+    });
+  });
+})();
+</script>
+</body>
+</html>

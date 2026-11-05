@@ -115,8 +115,91 @@ def test_state_sync_is_cleaned(client):
             {'id': 'english-practice-7', 'date': '2026-11-04'},
             {'id': 'math-practice-12', 'date': ''},
         ],
+        'reviews': {},
+        'topics': {},
+        'lessons': [],
+        'attempts': [],
+        'time': {},
+        'week': {'start': '', 'lessons': 0, 'practice': 0, 'reviews': 0, 'exams': 0},
+        'xp': 0,
+        'freezes': {'usedDays': [], 'earnedOn': []},
+        'assignments': [],
+        'goals': [],
+        'music': '',
     }
     assert client.put('/api/user/state', headers=auth(token), json={'data': 'nope'}).status_code == 400
+
+
+def test_study_extras_are_cleaned_and_bounded(client):
+    token = register(client).get_json()['access_token']
+    dirty = {
+        'reviews': {
+            'math-practice-1': {'stage': 9, 'due': '2026-11-06', 'last': 'nope', 'evil': 1},
+            '../etc/passwd': {'stage': 1},
+            'english-practice-2': 'not-a-dict',
+        },
+        'topics': {
+            'math|MATH-01': [10, 99],
+            'physics|Modern Physics': [2, 1],
+            'english|eng-01': [0, 0],
+            '<script>|x': [1, 1],
+            'math|MATH-02': [1],
+        },
+        'lessons': ['math-lesson-1', 'math-lesson-1', 'english-lesson-2', 'nope'],
+        'attempts': [
+            {'date': '2026-11-05', 'subject': 'mixed', 'score': 50, 'total': 40, 'percent': 120, 'seconds': 99, 'evil': 1},
+            {'date': 'nope', 'subject': 'math', 'score': 1, 'total': 1},
+            {'date': '2026-11-05', 'subject': 'history', 'score': 1, 'total': 1},
+            {'date': '2026-11-05', 'subject': 'math', 'score': 1, 'total': 0},
+        ],
+        'time': {'2026-11-05': 600, 'nope': 5, '2026-11-04': 999999, '2026-11-03': 0},
+        'week': {'start': '2026-11-02', 'lessons': 3, 'practice': 'x', 'reviews': -2, 'exams': 1, 'evil': 1},
+        'xp': 1234,
+        'freezes': {'usedDays': ['2026-11-01', 'x', '2026-11-01'], 'earnedOn': 'nope'},
+        'assignments': [
+            {'id': 'a-1', 'kind': 'lesson', 'target': 'math-lesson-1', 'title': 'T', 'due': 'x', 'note': 'n' * 200, 'created': '2026-11-05'},
+            {'id': 'bad', 'kind': 'lesson', 'target': 'x'},
+            {'id': 'a-2', 'kind': 'hack', 'target': 'x'},
+            {'id': 'a-3', 'kind': 'exam', 'target': ''},
+        ],
+        'goals': [
+            {'id': 'g-1', 'kind': 'level', 'target': 3, 'label': 'L', 'message': 'm' * 700, 'hasVoice': 'yes', 'created': '2026-11-05', 'unlockedAt': ''},
+            {'id': 'g-2', 'kind': 'hack', 'target': '3'},
+            {'id': 'g-3', 'kind': 'level', 'target': True},
+        ],
+        'music': 'http://not-https.example',
+    }
+    assert client.put('/api/user/state', headers=auth(token), json={'data': dirty}).status_code == 200
+    data = client.get('/api/user/state', headers=auth(token)).get_json()['data']
+    assert data['reviews'] == {'math-practice-1': {'stage': 4, 'due': '2026-11-06', 'last': ''}}
+    assert data['topics'] == {'math|MATH-01': [10, 10], 'physics|Modern Physics': [2, 1]}
+    assert data['lessons'] == ['math-lesson-1', 'english-lesson-2']
+    assert data['attempts'] == [{'date': '2026-11-05', 'subject': 'mixed', 'score': 40, 'total': 40, 'percent': 100, 'seconds': 99}]
+    assert data['time'] == {'2026-11-04': 86400, '2026-11-05': 600}
+    assert data['week'] == {'start': '2026-11-02', 'lessons': 3, 'practice': 0, 'reviews': 0, 'exams': 1}
+    assert data['xp'] == 1234
+    assert data['freezes'] == {'usedDays': ['2026-11-01'], 'earnedOn': []}
+    assert len(data['assignments']) == 1
+    assert len(data['assignments'][0]['note']) == 140
+    assert data['assignments'][0]['due'] == ''
+    assert len(data['goals']) == 1
+    assert data['goals'][0]['target'] == '3'
+    assert len(data['goals'][0]['message']) == 600
+    assert data['goals'][0]['hasVoice'] is False
+    assert data['music'] == ''
+
+    too_many = {
+        'lessons': ['math-lesson-%d' % i for i in range(500)],
+        'attempts': [{'date': '2026-11-05', 'subject': 'math', 'score': 1, 'total': 1} for _ in range(50)],
+        'goals': [{'id': 'g-%d' % i, 'kind': 'level', 'target': '2'} for i in range(50)],
+        'music': 'https://www.youtube.com/watch?v=abc',
+    }
+    assert client.put('/api/user/state', headers=auth(token), json={'data': too_many}).status_code == 200
+    data = client.get('/api/user/state', headers=auth(token)).get_json()['data']
+    assert len(data['lessons']) == 400
+    assert len(data['attempts']) == 30
+    assert len(data['goals']) == 30
+    assert data['music'] == 'https://www.youtube.com/watch?v=abc'
 
 
 def test_profile_and_password_change(client):

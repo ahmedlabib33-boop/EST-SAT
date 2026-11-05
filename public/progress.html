@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Progress — EST · SAT with Ahmed Labib</title>
+<meta name="description" content="Your exam scores, readiness estimate, study time and accuracy in every topic.">
+<meta name="theme-color" content="#07070F">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
+<header class="nav" data-app-header></header>
+
+<main id="top" class="wrap page">
+  <section class="page-head">
+    <p class="eyebrow">Progress</p>
+    <h1>The line is <span class="grad-text">moving up.</span></h1>
+    <p class="lede">Your timed exams, your readiness estimate and your accuracy in every topic, all from your own work.</p>
+  </section>
+
+  <div class="stat-row stat-row-wide" id="kpis"></div>
+
+  <div class="two-col two-col-even">
+    <section class="card tool-card" aria-labelledby="chartTitle">
+      <h2 id="chartTitle">Exam scores</h2>
+      <p class="muted" id="chartNote"></p>
+      <div class="chart-box" id="chart"></div>
+    </section>
+    <section class="card tool-card" id="readiness"></section>
+  </div>
+
+  <section class="card tool-card">
+    <h2>Your exams</h2>
+    <div id="attempts"></div>
+  </section>
+
+  <section class="card tool-card">
+    <div class="panel-title">
+      <h2>Accuracy by topic</h2>
+      <div class="modes" id="subjectModes" role="group" aria-label="Subject"></div>
+    </div>
+    <div id="topics"></div>
+  </section>
+</main>
+
+<script src="assets/auth.js"></script>
+<script src="assets/study.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var S = window.EstSatStudy, A = window.App, el = A.el;
+  var SVG = 'http://www.w3.org/2000/svg';
+  var state = null, catalog = null, subject = 'math';
+
+  function svg(tag, attrs, text) {
+    var node = document.createElementNS(SVG, tag);
+    Object.keys(attrs).forEach(function (k) { node.setAttribute(k, attrs[k]); });
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function renderKpis() {
+    var box = A.clear(A.byId('kpis')), st = S.streak(state), a = state.stats;
+    [
+      [S.minutesStudied(state, 7) + ' min', 'studied in 7 days'],
+      [a.answered, 'questions answered'],
+      [a.answered ? Math.round(a.correct / a.answered * 100) + '%' : '—', 'accuracy'],
+      [st.current + (st.current === 1 ? ' day' : ' days'), 'current streak'],
+      [state.attempts.length, 'timed exams']
+    ].forEach(function (k) {
+      var kpi = el('div', 'kpi');
+      kpi.appendChild(el('b', null, k[0]));
+      kpi.appendChild(el('span', null, k[1]));
+      box.appendChild(kpi);
+    });
+  }
+
+  // One series, so the title names it and there is no legend. Oldest on the left.
+  function renderChart() {
+    var box = A.clear(A.byId('chart')), rows = state.attempts.slice(0, 12).reverse(), note = A.byId('chartNote');
+    if (!rows.length) {
+      note.textContent = '';
+      var empty = el('div', 'empty');
+      empty.appendChild(el('p', 'muted', 'No timed exams yet. Take one and your score line starts here.'));
+      var go = el('a', 'btn btn-ghost btn-sm', 'Open the Exam Arena');
+      go.href = 'exam.html';
+      empty.appendChild(go);
+      box.appendChild(empty);
+      return;
+    }
+    note.textContent = 'Percent correct in your last ' + rows.length + ' exam' + (rows.length === 1 ? '' : 's') + '.';
+    // Drawn at the real width, so the axis text stays readable on a phone instead of shrinking with the SVG.
+    var W = Math.max(280, box.clientWidth || 640), H = 240, left = 40, right = 26, top = 16, bottom = 30;
+    function x(i) { return rows.length === 1 ? (left + W - right) / 2 : left + i * (W - left - right) / (rows.length - 1); }
+    function y(v) { return top + (100 - v) * (H - top - bottom) / 100; }
+    var chart = svg('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': 'Line chart of exam scores. Latest score ' + rows[rows.length - 1].percent + ' percent. The same data is in the table below.' });
+    [0, 25, 50, 75, 100].forEach(function (v) {
+      chart.appendChild(svg('line', { x1: left, x2: W - right, y1: y(v), y2: y(v), 'class': 'chart-grid' }));
+      chart.appendChild(svg('text', { x: left - 8, y: y(v) + 4, 'text-anchor': 'end', 'class': 'chart-axis' }, v));
+    });
+    [0, rows.length - 1].filter(function (v, i, list) { return list.indexOf(v) === i; }).forEach(function (i) {
+      var anchor = rows.length === 1 ? 'middle' : i === 0 ? 'start' : 'end';
+      chart.appendChild(svg('text', { x: x(i), y: H - 8, 'text-anchor': anchor, 'class': 'chart-axis' }, A.formatDate(rows[i].date)));
+    });
+    if (rows.length > 1) {
+      chart.appendChild(svg('polyline', { points: rows.map(function (r, i) { return x(i) + ',' + y(r.percent); }).join(' '), 'class': 'chart-line' }));
+    }
+    rows.forEach(function (r, i) { chart.appendChild(svg('circle', { cx: x(i), cy: y(r.percent), r: 4.5, 'class': 'chart-dot' })); });
+    var last = rows[rows.length - 1];
+    chart.appendChild(svg('text', { x: Math.min(x(rows.length - 1), W - right), y: Math.max(12, y(last.percent) - 12), 'text-anchor': rows.length === 1 ? 'middle' : 'end', 'class': 'chart-label' }, last.percent + '%'));
+    var cross = svg('line', { y1: top, y2: H - bottom, 'class': 'chart-cross', visibility: 'hidden' });
+    chart.appendChild(cross);
+    box.appendChild(chart);
+
+    var tip = el('div', 'chart-tip');
+    tip.hidden = true;
+    box.appendChild(tip);
+    function hide() { tip.hidden = true; cross.setAttribute('visibility', 'hidden'); }
+    chart.addEventListener('pointermove', function (e) {
+      var rect = chart.getBoundingClientRect(), px = (e.clientX - rect.left) / rect.width * W, best = 0;
+      rows.forEach(function (r, i) { if (Math.abs(x(i) - px) < Math.abs(x(best) - px)) best = i; });
+      var r = rows[best];
+      cross.setAttribute('x1', x(best));
+      cross.setAttribute('x2', x(best));
+      cross.setAttribute('visibility', 'visible');
+      tip.hidden = false;
+      tip.textContent = '';
+      tip.appendChild(el('strong', null, r.percent + '%'));
+      tip.appendChild(el('span', null, A.formatDate(r.date) + ' · ' + A.subjectLabel(r.subject) + ' · ' + r.score + '/' + r.total));
+      tip.style.left = Math.max(70, Math.min(rect.width - 70, x(best) / W * rect.width)) + 'px';
+      tip.style.top = (y(r.percent) / H * rect.height) + 'px';
+    });
+    chart.addEventListener('pointerleave', hide);
+  }
+
+  function renderReadiness() {
+    var box = A.clear(A.byId('readiness')), r = S.readiness(state);
+    box.appendChild(el('h2', null, 'Exam readiness'));
+    if (!r) {
+      box.appendChild(el('p', 'muted', 'Answer at least 12 questions or take one timed exam, and your estimate appears here.'));
+    } else {
+      var main = el('div', 'ready-main');
+      main.appendChild(A.ring(r.percent, r.percent + '%'));
+      var t = el('div');
+      t.appendChild(el('strong', null, r.band));
+      t.appendChild(el('small', 'muted', (r.basis === 'exams' ? 'From your recent timed exams' : 'From your practice so far') + ' · ' + r.confidence + ' confidence'));
+      main.appendChild(t);
+      box.appendChild(main);
+    }
+    if (catalog) {
+      box.appendChild(el('h3', 'sub-head', 'Three topics that would lift you most'));
+      var list = el('ol', 'gain-list');
+      S.topGains(state, catalog, 3).forEach(function (g) {
+        var li = el('li');
+        li.appendChild(el('strong', null, g.name));
+        li.appendChild(el('small', null, A.subjectLabel(g.subject) + ' · ' + (g.accuracy === null ? 'Not tried yet' : Math.round(g.accuracy * 100) + '% over ' + g.answered + ' answers')));
+        list.appendChild(li);
+      });
+      box.appendChild(list);
+    }
+    box.appendChild(el('p', 'fine', 'An estimate from your own work, not an official SAT or EST score.'));
+  }
+
+  function renderAttempts() {
+    var box = A.clear(A.byId('attempts'));
+    if (!state.attempts.length) { box.appendChild(el('p', 'muted', 'Nothing here yet.')); return; }
+    var table = el('table', 'score-table'), head = el('tr');
+    ['Date', 'Subject', 'Score', 'Percent', 'Time'].forEach(function (h) { var th = el('th', null, h); th.scope = 'col'; head.appendChild(th); });
+    table.appendChild(head);
+    state.attempts.forEach(function (a) {
+      var tr = el('tr');
+      [A.formatDate(a.date), A.subjectLabel(a.subject), a.score + '/' + a.total, a.percent + '%', A.clock(a.seconds)].forEach(function (v) { tr.appendChild(el('td', null, v)); });
+      table.appendChild(tr);
+    });
+    box.appendChild(table);
+  }
+
+  function renderTopics() {
+    var box = A.clear(A.byId('topics'));
+    if (!catalog) { box.appendChild(el('p', 'muted', 'Loading topics…')); return; }
+    var rows = S.topicRows(state, catalog).filter(function (r) { return r.subject === subject; });
+    if (!rows.length) { box.appendChild(el('p', 'muted', 'Answer some ' + A.subjectLabel(subject) + ' questions in the arena on the home page and your topics appear here.')); return; }
+    rows.forEach(function (r) {
+      var row = el(subject === 'physics' ? 'div' : 'a', 'topic-row');
+      if (subject !== 'physics') row.href = 'learn.html?subject=' + subject + '&topic=' + encodeURIComponent(r.id);
+      row.appendChild(el('span', 'topic-name', r.name));
+      row.appendChild(A.meter(r.accuracy === null ? 0 : r.accuracy, subject));
+      row.appendChild(el('span', 'topic-num', r.accuracy === null ? 'Not tried' : Math.round(r.accuracy * 100) + '%'));
+      row.appendChild(el('span', 'topic-count', r.answered + ' answered'));
+      box.appendChild(row);
+    });
+  }
+
+  var resizeTimer = null;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () { if (state) renderChart(); }, 150);
+  });
+  A.modes(A.byId('subjectModes'), [['math', 'Math'], ['english', 'English'], ['physics', 'Physics']], subject, function (v) { subject = v; renderTopics(); });
+  A.boot(function (s) {
+    state = s;
+    renderKpis(); renderChart(); renderReadiness(); renderAttempts(); renderTopics();
+  });
+  A.catalog().then(function (c) { catalog = c; if (state) { renderReadiness(); renderTopics(); } }).catch(function () {});
+})();
+</script>
+</body>
+</html>

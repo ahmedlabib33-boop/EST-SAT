@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Revision — EST · SAT with Ahmed Labib</title>
+<meta name="description" content="Every rule and formula from the lesson library on one searchable, printable page.">
+<meta name="theme-color" content="#07070F">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
+<header class="nav" data-app-header></header>
+
+<main id="top" class="wrap page">
+  <section class="page-head">
+    <p class="eyebrow">Revision</p>
+    <h1>Everything <span class="grad-text">on one page.</span></h1>
+    <p class="lede">Every rule and formula from the lessons, so nothing is new on exam day. Physics formulas are in the <a href="index.html#formulas">formula vault</a>.</p>
+  </section>
+
+  <div class="control-row no-print">
+    <div class="modes" id="subjectModes" role="group" aria-label="Subject"></div>
+    <div class="topic-pick">
+      <label for="topicSel">Topic</label>
+      <select id="topicSel"></select>
+    </div>
+    <input class="input input-sm" id="search" type="search" placeholder="Search rules and formulas" aria-label="Search rules and formulas">
+    <button type="button" class="btn btn-ghost btn-sm" id="printBtn">Print</button>
+  </div>
+  <p class="muted" id="resultCount" aria-live="polite"></p>
+  <div id="sheet"></div>
+</main>
+
+<script src="assets/auth.js"></script>
+<script src="assets/study.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var E = window.EstSat, A = window.App, el = A.el;
+  var subject = 'math', data = {}, topic = '', query = '';
+
+  function haystack(l) { return [l.title, l.formula, l.example, l.tip, (l.explanation || []).join(' ')].join(' ').toLowerCase(); }
+  function fillTopics() {
+    var sel = A.clear(A.byId('topicSel')), all = el('option', null, 'All topics');
+    all.value = '';
+    sel.appendChild(all);
+    (data[subject] ? data[subject].topics : []).forEach(function (t) {
+      var o = el('option', null, t.name);
+      o.value = t.id;
+      sel.appendChild(o);
+    });
+    sel.value = topic;
+  }
+  function renderSheet() {
+    var box = A.clear(A.byId('sheet')), payload = data[subject];
+    if (!payload) { box.appendChild(el('p', 'muted', 'Loading…')); return; }
+    var q = query.trim().toLowerCase(), shown = 0;
+    payload.topics.forEach(function (t) {
+      if (topic && t.id !== topic) return;
+      var lessons = payload.lessons.filter(function (l) { return l.topicId === t.id && (!q || haystack(l).indexOf(q) >= 0); });
+      if (!lessons.length) return;
+      var part = el('section', 'revision-part');
+      part.appendChild(el('h2', null, t.name));
+      var grid = el('div', 'revision-grid');
+      lessons.forEach(function (l) {
+        shown += 1;
+        var card = el('article', 'card revision-card');
+        var title = el('a', 'revision-title', l.title);
+        title.href = 'learn.html?subject=' + subject + '&lesson=' + encodeURIComponent(l.id);
+        card.appendChild(title);
+        if (l.formula) card.appendChild(el('code', 'revision-formula', l.formula));
+        if (l.explanation && l.explanation.length) card.appendChild(el('p', null, l.explanation[0]));
+        if (l.example) card.appendChild(el('p', 'revision-example', l.example));
+        if (l.tip) card.appendChild(el('p', 'muted', 'Tip: ' + l.tip));
+        if (l.arabic) {
+          var ar = el('p', 'arabic-helper', l.arabic);
+          ar.dir = 'rtl';
+          ar.lang = 'ar';
+          card.appendChild(ar);
+        }
+        grid.appendChild(card);
+      });
+      part.appendChild(grid);
+      box.appendChild(part);
+    });
+    A.byId('resultCount').textContent = shown + ' rule' + (shown === 1 ? '' : 's');
+    if (!shown) box.appendChild(el('p', 'muted', 'Nothing matches that search.'));
+  }
+  function load() {
+    if (data[subject]) { fillTopics(); renderSheet(); return; }
+    renderSheet();
+    E.api('/practice/' + subject + '/revision', { auth: false }).then(function (res) {
+      data[res.subject] = res;
+      fillTopics();
+      renderSheet();
+    }).catch(function () {
+      A.clear(A.byId('sheet')).appendChild(el('p', 'muted', 'Could not load the revision sheet. Check your connection and try again.'));
+    });
+  }
+
+  A.modes(A.byId('subjectModes'), [['math', 'Math'], ['english', 'English']], subject, function (v) { subject = v; topic = ''; load(); });
+  A.byId('topicSel').addEventListener('change', function () { topic = this.value; renderSheet(); });
+  A.byId('search').addEventListener('input', function () { query = this.value; renderSheet(); });
+  A.byId('printBtn').addEventListener('click', function () { window.print(); });
+  load();
+})();
+</script>
+</body>
+</html>

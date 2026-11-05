@@ -6,6 +6,8 @@
 <title>My portal — EST · SAT</title>
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#07070F">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
 <script>
   document.documentElement.classList.add('js');
   try { if (!localStorage.getItem('estsat.token')) location.replace('login.html?next=student-portal.html'); } catch (e) { location.replace('login.html?next=student-portal.html'); }
@@ -111,6 +113,7 @@
         <section class="panel card">
           <h2>Review your mistakes</h2>
           <p class="sub" id="reviewSub">Questions you got wrong, with the explanation.</p>
+          <a class="btn btn-ghost btn-sm" href="review.html">Open the Review Vault</a>
           <div id="reviewList"></div>
         </section>
 
@@ -160,6 +163,8 @@
 </footer>
 
 <script src="assets/auth.js"></script>
+<script src="assets/study.js"></script>
+<script src="assets/app.js"></script>
 <script>
 (function () {
   'use strict';
@@ -182,19 +187,6 @@
   $('year').textContent = today.getFullYear();
   $('logoutBtn').addEventListener('click', E.logout);
 
-  function streaks(days) {
-    var cur = 0, d = today;
-    if (!days[keyOf(d)]) d = addDays(d, -1);
-    while (days[keyOf(d)]) { cur++; d = addDays(d, -1); }
-    var best = 0, run = 0, prev = null;
-    Object.keys(days).filter(function (k) { return days[k] > 0; }).sort().forEach(function (k) {
-      var dt = parseKey(k);
-      run = prev && daysBetween(prev, dt) === 1 ? run + 1 : 1;
-      best = Math.max(best, run);
-      prev = dt;
-    });
-    return { cur: cur, best: Math.max(best, cur) };
-  }
   function relDay(k) {
     if (!k) return 'Never';
     var d = daysBetween(parseKey(k), today);
@@ -223,7 +215,7 @@
   function renderState(s) {
     s = s || {};
     var stats = s.stats || {}, days = s.days || {}, chapters = s.chapters || [];
-    var st = streaks(days);
+    var live = window.EstSatStudy.streak(s), st = { cur: live.current, best: live.best };
     $('kAnswered').textContent = stats.answered || 0;
     $('kAccuracy').textContent = stats.answered ? Math.round((stats.correct || 0) / stats.answered * 100) + '%' : '—';
     $('kStreak').textContent = st.cur + 'd';

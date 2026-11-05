@@ -676,5 +676,25 @@ Authorization: Bearer {token}
 
 ---
 
+## Practice and AI
+
+Questions never include their answers until they are graded.
+
+| Method | Path | Auth | Purpose |
+|---|---|---|---|
+| GET | `/api/practice/subjects` | Public | Counts per subject |
+| GET | `/api/practice/<subject>/topics` | Public | Topics and lessons, no questions |
+| GET | `/api/practice/<subject>/lessons/<id>` | Public | A lesson and its questions, without answers |
+| GET | `/api/practice/<subject>/revision` | Public | Every lesson's rule, formula, example and tip |
+| GET | `/api/practice/random?subject=&n=&topics=` | Public | Up to 100 random questions, without answers |
+| GET | `/api/practice/questions?ids=` | Public | Up to 60 questions by id, without answers |
+| POST | `/api/practice/grade` | Public | `{items: [{id, answer}]}`, up to 100; returns the answer and explanation |
+| GET | `/api/practice/review` | JWT | The account's own wrong answers, with explanations |
+| GET | `/api/ai/status` | JWT | Whether AI is on, and the calls left today |
+| POST | `/api/ai/coach` | JWT | `{question, image}`; returns `{reply}`. 429 when the daily allowance is used up |
+| POST | `/api/ai/cards` | JWT | `{items}`, up to 8 mistakes; returns `{cards}` |
+
+---
+
 **Last Updated:** 2024-01-05  
 **Maintained by:** Ahmed Labib

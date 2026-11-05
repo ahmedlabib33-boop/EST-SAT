@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Visual Pad — EST · SAT with Ahmed Labib</title>
+<meta name="description" content="Sketch a graph, map the forces, or work through a problem by hand. Saved on this device.">
+<meta name="theme-color" content="#07070F">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
+<header class="nav" data-app-header></header>
+
+<main id="top" class="wrap page">
+  <section class="page-head">
+    <p class="eyebrow">Visual Pad</p>
+    <h1>Sketch <span class="grad-text">the solution.</span></h1>
+    <p class="lede">Draw a graph, map the forces, or work through a problem by hand. Your drawing is saved on this device, for this account.</p>
+  </section>
+
+  <div class="card tool-card pad-tools">
+    <div class="swatches" id="swatches" role="group" aria-label="Pen colour"></div>
+    <div class="modes" id="widths" role="group" aria-label="Pen size"></div>
+    <button type="button" class="btn btn-ghost btn-sm" id="eraser" aria-pressed="false">Eraser</button>
+    <button type="button" class="btn btn-ghost btn-sm" id="grid" aria-pressed="true">Grid</button>
+    <button type="button" class="btn btn-ghost btn-sm" id="undo">Undo</button>
+    <button type="button" class="btn btn-ghost btn-sm" id="clear">Clear</button>
+    <button type="button" class="btn btn-primary btn-sm" id="download">Download</button>
+  </div>
+  <div class="pad-frame show-grid" id="frame">
+    <canvas id="pad" aria-label="Drawing pad"></canvas>
+  </div>
+</main>
+
+<script src="assets/auth.js"></script>
+<script src="assets/study.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var E = window.EstSat, A = window.App, el = A.el;
+  var COLORS = [['#F4F4FF', 'White'], ['#22D3EE', 'Cyan'], ['#EC4899', 'Pink'], ['#FBBF24', 'Amber'], ['#34D399', 'Green']];
+  var BACKGROUND = '#0E0E1A', MAX_UNDO = 20;
+  var u = E.user();
+  // Per account, so the next student on a shared browser does not see this drawing.
+  var KEY = 'estsat.pad.' + (u && u.id ? u.id : 'guest');
+  var frame = A.byId('frame'), canvas = A.byId('pad'), ctx = canvas.getContext('2d');
+  var color = COLORS[0][0], size = 3, erasing = false, drawing = false, last = null, history = [];
+
+  function store() {
+    try { localStorage.setItem(KEY, canvas.toDataURL('image/png')); }
+    catch (e) { A.toast('This drawing is too big to save on this device. Download it to keep it.'); }
+  }
+  function paint(src, width, height) {
+    var img = new Image();
+    img.onload = function () { ctx.drawImage(img, 0, 0, width, height); };
+    img.src = src;
+  }
+  function resize() {
+    var previous = canvas.width && canvas.height ? canvas.toDataURL() : null;
+    var rect = frame.getBoundingClientRect(), ratio = window.devicePixelRatio || 1;
+    canvas.width = Math.round(rect.width * ratio);
+    canvas.height = Math.round(rect.height * ratio);
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    var saved = previous;
+    if (!saved) { try { saved = localStorage.getItem(KEY); } catch (e) { saved = null; } }
+    if (saved) paint(saved, rect.width, rect.height);
+  }
+  function point(e) {
+    var rect = canvas.getBoundingClientRect();
+    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+  }
+  function snapshot() {
+    history.push(canvas.toDataURL());
+    if (history.length > MAX_UNDO) history.shift();
+  }
+
+  canvas.addEventListener('pointerdown', function (e) {
+    drawing = true;
+    last = point(e);
+    snapshot();
+    if (canvas.setPointerCapture) canvas.setPointerCapture(e.pointerId);
+  });
+  canvas.addEventListener('pointermove', function (e) {
+    if (!drawing) return;
+    var next = point(e);
+    ctx.globalCompositeOperation = erasing ? 'destination-out' : 'source-over';
+    ctx.strokeStyle = color;
+    ctx.lineWidth = erasing ? size * 5 : size;
+    ctx.beginPath();
+    ctx.moveTo(last.x, last.y);
+    ctx.lineTo(next.x, next.y);
+    ctx.stroke();
+    last = next;
+  });
+  function end() {
+    if (!drawing) return;
+    drawing = false;
+    last = null;
+    store();
+  }
+  canvas.addEventListener('pointerup', end);
+  canvas.addEventListener('pointercancel', end);
+
+  COLORS.forEach(function (c) {
+    var b = el('button', 'swatch');
+    b.type = 'button';
+    b.style.background = c[0];
+    b.setAttribute('aria-label', c[1]);
+    b.setAttribute('aria-pressed', c[0] === color ? 'true' : 'false');
+    b.addEventListener('click', function () {
+      color = c[0];
+      setEraser(false);
+      Array.prototype.forEach.call(A.byId('swatches').children, function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+    });
+    A.byId('swatches').appendChild(b);
+  });
+  A.modes(A.byId('widths'), [[2, 'Thin'], [3, 'Medium'], [6, 'Thick']], size, function (v) { size = v; });
+  function setEraser(on) {
+    erasing = on;
+    A.byId('eraser').setAttribute('aria-pressed', on ? 'true' : 'false');
+  }
+  A.byId('eraser').addEventListener('click', function () { setEraser(!erasing); });
+  A.byId('grid').addEventListener('click', function () {
+    var on = frame.classList.toggle('show-grid');
+    this.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+  function wipe() {
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.restore();
+  }
+  A.byId('undo').addEventListener('click', function () {
+    var previous = history.pop();
+    if (!previous) return;
+    var rect = frame.getBoundingClientRect(), img = new Image();
+    img.onload = function () {
+      wipe();
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.drawImage(img, 0, 0, rect.width, rect.height);
+      store();
+    };
+    img.src = previous;
+  });
+  A.byId('clear').addEventListener('click', function () {
+    snapshot();
+    wipe();
+    try { localStorage.removeItem(KEY); } catch (e) { /* nothing was saved */ }
+  });
+  A.byId('download').addEventListener('click', function () {
+    var out = document.createElement('canvas');
+    out.width = canvas.width;
+    out.height = canvas.height;
+    var c = out.getContext('2d');
+    c.fillStyle = BACKGROUND;
+    c.fillRect(0, 0, out.width, out.height);
+    c.drawImage(canvas, 0, 0);
+    var link = document.createElement('a');
+    link.href = out.toDataURL('image/png');
+    link.download = 'est-sat-visual-pad.png';
+    link.click();
+  });
+  window.addEventListener('resize', function () { if (!drawing) resize(); });
+  resize();
+})();
+</script>
+</body>
+</html>

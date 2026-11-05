@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Today — EST · SAT with Ahmed Labib</title>
+<meta name="description" content="Your 15-minute plan for today: old mistakes first, then fresh questions from your weakest topics.">
+<meta name="theme-color" content="#07070F">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
+<header class="nav" data-app-header></header>
+
+<main id="top" class="wrap page">
+  <section class="page-head">
+    <p class="eyebrow">Today</p>
+    <h1>Fifteen minutes. <span class="grad-text">Every day.</span></h1>
+    <p class="lede" id="dateLine"></p>
+  </section>
+
+  <div class="two-col">
+    <section class="stack" aria-label="Today's session">
+      <div id="session"></div>
+    </section>
+    <aside class="stack" aria-label="Your progress">
+      <div class="card tool-card" id="inbox" hidden></div>
+      <div class="card tool-card" id="readiness"></div>
+      <div class="card tool-card" id="streak"></div>
+      <div class="card tool-card" id="challenge"></div>
+    </aside>
+  </div>
+</main>
+
+<script src="assets/auth.js"></script>
+<script src="assets/study.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var E = window.EstSat, S = window.EstSatStudy, A = window.App, el = A.el;
+  var SESSION_SECONDS = 15 * 60, SESSION_SIZE = 8;
+  var state = null, catalog = null, session = null, timer = null;
+
+  A.byId('dateLine').textContent = 'Your plan for ' + new Date().toLocaleDateString('en', { weekday: 'long', day: 'numeric', month: 'long' }) + ', built from your own mistakes and weakest topics.';
+
+  function panelTitle(box, title, note) {
+    var row = el('div', 'panel-title');
+    row.appendChild(el('h2', null, title));
+    if (note) row.appendChild(el('span', 'muted', note));
+    box.appendChild(row);
+  }
+
+  // ---------- The session ----------
+  function renderIdle() {
+    var box = A.clear(A.byId('session')), r = S.reviewSummary(state);
+    var card = el('div', 'card tool-card');
+    panelTitle(card, 'Today’s session', r.due + ' due');
+    card.appendChild(el('h3', 'lead-line', r.due ? r.due + ' old mistake' + (r.due === 1 ? '' : 's') + ' to bring back' : 'Fresh practice from your weakest topics'));
+    card.appendChild(el('p', 'muted', 'Mistakes come back after 1, 3, 7 and 14 days. Get one right four times in a row and it is mastered. The rest of the session targets the topics that would lift you most.'));
+    var stats = el('div', 'stat-row');
+    [[r.total, 'saved mistakes'], [r.due, 'due today'], [r.mastered, 'mastered']].forEach(function (s) {
+      var k = el('div', 'kpi');
+      k.appendChild(el('b', null, s[0]));
+      k.appendChild(el('span', null, s[1]));
+      stats.appendChild(k);
+    });
+    card.appendChild(stats);
+    var go = el('button', 'btn btn-primary', 'Start today’s session');
+    go.type = 'button';
+    go.id = 'startBtn';
+    go.addEventListener('click', begin);
+    card.appendChild(go);
+    box.appendChild(card);
+  }
+
+  function begin() {
+    var btn = A.byId('startBtn');
+    btn.disabled = true;
+    btn.textContent = 'Building your plan…';
+    A.catalog().catch(function () { return null; }).then(function (c) {
+      catalog = c;
+      var plan = S.dailyPlan(state, catalog, S.dayKey(), SESSION_SIZE);
+      var ids = plan.due.map(function (m) { return m.id; });
+      var topics = plan.weak.map(function (r) { return r.id; }).join(',');
+      var fresh = plan.freshCount
+        ? E.api('/practice/random?subject=all&n=' + (plan.freshCount + ids.length) + (topics ? '&topics=' + encodeURIComponent(topics) : ''), { auth: false })
+        : Promise.resolve({ questions: [] });
+      return Promise.all([A.questionsById(ids), fresh]).then(function (r) {
+        var items = r[0].map(function (q) { return { kind: 'review', q: q }; });
+        r[1].questions.forEach(function (q) {
+          if (items.length < SESSION_SIZE && ids.indexOf(q.id) < 0) items.push({ kind: 'practice', q: q });
+        });
+        session = { items: items, step: 0, score: 0, ends: Date.now() + SESSION_SECONDS * 1000 };
+        timer = setInterval(paintClock, 1000);
+        renderStep();
+      });
+    }).catch(function () {
+      btn.disabled = false;
+      btn.textContent = 'Start today’s session';
+      A.toast('Could not load your session. Check your connection and try again.');
+    });
+  }
+
+  function paintClock() {
+    var c = A.byId('sessionClock');
+    if (!c) return;
+    var left = (session.ends - Date.now()) / 1000;
+    c.textContent = A.clock(left);
+    c.classList.toggle('low', left < 120);
+  }
+
+  function renderStep() {
+    var box = A.clear(A.byId('session')), s = session;
+    if (!s.items.length) {
+      var none = el('div', 'card tool-card');
+      none.appendChild(el('h3', 'lead-line', 'Nothing to review yet.'));
+      none.appendChild(el('p', 'muted', 'Answer some questions in a lesson first, and your sessions will build from your own mistakes.'));
+      var open = el('a', 'btn btn-primary', 'Open lessons');
+      open.href = 'learn.html';
+      none.appendChild(open);
+      box.appendChild(none);
+      clearInterval(timer);
+      session = null;
+      return;
+    }
+    if (s.step >= s.items.length) { renderDone(box); return; }
+    var head = el('div', 'session-bar');
+    head.appendChild(el('span', null, 'Question ' + (s.step + 1) + ' of ' + s.items.length));
+    head.appendChild(A.meter(s.step / s.items.length));
+    var clock = el('strong', 'session-clock');
+    clock.id = 'sessionClock';
+    head.appendChild(clock);
+    box.appendChild(head);
+    paintClock();
+    var item = s.items[s.step];
+    var tag = (item.kind === 'review' ? 'Spaced review' : 'New practice') + ' · ' + A.subjectLabel(item.q.subject) + (item.q.topic ? ' · ' + item.q.topic : '');
+    var card = A.questionCard(item.q, {
+      tag: tag,
+      nextLabel: s.step + 1 >= s.items.length ? 'Finish' : 'Next question',
+      onGraded: function (result, seconds) {
+        var entry = { id: item.q.id, subject: item.q.subject, topic: item.q.topicId, correct: !!result.correct, seconds: seconds };
+        if (item.kind === 'review') S.recordReview(state, entry); else S.recordAnswer(state, entry);
+        if (result.correct) s.score += 1;
+        A.commit(state);
+        renderSide();
+      },
+      onNext: function () { s.step += 1; renderStep(); }
+    });
+    box.appendChild(card);
+    card.focus({ preventScroll: true });
+  }
+
+  function renderDone(box) {
+    clearInterval(timer);
+    var s = session, card = el('div', 'card tool-card done-card'), pct = Math.round(s.score / s.items.length * 100);
+    S.celebrate(true);
+    card.appendChild(A.ring(pct, s.score + '/' + s.items.length));
+    var text = el('div');
+    text.appendChild(el('p', 'eyebrow', 'Session complete'));
+    text.appendChild(el('h3', 'lead-line', s.score === s.items.length ? 'Perfect session.' : 'Done. That is real progress.'));
+    text.appendChild(el('p', 'muted', 'Wrong answers come back tomorrow. See you then.'));
+    var again = el('button', 'btn btn-ghost btn-sm', 'Back to today');
+    again.type = 'button';
+    again.addEventListener('click', function () { session = null; renderIdle(); });
+    text.appendChild(again);
+    card.appendChild(text);
+    box.appendChild(card);
+  }
+
+  // ---------- The side panels ----------
+  function renderInbox() {
+    var box = A.clear(A.byId('inbox'));
+    var open = state.assignments.filter(function (a) { return !S.assignmentDone(a, state); });
+    if (!open.length && !state.goals.length) { box.hidden = true; return; }
+    box.hidden = false;
+    panelTitle(box, 'From your parent', open.length + ' to do');
+    open.forEach(function (a) {
+      var row = el('a', 'inbox-row');
+      if (a.kind === 'lesson') row.href = 'learn.html?subject=' + (a.target.indexOf('english') === 0 ? 'english' : 'math') + '&lesson=' + encodeURIComponent(a.target);
+      else row.href = 'exam.html?preset=' + encodeURIComponent(a.target);
+      row.appendChild(A.icon(a.kind === 'lesson' ? 'book' : 'target'));
+      var t = el('span');
+      t.appendChild(el('strong', null, a.title));
+      var bits = [];
+      if (a.due) bits.push('Due ' + A.formatDate(a.due));
+      if (a.note) bits.push(a.note);
+      if (bits.length) t.appendChild(el('small', null, bits.join(' · ')));
+      row.appendChild(t);
+      box.appendChild(row);
+    });
+    state.goals.forEach(function (g) {
+      var row = el(g.unlockedAt ? 'a' : 'div', 'inbox-row' + (g.unlockedAt ? ' unlocked' : ''));
+      if (g.unlockedAt) row.href = 'rewards.html#messages';
+      row.appendChild(A.icon(g.unlockedAt ? 'trophy' : 'vault'));
+      var t = el('span');
+      t.appendChild(el('strong', null, g.unlockedAt ? 'Message unlocked' : 'A message is waiting'));
+      t.appendChild(el('small', null, g.label));
+      row.appendChild(t);
+      box.appendChild(row);
+    });
+  }
+
+  function renderReadiness() {
+    var box = A.clear(A.byId('readiness')), r = S.readiness(state);
+    if (!r) {
+      panelTitle(box, 'Exam readiness', 'Needs data');
+      box.appendChild(el('p', 'muted', 'Answer at least 12 questions or take one timed exam, and your estimate appears here.'));
+      var go = el('a', 'btn btn-ghost btn-sm', 'Open the Exam Arena');
+      go.href = 'exam.html';
+      box.appendChild(go);
+      return;
+    }
+    panelTitle(box, 'Exam readiness', r.confidence + ' confidence');
+    var main = el('div', 'ready-main');
+    main.appendChild(A.ring(r.percent, r.percent + '%'));
+    var t = el('div');
+    t.appendChild(el('strong', null, r.band));
+    t.appendChild(el('small', 'muted', r.basis === 'exams' ? 'From your recent timed exams' : 'From your practice so far'));
+    main.appendChild(t);
+    box.appendChild(main);
+    if (catalog) {
+      box.appendChild(el('h3', 'sub-head', 'Three topics that would lift you most'));
+      var list = el('ol', 'gain-list');
+      S.topGains(state, catalog, 3).forEach(function (g) {
+        var li = el('li');
+        li.appendChild(el('strong', null, g.name));
+        li.appendChild(el('small', null, A.subjectLabel(g.subject) + ' · ' + (g.accuracy === null ? 'Not tried yet' : Math.round(g.accuracy * 100) + '% over ' + g.answered + ' answers')));
+        list.appendChild(li);
+      });
+      box.appendChild(list);
+    }
+    box.appendChild(el('p', 'fine', 'An estimate from your own work, not an official SAT or EST score.'));
+  }
+
+  function renderStreak() {
+    var box = A.clear(A.byId('streak')), st = S.streak(state);
+    panelTitle(box, 'Streak', 'Best ' + st.best);
+    var big = el('div', 'streak-big');
+    big.appendChild(el('strong', null, st.current));
+    big.appendChild(el('span', null, 'day' + (st.current === 1 ? '' : 's') + ' in a row'));
+    box.appendChild(big);
+    box.appendChild(el('p', 'muted', st.studiedToday ? 'Today is counted. Nice work.' : 'Answer one question today to keep it going.'));
+    box.appendChild(el('p', 'fine', st.freezes + ' streak protector' + (st.freezes === 1 ? '' : 's') + ' saved. One covers a missed day, and you earn one every 7 days in a row.'));
+  }
+
+  function renderChallenge() {
+    var box = A.clear(A.byId('challenge')), c = S.weeklyChallenge(state);
+    panelTitle(box, 'Weekly challenge', c.complete ? 'Complete' : 'Ends Sunday');
+    box.appendChild(el('h3', 'sub-head', c.name));
+    c.goals.forEach(function (g) {
+      var row = el('div', 'challenge-goal');
+      row.appendChild(el('span', null, g.done + ' / ' + g.target + ' ' + g.label));
+      row.appendChild(A.meter(g.done / g.target, g.done >= g.target ? 'done' : ''));
+      box.appendChild(row);
+    });
+  }
+
+  function renderSide() { renderInbox(); renderReadiness(); renderStreak(); renderChallenge(); }
+
+  A.boot(function (s) {
+    state = s;
+    if (!session) renderIdle();
+    renderSide();
+  });
+  A.catalog().then(function (c) { catalog = c; if (state) renderReadiness(); }).catch(function () {});
+})();
+</script>
+</body>
+</html>

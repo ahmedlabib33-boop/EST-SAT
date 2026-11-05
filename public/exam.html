@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Exam Arena — EST · SAT with Ahmed Labib</title>
+<meta name="description" content="Timed practice exams from the question bank, with warnings, automatic collection and a review of where your time went.">
+<meta name="theme-color" content="#07070F">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
+<header class="nav" data-app-header></header>
+
+<main id="top" class="wrap page">
+  <section class="page-head">
+    <p class="eyebrow">Exam Arena</p>
+    <h1>Pressure makes <span class="grad-text">the plan real.</span></h1>
+    <p class="lede">Strict timing, warnings when time is short, and the paper is collected automatically when the clock runs out. Practice questions from our own bank, not official papers.</p>
+  </section>
+  <div id="arena"></div>
+</main>
+
+<script src="assets/auth.js"></script>
+<script src="assets/study.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var E = window.EstSat, S = window.EstSatStudy, A = window.App, el = A.el;
+  var RUN_KEY = 'estsat.examRun';
+  var SECONDS_PER_QUESTION = 90, FAST_SECONDS = 20, WARNINGS = [15 * 60, 5 * 60];
+  var state = null, run = null, ticker = null, setup = { subject: 'mixed', count: 40 };
+
+  function saveRun() {
+    try { if (run) sessionStorage.setItem(RUN_KEY, JSON.stringify(run)); else sessionStorage.removeItem(RUN_KEY); } catch (e) { /* the exam just can't survive a reload */ }
+  }
+  function restoreRun() {
+    try {
+      var saved = JSON.parse(sessionStorage.getItem(RUN_KEY));
+      if (saved && saved.questions && saved.questions.length) return saved;
+    } catch (e) { /* start fresh */ }
+    return null;
+  }
+  function leaveGuard(e) { e.preventDefault(); e.returnValue = ''; }
+
+  // ---------- Setup ----------
+  function renderSetup() {
+    var box = A.clear(A.byId('arena'));
+    var card = el('div', 'card tool-card exam-setup');
+    card.appendChild(el('h2', null, 'Set up your exam'));
+    var subjectGroup = el('div', 'modes');
+    subjectGroup.setAttribute('role', 'group');
+    subjectGroup.setAttribute('aria-label', 'Subject');
+    var countGroup = el('div', 'modes');
+    countGroup.setAttribute('role', 'group');
+    countGroup.setAttribute('aria-label', 'Number of questions');
+    var summary = el('p', 'muted');
+    function paintSummary() { summary.textContent = setup.count + ' questions · ' + Math.round(setup.count * SECONDS_PER_QUESTION / 60) + ' minutes · ' + A.subjectLabel(setup.subject); }
+    A.modes(subjectGroup, [['mixed', 'Mixed'], ['math', 'Math'], ['english', 'English']], setup.subject, function (v) { setup.subject = v; paintSummary(); });
+    A.modes(countGroup, [[20, '20 questions'], [40, '40 questions'], [60, '60 questions']], setup.count, function (v) { setup.count = v; paintSummary(); });
+    card.appendChild(el('label', 'mini-label', 'Subject'));
+    card.appendChild(subjectGroup);
+    card.appendChild(el('label', 'mini-label', 'Length'));
+    card.appendChild(countGroup);
+    paintSummary();
+    card.appendChild(summary);
+    var go = el('button', 'btn btn-primary', 'Start the exam');
+    go.type = 'button';
+    go.addEventListener('click', function () { start(go); });
+    card.appendChild(go);
+    box.appendChild(card);
+
+    if (state && state.attempts.length) {
+      var past = el('div', 'card tool-card');
+      past.appendChild(el('h2', null, 'Your recent exams'));
+      past.appendChild(attemptsTable(state.attempts.slice(0, 6)));
+      box.appendChild(past);
+    }
+  }
+  function attemptsTable(rows) {
+    var table = el('table', 'score-table');
+    var head = el('tr');
+    ['Date', 'Subject', 'Score', 'Time'].forEach(function (h) { var th = el('th', null, h); th.scope = 'col'; head.appendChild(th); });
+    table.appendChild(head);
+    rows.forEach(function (a) {
+      var tr = el('tr');
+      tr.appendChild(el('td', null, A.formatDate(a.date)));
+      tr.appendChild(el('td', null, A.subjectLabel(a.subject)));
+      tr.appendChild(el('td', null, a.score + '/' + a.total + ' (' + a.percent + '%)'));
+      tr.appendChild(el('td', null, A.clock(a.seconds)));
+      table.appendChild(tr);
+    });
+    return table;
+  }
+
+  function start(btn) {
+    btn.disabled = true;
+    btn.textContent = 'Preparing your paper…';
+    E.api('/practice/random?subject=' + (setup.subject === 'mixed' ? 'all' : setup.subject) + '&n=' + setup.count, { auth: false }).then(function (res) {
+      var questions = res.questions || [];
+      if (!questions.length) throw new Error('empty');
+      var total = questions.length * SECONDS_PER_QUESTION;
+      run = { subject: setup.subject, questions: questions, answers: {}, flags: {}, spent: {}, index: 0, total: total, deadline: Date.now() + total * 1000, warned: [] };
+      saveRun();
+      renderRun();
+    }).catch(function () {
+      btn.disabled = false;
+      btn.textContent = 'Start the exam';
+      A.toast('Could not load the exam. Check your connection and try again.');
+    });
+  }
+
+  // ---------- Sitting the exam ----------
+  function secondsLeft() { return Math.max(0, (run.deadline - Date.now()) / 1000); }
+  function answeredCount() { return Object.keys(run.answers).length; }
+
+  function renderRun() {
+    window.addEventListener('beforeunload', leaveGuard);
+    var box = A.clear(A.byId('arena'));
+    var warn = el('div', 'exam-warning');
+    warn.id = 'examWarning';
+    warn.setAttribute('role', 'alert');
+    warn.hidden = true;
+    box.appendChild(warn);
+    var stage = el('div', 'exam-stage');
+    var main = el('section', 'card tool-card');
+    main.id = 'examQuestion';
+    stage.appendChild(main);
+    var side = el('aside', 'card tool-card exam-side');
+    side.setAttribute('aria-label', 'Exam progress');
+    var clock = el('div', 'exam-clock');
+    clock.id = 'examClock';
+    clock.setAttribute('role', 'timer');
+    side.appendChild(clock);
+    var count = el('p', 'muted');
+    count.id = 'examCount';
+    side.appendChild(count);
+    var palette = el('div', 'palette');
+    palette.id = 'palette';
+    palette.setAttribute('role', 'group');
+    palette.setAttribute('aria-label', 'Jump to a question');
+    side.appendChild(palette);
+    var finish = el('button', 'btn btn-primary btn-sm', 'Finish exam');
+    finish.type = 'button';
+    finish.addEventListener('click', function () {
+      var blank = run.questions.length - answeredCount();
+      if (blank && !window.confirm(blank + ' question' + (blank === 1 ? ' is' : 's are') + ' still blank. Finish anyway?')) return;
+      submit();
+    });
+    side.appendChild(finish);
+    stage.appendChild(side);
+    box.appendChild(stage);
+    paintQuestion();
+    tick();
+    ticker = setInterval(tick, 1000);
+  }
+
+  function tick() {
+    if (!run) return;
+    var left = secondsLeft(), q = run.questions[run.index];
+    run.spent[q.id] = (run.spent[q.id] || 0) + 1;
+    var clock = A.byId('examClock');
+    clock.textContent = A.clock(left);
+    clock.classList.toggle('low', left < 300);
+    WARNINGS.forEach(function (mark) {
+      if (run.total > mark && left <= mark && run.warned.indexOf(mark) < 0) {
+        run.warned.push(mark);
+        showWarning(mark === 300 ? '5 minutes left. Fill in any blanks now.' : '15 minutes left. Answer every remaining question, even with a best guess.');
+      }
+    });
+    saveRun();
+    if (left <= 0) submit();
+  }
+  function showWarning(text) {
+    var w = A.byId('examWarning');
+    w.textContent = text;
+    w.hidden = false;
+    S.vibrate([80, 60, 80]);
+  }
+
+  function paintPalette() {
+    var box = A.clear(A.byId('palette'));
+    run.questions.forEach(function (q, i) {
+      var b = el('button', 'pal-btn', i + 1);
+      b.type = 'button';
+      var marks = [];
+      if (run.answers[q.id]) { b.classList.add('answered'); marks.push('answered'); }
+      if (run.flags[q.id]) { b.classList.add('flagged'); marks.push('flagged'); }
+      if (i === run.index) b.setAttribute('aria-current', 'true');
+      b.setAttribute('aria-label', 'Question ' + (i + 1) + (marks.length ? ', ' + marks.join(' and ') : ''));
+      b.addEventListener('click', function () { run.index = i; paintQuestion(); });
+      box.appendChild(b);
+    });
+    A.byId('examCount').textContent = answeredCount() + ' of ' + run.questions.length + ' answered';
+  }
+
+  function paintQuestion() {
+    var box = A.clear(A.byId('examQuestion')), q = run.questions[run.index];
+    box.appendChild(el('p', 'eyebrow', A.subjectLabel(q.subject) + (q.topic ? ' · ' + q.topic : '')));
+    box.appendChild(el('h2', 'exam-num', 'Question ' + (run.index + 1) + ' of ' + run.questions.length));
+    box.appendChild(el('p', 'q-text', q.question));
+    var opts = el('div', 'opts');
+    (q.choices || []).forEach(function (c) {
+      var b = el('button', 'opt' + (run.answers[q.id] === c.id ? ' selected' : ''));
+      b.type = 'button';
+      b.setAttribute('aria-pressed', run.answers[q.id] === c.id ? 'true' : 'false');
+      b.setAttribute('aria-label', 'Answer ' + c.id + ': ' + c.text);
+      var letter = el('span', 'letter', c.id);
+      letter.setAttribute('aria-hidden', 'true');
+      b.appendChild(letter);
+      b.appendChild(el('span', 'txt', c.text));
+      b.addEventListener('click', function () {
+        if (run.answers[q.id] === c.id) delete run.answers[q.id]; else run.answers[q.id] = c.id;
+        saveRun();
+        paintQuestion();
+      });
+      opts.appendChild(b);
+    });
+    box.appendChild(opts);
+    var row = el('div', 'exam-nav');
+    var prev = el('button', 'btn btn-ghost btn-sm', 'Previous');
+    prev.type = 'button';
+    prev.disabled = run.index === 0;
+    prev.addEventListener('click', function () { run.index -= 1; paintQuestion(); });
+    var flag = el('button', 'btn btn-ghost btn-sm flag-btn', run.flags[q.id] ? 'Flagged' : 'Flag for later');
+    flag.type = 'button';
+    flag.setAttribute('aria-pressed', run.flags[q.id] ? 'true' : 'false');
+    flag.addEventListener('click', function () {
+      if (run.flags[q.id]) delete run.flags[q.id]; else run.flags[q.id] = true;
+      saveRun();
+      paintQuestion();
+    });
+    var next = el('button', 'btn btn-ghost btn-sm', 'Next');
+    next.type = 'button';
+    next.disabled = run.index >= run.questions.length - 1;
+    next.addEventListener('click', function () { run.index += 1; paintQuestion(); });
+    row.appendChild(prev);
+    row.appendChild(flag);
+    row.appendChild(next);
+    box.appendChild(row);
+    paintPalette();
+  }
+
+  // ---------- Results ----------
+  function submit() {
+    if (!run || run.submitting) return;
+    run.submitting = true;
+    clearInterval(ticker);
+    var used = Math.round(run.total - secondsLeft());
+    var box = A.clear(A.byId('arena'));
+    box.appendChild(el('p', 'muted', 'Collecting your paper…'));
+    var items = run.questions.map(function (q) { return { id: q.id, answer: run.answers[q.id] || '' }; });
+    E.api('/practice/grade', { method: 'POST', auth: false, body: { items: items } }).then(function (graded) {
+      var byId = {};
+      graded.results.forEach(function (r) { byId[r.id] = r; });
+      var results = run.questions.map(function (q) {
+        var r = byId[q.id] || {};
+        return { id: q.id, subject: q.subject, topic: q.topicId, topicName: q.topic, correct: !!r.correct, answered: !!run.answers[q.id], seconds: run.spent[q.id] || 0 };
+      });
+      S.recordExam(state, { subject: run.subject, score: graded.score, total: graded.total, percent: graded.percent, seconds: used, results: results });
+      A.commit(state);
+      S.celebrate(graded.percent >= 70);
+      window.removeEventListener('beforeunload', leaveGuard);
+      var finished = run;
+      run = null;
+      saveRun();
+      renderResults(finished, graded, byId, results, used);
+    }).catch(function () {
+      run.submitting = false;
+      A.clear(box);
+      var card = el('div', 'card tool-card');
+      card.appendChild(el('h2', null, 'Your answers are safe.'));
+      card.appendChild(el('p', 'muted', 'We could not reach the server to mark the paper. Check your connection and try again.'));
+      var retry = el('button', 'btn btn-primary btn-sm', 'Try again');
+      retry.type = 'button';
+      retry.addEventListener('click', submit);
+      card.appendChild(retry);
+      box.appendChild(card);
+    });
+  }
+
+  function renderResults(finished, graded, byId, results, used) {
+    var box = A.clear(A.byId('arena'));
+    var head = el('div', 'card tool-card done-card');
+    head.appendChild(A.ring(graded.percent, graded.percent + '%'));
+    var t = el('div');
+    t.appendChild(el('p', 'eyebrow', 'Exam submitted'));
+    t.appendChild(el('h2', null, graded.score + ' / ' + graded.total + ' correct'));
+    var wrong = results.filter(function (r) { return !r.correct; }).length;
+    t.appendChild(el('p', 'muted', wrong + ' question' + (wrong === 1 ? ' is' : 's are') + ' now in your Review Vault, and will come back in your daily session.'));
+    var again = el('button', 'btn btn-ghost btn-sm', 'New exam');
+    again.type = 'button';
+    again.addEventListener('click', renderSetup);
+    var vault = el('a', 'btn btn-ghost btn-sm', 'Open Review Vault');
+    vault.href = 'review.html';
+    var row = el('div', 'exam-nav');
+    row.appendChild(again);
+    row.appendChild(vault);
+    t.appendChild(row);
+    head.appendChild(t);
+    box.appendChild(head);
+    box.appendChild(timeReview(finished, results, used));
+    box.appendChild(answerReview(finished, byId));
+  }
+
+  function timeReview(finished, results, used) {
+    var card = el('section', 'card tool-card');
+    card.appendChild(el('h2', null, 'Where your time went'));
+    var blank = results.filter(function (r) { return !r.answered; }).length;
+    var average = results.length ? used / results.length : 0;
+    var stats = el('div', 'stat-row');
+    [[A.clock(used), 'time used of ' + A.clock(finished.total)], [A.clock(average), 'per question (target ' + A.clock(SECONDS_PER_QUESTION) + ')'], [blank, 'left blank']].forEach(function (s) {
+      var k = el('div', 'kpi');
+      k.appendChild(el('b', null, s[0]));
+      k.appendChild(el('span', null, s[1]));
+      stats.appendChild(k);
+    });
+    card.appendChild(stats);
+    card.appendChild(el('p', 'muted', average > SECONDS_PER_QUESTION
+      ? 'You were behind the pace. Move on after about a minute and a half, and come back to hard questions at the end.'
+      : 'Good pace. Use any spare time to re-check your working.'));
+
+    var topics = {};
+    results.forEach(function (r) {
+      var name = r.topicName || A.subjectLabel(r.subject);
+      var row = topics[name] || (topics[name] = { name: name, seconds: 0, right: 0, count: 0 });
+      row.seconds += r.seconds; row.count += 1; if (r.correct) row.right += 1;
+    });
+    var rows = Object.keys(topics).map(function (k) { return topics[k]; }).sort(function (a, b) { return b.seconds - a.seconds; });
+    var longest = rows.length ? Math.max(1, rows[0].seconds) : 1;
+    var bars = el('div', 'time-bars');
+    rows.forEach(function (row) {
+      var line = el('div', 'time-row');
+      line.appendChild(el('span', null, row.name));
+      line.appendChild(A.meter(row.seconds / longest));
+      line.appendChild(el('b', null, A.clock(row.seconds) + ' · ' + row.right + '/' + row.count));
+      bars.appendChild(line);
+    });
+    card.appendChild(bars);
+
+    var numbered = results.map(function (r, i) { r.number = i + 1; return r; });
+    card.appendChild(el('h3', 'sub-head', 'Slowest questions'));
+    var slow = el('ul', 'slow-list');
+    numbered.slice().sort(function (a, b) { return b.seconds - a.seconds; }).slice(0, 5).forEach(function (r) {
+      var li = el('li');
+      li.appendChild(el('span', null, 'Q' + r.number));
+      li.appendChild(el('b', null, A.clock(r.seconds)));
+      li.appendChild(el('em', r.correct ? 'right' : 'wrong', r.correct ? 'right' : 'wrong'));
+      slow.appendChild(li);
+    });
+    card.appendChild(slow);
+    var rushed = numbered.filter(function (r) { return r.answered && !r.correct && r.seconds < FAST_SECONDS; });
+    if (rushed.length) {
+      card.appendChild(el('p', 'fine', 'Rushed and wrong (under ' + FAST_SECONDS + ' seconds): ' + rushed.map(function (r) { return 'Q' + r.number; }).join(', ') + '. Slow down on these types.'));
+    }
+    return card;
+  }
+
+  function answerReview(finished, byId) {
+    var card = el('section', 'card tool-card');
+    card.appendChild(el('h2', null, 'Check your answers'));
+    finished.questions.forEach(function (q, i) {
+      var r = byId[q.id] || {}, mine = finished.answers[q.id];
+      var item = el('details', 'answer-item' + (r.correct ? ' right' : ''));
+      var sum = el('summary');
+      sum.appendChild(el('span', 'answer-mark', r.correct ? 'Right' : mine ? 'Wrong' : 'Blank'));
+      sum.appendChild(el('span', null, (i + 1) + '. ' + q.question));
+      item.appendChild(sum);
+      (q.choices || []).forEach(function (c) {
+        var line = el('p', 'answer-line' + (c.id === r.answer ? ' is-answer' : c.id === mine ? ' is-mine' : ''));
+        line.textContent = c.id + '. ' + c.text + (c.id === r.answer ? '  (correct)' : c.id === mine ? '  (your answer)' : '');
+        item.appendChild(line);
+      });
+      if (r.explanation && r.explanation.length) item.appendChild(el('p', 'muted', r.explanation.join(' ')));
+      card.appendChild(item);
+    });
+    return card;
+  }
+
+  // ---------- Start ----------
+  // A parent can assign an exam as "<subject>-<count>", for example mixed-40.
+  var preset = /^(mixed|math|english)-(20|40|60)$/.exec(A.param('preset'));
+  if (preset) { setup.subject = preset[1]; setup.count = Number(preset[2]); }
+
+  A.boot(function (s) {
+    state = s;
+    if (run) return;
+    var saved = restoreRun();
+    if (saved) {
+      run = saved;
+      run.submitting = false;
+      if (secondsLeft() <= 0) { submit(); return; }
+      renderRun();
+      return;
+    }
+    renderSetup();
+  });
+})();
+</script>
+</body>
+</html>

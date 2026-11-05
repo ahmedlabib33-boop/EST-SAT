@@ -6,6 +6,8 @@
 <title>EST · SAT — Math, English &amp; Physics with Ahmed Labib</title>
 <meta name="description" content="Master SAT 1 and EST 1 Math, English and Physics with Ahmed Labib: a daily mission, timed practice with instant explanations, 316 lessons, a formula vault and progress you can see.">
 <meta name="theme-color" content="#07070F">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
 <script>document.documentElement.classList.add('js');</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322D3EE'/%3E%3Cstop offset='1' stop-color='%238B5CF6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='700' font-size='34' fill='white' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,8 +37,8 @@
       <span class="brand-txt"><b>EST · SAT</b><small>with Ahmed Labib</small></span>
     </a>
     <nav class="links" aria-label="Sections">
+      <a href="today.html">Today</a>
       <a href="#mission">Mission</a>
-      <a href="#subjects">Subjects</a>
       <a href="#practice">Practice</a>
       <a href="learn.html">Lessons</a>
       <a href="#progress">Progress</a>
@@ -345,6 +347,28 @@
   </section>
 
   <!-- CTA -->
+  <!-- Study tools -->
+  <section class="section" id="tools">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><span class="eyebrow">Study tools</span><h2>Everything for exam day</h2></div>
+        <p>Your progress follows you between all of them, and to your account when you log in.</p>
+      </div>
+      <div class="tool-links">
+        <a class="more-item card" href="today.html"><span><strong>Today</strong><small>A 15-minute plan built from your own mistakes.</small></span></a>
+        <a class="more-item card" href="exam.html"><span><strong>Exam Arena</strong><small>Timed exams with a review of where your time went.</small></span></a>
+        <a class="more-item card" href="review.html"><span><strong>Review Vault</strong><small>Mistakes come back after 1, 3, 7 and 14 days.</small></span></a>
+        <a class="more-item card" href="progress.html"><span><strong>Progress</strong><small>Your score line and accuracy in every topic.</small></span></a>
+        <a class="more-item card" href="rewards.html"><span><strong>Rewards</strong><small>XP, levels, badges and certificates.</small></span></a>
+        <a class="more-item card" href="revision.html"><span><strong>Revision</strong><small>Every rule and formula on one printable page.</small></span></a>
+        <a class="more-item card" href="coach.html"><span><strong>AI Coach</strong><small>Type, speak or snap a photo of a question.</small></span></a>
+        <a class="more-item card" href="pad.html"><span><strong>Visual Pad</strong><small>Sketch graphs, forces and working.</small></span></a>
+        <a class="more-item card" href="focus.html"><span><strong>Focus</strong><small>A study timer with your own music.</small></span></a>
+        <a class="more-item card" href="parent.html"><span><strong>Parent view</strong><small>Progress, assignments and goals with messages.</small></span></a>
+      </div>
+    </div>
+  </section>
+
   <section class="wrap">
     <div class="cta card reveal">
       <span class="eyebrow">Ready for launch</span>
@@ -370,6 +394,8 @@
 </footer>
 
 <script src="assets/auth.js"></script>
+<script src="assets/study.js"></script>
+<script src="assets/app.js"></script>
 <script>
 (function () {
   'use strict';
@@ -452,14 +478,9 @@
   var KEY = 'estsat.v1';
   var saved = {};
   try { saved = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { saved = {}; }
-  var state = {
-    stats: Object.assign({ answered: 0, correct: 0, time: 0 }, saved.stats),
-    days: saved.days || {},
-    chapters: saved.chapters || [],
-    exam: saved.exam || '',
-    mission: saved.mission || { date: '', done: [] },
-    mistakes: saved.mistakes || []
-  };
+  var Study = window.EstSatStudy;
+  // Keeps every field, including the ones only other pages use, so saving here never drops them.
+  var state = Study.normalize(saved);
   var sync = window.EstSat && window.EstSat.loggedIn() ? window.EstSat : null;
   var pushTimer = null;
   function pushNow(keepalive) {
@@ -483,6 +504,7 @@
   var todayKey = keyOf(today);
   var dayNum = Math.round(today.getTime() / 864e5);
   if (state.mission.date !== todayKey) state.mission = { date: todayKey, done: [] };
+  if (Study.updateFreezes(state, todayKey)) save();
 
   // ---------- Mission ----------
   var mission = MISSIONS[dayNum % MISSIONS.length];
@@ -523,18 +545,8 @@
 
   // ---------- Stats, streak, heatmap ----------
   function streakInfo() {
-    var cur = 0, d = today;
-    if (!state.days[keyOf(d)]) d = addDays(d, -1);
-    while (state.days[keyOf(d)]) { cur++; d = addDays(d, -1); }
-    var keys = Object.keys(state.days).filter(function (k) { return state.days[k] > 0; }).sort();
-    var best = 0, run = 0, prev = null;
-    keys.forEach(function (k) {
-      var dt = parseKey(k);
-      run = prev && daysBetween(prev, dt) === 1 ? run + 1 : 1;
-      if (run > best) best = run;
-      prev = dt;
-    });
-    return { cur: cur, best: Math.max(best, cur) };
+    var st = Study.streak(state, todayKey);
+    return { cur: st.current, best: st.best };
   }
   function setStat(name, value) { $$('[data-stat="' + name + '"]').forEach(function (el) { el.textContent = value; }); }
   function renderStats() {
@@ -656,19 +668,9 @@
   function reveal(qi, answerIndex, why, ok) {
     var q = QUESTIONS[qi];
     var spent = started ? Math.min(300, Math.max(1, Math.round((Date.now() - t0) / 1000))) : 0;
-    state.stats.answered++;
-    if (ok) state.stats.correct++;
-    state.stats.time += spent;
-    state.days[todayKey] = (state.days[todayKey] || 0) + 1;
-    if (!ok && q.id) {
-      state.mistakes = state.mistakes || [];
-      var seen = false, k;
-      for (k = 0; k < state.mistakes.length; k++) {
-        if (state.mistakes[k] && state.mistakes[k].id === q.id) { seen = true; break; }
-      }
-      if (!seen) state.mistakes.push({ id: q.id, date: todayKey });
-      if (state.mistakes.length > 100) state.mistakes = state.mistakes.slice(-100);
-    }
+    Study.recordAnswer(state, { id: q.id, subject: q.s, topic: q.tid || q.t, correct: ok, seconds: spent }, todayKey);
+    Study.updateFreezes(state, todayKey);
+    if (ok) Study.celebrate(false);
     if (mode === 'mission' && missionQueue.indexOf(qi) >= 0 && state.mission.done.indexOf(qi) < 0) state.mission.done.push(qi);
     save();
     $$('#qOpts .opt').forEach(function (b, j) {
@@ -769,11 +771,8 @@
   $('#resetBtn').addEventListener('click', function () {
     var where = sync ? 'in your account' : 'on this device';
     if (!window.confirm('Reset your streak, answers and chapter progress ' + where + '? Your exam date stays.')) return;
-    state.stats = { answered: 0, correct: 0, time: 0 };
-    state.days = {};
-    state.chapters = [];
+    Study.reset(state);
     state.mission = { date: todayKey, done: [] };
-    state.mistakes = [];
     save(); renderAll(); buildQueue(); showQuestion();
   });
 
@@ -794,7 +793,7 @@
         return q.choices && q.choices.length === 4 && q.question;
       }).map(function (q) {
         return {
-          s: q.subject, t: q.topic || q.domain || '', q: q.question, id: q.id,
+          s: q.subject, t: q.topic || q.domain || '', tid: q.topicId, q: q.question, id: q.id,
           o: q.choices.map(function (c) { return c.text; })
         };
       });
@@ -808,12 +807,10 @@
     $('#syncNote').textContent = 'Synced to your account.';
     sync.pullState(false).then(function (remote) {
       if (!remote) return;
-      state.stats = Object.assign({ answered: 0, correct: 0, time: 0 }, remote.stats);
-      state.days = remote.days || {};
-      state.chapters = remote.chapters || [];
-      state.exam = remote.exam || '';
-      state.mistakes = remote.mistakes || [];
-      state.mission = remote.mission && remote.mission.date === todayKey ? remote.mission : { date: todayKey, done: [] };
+      Object.keys(state).forEach(function (k) { delete state[k]; });
+      Object.assign(state, remote);
+      Study.normalize(state);
+      if (state.mission.date !== todayKey) state.mission = { date: todayKey, done: [] };
       examInput.value = state.exam;
       renderAll();
       if (mode === 'mission' && !checked && !started) { buildQueue(); showQuestion(); }

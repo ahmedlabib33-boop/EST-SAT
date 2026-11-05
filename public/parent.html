@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Parent view — EST · SAT with Ahmed Labib</title>
+<meta name="description" content="Study time, scores, weak topics and streaks, plus lessons to assign and goals that unlock your messages.">
+<meta name="theme-color" content="#07070F">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
+<header class="nav" data-app-header></header>
+
+<main id="top" class="wrap page">
+  <section class="page-head">
+    <p class="eyebrow">Parent view</p>
+    <h1>See the progress. <span class="grad-text">Guide the next step.</span></h1>
+    <p class="lede">Study time, scores, weak topics and streaks, plus lessons to assign and goals that unlock your messages. This shows the progress of whoever is signed in on this device.</p>
+  </section>
+
+  <div class="stat-row stat-row-wide" id="tiles"></div>
+
+  <div class="two-col two-col-even">
+    <section class="card tool-card">
+      <h2>Recent exam scores</h2>
+      <div id="scores"></div>
+    </section>
+    <section class="card tool-card">
+      <h2>Topics to focus on</h2>
+      <ol class="gain-list" id="weak"></ol>
+    </section>
+  </div>
+
+  <div class="two-col two-col-even">
+    <form class="card tool-card form-stack" id="assignForm">
+      <h2>Assign a lesson or exam</h2>
+      <div class="modes" id="assignKind" role="group" aria-label="What to assign"></div>
+      <div class="field"><label for="assignTarget" id="assignLabel">Lesson</label><select class="input" id="assignTarget"></select></div>
+      <div class="field"><label for="assignDue">Due date (optional)</label><input class="input" id="assignDue" type="date"></div>
+      <div class="field"><label for="assignNote">Note (optional)</label><input class="input" id="assignNote" maxlength="140" placeholder="Focus on showing your working"></div>
+      <button class="btn btn-primary btn-sm" type="submit">Assign</button>
+      <div class="assigned-list" id="assignedList"></div>
+    </form>
+
+    <form class="card tool-card form-stack" id="goalForm">
+      <h2>Goals that unlock your message</h2>
+      <div class="field"><label for="goalKind">Goal</label>
+        <select class="input" id="goalKind">
+          <option value="level">Reach a level</option>
+          <option value="streak">Study days in a row</option>
+          <option value="exam">Score in a timed exam</option>
+          <option value="topic">Finish a topic</option>
+        </select>
+      </div>
+      <div class="field"><label for="goalTarget">Target</label><select class="input" id="goalTarget"></select></div>
+      <div class="field"><label for="goalMessage">Your message</label><textarea class="input" id="goalMessage" rows="3" maxlength="600" placeholder="I knew you could do it…"></textarea></div>
+      <div class="recorder" id="recorder"></div>
+      <button class="btn btn-primary btn-sm" type="submit">Save goal</button>
+      <p class="fine">Text messages follow the account to other devices. A voice note stays on this device, so record it on the device your child studies on.</p>
+      <div class="assigned-list" id="goalList"></div>
+    </form>
+  </div>
+  <p class="save-note" id="saveNote" role="status"></p>
+</main>
+
+<script src="assets/auth.js"></script>
+<script src="assets/study.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var S = window.EstSatStudy, A = window.App, el = A.el;
+  var EXAM_PRESETS = [['mixed-20', 'Mixed, 20 questions'], ['mixed-40', 'Mixed, 40 questions'], ['mixed-60', 'Mixed, 60 questions'], ['math-20', 'Math, 20 questions'], ['math-40', 'Math, 40 questions'], ['english-20', 'English, 20 questions'], ['english-40', 'English, 40 questions']];
+  var state = null, catalog = null, assignKind = 'lesson', voice = null;
+
+  function note(text) { A.byId('saveNote').textContent = text; }
+
+  function renderTiles() {
+    var box = A.clear(A.byId('tiles')), st = S.streak(state), l = S.levelFor(state.xp), r = S.readiness(state);
+    var total = catalog ? catalog.math.lessons.length + catalog.english.lessons.length : 0;
+    var days = Object.keys(state.days).filter(function (k) { return state.days[k] > 0; }).sort();
+    [
+      [S.minutesStudied(state, 7) + ' min', 'study time in 7 days · ' + S.minutesStudied(state, 1) + ' today'],
+      [st.current + (st.current === 1 ? ' day' : ' days'), 'streak · best ' + st.best],
+      [r ? r.percent + '%' : '—', r ? 'readiness · ' + r.confidence + ' confidence' : 'readiness · not enough answers yet'],
+      ['Level ' + l.level, l.rank + ' · ' + l.xp.toLocaleString() + ' XP'],
+      [state.lessons.length + (total ? ' / ' + total : ''), 'lessons done · last active ' + (days.length ? A.formatDate(days[days.length - 1]) : '—')]
+    ].forEach(function (t) {
+      var k = el('div', 'kpi');
+      k.appendChild(el('b', null, t[0]));
+      k.appendChild(el('span', null, t[1]));
+      box.appendChild(k);
+    });
+  }
+  function renderScores() {
+    var box = A.clear(A.byId('scores'));
+    if (!state.attempts.length) { box.appendChild(el('p', 'muted', 'No timed exams yet.')); return; }
+    var table = el('table', 'score-table');
+    state.attempts.slice(0, 6).forEach(function (a) {
+      var tr = el('tr');
+      [A.formatDate(a.date), A.subjectLabel(a.subject), a.percent + '%'].forEach(function (v) { tr.appendChild(el('td', null, v)); });
+      table.appendChild(tr);
+    });
+    box.appendChild(table);
+  }
+  function renderWeak() {
+    var box = A.clear(A.byId('weak'));
+    if (!catalog) return;
+    S.topGains(state, catalog, 5).forEach(function (g) {
+      var li = el('li');
+      li.appendChild(el('strong', null, g.name));
+      li.appendChild(el('small', null, A.subjectLabel(g.subject) + ' · ' + (g.accuracy === null ? 'Not tried yet' : Math.round(g.accuracy * 100) + '% correct over ' + g.answered + ' answers')));
+      box.appendChild(li);
+    });
+  }
+
+  // ---------- Assign ----------
+  function option(parent, value, label) {
+    var o = el('option', null, label);
+    o.value = value;
+    parent.appendChild(o);
+  }
+  function fillAssignTargets() {
+    var sel = A.clear(A.byId('assignTarget'));
+    A.byId('assignLabel').textContent = assignKind === 'lesson' ? 'Lesson' : 'Exam';
+    option(sel, '', 'Choose…');
+    if (assignKind === 'exam') {
+      EXAM_PRESETS.forEach(function (p) { option(sel, p[0], p[1]); });
+      return;
+    }
+    if (!catalog) return;
+    ['math', 'english'].forEach(function (subject) {
+      catalog[subject].topics.forEach(function (t) {
+        var group = el('optgroup');
+        group.label = A.subjectLabel(subject) + ': ' + t.name;
+        catalog[subject].lessons.filter(function (l) { return l.topicId === t.id; }).forEach(function (l) { option(group, l.id, l.title); });
+        sel.appendChild(group);
+      });
+    });
+  }
+  function selectedText(sel) { return sel.options[sel.selectedIndex] ? sel.options[sel.selectedIndex].textContent : ''; }
+  function renderAssigned() {
+    var box = A.clear(A.byId('assignedList'));
+    state.assignments.forEach(function (a) {
+      var done = S.assignmentDone(a, state), row = el('div', 'assigned' + (done ? ' done' : ''));
+      var t = el('span');
+      t.appendChild(el('strong', null, (done ? 'Done: ' : '') + a.title));
+      if (a.due || a.note) t.appendChild(el('small', null, [a.due ? 'Due ' + A.formatDate(a.due) : '', a.note].filter(Boolean).join(' · ')));
+      row.appendChild(t);
+      var rm = el('button', 'btn btn-ghost btn-sm', 'Remove');
+      rm.type = 'button';
+      rm.addEventListener('click', function () {
+        state.assignments = state.assignments.filter(function (x) { return x.id !== a.id; });
+        A.save(state);
+        renderAssigned();
+      });
+      row.appendChild(rm);
+      box.appendChild(row);
+    });
+  }
+  A.byId('assignForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var sel = A.byId('assignTarget');
+    if (!sel.value) { note('Choose a lesson or exam first.'); return; }
+    state.assignments.unshift({
+      id: 'a-' + Date.now(), kind: assignKind, target: sel.value,
+      title: (assignKind === 'lesson' ? 'Lesson: ' : 'Exam: ') + selectedText(sel),
+      due: A.byId('assignDue').value, note: A.byId('assignNote').value.trim().slice(0, 140), created: S.dayKey(),
+      sameDay: state.attempts.filter(function (t) { return t.subject === sel.value.split('-')[0] && t.date === S.dayKey(); }).length
+    });
+    state.assignments = state.assignments.slice(0, 40);
+    A.save(state);
+    sel.value = '';
+    A.byId('assignDue').value = '';
+    A.byId('assignNote').value = '';
+    renderAssigned();
+    note('Assignment added. It shows on the Today page.');
+  });
+
+  // ---------- Goals ----------
+  function fillGoalTargets() {
+    var kind = A.byId('goalKind').value, sel = A.clear(A.byId('goalTarget'));
+    if (kind === 'topic') {
+      if (!catalog) return;
+      ['math', 'english'].forEach(function (subject) {
+        catalog[subject].topics.forEach(function (t) { option(sel, subject + '|' + t.id, A.subjectLabel(subject) + ': ' + t.name); });
+      });
+      return;
+    }
+    S.GOAL_TARGETS[kind].forEach(function (t) { option(sel, String(t), S.goalLabel(kind, t)); });
+  }
+  function renderGoals() {
+    var box = A.clear(A.byId('goalList'));
+    state.goals.forEach(function (g) {
+      var row = el('div', 'assigned' + (g.unlockedAt ? ' done' : ''));
+      var t = el('span');
+      t.appendChild(el('strong', null, (g.unlockedAt ? 'Unlocked: ' : '') + g.label));
+      t.appendChild(el('small', null, g.message ? g.message.slice(0, 60) + (g.hasVoice ? ' · voice note' : '') : (g.hasVoice ? 'Voice note' : '')));
+      row.appendChild(t);
+      var rm = el('button', 'btn btn-ghost btn-sm', 'Remove');
+      rm.type = 'button';
+      rm.addEventListener('click', function () {
+        if (g.hasVoice) S.deleteVoice(g.id).catch(function () {});
+        state.goals = state.goals.filter(function (x) { return x.id !== g.id; });
+        A.save(state);
+        renderGoals();
+      });
+      row.appendChild(rm);
+      box.appendChild(row);
+    });
+  }
+  A.byId('goalKind').addEventListener('change', fillGoalTargets);
+  A.byId('goalForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var message = A.byId('goalMessage').value.trim().slice(0, 600), sel = A.byId('goalTarget'), kind = A.byId('goalKind').value;
+    if (!message && !voice) { note('Write a message or record a voice note first.'); return; }
+    if (!sel.value) { note('Choose a target first.'); return; }
+    var id = 'g-' + Date.now();
+    var goal = {
+      id: id, kind: kind, target: sel.value,
+      label: S.goalLabel(kind, sel.value, kind === 'topic' ? selectedText(sel) : ''),
+      message: message, hasVoice: false, created: S.dayKey(), unlockedAt: ''
+    };
+    var saved = voice ? S.saveVoice(id, voice).then(function () { goal.hasVoice = true; }) : Promise.resolve();
+    saved.catch(function () { note('The voice note could not be saved on this device. The text message was saved.'); }).then(function () {
+      state.goals.unshift(goal);
+      state.goals = state.goals.slice(0, 30);
+      A.commit(state);
+      A.byId('goalMessage').value = '';
+      voice = null;
+      renderRecorder('idle');
+      renderGoals();
+      if (!A.byId('saveNote').textContent) note('Goal saved. The message stays locked until the goal is reached.');
+    });
+  });
+
+  // ---------- Voice note (at most a minute, kept on this device) ----------
+  var recorder = null, recTimer = null;
+  function renderRecorder(status, message) {
+    var box = A.clear(A.byId('recorder'));
+    if (typeof MediaRecorder === 'undefined' || !navigator.mediaDevices) {
+      box.appendChild(el('p', 'fine', 'Voice notes are not supported in this browser.'));
+      return;
+    }
+    var b = el('button', 'btn btn-ghost btn-sm', status === 'recording' ? 'Stop recording' : voice ? 'Record again' : 'Record a voice note');
+    b.type = 'button';
+    b.addEventListener('click', status === 'recording' ? stopRecording : startRecording);
+    box.appendChild(b);
+    if (voice && status !== 'recording') {
+      var audio = el('audio');
+      audio.controls = true;
+      audio.src = URL.createObjectURL(voice);
+      box.appendChild(audio);
+    }
+    if (message) box.appendChild(el('p', 'fine', message));
+  }
+  function startRecording() {
+    navigator.mediaDevices.getUserMedia({ audio: true }).then(function (stream) {
+      var chunks = [];
+      recorder = new MediaRecorder(stream);
+      recorder.ondataavailable = function (e) { if (e.data.size) chunks.push(e.data); };
+      recorder.onstop = function () {
+        stream.getTracks().forEach(function (t) { t.stop(); });
+        voice = new Blob(chunks, { type: recorder.mimeType });
+        renderRecorder('done');
+      };
+      recorder.start();
+      recTimer = setTimeout(stopRecording, 60000);
+      renderRecorder('recording');
+    }).catch(function () {
+      renderRecorder('idle', 'Microphone access was blocked. Allow it in the browser, or write a text message instead.');
+    });
+  }
+  function stopRecording() {
+    clearTimeout(recTimer);
+    if (recorder && recorder.state === 'recording') recorder.stop();
+  }
+
+  function renderAll() { renderTiles(); renderScores(); renderWeak(); renderAssigned(); renderGoals(); }
+
+  A.modes(A.byId('assignKind'), [['lesson', 'Lesson'], ['exam', 'Exam']], assignKind, function (v) { assignKind = v; fillAssignTargets(); });
+  fillAssignTargets();
+  fillGoalTargets();
+  renderRecorder('idle');
+  A.boot(function (s) { state = s; renderAll(); });
+  A.catalog().then(function (c) {
+    catalog = c;
+    fillAssignTargets();
+    fillGoalTargets();
+    if (state) renderAll();
+  }).catch(function () { note('Could not load the lesson list. Check your connection and refresh.'); });
+})();
+</script>
+</body>
+</html>

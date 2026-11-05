@@ -11,7 +11,7 @@ from flask import abort, send_from_directory
 from backend import create_app
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'public')
-PAGE_TYPES = {'.html', '.css', '.js', '.svg', '.png', '.jpg', '.jpeg', '.webp', '.ico'}
+PAGE_TYPES = {'.html', '.css', '.js', '.svg', '.png', '.jpg', '.jpeg', '.webp', '.ico', '.webmanifest'}
 
 app = create_app()
 

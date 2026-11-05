@@ -28,6 +28,12 @@ EMAIL_RE = re.compile(r'^[^@\s]+@[^@\s]+\.[^@\s]+$')
 DATE_RE = re.compile(r'^\d{4}-\d{2}-\d{2}$')
 CHAPTER_RE = re.compile(r'^(math|physics|english)-\d{1,2}$')
 QUESTION_ID_RE = re.compile(r'^(math|english)-practice-\d{1,5}$')
+LESSON_ID_RE = re.compile(r'^(math|english)-lesson-\d{1,5}$')
+TOPIC_KEY_RE = re.compile(r"^(math|english|physics)\|[A-Za-z0-9 .,&'-]{1,60}$")
+ASSIGNMENT_ID_RE = re.compile(r'^a-\d{1,16}$')
+GOAL_ID_RE = re.compile(r'^g-\d{1,16}$')
+ATTEMPT_SUBJECTS = ('math', 'english', 'mixed')
+GOAL_KINDS = ('level', 'streak', 'exam', 'topic')
 MAX_MISTAKES = 100
 STAFF_ROLES = ('admin', 'teacher')
 FAIL_WINDOW = timedelta(minutes=15)
@@ -150,6 +156,147 @@ def clean_state(raw):
         'exam': exam,
         'mission': {'date': m_date, 'done': done[:20]},
         'mistakes': mistakes[-MAX_MISTAKES:],
+        **clean_study_extras(raw),
+    }
+
+
+def _date_or_blank(value):
+    return value if isinstance(value, str) and DATE_RE.match(value) else ''
+
+
+def _short_text(value, max_len):
+    return value.strip()[:max_len] if isinstance(value, str) else ''
+
+
+def _map(raw, key):
+    value = raw.get(key)
+    return value if isinstance(value, dict) else {}
+
+
+def _list(raw, key):
+    value = raw.get(key)
+    return value if isinstance(value, list) else []
+
+
+def _date_list(values, limit):
+    out = []
+    for d in values:
+        if isinstance(d, str) and DATE_RE.match(d) and d not in out:
+            out.append(d)
+    return out[-limit:]
+
+
+def clean_study_extras(raw):
+    """The fields behind Today, Review, Exam, Rewards, Focus and the Parent view. All bounded."""
+    reviews = {}
+    for question_id, entry in _map(raw, 'reviews').items():
+        if len(reviews) >= MAX_MISTAKES:
+            break
+        if isinstance(question_id, str) and QUESTION_ID_RE.match(question_id) and isinstance(entry, dict):
+            reviews[question_id] = {
+                'stage': _count(entry.get('stage'), 4),
+                'due': _date_or_blank(entry.get('due')),
+                'last': _date_or_blank(entry.get('last')),
+            }
+
+    topics = {}
+    for key, pair in _map(raw, 'topics').items():
+        if len(topics) >= 80:
+            break
+        if isinstance(key, str) and TOPIC_KEY_RE.match(key) and isinstance(pair, list) and len(pair) == 2:
+            answered = _count(pair[0], 10 ** 6)
+            if answered:
+                topics[key] = [answered, min(_count(pair[1], 10 ** 6), answered)]
+
+    lessons = []
+    for lesson_id in _list(raw, 'lessons'):
+        if isinstance(lesson_id, str) and LESSON_ID_RE.match(lesson_id) and lesson_id not in lessons:
+            lessons.append(lesson_id)
+
+    attempts = []
+    for a in _list(raw, 'attempts'):
+        if not isinstance(a, dict) or a.get('subject') not in ATTEMPT_SUBJECTS or not _date_or_blank(a.get('date')):
+            continue
+        total = _count(a.get('total'), 100)
+        if total:
+            attempts.append({
+                'date': a['date'],
+                'subject': a['subject'],
+                'score': min(_count(a.get('score'), 100), total),
+                'total': total,
+                'percent': _count(a.get('percent'), 100),
+                'seconds': _count(a.get('seconds'), 6 * 3600),
+            })
+
+    time_in = _map(raw, 'time')
+    study_time = {}
+    for key in sorted(k for k in time_in if isinstance(k, str) and DATE_RE.match(k))[-60:]:
+        seconds = _count(time_in[key], 86400)
+        if seconds:
+            study_time[key] = seconds
+
+    week = _map(raw, 'week')
+    freezes = _map(raw, 'freezes')
+
+    assignments = []
+    for a in _list(raw, 'assignments'):
+        if not isinstance(a, dict) or a.get('kind') not in ('lesson', 'exam'):
+            continue
+        target = _short_text(a.get('target'), 60)
+        if isinstance(a.get('id'), str) and ASSIGNMENT_ID_RE.match(a['id']) and target:
+            assignments.append({
+                'id': a['id'],
+                'kind': a['kind'],
+                'target': target,
+                'title': _short_text(a.get('title'), 120),
+                'due': _date_or_blank(a.get('due')),
+                'note': _short_text(a.get('note'), 140),
+                'created': _date_or_blank(a.get('created')),
+                'sameDay': _count(a.get('sameDay'), 100),
+            })
+
+    goals = []
+    for g in _list(raw, 'goals'):
+        if not isinstance(g, dict) or g.get('kind') not in GOAL_KINDS:
+            continue
+        target = g.get('target')
+        target = str(target)[:60] if isinstance(target, (str, int)) and not isinstance(target, bool) else ''
+        if isinstance(g.get('id'), str) and GOAL_ID_RE.match(g['id']) and target:
+            goals.append({
+                'id': g['id'],
+                'kind': g['kind'],
+                'target': target,
+                'label': _short_text(g.get('label'), 120),
+                'message': _short_text(g.get('message'), 600),
+                'hasVoice': g.get('hasVoice') is True,
+                'created': _date_or_blank(g.get('created')),
+                'unlockedAt': _date_or_blank(g.get('unlockedAt')),
+            })
+
+    music = raw.get('music')
+    music = music if isinstance(music, str) and music.startswith('https://') and len(music) <= 300 else ''
+
+    return {
+        'reviews': reviews,
+        'topics': topics,
+        'lessons': lessons[:400],
+        'attempts': attempts[:30],
+        'time': study_time,
+        'week': {
+            'start': _date_or_blank(week.get('start')),
+            'lessons': _count(week.get('lessons'), 10 ** 5),
+            'practice': _count(week.get('practice'), 10 ** 5),
+            'reviews': _count(week.get('reviews'), 10 ** 5),
+            'exams': _count(week.get('exams'), 10 ** 5),
+        },
+        'xp': _count(raw.get('xp'), 10 ** 7),
+        'freezes': {
+            'usedDays': _date_list(_list(freezes, 'usedDays'), 200),
+            'earnedOn': _date_list(_list(freezes, 'earnedOn'), 200),
+        },
+        'assignments': assignments[:40],
+        'goals': goals[:30],
+        'music': music,
     }
 
 

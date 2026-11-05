@@ -99,7 +99,34 @@ def test_random_respects_subject_and_caps_n(client):
     body = client.get('/api/practice/random?subject=math&n=5').get_json()
     assert len(body['questions']) == 5
     assert {q['subject'] for q in body['questions']} == {'math'}
-    assert len(client.get('/api/practice/random?n=999').get_json()['questions']) == 50
+    assert len(client.get('/api/practice/random?n=999').get_json()['questions']) == 100
+
+
+def test_random_can_be_limited_to_topics(client):
+    body = client.get('/api/practice/random?subject=all&topics=MATH-01,eng-01&n=40').get_json()
+    assert body['questions']
+    assert {q['topicId'] for q in body['questions']} <= {'MATH-01', 'eng-01'}
+    assert client.get('/api/practice/random?subject=all&topics=nope').get_json() == {'questions': []}
+
+
+def test_questions_by_id_keep_order_and_never_carry_answers(client):
+    body = client.get('/api/practice/questions?ids=english-practice-7,math-practice-1,does-not-exist').get_json()
+    assert [q['id'] for q in body['questions']] == ['english-practice-7', 'math-practice-1']
+    assert [q['subject'] for q in body['questions']] == ['english', 'math']
+    assert all('answer' not in q and 'explanation' not in q for q in body['questions'])
+    assert client.get('/api/practice/questions').get_json() == {'questions': []}
+    ids = ','.join('math-practice-%d' % i for i in range(1, 100))
+    assert len(client.get('/api/practice/questions?ids=' + ids).get_json()['questions']) == 60
+
+
+def test_revision_sheet_has_lessons_but_no_questions(client):
+    body = client.get('/api/practice/math/revision').get_json()
+    assert len(body['topics']) == 5
+    assert len(body['lessons']) == 155
+    assert body['lessons'][0]['formula']
+    assert 'answer' not in body['lessons'][0]
+    assert 'questions' not in body
+    assert client.get('/api/practice/nope/revision').status_code == 400
 
 
 # ----------------------------------------------------------------- grading

@@ -66,10 +66,11 @@ def create_app(config=None):
     _register_jwt_handlers()
     _register_error_handlers(app)
 
+    from .ai import ai_bp
     from .live_routes import live_bp
     from .practice import practice_bp
     from .routes import blueprints
-    for bp in blueprints + [live_bp, practice_bp]:
+    for bp in blueprints + [live_bp, practice_bp, ai_bp]:
         app.register_blueprint(bp)
 
     @app.get('/api')
@@ -79,7 +80,7 @@ def create_app(config=None):
             'version': '2.0.0',
             'teacher': 'Ahmed Labib',
             'endpoints': ['/api/health', '/api/auth', '/api/user', '/api/courses', '/api/quizzes',
-                          '/api/practice', '/api/progress', '/api/admin'],
+                          '/api/practice', '/api/ai', '/api/progress', '/api/admin'],
         }), 200
 
     @app.get('/api/health')

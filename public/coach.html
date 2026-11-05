@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AI Coach — EST · SAT with Ahmed Labib</title>
+<meta name="description" content="Ask a question by typing, speaking in English or Arabic, or snapping a photo. The coach explains the rule and gives you the next step.">
+<meta name="theme-color" content="#07070F">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
+<header class="nav" data-app-header></header>
+
+<main id="top" class="wrap page">
+  <section class="page-head">
+    <p class="eyebrow">AI Coach</p>
+    <h1>Ask. Test. <span class="grad-text">Understand.</span></h1>
+    <p class="lede">Stuck on Math, English or Physics? Type your question, speak it in English or Arabic, or snap a photo.</p>
+    <p class="muted" id="allowance"></p>
+  </section>
+
+  <section class="card tool-card" id="gate" hidden></section>
+
+  <form class="card tool-card form-stack" id="askForm" hidden>
+    <div class="field">
+      <label for="prompt">Your question</label>
+      <textarea class="input" id="prompt" rows="4" maxlength="3000" placeholder="Why is the slope of a horizontal line zero?"></textarea>
+    </div>
+    <div id="photoPreview" class="photo-preview" hidden></div>
+    <div class="coach-actions">
+      <button class="btn btn-primary" type="submit" id="askBtn">Ask the coach</button>
+      <label class="btn btn-ghost btn-sm" for="photo">Add a photo</label>
+      <input class="sr-only" id="photo" type="file" accept="image/*">
+      <span id="voiceTools" class="voice-tools" hidden>
+        <button class="btn btn-ghost btn-sm" type="button" id="micBtn">Speak</button>
+        <label class="sr-only" for="voiceLang">Speaking language</label>
+        <select class="input input-sm" id="voiceLang">
+          <option value="en-US">English</option>
+          <option value="ar-EG">Arabic</option>
+        </select>
+      </span>
+    </div>
+    <p class="alert" id="coachError" role="alert"></p>
+  </form>
+
+  <section class="card tool-card coach-reply" id="replyBox" hidden aria-live="polite">
+    <div class="panel-title">
+      <h2>The coach says</h2>
+      <button class="btn btn-ghost btn-sm" type="button" id="readBtn" hidden>Read aloud</button>
+    </div>
+    <p class="fine" id="askedLine"></p>
+    <div id="replyText" class="reply-text" dir="auto"></div>
+    <div id="related"></div>
+    <p class="fine">AI can make mistakes. Check anything important against your lessons or your teacher.</p>
+  </section>
+</main>
+
+<script src="assets/auth.js"></script>
+<script src="assets/study.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var E = window.EstSat, A = window.App, el = A.el;
+  var MAX_SIDE = 1100, MAX_DATA_URL = 200 * 1024;
+  var photo = '', recognition = null, listening = false, status = null;
+
+  function showError(text) {
+    var box = A.byId('coachError');
+    box.textContent = text || '';
+    box.className = text ? 'alert show error' : 'alert';
+  }
+  function paintAllowance() {
+    var line = A.byId('allowance');
+    if (!status || status.left === null || status.left === undefined) { line.textContent = ''; return; }
+    line.textContent = status.left + ' of ' + status.limit + ' questions left today.';
+  }
+
+  // ---------- Who can use it ----------
+  function gate(title, body, linkText, href) {
+    var box = A.clear(A.byId('gate'));
+    box.hidden = false;
+    box.appendChild(el('h2', null, title));
+    box.appendChild(el('p', 'muted', body));
+    if (linkText) {
+      var a = el('a', 'btn btn-primary btn-sm', linkText);
+      a.href = href;
+      box.appendChild(a);
+    }
+  }
+  function start() {
+    if (!E.loggedIn()) {
+      gate('Log in to ask the coach', 'A free account gives you a daily allowance of questions.', 'Log in', 'login.html?next=coach.html');
+      return;
+    }
+    E.api('/ai/status').then(function (res) {
+      status = res;
+      if (!res.configured) {
+        gate('The coach is not switched on yet', 'Your teacher needs to finish setting it up. Everything else on the site keeps working.');
+        return;
+      }
+      A.byId('askForm').hidden = false;
+      paintAllowance();
+      var preset = A.param('ask');
+      if (preset) A.byId('prompt').value = preset.slice(0, 3000);
+    }).catch(function (err) {
+      if (err.status === 401) gate('Log in to ask the coach', 'Your session has ended. Log in again to continue.', 'Log in', 'login.html?next=coach.html');
+      else gate('Could not reach the coach', err.message);
+    });
+  }
+
+  // ---------- Asking ----------
+  A.byId('askForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var question = A.byId('prompt').value.trim(), btn = A.byId('askBtn');
+    if (!question && !photo) { showError('Write a question or add a photo first.'); return; }
+    showError('');
+    btn.disabled = true;
+    btn.textContent = 'Thinking…';
+    var body = { question: question };
+    if (photo) body.image = photo;
+    E.api('/ai/coach', { method: 'POST', body: body }).then(function (res) {
+      showReply(question, res.reply);
+      A.byId('prompt').value = '';
+      setPhoto('');
+      if (status && typeof status.left === 'number') { status.left = Math.max(0, status.left - 1); paintAllowance(); }
+    }).catch(function (err) {
+      showError(err.message);
+    }).then(function () {
+      btn.disabled = false;
+      btn.textContent = 'Ask the coach';
+    });
+  });
+
+  function words(text) {
+    return (text.toLowerCase().match(/[a-z]{4,}/g) || []).filter(function (w) { return ['what', 'that', 'this', 'with', 'from', 'your', 'have', 'then', 'when', 'which', 'first', 'step', 'next', 'rule'].indexOf(w) < 0; });
+  }
+  function showReply(question, reply) {
+    var box = A.byId('replyBox');
+    box.hidden = false;
+    A.byId('askedLine').textContent = question ? 'You asked: ' + question : 'You sent a photo.';
+    A.clear(A.byId('replyText')).textContent = reply;
+    A.byId('readBtn').hidden = !('speechSynthesis' in window);
+    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    A.catalog().then(function (c) {
+      var have = {}, picks = [];
+      words(question + ' ' + question + ' ' + reply).forEach(function (w) { have[w] = (have[w] || 0) + 1; });
+      ['math', 'english'].forEach(function (subject) {
+        c[subject].lessons.forEach(function (l) {
+          var score = words(l.title).reduce(function (sum, w) { return sum + (have[w] || 0); }, 0);
+          if (score) picks.push({ score: score, subject: subject, lesson: l });
+        });
+      });
+      picks.sort(function (a, b) { return b.score - a.score; });
+      var rel = A.clear(A.byId('related'));
+      if (!picks.length) return;
+      rel.appendChild(el('h3', 'sub-head', 'Related lessons'));
+      picks.slice(0, 3).forEach(function (p) {
+        var a = el('a', 'btn btn-ghost btn-sm', p.lesson.title);
+        a.href = 'learn.html?subject=' + p.subject + '&lesson=' + encodeURIComponent(p.lesson.id);
+        rel.appendChild(a);
+      });
+    }).catch(function () { /* related lessons are optional */ });
+  }
+  A.byId('readBtn').addEventListener('click', function () {
+    var synth = window.speechSynthesis;
+    if (synth.speaking) { synth.cancel(); return; }
+    var text = A.byId('replyText').textContent;
+    var talk = new SpeechSynthesisUtterance(text);
+    if (/[؀-ۿ]/.test(text)) talk.lang = 'ar-EG';
+    synth.speak(talk);
+  });
+
+  // ---------- Photo: shrunk in the browser so it fits the request limit ----------
+  function setPhoto(data) {
+    photo = data;
+    var box = A.clear(A.byId('photoPreview'));
+    box.hidden = !data;
+    if (!data) return;
+    var img = el('img');
+    img.src = data;
+    img.alt = 'Your question photo';
+    box.appendChild(img);
+    var rm = el('button', 'btn btn-ghost btn-sm', 'Remove photo');
+    rm.type = 'button';
+    rm.addEventListener('click', function () { setPhoto(''); });
+    box.appendChild(rm);
+  }
+  function shrink(file) {
+    return new Promise(function (resolve, reject) {
+      var url = URL.createObjectURL(file), img = new Image();
+      img.onerror = function () { URL.revokeObjectURL(url); reject(new Error('photo')); };
+      img.onload = function () {
+        URL.revokeObjectURL(url);
+        var side = MAX_SIDE, quality = 0.75, data = '';
+        for (var i = 0; i < 6; i += 1) {
+          var scale = Math.min(1, side / Math.max(img.width, img.height));
+          var canvas = document.createElement('canvas');
+          canvas.width = Math.round(img.width * scale);
+          canvas.height = Math.round(img.height * scale);
+          canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+          data = canvas.toDataURL('image/jpeg', quality);
+          if (data.length <= MAX_DATA_URL) { resolve(data); return; }
+          side = Math.round(side * 0.8);
+          quality = Math.max(0.5, quality - 0.05);
+        }
+        reject(new Error('photo'));
+      };
+      img.src = url;
+    });
+  }
+  A.byId('photo').addEventListener('change', function (e) {
+    var file = e.target.files && e.target.files[0];
+    e.target.value = '';
+    if (!file) return;
+    showError('');
+    shrink(file).then(setPhoto).catch(function () { showError('That photo could not be opened. Try another one.'); });
+  });
+
+  // ---------- Speaking ----------
+  var Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (Recognition) {
+    A.byId('voiceTools').hidden = false;
+    A.byId('micBtn').addEventListener('click', function () {
+      var btn = A.byId('micBtn');
+      if (listening && recognition) { recognition.stop(); return; }
+      recognition = new Recognition();
+      recognition.lang = A.byId('voiceLang').value;
+      recognition.interimResults = true;
+      recognition.onresult = function (event) {
+        A.byId('prompt').value = Array.prototype.map.call(event.results, function (r) { return r[0].transcript; }).join(' ');
+      };
+      recognition.onend = recognition.onerror = function () {
+        listening = false;
+        btn.textContent = 'Speak';
+      };
+      listening = true;
+      btn.textContent = 'Stop';
+      recognition.start();
+    });
+  }
+
+  start();
+})();
+</script>
+</body>
+</html>

@@ -6,7 +6,8 @@
   "scripts": {
     "build": "echo 'Build complete'",
     "start": "echo 'Frontend deployed to Vercel'",
-    "dev": "python app.py"
+    "dev": "python app.py",
+    "test": "node --test tests/study.test.js"
   },
   "keywords": [
     "education",

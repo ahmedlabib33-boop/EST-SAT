@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Focus — EST · SAT with Ahmed Labib</title>
+<meta name="description" content="A focus timer that counts towards your study time, with your own music link alongside it.">
+<meta name="theme-color" content="#07070F">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
+<header class="nav" data-app-header></header>
+
+<main id="top" class="wrap page">
+  <section class="page-head">
+    <p class="eyebrow">Focus</p>
+    <h1>A room for <span class="grad-text">deep work.</span></h1>
+    <p class="lede">Start the timer and it counts towards your study time. Add a music link if it helps you concentrate.</p>
+  </section>
+
+  <div class="two-col two-col-even">
+    <section class="card tool-card focus-card">
+      <div class="modes" id="lengths" role="group" aria-label="Timer length"></div>
+      <div class="focus-clock" id="clock" role="timer">45:00</div>
+      <div class="focus-actions">
+        <button type="button" class="btn btn-primary" id="toggle">Start</button>
+        <button type="button" class="btn btn-ghost btn-sm" id="reset">Reset</button>
+      </div>
+      <p class="muted" id="studied"></p>
+    </section>
+
+    <section class="card tool-card form-stack">
+      <h2>Focus music</h2>
+      <form class="music-form" id="musicForm">
+        <div class="field">
+          <label for="musicUrl">YouTube, Spotify or SoundCloud link</label>
+          <input class="input" id="musicUrl" type="url" inputmode="url" maxlength="300" placeholder="https://www.youtube.com/watch?v=...">
+        </div>
+        <button class="btn btn-ghost btn-sm" type="submit">Play</button>
+      </form>
+      <p class="alert" id="musicError" role="alert"></p>
+      <div class="music-frame" id="musicFrame" hidden></div>
+    </section>
+  </div>
+</main>
+
+<script src="assets/auth.js"></script>
+<script src="assets/study.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var S = window.EstSatStudy, A = window.App, el = A.el;
+  var KEY = 'estsat.focus', LOG_EVERY = 60;
+  var state = null, ticker = null, unlogged = 0, lastTick = 0;
+  // { total, left, ends }: ends is set only while running, so a reload keeps counting.
+  var timer = { total: 45 * 60, left: 45 * 60, ends: 0 };
+  try {
+    var saved = JSON.parse(localStorage.getItem(KEY));
+    if (saved && saved.total) timer = saved;
+  } catch (e) { /* start fresh */ }
+
+  function persist() { try { localStorage.setItem(KEY, JSON.stringify(timer)); } catch (e) { /* lasts this visit */ } }
+  function remaining() { return timer.ends ? Math.max(0, (timer.ends - Date.now()) / 1000) : timer.left; }
+  function logTime() {
+    if (unlogged < 1 || !state) return;
+    S.addStudyTime(state, unlogged);
+    unlogged = 0;
+    A.save(state);
+    paintStudied();
+  }
+  function paintStudied() {
+    if (state) A.byId('studied').textContent = S.minutesStudied(state, 1) + ' minutes studied today · ' + S.minutesStudied(state, 7) + ' this week';
+  }
+  function paint() {
+    A.byId('clock').textContent = A.clock(remaining());
+    A.byId('toggle').textContent = timer.ends ? 'Pause' : remaining() < timer.total ? 'Resume' : 'Start';
+  }
+  function tick() {
+    var now = Date.now();
+    // Only count time the page was actually open for, capped so a sleeping laptop adds nothing.
+    unlogged += Math.min(5, (now - lastTick) / 1000);
+    lastTick = now;
+    if (unlogged >= LOG_EVERY) logTime();
+    if (remaining() <= 0) { finish(); return; }
+    paint();
+  }
+  function run() {
+    timer.ends = Date.now() + timer.left * 1000;
+    lastTick = Date.now();
+    clearInterval(ticker);
+    ticker = setInterval(tick, 1000);
+    persist();
+    paint();
+  }
+  function pause() {
+    timer.left = remaining();
+    timer.ends = 0;
+    clearInterval(ticker);
+    logTime();
+    persist();
+    paint();
+  }
+  function finish() {
+    clearInterval(ticker);
+    logTime();
+    timer.ends = 0;
+    timer.left = timer.total;
+    persist();
+    paint();
+    S.celebrate(true);
+    A.toast('Focus session complete. Take a short break.');
+  }
+  A.byId('toggle').addEventListener('click', function () { if (timer.ends) pause(); else run(); });
+  A.byId('reset').addEventListener('click', function () {
+    clearInterval(ticker);
+    logTime();
+    timer.ends = 0;
+    timer.left = timer.total;
+    persist();
+    paint();
+  });
+  A.modes(A.byId('lengths'), [[25, '25 min'], [45, '45 min'], [60, '60 min']], Math.round(timer.total / 60), function (minutes) {
+    clearInterval(ticker);
+    logTime();
+    timer = { total: minutes * 60, left: minutes * 60, ends: 0 };
+    persist();
+    paint();
+  });
+  window.addEventListener('pagehide', logTime);
+
+  // ---------- Music: only these three services can be embedded ----------
+  function embedUrl(raw) {
+    var url;
+    try { url = new URL(raw); } catch (e) { return ''; }
+    if (url.protocol !== 'https:') return '';
+    var host = url.hostname.replace(/^(www\.|m\.|music\.)/, ''), match;
+    if (host === 'youtube.com') {
+      if (url.searchParams.get('list') && url.pathname === '/playlist') return 'https://www.youtube-nocookie.com/embed/videoseries?list=' + encodeURIComponent(url.searchParams.get('list'));
+      var id = url.searchParams.get('v') || (/^\/(?:embed|shorts|live)\/([\w-]+)/.exec(url.pathname) || [])[1];
+      return id ? 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) : '';
+    }
+    if (host === 'youtu.be') {
+      match = /^\/([\w-]+)/.exec(url.pathname);
+      return match ? 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(match[1]) : '';
+    }
+    if (host === 'open.spotify.com') {
+      match = /\/(track|album|playlist|episode|show)\/([A-Za-z0-9]+)/.exec(url.pathname);
+      return match ? 'https://open.spotify.com/embed/' + match[1] + '/' + match[2] : '';
+    }
+    if (host === 'soundcloud.com') return 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(url.origin + url.pathname);
+    return '';
+  }
+  function showMusic(raw) {
+    var frame = A.clear(A.byId('musicFrame')), src = embedUrl(raw), err = A.byId('musicError');
+    err.textContent = '';
+    err.className = 'alert';
+    frame.hidden = !src;
+    if (!src) {
+      if (raw) { err.textContent = 'Use a full YouTube, Spotify or SoundCloud link.'; err.className = 'alert show error'; }
+      return false;
+    }
+    var iframe = el('iframe');
+    iframe.src = src;
+    iframe.title = 'Focus music player';
+    iframe.loading = 'lazy';
+    iframe.allow = 'autoplay; encrypted-media';
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-presentation allow-popups');
+    frame.appendChild(iframe);
+    return true;
+  }
+  A.byId('musicForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var raw = A.byId('musicUrl').value.trim();
+    if (!showMusic(raw) || !state) return;
+    state.music = raw;
+    A.save(state);
+  });
+
+  A.boot(function (s) {
+    state = s;
+    paintStudied();
+    if (s.music && !A.byId('musicUrl').value) {
+      A.byId('musicUrl').value = s.music;
+      showMusic(s.music);
+    }
+  });
+  paint();
+  if (timer.ends) {
+    if (remaining() > 0) { lastTick = Date.now(); ticker = setInterval(tick, 1000); }
+    else { timer.ends = 0; timer.left = timer.total; persist(); paint(); }
+  }
+})();
+</script>
+</body>
+</html>

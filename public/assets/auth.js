@@ -56,7 +56,7 @@
   function isEmpty(s) {
     if (!s) return true;
     var answered = s.stats && s.stats.answered;
-    return !answered && !(s.chapters && s.chapters.length) && !s.exam && !(s.days && Object.keys(s.days).length);
+    return !answered && !s.xp && !(s.chapters && s.chapters.length) && !s.exam && !(s.days && Object.keys(s.days).length);
   }
   function union(a, b) {
     var out = [];
@@ -72,6 +72,57 @@
       out.push({ id: m.id, date: m.date || '' });
     });
     return out.slice(-100);
+  }
+  function maxMap(a, b) {
+    var out = {};
+    [a || {}, b || {}].forEach(function (m) {
+      Object.keys(m).forEach(function (k) { out[k] = Math.max(out[k] || 0, m[k] || 0); });
+    });
+    return out;
+  }
+  // Keeps one entry per id, preferring the copy in `b`. `pick` can choose between two copies.
+  function byId(a, b, pick) {
+    var out = [], index = {};
+    (a || []).concat(b || []).forEach(function (item) {
+      if (!item || !item.id) return;
+      if (index[item.id] === undefined) { index[item.id] = out.length; out.push(item); }
+      else out[index[item.id]] = pick ? pick(out[index[item.id]], item) : item;
+    });
+    return out;
+  }
+  function mergeReviews(a, b) {
+    var out = {};
+    [a || {}, b || {}].forEach(function (m) {
+      Object.keys(m).forEach(function (k) {
+        if (!out[k] || (m[k].last || '') >= (out[k].last || '')) out[k] = m[k];
+      });
+    });
+    return out;
+  }
+  function mergeTopics(a, b) {
+    var out = {};
+    [a || {}, b || {}].forEach(function (m) {
+      Object.keys(m).forEach(function (k) {
+        if (!out[k] || ((m[k] && m[k][0]) || 0) > out[k][0]) out[k] = m[k];
+      });
+    });
+    return out;
+  }
+  function mergeAttempts(a, b) {
+    var out = [], seen = {};
+    (a || []).concat(b || []).forEach(function (t) {
+      if (!t) return;
+      var key = [t.date, t.subject, t.score, t.total, t.seconds].join('|');
+      if (!seen[key]) { seen[key] = 1; out.push(t); }
+    });
+    return out.sort(function (x, y) { return (x.date || '') < (y.date || '') ? 1 : (x.date || '') > (y.date || '') ? -1 : 0; }).slice(0, 30);
+  }
+  function mergeWeek(a, b) {
+    a = a || {}; b = b || {};
+    if ((a.start || '') !== (b.start || '')) return (a.start || '') > (b.start || '') ? a : b;
+    var out = { start: a.start || '' };
+    ['lessons', 'practice', 'reviews', 'exams'].forEach(function (k) { out[k] = Math.max(a[k] || 0, b[k] || 0); });
+    return out;
   }
   function mergeState(local, remote) {
     local = local || {}; remote = remote || {};
@@ -90,7 +141,21 @@
       chapters: union(local.chapters, remote.chapters),
       exam: remote.exam || local.exam || '',
       mission: { date: mission.date || '', done: (mission.done || []).slice() },
-      mistakes: unionMistakes(local.mistakes, remote.mistakes)
+      mistakes: unionMistakes(local.mistakes, remote.mistakes),
+      reviews: mergeReviews(local.reviews, remote.reviews),
+      topics: mergeTopics(local.topics, remote.topics),
+      lessons: union(local.lessons, remote.lessons),
+      attempts: mergeAttempts(local.attempts, remote.attempts),
+      time: maxMap(local.time, remote.time),
+      week: mergeWeek(local.week, remote.week),
+      xp: Math.max(local.xp || 0, remote.xp || 0),
+      freezes: {
+        usedDays: union(local.freezes && local.freezes.usedDays, remote.freezes && remote.freezes.usedDays),
+        earnedOn: union(local.freezes && local.freezes.earnedOn, remote.freezes && remote.freezes.earnedOn)
+      },
+      assignments: byId(local.assignments, remote.assignments),
+      goals: byId(local.goals, remote.goals, function (x, y) { return x.unlockedAt && !y.unlockedAt ? x : y; }),
+      music: remote.music || local.music || ''
     };
   }
   function pushState(s, keepalive) {
