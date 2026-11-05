@@ -3,6 +3,7 @@
   'use strict';
 
   var TOKEN_KEY = 'estsat.token';
+  var TOKEN_AT_KEY = 'estsat.tokenAt';
   var USER_KEY = 'estsat.user';
   var STATE_KEY = 'estsat.v1';
   var DIRTY_KEY = 'estsat.dirty';
@@ -17,10 +18,11 @@
   function token() { return read(TOKEN_KEY); }
   function user() { try { return JSON.parse(read(USER_KEY)); } catch (e) { return null; } }
   function loggedIn() { return !!token(); }
-  function setSession(t, u) { write(TOKEN_KEY, t); write(USER_KEY, JSON.stringify(u)); }
+  function setSession(t, u) { write(TOKEN_KEY, t); write(TOKEN_AT_KEY, String(Date.now())); write(USER_KEY, JSON.stringify(u)); }
   function setUser(u) { write(USER_KEY, JSON.stringify(u)); }
   function clearSession(clearProgress) {
     write(TOKEN_KEY, null);
+    write(TOKEN_AT_KEY, null);
     write(USER_KEY, null);
     write(DIRTY_KEY, null);
     if (clearProgress) write(STATE_KEY, null);
@@ -232,7 +234,20 @@
     firstName: firstName, renderAuthLinks: renderAuthLinks, safeNext: safeNext
   };
 
-  function onReady() { renderAuthLinks(); liveBanner(); }
+  // A login lasts 14 days. Renewing it while the student is here means an active student is
+  // never signed out mid-session, which would stop their progress syncing until they noticed.
+  function refreshIfStale() {
+    if (!loggedIn()) return;
+    var issued = Number(read(TOKEN_AT_KEY) || 0);
+    if (issued && Date.now() - issued < 3 * 864e5) return;
+    api('/auth/refresh', { method: 'POST' }).then(function (res) {
+      if (!res || !res.access_token) return;
+      write(TOKEN_KEY, res.access_token);
+      write(TOKEN_AT_KEY, String(Date.now()));
+    }).catch(function () { /* the current login still works until it runs out */ });
+  }
+
+  function onReady() { renderAuthLinks(); liveBanner(); refreshIfStale(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', onReady);
   else onReady();
 })();

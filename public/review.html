@@ -81,13 +81,14 @@
     A.byId('clearBtn').hidden = !r.total;
   }
 
+  // Only a review that is due moves the spaced schedule on. Trying one early is extra
+  // practice, and still counts like any other question: XP, study time and topic accuracy.
   function record(m, q, correct, seconds) {
     var st = S.reviewState(state, m, today());
-    // Only a due review moves the schedule. Trying one early is just extra practice.
-    if (st.stage < S.MASTERED_STAGE && st.due <= today()) {
-      S.recordReview(state, { id: m.id, subject: q.subject, topic: q.topicId, correct: correct, seconds: seconds });
-      A.commit(state);
-    }
+    var item = { id: m.id, subject: q.subject, topic: q.topicId, correct: correct, seconds: seconds };
+    if (st.stage < S.MASTERED_STAGE && st.due <= today()) S.recordReview(state, item);
+    else S.recordAnswer(state, item);
+    A.commit(state);
     renderTop();
   }
 
@@ -107,12 +108,16 @@
       top.appendChild(el('span', 'eyebrow', A.subjectLabel(q.subject) + (q.topic ? ' · ' + q.topic : '')));
       top.appendChild(el('span', 'chip' + (st.stage >= S.MASTERED_STAGE ? ' done' : ''), S.reviewLabel(st, day)));
       card.appendChild(top);
-      card.appendChild(el('p', 'mistake-q', q.question));
+      var asked = el('p', 'mistake-q', q.question);
+      card.appendChild(asked);
       var slot = el('div');
-      var retry = el('button', 'btn btn-ghost btn-sm', st.stage < S.MASTERED_STAGE && st.due <= day ? 'Review now' : 'Try it again');
+      var due = st.stage < S.MASTERED_STAGE && st.due <= day;
+      var retry = el('button', 'btn btn-ghost btn-sm', due ? 'Review now' : 'Try it again');
       retry.type = 'button';
       retry.addEventListener('click', function () {
         A.clear(slot);
+        asked.hidden = true; // the question card below asks it again
+        if (!due) slot.appendChild(el('p', 'fine', 'Not due yet, so this counts as practice and leaves the review date alone.'));
         var inner = A.questionCard(q, {
           onGraded: function (result, seconds) {
             record(m, q, !!result.correct, seconds);

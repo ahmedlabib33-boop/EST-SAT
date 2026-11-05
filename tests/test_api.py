@@ -133,10 +133,12 @@ def test_state_sync_is_cleaned(client):
 def test_study_extras_are_cleaned_and_bounded(client):
     token = register(client).get_json()['access_token']
     dirty = {
+        'mistakes': [{'id': 'math-practice-1', 'date': '2026-11-05'}],
         'reviews': {
             'math-practice-1': {'stage': 9, 'due': '2026-11-06', 'last': 'nope', 'evil': 1},
             '../etc/passwd': {'stage': 1},
             'english-practice-2': 'not-a-dict',
+            'math-practice-900': {'stage': 2, 'due': '2026-11-07', 'last': '2026-11-05'},
         },
         'topics': {
             'math|MATH-01': [10, 99],
@@ -171,6 +173,7 @@ def test_study_extras_are_cleaned_and_bounded(client):
     }
     assert client.put('/api/user/state', headers=auth(token), json={'data': dirty}).status_code == 200
     data = client.get('/api/user/state', headers=auth(token)).get_json()['data']
+    # math-practice-900 has no saved mistake, so its schedule is dead weight and is dropped.
     assert data['reviews'] == {'math-practice-1': {'stage': 4, 'due': '2026-11-06', 'last': ''}}
     assert data['topics'] == {'math|MATH-01': [10, 10], 'physics|Modern Physics': [2, 1]}
     assert data['lessons'] == ['math-lesson-1', 'english-lesson-2']
@@ -200,6 +203,31 @@ def test_study_extras_are_cleaned_and_bounded(client):
     assert len(data['attempts']) == 30
     assert len(data['goals']) == 30
     assert data['music'] == 'https://www.youtube.com/watch?v=abc'
+
+
+def test_the_newest_mistakes_keep_their_review_schedule(client):
+    """Past 100 mistakes the oldest are dropped; the schedules kept must be for the ones left."""
+    token = register(client).get_json()['access_token']
+    mistakes = [{'id': 'math-practice-%d' % i, 'date': '2026-11-01'} for i in range(1, 131)]
+    state = {
+        'mistakes': mistakes,
+        'reviews': {m['id']: {'stage': 2, 'due': '2026-11-10', 'last': '2026-11-03'} for m in mistakes},
+    }
+    assert client.put('/api/user/state', headers=auth(token), json={'data': state}).status_code == 200
+    data = client.get('/api/user/state', headers=auth(token)).get_json()['data']
+    kept = [m['id'] for m in data['mistakes']]
+    assert len(kept) == 100
+    assert kept[-1] == 'math-practice-130'
+    assert sorted(data['reviews']) == sorted(kept)
+
+
+def test_only_the_most_answered_topics_are_kept(client):
+    token = register(client).get_json()['access_token']
+    state = {'topics': {'math|Topic %02d' % i: [i + 1, 0] for i in range(100)}}
+    assert client.put('/api/user/state', headers=auth(token), json={'data': state}).status_code == 200
+    data = client.get('/api/user/state', headers=auth(token)).get_json()['data']
+    assert len(data['topics']) == 80
+    assert min(pair[0] for pair in data['topics'].values()) == 21
 
 
 def test_profile_and_password_change(client):

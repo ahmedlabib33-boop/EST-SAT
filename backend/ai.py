@@ -157,16 +157,32 @@ def is_exempt():
 
 
 def _gate():
-    """Returns an error response, or None and counts the call."""
+    """Returns an error response, or None when the student may ask."""
     if not _configured():
         return jsonify({'error': 'The AI coach is not switched on yet. Ask your teacher.'}), 503
     if is_exempt():
         return None
     if calls_used() >= daily_limit():
         return jsonify({'error': "You have used today's AI allowance. Everything else keeps working, and it comes back within a day."}), 429
-    db.session.add(LoginAttempt(key=_quota_key()))
-    db.session.commit()
     return None
+
+
+def _charge():
+    """Counts the call before it is made, so two tabs at once cannot both slip through."""
+    if is_exempt():
+        return None
+    row = LoginAttempt(key=_quota_key())
+    db.session.add(row)
+    db.session.commit()
+    return row
+
+
+def _refund(row):
+    """Gives the call back when the AI service failed. The student got nothing for it."""
+    if row is None:
+        return
+    db.session.delete(row)
+    db.session.commit()
 
 
 # ==================== ROUTES ====================
@@ -201,6 +217,7 @@ def coach():
     blocked = _gate()
     if blocked:
         return blocked
+    charged = _charge()
 
     try:
         if image:
@@ -218,6 +235,7 @@ def coach():
             ])
     except GroqError as exc:
         # Always 502: a 401 from Groq must never look like the student's own session expiring.
+        _refund(charged)
         return jsonify({'error': str(exc)}), 502
     return jsonify({'reply': reply}), 200
 
@@ -245,6 +263,7 @@ def cards():
     blocked = _gate()
     if blocked:
         return blocked
+    charged = _charge()
 
     try:
         text = call_groq([
@@ -252,6 +271,7 @@ def cards():
             {'role': 'user', 'content': json.dumps(clean)},
         ], max_tokens=1400, temperature=0.3, json_mode=True)
     except GroqError as exc:
+        _refund(charged)
         return jsonify({'error': str(exc)}), 502
 
     parsed = parse_json_reply(text)

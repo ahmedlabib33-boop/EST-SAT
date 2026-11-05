@@ -144,6 +144,7 @@ def clean_state(raw):
         date = m.get('date')
         seen.add(qid)
         mistakes.append({'id': qid, 'date': date if isinstance(date, str) and DATE_RE.match(date) else ''})
+    kept = mistakes[-MAX_MISTAKES:]
 
     return {
         'stats': {
@@ -155,8 +156,8 @@ def clean_state(raw):
         'chapters': chapters[:20],
         'exam': exam,
         'mission': {'date': m_date, 'done': done[:20]},
-        'mistakes': mistakes[-MAX_MISTAKES:],
-        **clean_study_extras(raw),
+        'mistakes': kept,
+        **clean_study_extras(raw, {m['id'] for m in kept}),
     }
 
 
@@ -186,27 +187,33 @@ def _date_list(values, limit):
     return out[-limit:]
 
 
-def clean_study_extras(raw):
+def clean_study_extras(raw, keep_mistakes=None):
     """The fields behind Today, Review, Exam, Rewards, Focus and the Parent view. All bounded."""
+    # A review schedule is looked up by mistake id, so only the mistakes that were kept need one.
+    # Capping this list on its own used to keep the oldest schedules and drop the newest.
     reviews = {}
     for question_id, entry in _map(raw, 'reviews').items():
+        if not isinstance(question_id, str) or not QUESTION_ID_RE.match(question_id) or not isinstance(entry, dict):
+            continue
+        if keep_mistakes is not None and question_id not in keep_mistakes:
+            continue
         if len(reviews) >= MAX_MISTAKES:
             break
-        if isinstance(question_id, str) and QUESTION_ID_RE.match(question_id) and isinstance(entry, dict):
-            reviews[question_id] = {
-                'stage': _count(entry.get('stage'), 4),
-                'due': _date_or_blank(entry.get('due')),
-                'last': _date_or_blank(entry.get('last')),
-            }
+        reviews[question_id] = {
+            'stage': _count(entry.get('stage'), 4),
+            'due': _date_or_blank(entry.get('due')),
+            'last': _date_or_blank(entry.get('last')),
+        }
 
-    topics = {}
+    # Keep the topics with the most answers, not whichever arrived first.
+    rows = []
     for key, pair in _map(raw, 'topics').items():
-        if len(topics) >= 80:
-            break
         if isinstance(key, str) and TOPIC_KEY_RE.match(key) and isinstance(pair, list) and len(pair) == 2:
             answered = _count(pair[0], 10 ** 6)
             if answered:
-                topics[key] = [answered, min(_count(pair[1], 10 ** 6), answered)]
+                rows.append((answered, key, [answered, min(_count(pair[1], 10 ** 6), answered)]))
+    rows.sort(key=lambda row: (-row[0], row[1]))
+    topics = {key: pair for _, key, pair in rows[:80]}
 
     lessons = []
     for lesson_id in _list(raw, 'lessons'):

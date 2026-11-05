@@ -143,10 +143,13 @@ def test_upstream_failure_is_never_a_401(client, monkeypatch):
         raise ai.GroqError('The AI service could not answer that. Please try again.')
 
     monkeypatch.setattr(ai, 'call_groq', boom)
+    before = client.get('/api/ai/status', headers=headers).get_json()['left']
     res = client.post('/api/ai/coach', headers=headers, json={'question': 'a'})
     assert res.status_code == 502
     assert 'AI service' in res.get_json()['error']
     assert client.post('/api/ai/cards', headers=headers, json={'items': [{'id': 'a'}]}).status_code == 502
+    # The student got no answer, so neither call may come out of their daily allowance.
+    assert client.get('/api/ai/status', headers=headers).get_json()['left'] == before
 
 
 def test_cards_keep_only_known_ids_and_clip_text(client, groq):
