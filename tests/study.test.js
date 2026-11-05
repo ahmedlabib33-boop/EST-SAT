@@ -267,3 +267,76 @@ test('reset clears progress but keeps the exam date and music link', () => {
   assert.equal(s.xp, 0);
   assert.deepEqual(s.lessons, []);
 });
+
+const LESSONS = {
+  math: {
+    topics: [{ id: 'M1', name: 'Algebra' }],
+    lessons: ['Speed Formula', 'Slope Formula', 'Slope Intercept Form', 'Horizontal Line Equation', 'Zero Product Rule', 'Mean', 'Linear Equation', 'Circle Equation', 'Absolute Value Equation', 'Vertical Line Equation', 'Quadratic Standard Form', 'Percent formula', 'Triangle Area']
+      .map((title, i) => ({ id: 'm' + i, topicId: 'M1', title }))
+  },
+  english: {
+    topics: [{ id: 'E1', name: 'Verb tenses' }, { id: 'E2', name: 'Vocabulary in context' }, { id: 'E3', name: 'Reading comprehension and writing' }],
+    lessons: [['Future time clauses', 'E1'], ['At / on / in time', 'E1'], ['Past perfect', 'E1'], ['Zero article', 'E1'], ['Comma in list', 'E1'], ['Intro comma', 'E1'], ['Comma splice', 'E1'], ['Who / whom', 'E1'], ['The', 'E1'], ['novel', 'E2'], ['factor', 'E2'], ['Purpose', 'E3']]
+      .map(([title, topicId], i) => ({ id: 'e' + i, topicId, title }))
+  }
+};
+const titles = (question, reply) => S.relatedLessons(question, reply, LESSONS).picks.map((p) => p.lesson.title);
+
+test('a physics question gets the formula vault, not lessons that share a word with it', () => {
+  const reply = 'Use v = v0 + a t. The speed after this time follows the formula, and the future velocity is 24 m/s.';
+  const found = S.relatedLessons('A car starts from rest and accelerates at 3 m/s^2 for 8 s. What is its final velocity?', reply, LESSONS);
+  assert.equal(found.physics, true);
+  assert.deepEqual(found.picks, []);
+});
+
+test('related lessons come from the words in the question', () => {
+  const picks = titles('Why is the slope of a horizontal line zero?', 'A horizontal line has zero slope because rise is zero.');
+  assert.ok(picks.includes('Slope Formula'));
+  assert.ok(picks.includes('Horizontal Line Equation'));
+  assert.ok(!picks.includes('Zero Product Rule'));
+  assert.ok(!picks.includes('Zero article'));
+});
+
+test('words in the answer alone do not bring in unrelated lessons', () => {
+  const picks = titles('How do I work out 15 + 27?', 'Add the tens, then the ones. The time you save follows a simple formula, and the future is bright.');
+  assert.deepEqual(picks, []);
+});
+
+test('a grammar question stays in English', () => {
+  assert.deepEqual(titles('What is the past perfect tense?', 'The past perfect uses had.'), ['Past perfect']);
+  const commas = titles('When do I use a comma?', 'Commas separate items.');
+  assert.equal(commas.length, 3);
+  assert.ok(commas.every((t) => /comma/i.test(t)));
+});
+
+test('everyday words need the question to be about the word', () => {
+  assert.deepEqual(titles('What does novel mean?', 'New and original.'), ['novel']);
+  assert.deepEqual(titles('Which choice best shows the rule "novel"?', 'It means new.'), ['novel']);
+  assert.deepEqual(titles('I read a novel for school. What is a good summary?', 'A summary is short.'), []);
+  assert.ok(!titles('Solve this: factor x^2 - 5x + 6 = 0', 'The roots are 2 and 3.').includes('factor'));
+});
+
+test('"what does this mean" does not link to the Mean lesson, but the mean of numbers does', () => {
+  assert.ok(!titles('What does this mean?', 'It means the answer is 4.').includes('Mean'));
+  assert.ok(titles('How do I find the mean of 3, 5 and 7?', 'Add them and divide by 3.').includes('Mean'));
+});
+
+test('small-word lessons need the words named', () => {
+  assert.deepEqual(titles('Should I say who or whom here?', 'Use whom after a preposition.'), ['Who / whom']);
+  assert.deepEqual(titles('When do I use "the"?', 'For something specific.'), ['The']);
+  assert.ok(!titles('What is the capital of France?', 'Paris.').includes('The'));
+});
+
+test('a photo with no typed question matches only full titles from the answer', () => {
+  const picks = titles('', 'This is a quadratic in standard form. The slope is not needed.');
+  assert.deepEqual(picks, ['Quadratic Standard Form']);
+});
+
+test('a question in Arabic is matched through a title named in the answer', () => {
+  assert.deepEqual(titles('ما هو الميل؟', 'The slope formula is rise over run.'), ['Slope Formula']);
+});
+
+test('nothing related means nothing is shown', () => {
+  assert.deepEqual(titles('Hello, can you help me?', 'Of course!'), []);
+  assert.deepEqual(S.relatedLessons('hello', 'hi', null).picks, []);
+});

@@ -399,6 +399,88 @@
     return since.length > (a.sameDay || 0);
   }
 
+  // ---------- Related lessons for the AI coach ----------
+  // Showing nothing is better than a lesson that only shares a word with the question.
+  var RELATED_STOP = ('the and for are was were what why how when where which who that this with from your have has ' +
+    'then than does did can could would should will about into there their them they you our not but its use used ' +
+    'using find get give show shows explain tell help rule rules formula formulas concept definition case form model ' +
+    'relation property value values time times number numbers word words question answer example problem best choice ' +
+    'correct right wrong difference between same make makes work').split(' ');
+  var SUBJECT_TERMS = {
+    physics: /\b(velocity|accelerat\w*|forces?|newtons?|momentum|kinetic|energy|volts?|voltage|amperes?|resistors?|resistance|ohms?|circuits?|wavelength|frequency|photons?|electrons?|magneti\w*|gravit\w*|friction|projectile|torque|joules?|watts?|isotopes?|half-life|nuclear|radioactive|doppler|capacitors?|inertia|displacement)\b|\bm\/s\b/g,
+    math: /\b(equations?|solve|factori[sz]e|quadratic|polynomials?|derivatives?|integrals?|slopes?|intercepts?|triangles?|circles?|angles?|radius|diameter|perimeter|area|volume|sine?|cos(ine)?|tan(gent)?|logs?|logarithms?|fractions?|percent(age)?|ratio|proportion|probability|median|graph|inequalit\w*|exponents?|roots?|matrix|sequence|sum|multiply|divide|subtract)\b|\d\s*[-+*\/=^]\s*\d|\d[a-z]\b|=/g,
+    english: /\b(grammar|sentences?|verbs?|nouns?|pronouns?|adjectives?|adverbs?|prepositions?|tenses?|clauses?|commas?|semicolons?|apostrophes?|punctuation|synonyms?|antonyms?|vocabulary|paragraphs?|passages?|essays?|spelling|conjunctions?|gerunds?|infinitives?|articles?|conditionals?|plural|singular)\b/g
+  };
+  function relatedTokens(text, keepStops) {
+    var seen = {}, out = [];
+    (String(text || '').toLowerCase().match(/[a-z]{2,}/g) || []).forEach(function (word) {
+      if (!keepStops && (word.length < 3 || RELATED_STOP.indexOf(word) >= 0)) return;
+      var stem = word.length > 7 ? word.slice(0, 7) : word.replace(/s$/, '');
+      if (!seen[stem]) { seen[stem] = true; out.push(stem); }
+    });
+    return out;
+  }
+  function guessSubject(text) {
+    function count(subject) { return (text.match(SUBJECT_TERMS[subject]) || []).length; }
+    var physics = count('physics'), math = count('math'), english = count('english');
+    if (physics && physics >= english) return 'physics';
+    return math > english ? 'math' : english > math ? 'english' : '';
+  }
+  // Physics has no lessons yet, so a physics question gets { physics: true } and no picks.
+  function relatedLessons(question, reply, catalog) {
+    var raw = String(question || '').toLowerCase(), answer = String(reply || '').toLowerCase();
+    // "What does this mean?" is not a question about the statistics lesson called Mean.
+    var asked = raw.replace(/\b(does|do|did)\b([^?.!]*)\bmean(?=\s*(?:[?.!]|$))/g, '$2').replace(/\bmean (by|that|to)\b/g, ' ');
+    var typed = relatedTokens(asked), subject = guessSubject(typed.length ? asked : answer);
+    if (subject === 'physics') return { physics: true, picks: [] };
+    // A photo or an Arabic question has no English words to match, so the reply stands in for it.
+    var inQuestion = typed.length ? typed : relatedTokens(answer), inReply = relatedTokens(answer);
+    var allQuestionWords = relatedTokens(raw, true);
+    var aboutWords = /\b(mean|meaning|means|define|definition|synonyms?|antonyms?|vocabulary|passage|reading|paragraph|author|essay)\b/.test(raw);
+    var picks = [];
+    ['math', 'english'].forEach(function (name) {
+      if ((subject && subject !== name) || !catalog || !catalog[name]) return;
+      var softTopics = {}, usage = {};
+      (catalog[name].topics || []).forEach(function (topic) { if (/vocab|reading/i.test(topic.name)) softTopics[topic.id] = true; });
+      var lessons = catalog[name].lessons || [];
+      lessons.forEach(function (l) { relatedTokens(l.title).forEach(function (w) { usage[w] = (usage[w] || 0) + 1; }); });
+      lessons.forEach(function (lesson) {
+        var words = relatedTokens(lesson.title);
+        if (!words.length) {
+          // Titles made only of small words, such as "Some / any" or "Who / whom".
+          var small = relatedTokens(lesson.title, true);
+          var quoted = small.length === 1 && new RegExp('[\'"‘“]' + small[0] + '[\'"’”]').test(raw);
+          var named = small.length > 1 && small.every(function (w) { return allQuestionWords.indexOf(w) >= 0; });
+          if (quoted || named) picks.push({ score: 9, subject: name, lesson: lesson });
+          return;
+        }
+        var hits = words.filter(function (w) { return inQuestion.indexOf(w) >= 0; });
+        var extra = words.filter(function (w) { return inReply.indexOf(w) >= 0; }).length;
+        var full = hits.length === words.length;
+        var literal = subject && lesson.title.indexOf(' ') > 0 && answer.indexOf(lesson.title.toLowerCase()) >= 0;
+        // Everyday words such as "novel" or "purpose" count only if the question is about words.
+        if (words.length === 1 && softTopics[lesson.topicId]) {
+          var isQuoted = new RegExp('[\'"‘“]' + lesson.title.toLowerCase() + '[\'"’”]').test(raw);
+          if (full && (isQuoted || aboutWords)) picks.push({ score: 9, subject: name, lesson: lesson });
+          return;
+        }
+        if (!typed.length && words.length < 2 && !literal) return;
+        var rare = typed.length && subject && hits.some(function (w) { return w.length >= 5 && usage[w] <= 4; });
+        if (full || hits.length >= 2 || rare) {
+          picks.push({ score: hits.length * 3 + (full ? 3 : 0) + extra, subject: name, lesson: lesson });
+        } else if (literal || (subject && words.length >= 2 && extra === words.length)) {
+          // The title is in the answer, such as "Quadratic Standard Form".
+          picks.push({ score: 1, subject: name, lesson: lesson });
+        }
+      });
+    });
+    picks.sort(function (a, b) { return b.score - a.score; });
+    return {
+      physics: false,
+      picks: picks.slice(0, 3).map(function (p) { return { subject: p.subject, lesson: p.lesson }; })
+    };
+  }
+
   // ---------- Small rewards (browser only; every one can be turned off) ----------
   var SETTINGS_KEY = 'estsat.settings';
   function getSettings() {
@@ -502,6 +584,7 @@
     reviewState: reviewState, scheduleReview: scheduleReview, reviewQueue: reviewQueue, reviewSummary: reviewSummary, reviewLabel: reviewLabel,
     topicRows: topicRows, topGains: topGains, readiness: readiness, dailyPlan: dailyPlan, levelFor: levelFor, streak: streak, freezesLeft: freezesLeft, updateFreezes: updateFreezes, badges: badges,
     weeklyChallenge: weeklyChallenge, minutesStudied: minutesStudied, goalLabel: goalLabel, goalReached: goalReached, unlockGoals: unlockGoals, assignmentDone: assignmentDone,
+    relatedLessons: relatedLessons,
     getSettings: getSettings, setSetting: setSetting, celebrate: celebrate, vibrate: vibrate, saveVoice: saveVoice, loadVoice: loadVoice, deleteVoice: deleteVoice
   };
 }));

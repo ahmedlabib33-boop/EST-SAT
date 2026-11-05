@@ -140,9 +140,6 @@
     });
   });
 
-  function words(text) {
-    return (text.toLowerCase().match(/[a-z]{4,}/g) || []).filter(function (w) { return ['what', 'that', 'this', 'with', 'from', 'your', 'have', 'then', 'when', 'which', 'first', 'step', 'next', 'rule'].indexOf(w) < 0; });
-  }
   function showReply(question, reply) {
     var box = A.byId('replyBox');
     box.hidden = false;
@@ -150,20 +147,19 @@
     A.clear(A.byId('replyText')).textContent = reply;
     A.byId('readBtn').hidden = !('speechSynthesis' in window);
     box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    var rel = A.clear(A.byId('related'));
     A.catalog().then(function (c) {
-      var have = {}, picks = [];
-      words(question + ' ' + question + ' ' + reply).forEach(function (w) { have[w] = (have[w] || 0) + 1; });
-      ['math', 'english'].forEach(function (subject) {
-        c[subject].lessons.forEach(function (l) {
-          var score = words(l.title).reduce(function (sum, w) { return sum + (have[w] || 0); }, 0);
-          if (score) picks.push({ score: score, subject: subject, lesson: l });
-        });
-      });
-      picks.sort(function (a, b) { return b.score - a.score; });
-      var rel = A.clear(A.byId('related'));
-      if (!picks.length) return;
+      var found = window.EstSatStudy.relatedLessons(question, reply, c);
+      if (found.physics) {
+        rel.appendChild(el('h3', 'sub-head', 'Related'));
+        var vault = el('a', 'btn btn-ghost btn-sm', 'Physics formulas');
+        vault.href = 'index.html#formulas';
+        rel.appendChild(vault);
+        return;
+      }
+      if (!found.picks.length) return;
       rel.appendChild(el('h3', 'sub-head', 'Related lessons'));
-      picks.slice(0, 3).forEach(function (p) {
+      found.picks.forEach(function (p) {
         var a = el('a', 'btn btn-ghost btn-sm', p.lesson.title);
         a.href = 'learn.html?subject=' + p.subject + '&lesson=' + encodeURIComponent(p.lesson.id);
         rel.appendChild(a);
