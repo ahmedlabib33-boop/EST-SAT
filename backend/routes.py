@@ -26,7 +26,9 @@ blueprints = [auth_bp, courses_bp, quiz_bp, progress_bp, user_bp, admin_bp]
 USERNAME_RE = re.compile(r'^[A-Za-z0-9_.]{3,30}$')
 EMAIL_RE = re.compile(r'^[^@\s]+@[^@\s]+\.[^@\s]+$')
 DATE_RE = re.compile(r'^\d{4}-\d{2}-\d{2}$')
-CHAPTER_RE = re.compile(r'^(math|physics)-\d{1,2}$')
+CHAPTER_RE = re.compile(r'^(math|physics|english)-\d{1,2}$')
+QUESTION_ID_RE = re.compile(r'^(math|english)-practice-\d{1,5}$')
+MAX_MISTAKES = 100
 STAFF_ROLES = ('admin', 'teacher')
 FAIL_WINDOW = timedelta(minutes=15)
 MAX_FAILS_PER_ACCOUNT = 8
@@ -122,6 +124,21 @@ def clean_state(raw):
         if isinstance(i, int) and not isinstance(i, bool) and 0 <= i < 1000 and i not in done:
             done.append(i)
 
+    # Questions answered wrongly, for the review list. Only the id and the date are
+    # kept: the question text, correct answer and explanation stay on the server and
+    # are fetched from /api/practice/review, so the blob stays small and nothing here
+    # can be used to recover an answer key.
+    mistakes, seen = [], set()
+    for m in raw.get('mistakes') if isinstance(raw.get('mistakes'), list) else []:
+        if not isinstance(m, dict):
+            continue
+        qid = m.get('id')
+        if not isinstance(qid, str) or not QUESTION_ID_RE.match(qid) or qid in seen:
+            continue
+        date = m.get('date')
+        seen.add(qid)
+        mistakes.append({'id': qid, 'date': date if isinstance(date, str) and DATE_RE.match(date) else ''})
+
     return {
         'stats': {
             'answered': answered,
@@ -132,6 +149,7 @@ def clean_state(raw):
         'chapters': chapters[:20],
         'exam': exam,
         'mission': {'date': m_date, 'done': done[:20]},
+        'mistakes': mistakes[-MAX_MISTAKES:],
     }
 
 
@@ -147,6 +165,7 @@ def summarize_state(data):
         'active_days': len(days),
         'last_active': max(days) if days else None,
         'exam': data.get('exam') or None,
+        'to_review': len(data.get('mistakes') or []),
     }
 
 

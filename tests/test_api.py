@@ -90,9 +90,16 @@ def test_state_sync_is_cleaned(client):
     dirty = {
         'stats': {'answered': 10, 'correct': 99, 'time': 300, 'evil': 'x'},
         'days': {'2026-11-04': 4, 'nope': 3, '2026-11-03': 0},
-        'chapters': ['math-0', 'physics-5', 'math-0', '<script>'],
+        'chapters': ['math-0', 'physics-5', 'english-11', 'math-0', '<script>'],
         'exam': '2026-12-05',
         'mission': {'date': '2026-11-04', 'done': [1, 2, 'x', True]},
+        'mistakes': [
+            {'id': 'english-practice-7', 'date': '2026-11-04'},
+            {'id': 'math-practice-12', 'date': 'nope'},
+            {'id': 'english-practice-7', 'date': '2026-11-04'},
+            {'id': '../../etc/passwd', 'date': '2026-11-04'},
+            'not-a-dict',
+        ],
         'extra': {'a': 1},
     }
     res = client.put('/api/user/state', headers=auth(token), json={'data': dirty})
@@ -101,9 +108,13 @@ def test_state_sync_is_cleaned(client):
     assert data == {
         'stats': {'answered': 10, 'correct': 10, 'time': 300},
         'days': {'2026-11-04': 4},
-        'chapters': ['math-0', 'physics-5'],
+        'chapters': ['math-0', 'physics-5', 'english-11'],
         'exam': '2026-12-05',
         'mission': {'date': '2026-11-04', 'done': [1, 2]},
+        'mistakes': [
+            {'id': 'english-practice-7', 'date': '2026-11-04'},
+            {'id': 'math-practice-12', 'date': ''},
+        ],
     }
     assert client.put('/api/user/state', headers=auth(token), json={'data': 'nope'}).status_code == 400
 
@@ -134,7 +145,7 @@ def test_teacher_endpoints(client):
     assert students['total'] == 1
     progress = students['students'][0]['progress']
     assert progress == {'answered': 4, 'accuracy': 75, 'chapters_done': 1, 'active_days': 1,
-                        'last_active': '2026-11-04', 'exam': None}
+                        'last_active': '2026-11-04', 'exam': None, 'to_review': 0}
 
     sara_id = students['students'][0]['id']
     reset = client.post(f'/api/admin/users/{sara_id}/reset-password', headers=auth(teacher_token)).get_json()

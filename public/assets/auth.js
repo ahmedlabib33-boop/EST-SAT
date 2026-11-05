@@ -63,6 +63,16 @@
     (a || []).concat(b || []).forEach(function (x) { if (out.indexOf(x) < 0) out.push(x); });
     return out;
   }
+  // Wrong answers waiting to be reviewed, newest last, deduped by question id.
+  function unionMistakes(a, b) {
+    var out = [], seen = {};
+    (a || []).concat(b || []).forEach(function (m) {
+      if (!m || typeof m.id !== 'string' || seen[m.id]) { return; }
+      seen[m.id] = 1;
+      out.push({ id: m.id, date: m.date || '' });
+    });
+    return out.slice(-100);
+  }
   function mergeState(local, remote) {
     local = local || {}; remote = remote || {};
     var ls = local.stats || {}, rs = remote.stats || {};
@@ -79,7 +89,8 @@
       days: days,
       chapters: union(local.chapters, remote.chapters),
       exam: remote.exam || local.exam || '',
-      mission: { date: mission.date || '', done: (mission.done || []).slice() }
+      mission: { date: mission.date || '', done: (mission.done || []).slice() },
+      mistakes: unionMistakes(local.mistakes, remote.mistakes)
     };
   }
   function pushState(s, keepalive) {

@@ -1,0 +1,180 @@
+import os
+
+import pytest
+
+os.environ['DATABASE_URL'] = 'sqlite://'
+os.environ.pop('VERCEL', None)
+
+from backend import create_app  # noqa: E402
+from backend.extensions import db  # noqa: E402
+
+
+@pytest.fixture
+def client():
+    app = create_app({'TESTING': True})
+    with app.app_context():
+        with app.test_client() as c:
+            yield c
+        db.session.remove()
+        db.drop_all()
+
+
+def register(client, username='reviewer'):
+    res = client.post('/api/auth/register', json={
+        'username': username,
+        'email': username + '@example.com',
+        'password': 'practice-pass-1',
+        'full_name': 'Review Student',
+    })
+    return res.get_json()['access_token']
+
+
+def auth(token):
+    return {'Authorization': 'Bearer ' + token}
+
+
+def first_lesson_with_questions(client, subject):
+    data = client.get('/api/practice/' + subject + '/topics').get_json()
+    return next(l for l in data['lessons'] if l['questions'] > 0)
+
+
+# ---------------------------------------------------------------- content
+
+def test_banks_are_loaded(client):
+    counts = {s['subject']: s for s in client.get('/api/practice/subjects').get_json()['subjects']}
+    # 155, not the workbook's 159: four math rows repeat an earlier lesson verbatim.
+    assert counts['math'] == {'subject': 'math', 'topics': 5, 'lessons': 155, 'questions': 308}
+    assert counts['english'] == {'subject': 'english', 'topics': 12, 'lessons': 157, 'questions': 314}
+
+
+def test_unknown_subject_is_rejected(client):
+    assert client.get('/api/practice/physics/topics').status_code == 400
+    assert client.get('/api/practice/nope/topics').status_code == 400
+    assert client.get('/api/practice/random?subject=nope').status_code == 400
+
+
+def test_unknown_lesson_is_404(client):
+    assert client.get('/api/practice/math/lessons/math-lesson-99999').status_code == 404
+
+
+def test_every_english_lesson_has_its_own_questions(client):
+    """The source workbook keys English practice on the topic name, which would make
+    all 157 rules share 12 question pairs. The importer keys on the rule instead."""
+    data = client.get('/api/practice/english/topics').get_json()
+    assert len(data['lessons']) == 157
+    assert all(l['questions'] == 2 for l in data['lessons'])
+
+    topic = data['topics'][0]['id']
+    in_topic = [l for l in data['lessons'] if l['topicId'] == topic]
+    assert len(in_topic) > 1
+
+    seen = set()
+    for lesson in in_topic:
+        body = client.get('/api/practice/english/lessons/' + lesson['id']).get_json()
+        ids = tuple(q['id'] for q in body['questions'])
+        assert ids not in seen, 'two rules share the same questions'
+        seen.add(ids)
+
+
+# ---------------------------------------------------------------- no leaks
+
+@pytest.mark.parametrize('subject', ['math', 'english'])
+def test_questions_never_carry_their_answer(client, subject):
+    lesson = first_lesson_with_questions(client, subject)
+    body = client.get('/api/practice/' + subject + '/lessons/' + lesson['id']).get_json()
+    assert body['questions']
+    for question in body['questions']:
+        assert 'answer' not in question
+        assert 'explanation' not in question
+        assert len(question['choices']) == 4
+
+
+def test_random_questions_never_carry_their_answer(client):
+    body = client.get('/api/practice/random?subject=all&n=20').get_json()
+    assert len(body['questions']) == 20
+    assert all('answer' not in q and 'explanation' not in q for q in body['questions'])
+
+
+def test_random_respects_subject_and_caps_n(client):
+    body = client.get('/api/practice/random?subject=math&n=5').get_json()
+    assert len(body['questions']) == 5
+    assert {q['subject'] for q in body['questions']} == {'math'}
+    assert len(client.get('/api/practice/random?n=999').get_json()['questions']) == 50
+
+
+# ----------------------------------------------------------------- grading
+
+def test_grading_marks_right_and_wrong(client):
+    lesson = first_lesson_with_questions(client, 'math')
+    question = client.get('/api/practice/math/lessons/' + lesson['id']).get_json()['questions'][0]
+
+    letters = [c['id'] for c in question['choices']]
+    graded = client.post('/api/practice/grade',
+                         json={'items': [{'id': question['id'], 'answer': letter} for letter in letters]})
+    results = graded.get_json()
+    assert results['total'] == 4
+    assert results['score'] == 1
+    assert results['percent'] == 25
+
+    right = [r for r in results['results'] if r['correct']]
+    assert len(right) == 1
+    assert right[0]['answer'] == right[0]['selected']
+    assert right[0]['explanation']
+
+
+def test_grading_is_case_insensitive(client):
+    question = client.get('/api/practice/random?subject=math&n=1').get_json()['questions'][0]
+    upper = client.post('/api/practice/grade', json={'items': [{'id': question['id'], 'answer': 'a'}]}).get_json()
+    lower = client.post('/api/practice/grade', json={'items': [{'id': question['id'], 'answer': 'A'}]}).get_json()
+    assert upper['results'][0]['correct'] == lower['results'][0]['correct']
+
+
+def test_unknown_question_is_reported_and_excluded(client):
+    question = client.get('/api/practice/random?subject=english&n=1').get_json()['questions'][0]
+    graded = client.post('/api/practice/grade', json={'items': [
+        {'id': question['id'], 'answer': question['choices'][0]['id']},
+        {'id': 'does-not-exist'},
+    ]}).get_json()
+    assert graded['total'] == 1
+    assert graded['results'][1] == {'id': 'does-not-exist', 'error': 'Question not found.'}
+
+
+def test_grade_rejects_bad_payloads(client):
+    assert client.post('/api/practice/grade', json={}).status_code == 400
+    assert client.post('/api/practice/grade', json={'items': []}).status_code == 400
+    assert client.post('/api/practice/grade',
+                       json={'items': [{'id': 'x', 'answer': 'A'}] * 101}).status_code == 400
+
+
+def test_blank_answer_is_wrong_not_an_error(client):
+    question = client.get('/api/practice/random?subject=math&n=1').get_json()['questions'][0]
+    graded = client.post('/api/practice/grade', json={'items': [{'id': question['id'], 'answer': ''}]}).get_json()
+    assert graded['total'] == 1 and graded['score'] == 0
+    assert graded['results'][0]['correct'] is False
+
+
+# ------------------------------------------------------------------ review
+
+def test_review_needs_a_login(client):
+    assert client.get('/api/practice/review').status_code == 401
+
+
+def test_review_returns_only_this_student_s_mistakes(client):
+    token = register(client)
+    assert client.get('/api/practice/review', headers=auth(token)).get_json() == {'total': 0, 'questions': []}
+
+    question = client.get('/api/practice/random?subject=english&n=1').get_json()['questions'][0]
+    client.put('/api/user/state', headers=auth(token), json={'data': {
+        'mistakes': [{'id': question['id'], 'date': '2026-11-05'}],
+    }})
+
+    body = client.get('/api/practice/review', headers=auth(token)).get_json()
+    assert body['total'] == 1
+    item = body['questions'][0]
+    assert item['id'] == question['id']
+    # Revealed here, and only here: this account has already missed this question.
+    assert item['answer'] in ('A', 'B', 'C', 'D')
+    assert item['explanation']
+
+    other = register(client, username='someone.else')
+    assert client.get('/api/practice/review', headers=auth(other)).get_json()['total'] == 0

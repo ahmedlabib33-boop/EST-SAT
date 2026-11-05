@@ -141,6 +141,8 @@
       <h3>Chapters</h3>
       <div class="sp-head"><b>Mathematics</b><span id="dMathCount"></span></div>
       <div class="chips" id="dMath"></div>
+      <div class="sp-head" style="margin-top:14px"><b>English</b><span id="dEngCount"></span></div>
+      <div class="chips" id="dEng"></div>
       <div class="sp-head" style="margin-top:14px"><b>Physics</b><span id="dPhysCount"></span></div>
       <div class="chips" id="dPhys"></div>
     </div>
@@ -167,8 +169,10 @@
 
   var CHAPTERS = {
     math: ['Algebra & Polynomials', 'Trigonometry', 'Logarithms & Exponentials', 'Calculus Basics', 'Geometry & Vectors'],
+    english: ['Parts of Speech & Sentence Structure', 'Subject–Verb Agreement', 'Verb Tenses', 'Pronouns & Reference', 'Articles, Determiners & Prepositions', 'Modals, Gerunds & Infinitives', 'Comparatives & Parallel Structure', 'Clauses, Conditionals & Reported Speech', 'Relative Clauses', 'Punctuation & Sentence Types', 'Vocabulary in Context', 'Reading Comprehension & Writing'],
     physics: ['Mechanics & Motion', 'Energy & Work', 'Waves & Oscillations', 'Electricity & Current', 'Magnetism & Electromagnetism', 'Modern Physics']
   };
+  var TOTAL_CHAPTERS = CHAPTERS.math.length + CHAPTERS.english.length + CHAPTERS.physics.length;
   function $(id) { return document.getElementById(id); }
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function keyOf(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
@@ -311,7 +315,7 @@
       name.insertBefore(b, name.firstChild);
       cell(tr, String(p.answered || 0));
       cell(tr, p.accuracy == null ? '—' : p.accuracy + '%');
-      cell(tr, (p.chapters_done || 0) + ' / 11');
+      cell(tr, (p.chapters_done || 0) + ' / ' + TOTAL_CHAPTERS);
       cell(tr, relDay(p.last_active));
       cell(tr, examText(p.exam));
       var st = cell(tr, '');
@@ -377,7 +381,7 @@
     $('dAccuracy').textContent = p.accuracy == null ? '—' : p.accuracy + '%';
     $('dDays').textContent = p.active_days || 0;
     $('dExam').textContent = examText(p.exam);
-    [['math', 'dMath', 'dMathCount'], ['physics', 'dPhys', 'dPhysCount']].forEach(function (cfg) {
+    [['math', 'dMath', 'dMathCount'], ['english', 'dEng', 'dEngCount'], ['physics', 'dPhys', 'dPhysCount']].forEach(function (cfg) {
       var box = $(cfg[1]), done = 0;
       box.innerHTML = '';
       CHAPTERS[cfg[0]].forEach(function (name, i) {

@@ -96,11 +96,22 @@
               <div class="chips" id="mathChips"></div>
             </div>
             <div>
+              <div class="sp-head"><b>English</b><span id="engCount">0 / 12</span></div>
+              <div class="bar english"><i id="engBar" style="width:0%"></i></div>
+              <div class="chips" id="engChips"></div>
+            </div>
+            <div>
               <div class="sp-head"><b>Physics</b><span id="physCount">0 / 6</span></div>
               <div class="bar physics"><i id="physBar" style="width:0%"></i></div>
               <div class="chips" id="physChips"></div>
             </div>
           </div>
+        </section>
+
+        <section class="panel card">
+          <h2>Review your mistakes</h2>
+          <p class="sub" id="reviewSub">Questions you got wrong, with the explanation.</p>
+          <div id="reviewList"></div>
         </section>
 
         <section class="panel card">
@@ -157,8 +168,10 @@
 
   var CHAPTERS = {
     math: ['Algebra & Polynomials', 'Trigonometry', 'Logarithms & Exponentials', 'Calculus Basics', 'Geometry & Vectors'],
+    english: ['Parts of Speech & Sentence Structure', 'Subject–Verb Agreement', 'Verb Tenses', 'Pronouns & Reference', 'Articles, Determiners & Prepositions', 'Modals, Gerunds & Infinitives', 'Comparatives & Parallel Structure', 'Clauses, Conditionals & Reported Speech', 'Relative Clauses', 'Punctuation & Sentence Types', 'Vocabulary in Context', 'Reading Comprehension & Writing'],
     physics: ['Mechanics & Motion', 'Energy & Work', 'Waves & Oscillations', 'Electricity & Current', 'Magnetism & Electromagnetism', 'Modern Physics']
   };
+  var TOTAL_CHAPTERS = CHAPTERS.math.length + CHAPTERS.english.length + CHAPTERS.physics.length;
   function $(id) { return document.getElementById(id); }
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function keyOf(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
@@ -217,7 +230,9 @@
     $('kBest').textContent = st.best + 'd';
     $('kExam').textContent = examText(s.exam);
 
-    [['math', 'mathCount', 'mathBar', 'mathChips'], ['physics', 'physCount', 'physBar', 'physChips']].forEach(function (cfg) {
+    [['math', 'mathCount', 'mathBar', 'mathChips'],
+     ['english', 'engCount', 'engBar', 'engChips'],
+     ['physics', 'physCount', 'physBar', 'physChips']].forEach(function (cfg) {
       var names = CHAPTERS[cfg[0]], done = 0, box = $(cfg[3]);
       box.innerHTML = '';
       names.forEach(function (name, i) {
@@ -275,7 +290,7 @@
         [s.full_name || s.username, '@' + s.username + ' · ' + s.email],
         [String(p.answered || 0)],
         [p.accuracy == null ? '—' : p.accuracy + '%'],
-        [(p.chapters_done || 0) + ' / 11'],
+        [(p.chapters_done || 0) + ' / ' + TOTAL_CHAPTERS],
         [relDay(p.last_active)],
         [examText(p.exam)]
       ];
@@ -340,6 +355,53 @@
   });
 
   // ---------- Load ----------
+  // The questions you got wrong. Only the ids are stored in your progress; the
+  // text, correct answer and explanation come from the server, which hands them
+  // over only for questions this account has actually missed.
+  function loadReview() {
+    E.api('/practice/review').then(function (res) {
+      var list = $('reviewList'), items = res.questions || [];
+      list.innerHTML = '';
+      $('reviewSub').textContent = items.length
+        ? items.length + ' question' + (items.length === 1 ? '' : 's') + ' to go over.'
+        : 'Nothing to review yet — answer some practice questions first.';
+
+      items.slice().reverse().forEach(function (q) {
+        var card = document.createElement('article');
+        card.className = 'review-item';
+
+        var meta = document.createElement('p');
+        meta.className = 'review-meta';
+        meta.textContent = (q.subject === 'english' ? 'English' : 'Math') + (q.topic ? ' · ' + q.topic : '');
+        card.appendChild(meta);
+
+        var text = document.createElement('p');
+        text.className = 'review-q';
+        text.textContent = q.question;
+        card.appendChild(text);
+
+        (q.choices || []).forEach(function (c) {
+          if (c.id !== q.answer) { return; }
+          var ans = document.createElement('p');
+          ans.className = 'review-answer';
+          ans.textContent = 'Answer ' + c.id + ': ' + c.text;
+          card.appendChild(ans);
+        });
+
+        (q.explanation || []).forEach(function (step) {
+          var p = document.createElement('p');
+          p.className = 'review-why';
+          p.textContent = step;
+          card.appendChild(p);
+        });
+
+        list.appendChild(card);
+      });
+    }).catch(function () {
+      $('reviewSub').textContent = 'Could not load your review list.';
+    });
+  }
+
   Promise.all([E.api('/auth/me'), E.pullState(false).catch(function () { return E.readState(); })])
     .then(function (r) {
       var u = r[0].user;
@@ -348,6 +410,7 @@
       renderState(r[1]);
       $('loading').hidden = true;
       $('app').hidden = false;
+      loadReview();
       if (staff) loadStudents();
     })
     .catch(function (err) {
