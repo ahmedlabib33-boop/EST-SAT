@@ -1,0 +1,2328 @@
+{
+ "lessons": [
+  {
+   "arabic": "السرعة = المسافة ÷ الزمن",
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "example": "A runner covers 120 m in 8 s: v = 120 ÷ 8 = 15 m/s.",
+   "explanation": [
+    "Speed is how much distance is covered in each second.",
+    "Divide the distance by the time taken.",
+    "The unit comes from the division: metres ÷ seconds = m/s."
+   ],
+   "formula": "v = d / t",
+   "id": "physics-lesson-1",
+   "key": "Speed",
+   "tip": "Average speed uses the whole journey, even the parts at rest.",
+   "title": "Speed",
+   "topicId": "PHY-01",
+   "topicTitle": "Speed"
+  },
+  {
+   "arabic": "الإزاحة مقدار متجه",
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "example": "Walk 3 m east then 3 m west in 2 s: distance 6 m, displacement 0, so average velocity is 0.",
+   "explanation": [
+    "Speed has size only; velocity also has a direction.",
+    "Displacement is the straight line from start to finish, not the path walked.",
+    "A full circle brings you back to the start, so the displacement is zero."
+   ],
+   "formula": "velocity = displacement / time",
+   "id": "physics-lesson-2",
+   "key": "Velocity and displacement",
+   "tip": "If a question says \"returns to the start\", the displacement is zero.",
+   "title": "Velocity and displacement",
+   "topicId": "PHY-01",
+   "topicTitle": "Velocity and displacement"
+  },
+  {
+   "arabic": "العجلة = التغير في السرعة ÷ الزمن",
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "example": "From rest to 24 m/s in 8 s: a = (24 − 0) ÷ 8 = 3 m/s².",
+   "explanation": [
+    "Acceleration is how much the velocity changes each second.",
+    "Take the change in velocity and divide by the time it took.",
+    "A negative answer means slowing down."
+   ],
+   "formula": "a = (v − u) / t",
+   "id": "physics-lesson-3",
+   "key": "Acceleration",
+   "tip": "\"From rest\" always means u = 0.",
+   "title": "Acceleration",
+   "topicId": "PHY-01",
+   "topicTitle": "Acceleration"
+  },
+  {
+   "arabic": "سرعة نهائية = الابتدائية + العجلة × الزمن",
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "example": "u = 5 m/s, a = 2 m/s², t = 4 s: v = 5 + 2(4) = 13 m/s.",
+   "explanation": [
+    "Start from the velocity you already have, then add what the acceleration adds.",
+    "Each second adds a more metres per second.",
+    "Use it when the time is known but the distance is not."
+   ],
+   "formula": "v = u + at",
+   "id": "physics-lesson-4",
+   "key": "Velocity–time equation",
+   "tip": "Check the unit: a × t is m/s² × s = m/s, which matches u.",
+   "title": "Velocity–time equation",
+   "topicId": "PHY-01",
+   "topicTitle": "Velocity–time equation"
+  },
+  {
+   "arabic": "المسافة من السرعة والعجلة",
+   "difficulty": "Medium",
+   "domain": "Mechanics and motion",
+   "example": "From rest with a = 2 m/s² for 5 s: s = 0 + ½(2)(25) = 25 m.",
+   "explanation": [
+    "The first part, ut, is the distance the starting velocity alone would cover.",
+    "The second part, ½at², is the extra distance the acceleration adds.",
+    "Square the time before multiplying."
+   ],
+   "formula": "s = ut + ½at²",
+   "id": "physics-lesson-5",
+   "key": "Displacement equation",
+   "tip": "Squaring the time is the step most answers get wrong.",
+   "title": "Displacement equation",
+   "topicId": "PHY-01",
+   "topicTitle": "Displacement equation"
+  },
+  {
+   "arabic": "علاقة السرعة بالمسافة",
+   "difficulty": "Medium",
+   "domain": "Mechanics and motion",
+   "example": "From rest, a = 3 m/s² over 24 m: v² = 0 + 2(3)(24) = 144, so v = 12 m/s.",
+   "explanation": [
+    "Use this one when the time is not given.",
+    "Work out v² first, then take the square root at the very end."
+   ],
+   "formula": "v² = u² + 2as",
+   "id": "physics-lesson-6",
+   "key": "Velocity–displacement equation",
+   "tip": "If the question gives a distance and no time, this is the equation.",
+   "title": "Velocity–displacement equation",
+   "topicId": "PHY-01",
+   "topicTitle": "Velocity–displacement equation"
+  },
+  {
+   "arabic": "قانون القصور الذاتي",
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "example": "A book on a desk: weight down and the desk pushing up are equal, so it stays still.",
+   "explanation": [
+    "An object keeps doing what it is doing unless a net force acts on it.",
+    "At rest it stays at rest; moving, it keeps the same velocity in a straight line.",
+    "Balanced forces are the same as no force at all."
+   ],
+   "formula": "no net force → no change in motion",
+   "id": "physics-lesson-7",
+   "key": "Newton's first law",
+   "tip": "Constant velocity means the forces are balanced, not that there are none.",
+   "title": "Newton's first law",
+   "topicId": "PHY-01",
+   "topicTitle": "Newton's first law"
+  },
+  {
+   "arabic": "القوة = الكتلة × العجلة",
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "example": "A 5 kg box accelerating at 2 m/s² needs F = 5 × 2 = 10 N.",
+   "explanation": [
+    "A net force makes a mass accelerate.",
+    "Multiply the mass by the acceleration to get the force in newtons.",
+    "The same force gives a lighter object a bigger acceleration."
+   ],
+   "formula": "F = ma",
+   "id": "physics-lesson-8",
+   "key": "Newton's second law",
+   "tip": "Use the net force, after any friction has been taken off.",
+   "title": "Newton's second law",
+   "topicId": "PHY-01",
+   "topicTitle": "Newton's second law"
+  },
+  {
+   "arabic": "لكل فعل رد فعل مساوٍ في المقدار مضاد في الاتجاه",
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "example": "A swimmer pushes the water back; the water pushes the swimmer forward.",
+   "explanation": [
+    "Forces always come in pairs, on two different objects.",
+    "The two forces are equal in size and opposite in direction.",
+    "They never cancel out, because they act on different bodies."
+   ],
+   "formula": "every action has an equal, opposite reaction",
+   "id": "physics-lesson-9",
+   "key": "Newton's third law",
+   "tip": "If a question says the pair cancels out, it is wrong: they act on different objects.",
+   "title": "Newton's third law",
+   "topicId": "PHY-01",
+   "topicTitle": "Newton's third law"
+  },
+  {
+   "arabic": "الوزن = الكتلة × عجلة الجاذبية",
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "example": "A 6 kg bag weighs W = 6 × 10 = 60 N.",
+   "explanation": [
+    "Weight is the force gravity pulls with, measured in newtons.",
+    "Multiply the mass in kilograms by g, which is about 10 N/kg on Earth.",
+    "Mass does not change on the Moon, but weight does."
+   ],
+   "formula": "W = mg",
+   "id": "physics-lesson-10",
+   "key": "Weight and gravity",
+   "tip": "Mass is in kilograms, weight in newtons. Never mix them.",
+   "title": "Weight and gravity",
+   "topicId": "PHY-01",
+   "topicTitle": "Weight and gravity"
+  },
+  {
+   "arabic": "العجلة المركزية نحو المركز",
+   "difficulty": "Medium",
+   "domain": "Mechanics and motion",
+   "example": "At 8 m/s around a circle of radius 4 m: a = 64 ÷ 4 = 16 m/s².",
+   "explanation": [
+    "Something moving in a circle is always accelerating, because its direction keeps changing.",
+    "The acceleration points at the centre of the circle.",
+    "Square the speed, then divide by the radius."
+   ],
+   "formula": "a = v² / r",
+   "id": "physics-lesson-11",
+   "key": "Circular motion",
+   "tip": "Twice the speed is four times the acceleration.",
+   "title": "Circular motion",
+   "topicId": "PHY-01",
+   "topicTitle": "Circular motion"
+  },
+  {
+   "arabic": "كمية الحركة = الكتلة × السرعة",
+   "difficulty": "Medium",
+   "domain": "Mechanics and motion",
+   "example": "A 3 kg ball at 4 m/s has p = 3 × 4 = 12 kg·m/s.",
+   "explanation": [
+    "Momentum measures how hard something is to stop.",
+    "Multiply the mass by the velocity; the unit is kg·m/s.",
+    "In a collision the total momentum stays the same."
+   ],
+   "formula": "p = mv",
+   "id": "physics-lesson-12",
+   "key": "Momentum",
+   "tip": "Momentum has a direction, so opposite motions can cancel.",
+   "title": "Momentum",
+   "topicId": "PHY-01",
+   "topicTitle": "Momentum"
+  },
+  {
+   "arabic": "قوة الاحتكاك",
+   "difficulty": "Medium",
+   "domain": "Mechanics and motion",
+   "example": "μ = 0.3 with N = 50 N: F = 0.3 × 50 = 15 N.",
+   "explanation": [
+    "Friction opposes sliding between two surfaces.",
+    "Multiply the coefficient μ by the normal force N.",
+    "On a flat surface the normal force equals the weight."
+   ],
+   "formula": "F = μN",
+   "id": "physics-lesson-13",
+   "key": "Friction",
+   "tip": "μ has no unit, so the answer is in newtons.",
+   "title": "Friction",
+   "topicId": "PHY-01",
+   "topicTitle": "Friction"
+  },
+  {
+   "arabic": "الشغل = القوة × المسافة",
+   "difficulty": "Easy",
+   "domain": "Energy and work",
+   "example": "A 20 N push over 3 m does W = 20 × 3 = 60 J.",
+   "explanation": [
+    "Work is done when a force moves something along its own direction.",
+    "Multiply the force by the distance moved; the unit is the joule.",
+    "No movement means no work, however hard you push."
+   ],
+   "formula": "W = Fd",
+   "id": "physics-lesson-14",
+   "key": "Work",
+   "tip": "A force at right angles to the motion does no work.",
+   "title": "Work",
+   "topicId": "PHY-02",
+   "topicTitle": "Work"
+  },
+  {
+   "arabic": "طاقة الحركة",
+   "difficulty": "Medium",
+   "domain": "Energy and work",
+   "example": "A 4 kg object at 3 m/s: KE = ½ × 4 × 9 = 18 J.",
+   "explanation": [
+    "Kinetic energy is the energy of movement.",
+    "Square the speed, multiply by the mass, then halve it.",
+    "Doubling the speed gives four times the energy."
+   ],
+   "formula": "KE = ½mv²",
+   "id": "physics-lesson-15",
+   "key": "Kinetic energy",
+   "tip": "Square the speed before you multiply by the mass.",
+   "title": "Kinetic energy",
+   "topicId": "PHY-02",
+   "topicTitle": "Kinetic energy"
+  },
+  {
+   "arabic": "طاقة الوضع",
+   "difficulty": "Easy",
+   "domain": "Energy and work",
+   "example": "A 2 kg book 10 m up, with g = 10: PE = 2 × 10 × 10 = 200 J.",
+   "explanation": [
+    "Gravitational potential energy is the energy of height.",
+    "Multiply mass, g and height together.",
+    "Lose height and that energy turns into movement."
+   ],
+   "formula": "PE = mgh",
+   "id": "physics-lesson-16",
+   "key": "Potential energy",
+   "tip": "Height is measured from whatever level the question calls zero.",
+   "title": "Potential energy",
+   "topicId": "PHY-02",
+   "topicTitle": "Potential energy"
+  },
+  {
+   "arabic": "حفظ الطاقة",
+   "difficulty": "Medium",
+   "domain": "Energy and work",
+   "example": "Dropped from 10 m with g = 10: v = √(2 × 10 × 10) = √200 ≈ 14.1 m/s.",
+   "explanation": [
+    "Energy is never lost, only moved from one form to another.",
+    "For a falling object, potential energy becomes kinetic energy.",
+    "The mass cancels, so v = √(2gh) whatever the object weighs."
+   ],
+   "formula": "mgh = ½mv²",
+   "id": "physics-lesson-17",
+   "key": "Conservation of energy",
+   "tip": "A heavy and a light ball dropped together land at the same speed.",
+   "title": "Conservation of energy",
+   "topicId": "PHY-02",
+   "topicTitle": "Conservation of energy"
+  },
+  {
+   "arabic": "القدرة = الشغل ÷ الزمن",
+   "difficulty": "Easy",
+   "domain": "Energy and work",
+   "example": "600 J in 10 s: P = 600 ÷ 10 = 60 W.",
+   "explanation": [
+    "Power is how quickly work is done.",
+    "Divide the work in joules by the time in seconds to get watts.",
+    "The same job done in half the time needs twice the power."
+   ],
+   "formula": "P = W / t",
+   "id": "physics-lesson-18",
+   "key": "Power",
+   "tip": "Rearranged, W = Pt, which is how motor questions are usually set.",
+   "title": "Power",
+   "topicId": "PHY-02",
+   "topicTitle": "Power"
+  },
+  {
+   "arabic": "الكفاءة",
+   "difficulty": "Medium",
+   "domain": "Energy and work",
+   "example": "40 J useful from 50 J in: 40 ÷ 50 × 100 = 80%.",
+   "explanation": [
+    "No machine turns all its energy into the job you want.",
+    "Divide the useful energy by the energy put in, then multiply by 100.",
+    "The rest usually leaves as heat."
+   ],
+   "formula": "efficiency = useful output / total input × 100%",
+   "id": "physics-lesson-19",
+   "key": "Efficiency",
+   "tip": "Efficiency can never be more than 100%.",
+   "title": "Efficiency",
+   "topicId": "PHY-02",
+   "topicTitle": "Efficiency"
+  },
+  {
+   "arabic": "سرعة الموجة = التردد × الطول الموجي",
+   "difficulty": "Easy",
+   "domain": "Waves and oscillations",
+   "example": "f = 100 Hz and λ = 2 m: v = 100 × 2 = 200 m/s.",
+   "explanation": [
+    "A wave moves one wavelength forward in each cycle.",
+    "Multiply the frequency in hertz by the wavelength in metres.",
+    "In the same material the speed is fixed, so a higher frequency means a shorter wavelength."
+   ],
+   "formula": "v = fλ",
+   "id": "physics-lesson-20",
+   "key": "Wave equation",
+   "tip": "Frequency and wavelength are inversely related at a fixed speed.",
+   "title": "Wave equation",
+   "topicId": "PHY-03",
+   "topicTitle": "Wave equation"
+  },
+  {
+   "arabic": "الزمن الدوري = 1 ÷ التردد",
+   "difficulty": "Easy",
+   "domain": "Waves and oscillations",
+   "example": "f = 50 Hz gives T = 1 ÷ 50 = 0.02 s.",
+   "explanation": [
+    "The period is the time for one complete cycle.",
+    "Frequency is how many cycles happen each second.",
+    "Each is one divided by the other."
+   ],
+   "formula": "T = 1 / f",
+   "id": "physics-lesson-21",
+   "key": "Period and frequency",
+   "tip": "A big frequency always means a small period.",
+   "title": "Period and frequency",
+   "topicId": "PHY-03",
+   "topicTitle": "Period and frequency"
+  },
+  {
+   "arabic": "الحركة التوافقية البسيطة",
+   "difficulty": "Medium",
+   "domain": "Waves and oscillations",
+   "example": "Making a pendulum four times longer changes T from 1 s to 2 s.",
+   "explanation": [
+    "A pendulum swings back and forth in equal times.",
+    "The period depends on the length and on gravity, not on the mass.",
+    "Because of the square root, four times the length doubles the period."
+   ],
+   "formula": "T = 2π√(L/g)",
+   "id": "physics-lesson-22",
+   "key": "Simple harmonic motion",
+   "tip": "Adding a heavier bob does not change the period.",
+   "title": "Simple harmonic motion",
+   "topicId": "PHY-03",
+   "topicTitle": "Simple harmonic motion"
+  },
+  {
+   "arabic": "موجات مستعرضة وموجات طولية",
+   "difficulty": "Easy",
+   "domain": "Waves and oscillations",
+   "example": "Light reaches us from the Sun through empty space; sound does not.",
+   "explanation": [
+    "In a transverse wave the vibration is at right angles to the travel, like light.",
+    "In a longitudinal wave the vibration is along the travel, like sound in air.",
+    "Longitudinal waves need a material, so sound cannot cross a vacuum."
+   ],
+   "formula": "direction of vibration vs travel",
+   "id": "physics-lesson-23",
+   "key": "Transverse and longitudinal waves",
+   "tip": "If a question mentions a vacuum, think about whether the wave needs matter.",
+   "title": "Transverse and longitudinal waves",
+   "topicId": "PHY-03",
+   "topicTitle": "Transverse and longitudinal waves"
+  },
+  {
+   "arabic": "صدى الصوت",
+   "difficulty": "Medium",
+   "domain": "Waves and oscillations",
+   "example": "An echo returns in 2 s at 340 m/s: d = 340 × 2 ÷ 2 = 340 m.",
+   "explanation": [
+    "An echo travels to the wall and back, so it covers twice the distance.",
+    "Multiply speed by time, then halve the answer."
+   ],
+   "formula": "d = vt / 2",
+   "id": "physics-lesson-24",
+   "key": "Echo and the speed of sound",
+   "tip": "Forgetting to halve is the usual mistake.",
+   "title": "Echo and the speed of sound",
+   "topicId": "PHY-03",
+   "topicTitle": "Echo and the speed of sound"
+  },
+  {
+   "arabic": "ظاهرة دوبلر",
+   "difficulty": "Medium",
+   "domain": "Waves and oscillations",
+   "example": "A siren sounds higher as the ambulance comes towards you and lower once it passes.",
+   "explanation": [
+    "Movement between a source and a listener changes the frequency heard.",
+    "Coming closer squashes the waves, so the pitch rises.",
+    "Moving away stretches them, so the pitch falls."
+   ],
+   "formula": "approaching → higher frequency",
+   "id": "physics-lesson-25",
+   "key": "The Doppler effect",
+   "tip": "The source frequency itself never changes, only the frequency received.",
+   "title": "The Doppler effect",
+   "topicId": "PHY-03",
+   "topicTitle": "The Doppler effect"
+  },
+  {
+   "arabic": "الانعكاس والانكسار",
+   "difficulty": "Medium",
+   "domain": "Waves and oscillations",
+   "example": "A straw in a glass of water looks bent at the surface.",
+   "explanation": [
+    "Reflection bounces light off a surface at the same angle it arrived.",
+    "Refraction bends light when it enters a material where it travels at a different speed.",
+    "Entering a denser material slows light and bends it towards the normal."
+   ],
+   "formula": "light bends when its speed changes",
+   "id": "physics-lesson-26",
+   "key": "Reflection and refraction",
+   "tip": "Light entering glass slows down and bends towards the normal.",
+   "title": "Reflection and refraction",
+   "topicId": "PHY-03",
+   "topicTitle": "Reflection and refraction"
+  },
+  {
+   "arabic": "التيار = الشحنة ÷ الزمن",
+   "difficulty": "Easy",
+   "domain": "Electricity and current",
+   "example": "20 C in 4 s: I = 20 ÷ 4 = 5 A.",
+   "explanation": [
+    "Current is the amount of charge passing a point each second.",
+    "Divide the charge in coulombs by the time in seconds to get amperes."
+   ],
+   "formula": "I = Q / t",
+   "id": "physics-lesson-27",
+   "key": "Electric current",
+   "tip": "One ampere is one coulomb per second.",
+   "title": "Electric current",
+   "topicId": "PHY-04",
+   "topicTitle": "Electric current"
+  },
+  {
+   "arabic": "قانون أوم",
+   "difficulty": "Easy",
+   "domain": "Electricity and current",
+   "example": "V = 100 V across R = 50 Ω: I = 100 ÷ 50 = 2 A.",
+   "explanation": [
+    "Voltage pushes current through a resistance.",
+    "Rearrange to I = V/R for current, or R = V/I for resistance."
+   ],
+   "formula": "V = IR",
+   "id": "physics-lesson-28",
+   "key": "Ohm's law",
+   "tip": "Write the triangle V over I and R and cover what you need.",
+   "title": "Ohm's law",
+   "topicId": "PHY-04",
+   "topicTitle": "Ohm's law"
+  },
+  {
+   "arabic": "التوصيل على التوالي",
+   "difficulty": "Easy",
+   "domain": "Electricity and current",
+   "example": "10 Ω and 20 Ω in series: R = 30 Ω.",
+   "explanation": [
+    "In series there is only one path, so the resistances simply add.",
+    "The same current flows through every component.",
+    "The total is always bigger than the biggest single resistor."
+   ],
+   "formula": "R = R₁ + R₂",
+   "id": "physics-lesson-29",
+   "key": "Resistors in series",
+   "tip": "Series adds; parallel always gives less than the smallest.",
+   "title": "Resistors in series",
+   "topicId": "PHY-04",
+   "topicTitle": "Resistors in series"
+  },
+  {
+   "arabic": "التوصيل على التوازي",
+   "difficulty": "Medium",
+   "domain": "Electricity and current",
+   "example": "10 Ω and 20 Ω: 1/R = 1/10 + 1/20 = 3/20, so R = 6.67 Ω.",
+   "explanation": [
+    "In parallel the current has more than one path, so the total resistance drops.",
+    "Add the reciprocals, then take the reciprocal of the answer.",
+    "The total is always smaller than the smallest resistor."
+   ],
+   "formula": "1/R = 1/R₁ + 1/R₂",
+   "id": "physics-lesson-30",
+   "key": "Resistors in parallel",
+   "tip": "If your answer is bigger than the smallest resistor, you forgot the last step.",
+   "title": "Resistors in parallel",
+   "topicId": "PHY-04",
+   "topicTitle": "Resistors in parallel"
+  },
+  {
+   "arabic": "القدرة الكهربية = الجهد × التيار",
+   "difficulty": "Easy",
+   "domain": "Electricity and current",
+   "example": "12 V with 2 A: P = 12 × 2 = 24 W.",
+   "explanation": [
+    "Power is the energy a component uses each second.",
+    "Multiply the voltage across it by the current through it."
+   ],
+   "formula": "P = VI",
+   "id": "physics-lesson-31",
+   "key": "Electrical power",
+   "tip": "With Ohm’s law this also gives P = I²R and P = V²/R.",
+   "title": "Electrical power",
+   "topicId": "PHY-04",
+   "topicTitle": "Electrical power"
+  },
+  {
+   "arabic": "القدرة والمقاومة",
+   "difficulty": "Medium",
+   "domain": "Electricity and current",
+   "example": "I = 3 A through R = 4 Ω: P = 9 × 4 = 36 W.",
+   "explanation": [
+    "When you know the current and the resistance, square the current first.",
+    "Doubling the current gives four times the power."
+   ],
+   "formula": "P = I²R",
+   "id": "physics-lesson-32",
+   "key": "Power and resistance",
+   "tip": "This is why thick cables are used for large currents.",
+   "title": "Power and resistance",
+   "topicId": "PHY-04",
+   "topicTitle": "Power and resistance"
+  },
+  {
+   "arabic": "قانون كولوم",
+   "difficulty": "Medium",
+   "domain": "Electricity and current",
+   "example": "Moving two charges from 1 cm to 2 cm apart leaves a quarter of the force.",
+   "explanation": [
+    "Two charges attract or repel along the line between them.",
+    "The force falls with the square of the distance.",
+    "Double the separation and the force drops to a quarter."
+   ],
+   "formula": "F = kq₁q₂ / r²",
+   "id": "physics-lesson-33",
+   "key": "Coulomb's law",
+   "tip": "An inverse square law: the distance is squared, not just doubled.",
+   "title": "Coulomb's law",
+   "topicId": "PHY-04",
+   "topicTitle": "Coulomb's law"
+  },
+  {
+   "arabic": "الطاقة = القدرة × الزمن",
+   "difficulty": "Medium",
+   "domain": "Electricity and current",
+   "example": "A 2 kW heater for 3 h uses 2 × 3 = 6 kWh.",
+   "explanation": [
+    "Energy used is power multiplied by time.",
+    "In joules use seconds; in kilowatt-hours use kilowatts and hours."
+   ],
+   "formula": "E = Pt",
+   "id": "physics-lesson-34",
+   "key": "Electrical energy",
+   "tip": "Watch the units: kWh needs hours, not seconds.",
+   "title": "Electrical energy",
+   "topicId": "PHY-04",
+   "topicTitle": "Electrical energy"
+  },
+  {
+   "arabic": "القوة على سلك يحمل تيارًا",
+   "difficulty": "Medium",
+   "domain": "Magnetism and electromagnetism",
+   "example": "B = 0.5 T, I = 2 A, L = 3 m: F = 0.5 × 2 × 3 = 3 N.",
+   "explanation": [
+    "A wire carrying current in a magnetic field feels a force.",
+    "Multiply the field strength, the current and the length in the field.",
+    "The force is greatest when the wire is at right angles to the field."
+   ],
+   "formula": "F = BIL",
+   "id": "physics-lesson-35",
+   "key": "Force on a current",
+   "tip": "A wire along the field feels no force at all.",
+   "title": "Force on a current",
+   "topicId": "PHY-05",
+   "topicTitle": "Force on a current"
+  },
+  {
+   "arabic": "القوة على شحنة متحركة",
+   "difficulty": "Medium",
+   "domain": "Magnetism and electromagnetism",
+   "example": "q = 2 C at 3 m/s in 4 T: F = 2 × 3 × 4 = 24 N.",
+   "explanation": [
+    "A charge moving across a magnetic field is pushed sideways.",
+    "Multiply the charge, its speed and the field strength.",
+    "A charge at rest feels no magnetic force."
+   ],
+   "formula": "F = qvB",
+   "id": "physics-lesson-36",
+   "key": "Force on a moving charge",
+   "tip": "The force is at right angles to both the velocity and the field.",
+   "title": "Force on a moving charge",
+   "topicId": "PHY-05",
+   "topicTitle": "Force on a moving charge"
+  },
+  {
+   "arabic": "الحث الكهرومغناطيسي",
+   "difficulty": "Medium",
+   "domain": "Magnetism and electromagnetism",
+   "example": "Pushing a magnet into a coil makes the meter flick; holding it there reads zero.",
+   "explanation": [
+    "Changing the magnetic field through a coil induces a voltage across it.",
+    "Faster movement, more turns or a stronger magnet all give a bigger voltage.",
+    "Nothing is induced while the magnet is held still."
+   ],
+   "formula": "moving a magnet induces a voltage",
+   "id": "physics-lesson-37",
+   "key": "Electromagnetic induction",
+   "tip": "It is the change that matters, not the field itself.",
+   "title": "Electromagnetic induction",
+   "topicId": "PHY-05",
+   "topicTitle": "Electromagnetic induction"
+  },
+  {
+   "arabic": "قانون لينز",
+   "difficulty": "Medium",
+   "domain": "Magnetism and electromagnetism",
+   "example": "Dropping a magnet through a copper tube takes longer than through a plastic one.",
+   "explanation": [
+    "The induced current always flows so as to fight the change that caused it.",
+    "Push a north pole in and the coil presents a north pole back.",
+    "This is conservation of energy: you must do work to generate electricity."
+   ],
+   "formula": "the induced current opposes the change",
+   "id": "physics-lesson-38",
+   "key": "Lenz's law",
+   "tip": "If induction helped the change, energy would come from nowhere.",
+   "title": "Lenz's law",
+   "topicId": "PHY-05",
+   "topicTitle": "Lenz's law"
+  },
+  {
+   "arabic": "المحولات",
+   "difficulty": "Medium",
+   "domain": "Magnetism and electromagnetism",
+   "example": "Nₚ = 100, Nₛ = 500, Vₚ = 12 V: Vₛ = 12 × 5 = 60 V.",
+   "explanation": [
+    "A transformer changes voltage using two coils on one iron core.",
+    "The voltages are in the same ratio as the numbers of turns.",
+    "More turns on the secondary means a higher voltage out."
+   ],
+   "formula": "Vₛ/Vₚ = Nₛ/Nₚ",
+   "id": "physics-lesson-39",
+   "key": "Transformers",
+   "tip": "Transformers only work on alternating current.",
+   "title": "Transformers",
+   "topicId": "PHY-05",
+   "topicTitle": "Transformers"
+  },
+  {
+   "arabic": "المجال المغناطيسي حول سلك",
+   "difficulty": "Easy",
+   "domain": "Magnetism and electromagnetism",
+   "example": "A compass near a current-carrying wire turns to follow the circle.",
+   "explanation": [
+    "A current makes a magnetic field in circles around the wire.",
+    "Point your right thumb along the current and your fingers curl the field way.",
+    "The field gets weaker further from the wire."
+   ],
+   "formula": "circles around the wire",
+   "id": "physics-lesson-40",
+   "key": "Magnetic field of a wire",
+   "tip": "Reverse the current and the field reverses too.",
+   "title": "Magnetic field of a wire",
+   "topicId": "PHY-05",
+   "topicTitle": "Magnetic field of a wire"
+  },
+  {
+   "arabic": "طاقة الفوتون",
+   "difficulty": "Medium",
+   "domain": "Modern physics",
+   "example": "Doubling the frequency doubles the energy of each photon.",
+   "explanation": [
+    "Light comes in packets called photons.",
+    "A photon’s energy is Planck’s constant times the frequency.",
+    "Higher frequency light carries more energy per photon."
+   ],
+   "formula": "E = hf",
+   "id": "physics-lesson-41",
+   "key": "Photon energy",
+   "tip": "Brightness changes how many photons arrive, not the energy of each one.",
+   "title": "Photon energy",
+   "topicId": "PHY-06",
+   "topicTitle": "Photon energy"
+  },
+  {
+   "arabic": "الظاهرة الكهروضوئية",
+   "difficulty": "Medium",
+   "domain": "Modern physics",
+   "example": "Red light on zinc releases nothing; dim ultraviolet releases electrons at once.",
+   "explanation": [
+    "Light can knock electrons out of a metal surface.",
+    "Below a threshold frequency no electrons come out, however bright the light is.",
+    "This is evidence that light behaves as particles."
+   ],
+   "formula": "threshold frequency",
+   "id": "physics-lesson-42",
+   "key": "The photoelectric effect",
+   "tip": "Brighter light means more photons, not more energetic ones.",
+   "title": "The photoelectric effect",
+   "topicId": "PHY-06",
+   "topicTitle": "The photoelectric effect"
+  },
+  {
+   "arabic": "تركيب الذرة",
+   "difficulty": "Easy",
+   "domain": "Modern physics",
+   "example": "Carbon-12 and carbon-14 both have 6 protons but different numbers of neutrons.",
+   "explanation": [
+    "An atom has protons and neutrons in a tiny nucleus, with electrons around it.",
+    "The number of protons is the atomic number and names the element.",
+    "Change the neutrons and you get an isotope of the same element."
+   ],
+   "formula": "protons define the element",
+   "id": "physics-lesson-43",
+   "key": "Atomic structure",
+   "tip": "Isotopes of an element behave the same chemically.",
+   "title": "Atomic structure",
+   "topicId": "PHY-06",
+   "topicTitle": "Atomic structure"
+  },
+  {
+   "arabic": "عمر النصف",
+   "difficulty": "Medium",
+   "domain": "Modern physics",
+   "example": "100 g with a 5-day half-life, after 15 days: 3 half-lives, so 100 → 50 → 25 → 12.5 g.",
+   "explanation": [
+    "A half-life is the time for half the radioactive nuclei to decay.",
+    "Count how many half-lives have passed, then halve that many times."
+   ],
+   "formula": "N = N₀(½)^n",
+   "id": "physics-lesson-44",
+   "key": "Half-life",
+   "tip": "Divide the total time by the half-life to get the number of halvings.",
+   "title": "Half-life",
+   "topicId": "PHY-06",
+   "topicTitle": "Half-life"
+  },
+  {
+   "arabic": "الاضمحلال النووي",
+   "difficulty": "Medium",
+   "domain": "Modern physics",
+   "example": "Uranium-238 alpha decays to thorium-234: the mass number falls by 4.",
+   "explanation": [
+    "Alpha decay throws out 2 protons and 2 neutrons, so the mass number drops by 4.",
+    "Beta decay turns a neutron into a proton, so the atomic number rises by 1.",
+    "Gamma is energy only and changes neither number."
+   ],
+   "formula": "alpha, beta and gamma",
+   "id": "physics-lesson-45",
+   "key": "Nuclear decay",
+   "tip": "Alpha changes both numbers, beta only the proton number, gamma neither.",
+   "title": "Nuclear decay",
+   "topicId": "PHY-06",
+   "topicTitle": "Nuclear decay"
+  },
+  {
+   "arabic": "الكتلة والطاقة",
+   "difficulty": "Medium",
+   "domain": "Modern physics",
+   "example": "A little mass is lost in every fusion reaction and appears as energy.",
+   "explanation": [
+    "Mass and energy are two forms of the same thing.",
+    "Because c² is enormous, a tiny mass holds a huge amount of energy.",
+    "This is where the energy of the Sun comes from."
+   ],
+   "formula": "E = mc²",
+   "id": "physics-lesson-46",
+   "key": "Mass and energy",
+   "tip": "c is 3 × 10⁸ m/s, so c² is about 9 × 10¹⁶.",
+   "title": "Mass and energy",
+   "topicId": "PHY-06",
+   "topicTitle": "Mass and energy"
+  },
+  {
+   "arabic": "النسبية",
+   "difficulty": "Medium",
+   "domain": "Modern physics",
+   "example": "Particles in accelerators get very close to c but never reach it.",
+   "explanation": [
+    "The speed of light in a vacuum is the same for every observer.",
+    "Pushing a mass faster needs more and more energy as it approaches that speed.",
+    "Reaching it would need infinite energy, so nothing with mass can."
+   ],
+   "formula": "nothing with mass reaches the speed of light",
+   "id": "physics-lesson-47",
+   "key": "Relativity",
+   "tip": "Only massless things, such as photons, travel at c.",
+   "title": "Relativity",
+   "topicId": "PHY-06",
+   "topicTitle": "Relativity"
+  }
+ ],
+ "practice": [
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "75 m/s"
+    },
+    {
+     "id": "B",
+     "text": "15 m/s"
+    },
+    {
+     "id": "C",
+     "text": "1500 m/s"
+    },
+    {
+     "id": "D",
+     "text": "0.067 m/s"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "v = d ÷ t = 150 ÷ 10 = 15 m/s."
+   ],
+   "id": "physics-practice-401",
+   "lessonId": "physics-lesson-1",
+   "lessonKey": "Speed",
+   "question": "A car covers 150 m in 10 s. What is its average speed?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "400 m"
+    },
+    {
+     "id": "B",
+     "text": "0 m"
+    },
+    {
+     "id": "C",
+     "text": "800 m"
+    },
+    {
+     "id": "D",
+     "text": "200 m"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "Displacement is measured from start to finish. A full lap ends where it began, so it is 0."
+   ],
+   "id": "physics-practice-402",
+   "lessonId": "physics-lesson-2",
+   "lessonKey": "Velocity and displacement",
+   "question": "A runner completes one full lap of a 400 m track. What is the displacement?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "36 m/s²"
+    },
+    {
+     "id": "B",
+     "text": "0.2 m/s²"
+    },
+    {
+     "id": "C",
+     "text": "5 m/s²"
+    },
+    {
+     "id": "D",
+     "text": "180 m/s²"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "a = (30 − 0) ÷ 6 = 5 m/s²."
+   ],
+   "id": "physics-practice-403",
+   "lessonId": "physics-lesson-3",
+   "lessonKey": "Acceleration",
+   "question": "A car speeds up from 0 to 30 m/s in 6 s. What is its acceleration?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "40 m/s"
+    },
+    {
+     "id": "B",
+     "text": "11 m/s"
+    },
+    {
+     "id": "C",
+     "text": "13 m/s"
+    },
+    {
+     "id": "D",
+     "text": "8 m/s"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "v = u + at = 5 + 2 × 4 = 13 m/s."
+   ],
+   "id": "physics-practice-404",
+   "lessonId": "physics-lesson-4",
+   "lessonKey": "Velocity–time equation",
+   "question": "A cyclist at 5 m/s accelerates at 2 m/s² for 4 s. What is the final velocity?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "10 m"
+    },
+    {
+     "id": "B",
+     "text": "50 m"
+    },
+    {
+     "id": "C",
+     "text": "5 m"
+    },
+    {
+     "id": "D",
+     "text": "25 m"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "s = ut + ½at² = 0 + ½ × 2 × 5² = 25 m."
+   ],
+   "id": "physics-practice-405",
+   "lessonId": "physics-lesson-5",
+   "lessonKey": "Displacement equation",
+   "question": "A trolley starts from rest and accelerates at 2 m/s² for 5 s. How far does it travel?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "72 m/s"
+    },
+    {
+     "id": "B",
+     "text": "144 m/s"
+    },
+    {
+     "id": "C",
+     "text": "12 m/s"
+    },
+    {
+     "id": "D",
+     "text": "6 m/s"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "v² = u² + 2as = 0 + 2 × 3 × 24 = 144, and √144 = 12 m/s."
+   ],
+   "id": "physics-practice-406",
+   "lessonId": "physics-lesson-6",
+   "lessonKey": "Velocity–displacement equation",
+   "question": "A car starts from rest and accelerates at 3 m/s² over 24 m. What is its final speed?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "There is a constant forward net force"
+    },
+    {
+     "id": "B",
+     "text": "There are no forces acting at all"
+    },
+    {
+     "id": "C",
+     "text": "They are balanced, so the net force is zero"
+    },
+    {
+     "id": "D",
+     "text": "The net force grows with speed"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "Constant velocity means no acceleration, so the forces must cancel out."
+   ],
+   "id": "physics-practice-407",
+   "lessonId": "physics-lesson-7",
+   "lessonKey": "Newton's first law",
+   "question": "A car travels at a steady 20 m/s in a straight line. What do you know about the forces on it?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "4 N"
+    },
+    {
+     "id": "B",
+     "text": "0.25 N"
+    },
+    {
+     "id": "C",
+     "text": "36 N"
+    },
+    {
+     "id": "D",
+     "text": "15 N"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "F = ma = 12 × 3 = 36 N."
+   ],
+   "id": "physics-practice-408",
+   "lessonId": "physics-lesson-8",
+   "lessonKey": "Newton's second law",
+   "question": "What net force gives a 12 kg mass an acceleration of 3 m/s²?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "The book pressing on the table with 8 N"
+    },
+    {
+     "id": "B",
+     "text": "The book pulling the Earth up with 8 N"
+    },
+    {
+     "id": "C",
+     "text": "The table pushing the book up with 8 N"
+    },
+    {
+     "id": "D",
+     "text": "The weight of the table itself"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "The pair to a gravitational pull is the equal pull the other way, book on Earth — not the contact force from the table."
+   ],
+   "id": "physics-practice-409",
+   "lessonId": "physics-lesson-9",
+   "lessonKey": "Newton's third law",
+   "question": "A book of weight 8 N rests on a table. What is the reaction pair of the book’s weight?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "16 N"
+    },
+    {
+     "id": "B",
+     "text": "60 N"
+    },
+    {
+     "id": "C",
+     "text": "6 N"
+    },
+    {
+     "id": "D",
+     "text": "0.6 N"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "W = mg = 6 × 10 = 60 N."
+   ],
+   "id": "physics-practice-410",
+   "lessonId": "physics-lesson-10",
+   "lessonKey": "Weight and gravity",
+   "question": "Taking g = 10 N/kg, what is the weight of a 6 kg bag?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "2 m/s²"
+    },
+    {
+     "id": "B",
+     "text": "36 m/s²"
+    },
+    {
+     "id": "C",
+     "text": "12 m/s²"
+    },
+    {
+     "id": "D",
+     "text": "18 m/s²"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "a = v²/r = 36 ÷ 3 = 12 m/s²."
+   ],
+   "id": "physics-practice-411",
+   "lessonId": "physics-lesson-11",
+   "lessonKey": "Circular motion",
+   "question": "A ball moves at 6 m/s around a circle of radius 3 m. What is its centripetal acceleration?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "24 kg·m/s"
+    },
+    {
+     "id": "B",
+     "text": "0.75 kg·m/s"
+    },
+    {
+     "id": "C",
+     "text": "12 kg·m/s"
+    },
+    {
+     "id": "D",
+     "text": "7 kg·m/s"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "p = mv = 3 × 4 = 12 kg·m/s."
+   ],
+   "id": "physics-practice-412",
+   "lessonId": "physics-lesson-12",
+   "lessonKey": "Momentum",
+   "question": "What is the momentum of a 3 kg ball moving at 4 m/s?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "16.7 N"
+    },
+    {
+     "id": "B",
+     "text": "15 N"
+    },
+    {
+     "id": "C",
+     "text": "50.3 N"
+    },
+    {
+     "id": "D",
+     "text": "150 N"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Mechanics and motion",
+   "explanation": [
+    "F = μN = 0.3 × 50 = 15 N."
+   ],
+   "id": "physics-practice-413",
+   "lessonId": "physics-lesson-13",
+   "lessonKey": "Friction",
+   "question": "A box presses on the floor with 50 N and μ = 0.3. What is the friction force?",
+   "topicId": "PHY-01"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "180 J"
+    },
+    {
+     "id": "B",
+     "text": "6.7 J"
+    },
+    {
+     "id": "C",
+     "text": "23 J"
+    },
+    {
+     "id": "D",
+     "text": "60 J"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Energy and work",
+   "explanation": [
+    "W = Fd = 20 × 3 = 60 J."
+   ],
+   "id": "physics-practice-414",
+   "lessonId": "physics-lesson-14",
+   "lessonKey": "Work",
+   "question": "How much work is done pushing with 20 N over 3 m?",
+   "topicId": "PHY-02"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "36 J"
+    },
+    {
+     "id": "B",
+     "text": "6 J"
+    },
+    {
+     "id": "C",
+     "text": "18 J"
+    },
+    {
+     "id": "D",
+     "text": "12 J"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Energy and work",
+   "explanation": [
+    "KE = ½mv² = ½ × 4 × 3² = 18 J."
+   ],
+   "id": "physics-practice-415",
+   "lessonId": "physics-lesson-15",
+   "lessonKey": "Kinetic energy",
+   "question": "What is the kinetic energy of a 4 kg object moving at 3 m/s?",
+   "topicId": "PHY-02"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "22 J"
+    },
+    {
+     "id": "B",
+     "text": "20 J"
+    },
+    {
+     "id": "C",
+     "text": "100 J"
+    },
+    {
+     "id": "D",
+     "text": "200 J"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Energy and work",
+   "explanation": [
+    "PE = mgh = 2 × 10 × 10 = 200 J."
+   ],
+   "id": "physics-practice-416",
+   "lessonId": "physics-lesson-16",
+   "lessonKey": "Potential energy",
+   "question": "With g = 10 N/kg, what is the potential energy of a 2 kg book held 10 m up?",
+   "topicId": "PHY-02"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "14.1 m/s"
+    },
+    {
+     "id": "B",
+     "text": "400 m/s"
+    },
+    {
+     "id": "C",
+     "text": "20 m/s"
+    },
+    {
+     "id": "D",
+     "text": "40 m/s"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Energy and work",
+   "explanation": [
+    "v = √(2gh) = √(2 × 10 × 20) = √400 = 20 m/s."
+   ],
+   "id": "physics-practice-417",
+   "lessonId": "physics-lesson-17",
+   "lessonKey": "Conservation of energy",
+   "question": "An object is dropped from 20 m (g = 10 m/s²). How fast is it moving as it lands?",
+   "topicId": "PHY-02"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "0.017 W"
+    },
+    {
+     "id": "B",
+     "text": "60 W"
+    },
+    {
+     "id": "C",
+     "text": "6000 W"
+    },
+    {
+     "id": "D",
+     "text": "610 W"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Energy and work",
+   "explanation": [
+    "P = W ÷ t = 600 ÷ 10 = 60 W."
+   ],
+   "id": "physics-practice-418",
+   "lessonId": "physics-lesson-18",
+   "lessonKey": "Power",
+   "question": "A motor does 600 J of work in 10 s. What is its power?",
+   "topicId": "PHY-02"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "10%"
+    },
+    {
+     "id": "B",
+     "text": "80%"
+    },
+    {
+     "id": "C",
+     "text": "20%"
+    },
+    {
+     "id": "D",
+     "text": "125%"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Energy and work",
+   "explanation": [
+    "40 ÷ 50 × 100 = 80%. The other 10 J is lost, usually as heat."
+   ],
+   "id": "physics-practice-419",
+   "lessonId": "physics-lesson-19",
+   "lessonKey": "Efficiency",
+   "question": "A machine takes in 50 J and does 40 J of useful work. What is its efficiency?",
+   "topicId": "PHY-02"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "0.08 m/s"
+    },
+    {
+     "id": "B",
+     "text": "12.5 m/s"
+    },
+    {
+     "id": "C",
+     "text": "200 m/s"
+    },
+    {
+     "id": "D",
+     "text": "54 m/s"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Waves and oscillations",
+   "explanation": [
+    "v = fλ = 50 × 4 = 200 m/s."
+   ],
+   "id": "physics-practice-420",
+   "lessonId": "physics-lesson-20",
+   "lessonKey": "Wave equation",
+   "question": "A wave has a frequency of 50 Hz and a wavelength of 4 m. What is its speed?",
+   "topicId": "PHY-03"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "0.02 s"
+    },
+    {
+     "id": "B",
+     "text": "20 s"
+    },
+    {
+     "id": "C",
+     "text": "50 s"
+    },
+    {
+     "id": "D",
+     "text": "0.5 s"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Waves and oscillations",
+   "explanation": [
+    "T = 1/f = 1 ÷ 50 = 0.02 s."
+   ],
+   "id": "physics-practice-421",
+   "lessonId": "physics-lesson-21",
+   "lessonKey": "Period and frequency",
+   "question": "A vibration has a frequency of 50 Hz. What is its period?",
+   "topicId": "PHY-03"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "It doubles"
+    },
+    {
+     "id": "B",
+     "text": "It halves"
+    },
+    {
+     "id": "C",
+     "text": "It does not change"
+    },
+    {
+     "id": "D",
+     "text": "It is four times as long"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Waves and oscillations",
+   "explanation": [
+    "T = 2π√(L/g), and √4 = 2, so the period doubles."
+   ],
+   "id": "physics-practice-422",
+   "lessonId": "physics-lesson-22",
+   "lessonKey": "Simple harmonic motion",
+   "question": "A pendulum is made four times longer. What happens to its period?",
+   "topicId": "PHY-03"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Space is too cold for sound"
+    },
+    {
+     "id": "B",
+     "text": "Sound needs a material to vibrate; light does not"
+    },
+    {
+     "id": "C",
+     "text": "Sound is transverse and light is longitudinal"
+    },
+    {
+     "id": "D",
+     "text": "Light travels faster, so it gets through"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Waves and oscillations",
+   "explanation": [
+    "Sound is a longitudinal wave in matter. Light is an electromagnetic wave and needs no medium."
+   ],
+   "id": "physics-practice-423",
+   "lessonId": "physics-lesson-23",
+   "lessonKey": "Transverse and longitudinal waves",
+   "question": "Why can light cross empty space while sound cannot?",
+   "topicId": "PHY-03"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "680 m"
+    },
+    {
+     "id": "B",
+     "text": "1360 m"
+    },
+    {
+     "id": "C",
+     "text": "170 m"
+    },
+    {
+     "id": "D",
+     "text": "340 m"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Waves and oscillations",
+   "explanation": [
+    "The sound covers 340 × 2 = 680 m there and back, so the wall is 340 m away."
+   ],
+   "id": "physics-practice-424",
+   "lessonId": "physics-lesson-24",
+   "lessonKey": "Echo and the speed of sound",
+   "question": "An echo comes back after 2 s. Taking the speed of sound as 340 m/s, how far away is the wall?",
+   "topicId": "PHY-03"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "A lower pitch than the siren really makes"
+    },
+    {
+     "id": "B",
+     "text": "No change until it passes you"
+    },
+    {
+     "id": "C",
+     "text": "The same pitch, but louder only"
+    },
+    {
+     "id": "D",
+     "text": "A higher pitch than the siren really makes"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Waves and oscillations",
+   "explanation": [
+    "The waves arrive more often as the source closes in, so the frequency heard is higher."
+   ],
+   "id": "physics-practice-425",
+   "lessonId": "physics-lesson-25",
+   "lessonKey": "The Doppler effect",
+   "question": "An ambulance drives towards you with its siren on. What do you hear?",
+   "topicId": "PHY-03"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "It carries on without bending"
+    },
+    {
+     "id": "B",
+     "text": "It speeds up and bends towards the normal"
+    },
+    {
+     "id": "C",
+     "text": "It slows down and bends away from the normal"
+    },
+    {
+     "id": "D",
+     "text": "It slows down and bends towards the normal"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Waves and oscillations",
+   "explanation": [
+    "Glass is optically denser, so light slows and bends towards the normal."
+   ],
+   "id": "physics-practice-426",
+   "lessonId": "physics-lesson-26",
+   "lessonKey": "Reflection and refraction",
+   "question": "Light passes from air into glass. What happens?",
+   "topicId": "PHY-03"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "24 A"
+    },
+    {
+     "id": "B",
+     "text": "80 A"
+    },
+    {
+     "id": "C",
+     "text": "5 A"
+    },
+    {
+     "id": "D",
+     "text": "0.2 A"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Electricity and current",
+   "explanation": [
+    "I = Q ÷ t = 20 ÷ 4 = 5 A."
+   ],
+   "id": "physics-practice-427",
+   "lessonId": "physics-lesson-27",
+   "lessonKey": "Electric current",
+   "question": "A charge of 20 C passes a point in 4 s. What is the current?",
+   "topicId": "PHY-04"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "4 Ω"
+    },
+    {
+     "id": "B",
+     "text": "15 Ω"
+    },
+    {
+     "id": "C",
+     "text": "36 Ω"
+    },
+    {
+     "id": "D",
+     "text": "0.25 Ω"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Electricity and current",
+   "explanation": [
+    "R = V ÷ I = 12 ÷ 3 = 4 Ω."
+   ],
+   "id": "physics-practice-428",
+   "lessonId": "physics-lesson-28",
+   "lessonKey": "Ohm's law",
+   "question": "A 12 V supply drives 3 A through a resistor. What is its resistance?",
+   "topicId": "PHY-04"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "200 Ω"
+    },
+    {
+     "id": "B",
+     "text": "30 Ω"
+    },
+    {
+     "id": "C",
+     "text": "6.67 Ω"
+    },
+    {
+     "id": "D",
+     "text": "15 Ω"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Electricity and current",
+   "explanation": [
+    "In series the resistances add: 10 + 20 = 30 Ω."
+   ],
+   "id": "physics-practice-429",
+   "lessonId": "physics-lesson-29",
+   "lessonKey": "Resistors in series",
+   "question": "What is the total resistance of 10 Ω and 20 Ω in series?",
+   "topicId": "PHY-04"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "24 Ω"
+    },
+    {
+     "id": "B",
+     "text": "144 Ω"
+    },
+    {
+     "id": "C",
+     "text": "12 Ω"
+    },
+    {
+     "id": "D",
+     "text": "6 Ω"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Electricity and current",
+   "explanation": [
+    "Two equal resistors in parallel give half of one: 12 ÷ 2 = 6 Ω."
+   ],
+   "id": "physics-practice-430",
+   "lessonId": "physics-lesson-30",
+   "lessonKey": "Resistors in parallel",
+   "question": "Two 12 Ω resistors are connected in parallel. What is the total resistance?",
+   "topicId": "PHY-04"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "6 W"
+    },
+    {
+     "id": "B",
+     "text": "48 W"
+    },
+    {
+     "id": "C",
+     "text": "24 W"
+    },
+    {
+     "id": "D",
+     "text": "14 W"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Electricity and current",
+   "explanation": [
+    "P = VI = 12 × 2 = 24 W."
+   ],
+   "id": "physics-practice-431",
+   "lessonId": "physics-lesson-31",
+   "lessonKey": "Electrical power",
+   "question": "A lamp runs at 12 V and draws 2 A. What is its power?",
+   "topicId": "PHY-04"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "36 W"
+    },
+    {
+     "id": "B",
+     "text": "24 W"
+    },
+    {
+     "id": "C",
+     "text": "12 W"
+    },
+    {
+     "id": "D",
+     "text": "1.33 W"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Electricity and current",
+   "explanation": [
+    "P = I²R = 3² × 4 = 36 W."
+   ],
+   "id": "physics-practice-432",
+   "lessonId": "physics-lesson-32",
+   "lessonKey": "Power and resistance",
+   "question": "A current of 3 A flows through a 4 Ω resistor. What power does it dissipate?",
+   "topicId": "PHY-04"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "It stays the same"
+    },
+    {
+     "id": "B",
+     "text": "It halves"
+    },
+    {
+     "id": "C",
+     "text": "It drops to a quarter"
+    },
+    {
+     "id": "D",
+     "text": "It doubles"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Electricity and current",
+   "explanation": [
+    "F ∝ 1/r², so twice the distance means a quarter of the force."
+   ],
+   "id": "physics-practice-433",
+   "lessonId": "physics-lesson-33",
+   "lessonKey": "Coulomb's law",
+   "question": "The distance between two charges is doubled. What happens to the force between them?",
+   "topicId": "PHY-04"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "1.5 kWh"
+    },
+    {
+     "id": "B",
+     "text": "6 kWh"
+    },
+    {
+     "id": "C",
+     "text": "600 kWh"
+    },
+    {
+     "id": "D",
+     "text": "0.67 kWh"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Electricity and current",
+   "explanation": [
+    "E = Pt = 2 kW × 3 h = 6 kWh."
+   ],
+   "id": "physics-practice-434",
+   "lessonId": "physics-lesson-34",
+   "lessonKey": "Electrical energy",
+   "question": "A 2 kW heater runs for 3 hours. How much energy does it use?",
+   "topicId": "PHY-04"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "12 N"
+    },
+    {
+     "id": "B",
+     "text": "5.5 N"
+    },
+    {
+     "id": "C",
+     "text": "3 N"
+    },
+    {
+     "id": "D",
+     "text": "0.75 N"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Magnetism and electromagnetism",
+   "explanation": [
+    "F = BIL = 0.5 × 2 × 3 = 3 N."
+   ],
+   "id": "physics-practice-435",
+   "lessonId": "physics-lesson-35",
+   "lessonKey": "Force on a current",
+   "question": "A 3 m wire carries 2 A at right angles to a 0.5 T field. What force acts on it?",
+   "topicId": "PHY-05"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "12 N"
+    },
+    {
+     "id": "B",
+     "text": "9 N"
+    },
+    {
+     "id": "C",
+     "text": "1.5 N"
+    },
+    {
+     "id": "D",
+     "text": "24 N"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Magnetism and electromagnetism",
+   "explanation": [
+    "F = qvB = 2 × 3 × 4 = 24 N."
+   ],
+   "id": "physics-practice-436",
+   "lessonId": "physics-lesson-36",
+   "lessonKey": "Force on a moving charge",
+   "question": "A charge of 2 C moves at 3 m/s across a 4 T field. What force acts on it?",
+   "topicId": "PHY-05"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "A voltage that grows with time"
+    },
+    {
+     "id": "B",
+     "text": "A steady voltage while it stays there"
+    },
+    {
+     "id": "C",
+     "text": "None, because the field is not changing"
+    },
+    {
+     "id": "D",
+     "text": "The same as when it was moving"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Magnetism and electromagnetism",
+   "explanation": [
+    "Induction needs a changing field. A stationary magnet induces nothing."
+   ],
+   "id": "physics-practice-437",
+   "lessonId": "physics-lesson-37",
+   "lessonKey": "Electromagnetic induction",
+   "question": "A magnet is held still inside a coil. What voltage is induced?",
+   "topicId": "PHY-05"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "It falls faster, pulled by the copper"
+    },
+    {
+     "id": "B",
+     "text": "It stops completely inside the tube"
+    },
+    {
+     "id": "C",
+     "text": "It falls at exactly the same rate"
+    },
+    {
+     "id": "D",
+     "text": "It falls more slowly than in free air"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Magnetism and electromagnetism",
+   "explanation": [
+    "The induced currents oppose the motion, so the magnet is slowed."
+   ],
+   "id": "physics-practice-438",
+   "lessonId": "physics-lesson-38",
+   "lessonKey": "Lenz's law",
+   "question": "A magnet is dropped down a copper tube. What happens?",
+   "topicId": "PHY-05"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "600 V"
+    },
+    {
+     "id": "B",
+     "text": "2.4 V"
+    },
+    {
+     "id": "C",
+     "text": "60 V"
+    },
+    {
+     "id": "D",
+     "text": "0.24 V"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Magnetism and electromagnetism",
+   "explanation": [
+    "Vₛ = Vₚ × Nₛ/Nₚ = 12 × 500/100 = 60 V."
+   ],
+   "id": "physics-practice-439",
+   "lessonId": "physics-lesson-39",
+   "lessonKey": "Transformers",
+   "question": "A transformer has 100 turns on the primary and 500 on the secondary. With 12 V in, what comes out?",
+   "topicId": "PHY-05"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Straight lines along the wire"
+    },
+    {
+     "id": "B",
+     "text": "Circles around the wire"
+    },
+    {
+     "id": "C",
+     "text": "There is no field around a straight wire"
+    },
+    {
+     "id": "D",
+     "text": "Straight lines pointing away from the wire"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Magnetism and electromagnetism",
+   "explanation": [
+    "The field lines form closed circles around the wire, given by the right-hand grip rule."
+   ],
+   "id": "physics-practice-440",
+   "lessonId": "physics-lesson-40",
+   "lessonKey": "Magnetic field of a wire",
+   "question": "What is the shape of the magnetic field around a straight current-carrying wire?",
+   "topicId": "PHY-05"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "It halves"
+    },
+    {
+     "id": "B",
+     "text": "It is four times bigger"
+    },
+    {
+     "id": "C",
+     "text": "It does not change"
+    },
+    {
+     "id": "D",
+     "text": "It doubles"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Modern physics",
+   "explanation": [
+    "E = hf, so energy is proportional to frequency."
+   ],
+   "id": "physics-practice-441",
+   "lessonId": "physics-lesson-41",
+   "lessonKey": "Photon energy",
+   "question": "The frequency of a light source is doubled. What happens to the energy of each photon?",
+   "topicId": "PHY-06"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Electrons are released, but more slowly"
+    },
+    {
+     "id": "B",
+     "text": "Still no electrons, because the frequency is too low"
+    },
+    {
+     "id": "C",
+     "text": "Electrons are released, because more energy arrives"
+    },
+    {
+     "id": "D",
+     "text": "The metal heats up until electrons boil off instantly"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Modern physics",
+   "explanation": [
+    "Each photon must carry enough energy on its own. More low-frequency photons will not do."
+   ],
+   "id": "physics-practice-442",
+   "lessonId": "physics-lesson-42",
+   "lessonKey": "The photoelectric effect",
+   "question": "Red light shines on a metal and no electrons are released. What happens if the light is made much brighter?",
+   "topicId": "PHY-06"
+  },
+  {
+   "answer": "D",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Two different elements"
+    },
+    {
+     "id": "B",
+     "text": "Ions of the same element"
+    },
+    {
+     "id": "C",
+     "text": "Atoms with different charges"
+    },
+    {
+     "id": "D",
+     "text": "Isotopes of the same element"
+    }
+   ],
+   "difficulty": "Easy",
+   "domain": "Modern physics",
+   "explanation": [
+    "The proton number sets the element; a different neutron number makes an isotope."
+   ],
+   "id": "physics-practice-443",
+   "lessonId": "physics-lesson-43",
+   "lessonKey": "Atomic structure",
+   "question": "Two atoms have the same number of protons but different numbers of neutrons. What are they?",
+   "topicId": "PHY-06"
+  },
+  {
+   "answer": "B",
+   "choices": [
+    {
+     "id": "A",
+     "text": "5 g"
+    },
+    {
+     "id": "B",
+     "text": "10 g"
+    },
+    {
+     "id": "C",
+     "text": "26.7 g"
+    },
+    {
+     "id": "D",
+     "text": "20 g"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Modern physics",
+   "explanation": [
+    "12 ÷ 4 = 3 half-lives: 80 → 40 → 20 → 10 g."
+   ],
+   "id": "physics-practice-444",
+   "lessonId": "physics-lesson-44",
+   "lessonKey": "Half-life",
+   "question": "A sample of 80 g has a half-life of 4 days. How much is left after 12 days?",
+   "topicId": "PHY-06"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "It does not change"
+    },
+    {
+     "id": "B",
+     "text": "It falls by 2"
+    },
+    {
+     "id": "C",
+     "text": "It falls by 4"
+    },
+    {
+     "id": "D",
+     "text": "It rises by 1"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Modern physics",
+   "explanation": [
+    "An alpha particle is 2 protons and 2 neutrons, so the mass number drops by 4."
+   ],
+   "id": "physics-practice-445",
+   "lessonId": "physics-lesson-45",
+   "lessonKey": "Nuclear decay",
+   "question": "A nucleus emits an alpha particle. What happens to its mass number?",
+   "topicId": "PHY-06"
+  },
+  {
+   "answer": "C",
+   "choices": [
+    {
+     "id": "A",
+     "text": "Mass is destroyed, so energy is not conserved"
+    },
+    {
+     "id": "B",
+     "text": "It burns fuel like a fire and the ash escapes"
+    },
+    {
+     "id": "C",
+     "text": "Some mass is converted into the energy it radiates"
+    },
+    {
+     "id": "D",
+     "text": "Its gravity throws material into space"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Modern physics",
+   "explanation": [
+    "Fusion converts a small amount of mass into energy, following E = mc²."
+   ],
+   "id": "physics-practice-446",
+   "lessonId": "physics-lesson-46",
+   "lessonKey": "Mass and energy",
+   "question": "Why does the Sun lose mass as it shines?",
+   "topicId": "PHY-06"
+  },
+  {
+   "answer": "A",
+   "choices": [
+    {
+     "id": "A",
+     "text": "The energy needed grows without limit as it approaches c"
+    },
+    {
+     "id": "B",
+     "text": "Light would be unable to reach it"
+    },
+    {
+     "id": "C",
+     "text": "Its engines would melt before it got there"
+    },
+    {
+     "id": "D",
+     "text": "Space is too empty to push against"
+    }
+   ],
+   "difficulty": "Medium",
+   "domain": "Modern physics",
+   "explanation": [
+    "As speed approaches c the energy required approaches infinity, so a mass can never get there."
+   ],
+   "id": "physics-practice-447",
+   "lessonId": "physics-lesson-47",
+   "lessonKey": "Relativity",
+   "question": "Why can a spacecraft never reach the speed of light?",
+   "topicId": "PHY-06"
+  }
+ ],
+ "subject": "physics",
+ "topics": [
+  {
+   "id": "PHY-01",
+   "name": "Mechanics and motion"
+  },
+  {
+   "id": "PHY-02",
+   "name": "Energy and work"
+  },
+  {
+   "id": "PHY-03",
+   "name": "Waves and oscillations"
+  },
+  {
+   "id": "PHY-04",
+   "name": "Electricity and current"
+  },
+  {
+   "id": "PHY-05",
+   "name": "Magnetism and electromagnetism"
+  },
+  {
+   "id": "PHY-06",
+   "name": "Modern physics"
+  }
+ ]
+}

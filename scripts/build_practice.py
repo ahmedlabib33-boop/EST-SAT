@@ -30,6 +30,7 @@ sys.path.insert(0, HERE)
 
 from items_english import ITEMS as ENGLISH_ITEMS  # noqa: E402
 from items_math import ITEMS as MATH_ITEMS  # noqa: E402
+from items_physics import LESSONS as PHYSICS_LESSONS, TOPICS as PHYSICS_TOPICS  # noqa: E402
 
 NEW_ID_FROM = 400
 LETTERS = 'ABCD'
@@ -121,9 +122,42 @@ def check(subject, payload):
     return empty
 
 
+def build_physics():
+    """Physics has no source workbook, so the whole subject is written here."""
+    topics = [{'id': tid, 'name': name} for tid, name in PHYSICS_TOPICS]
+    known = {t['id'] for t in topics}
+    lessons, items = [], {}
+    for index, row in enumerate(PHYSICS_LESSONS, start=1):
+        topic, title, formula, steps, example, tip, arabic, difficulty, stem, options, why = row
+        if topic not in known:
+            sys.exit('physics: lesson %r has unknown topic %r' % (title, topic))
+        lessons.append({
+            'id': 'physics-lesson-%d' % index,
+            'topicId': topic,
+            'topicTitle': title,
+            'title': title,
+            'key': title,
+            'formula': formula,
+            'explanation': list(steps),
+            'example': example,
+            'tip': tip,
+            'arabic': arabic,
+            'domain': dict(PHYSICS_TOPICS)[topic],
+            'difficulty': difficulty,
+        })
+        items[index] = (stem, options, why)
+    payload = {'subject': 'physics', 'topics': topics, 'lessons': lessons, 'practice': []}
+    path = os.path.join(ROOT, 'backend', 'content', 'physics.json')
+    with io.open(path, 'w', encoding='utf-8', newline='\n') as handle:
+        json.dump(payload, handle, ensure_ascii=False, indent=1, sort_keys=True)
+        handle.write(u'\n')
+    return items
+
+
 def main():
+    physics_items = build_physics()
     total = 0
-    for subject, items in (('math', MATH_ITEMS), ('english', ENGLISH_ITEMS)):
+    for subject, items in (('math', MATH_ITEMS), ('english', ENGLISH_ITEMS), ('physics', physics_items)):
         payload, dropped, kept, written = build(subject, items)
         empty = check(subject, payload)
         total += len(payload['practice'])

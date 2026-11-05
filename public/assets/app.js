@@ -152,8 +152,9 @@
     if (!catalogRequest) {
       catalogRequest = Promise.all([
         E.api('/practice/math/topics', { auth: false }),
-        E.api('/practice/english/topics', { auth: false })
-      ]).then(function (r) { return { math: r[0], english: r[1] }; })
+        E.api('/practice/english/topics', { auth: false }),
+        E.api('/practice/physics/topics', { auth: false })
+      ]).then(function (r) { return { math: r[0], english: r[1], physics: r[2] }; })
         .catch(function (err) { catalogRequest = null; throw err; });
     }
     return catalogRequest;

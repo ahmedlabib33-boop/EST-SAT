@@ -64,7 +64,7 @@
     countGroup.setAttribute('aria-label', 'Number of questions');
     var summary = el('p', 'muted');
     function paintSummary() { summary.textContent = setup.count + ' questions · ' + Math.round(setup.count * SECONDS_PER_QUESTION / 60) + ' minutes · ' + A.subjectLabel(setup.subject); }
-    A.modes(subjectGroup, [['mixed', 'Mixed'], ['math', 'Math'], ['english', 'English']], setup.subject, function (v) { setup.subject = v; paintSummary(); });
+    A.modes(subjectGroup, [['mixed', 'Mixed'], ['math', 'Math'], ['english', 'English'], ['physics', 'Physics']], setup.subject, function (v) { setup.subject = v; paintSummary(); });
     A.modes(countGroup, [[20, '20 questions'], [40, '40 questions'], [60, '60 questions']], setup.count, function (v) { setup.count = v; paintSummary(); });
     card.appendChild(el('label', 'mini-label', 'Subject'));
     card.appendChild(subjectGroup);

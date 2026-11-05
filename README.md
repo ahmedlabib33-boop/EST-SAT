@@ -358,6 +358,32 @@ docker-compose up -d
 
 ---
 
+## 📚 The question bank
+
+Lessons and practice questions live as JSON under `backend/content/`, one file per subject.
+Answers never leave the server: `/api/practice/grade` is the only way to learn whether a choice
+was right.
+
+| Subject | Topics | Lessons | Questions |
+|---|---|---|---|
+| Math | 5 | 155 | 191 |
+| English | 12 | 157 | 157 |
+| Physics | 6 | 47 | 47 |
+
+Every practice question is written by hand in `scripts/items_math.py`, `scripts/items_english.py`
+and `scripts/items_physics.py`. To change or add one, edit those files and run:
+
+```bash
+python scripts/import_content.py   # only to re-import Math and English from the source workbook
+python scripts/build_practice.py   # writes the question banks and checks them
+```
+
+The builder refuses to write a question with a repeated choice, a missing explanation or an
+unknown lesson, and `tests/test_practice.py` checks the shipped bank for the generated
+placeholders it replaced.
+
+---
+
 ## 🧭 Study Tools
 
 Every tool shares one progress object. It is saved in the browser and synced to the account by `PUT /api/user/state`, which accepts only known, bounded fields (`clean_state` in `backend/routes.py`). The logic lives in `public/assets/study.js` and is unit-tested by `npm test`.

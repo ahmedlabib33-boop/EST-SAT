@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EST · SAT — Math, English &amp; Physics with Ahmed Labib</title>
-<meta name="description" content="Master SAT 1 and EST 1 Math, English and Physics with Ahmed Labib: a daily mission, timed practice with instant explanations, 312 lessons, a formula vault and progress you can see.">
+<meta name="description" content="Master SAT 1 and EST 1 Math, English and Physics with Ahmed Labib: a daily mission, timed practice with instant explanations, 359 lessons in Math, English and Physics, and progress you can see.">
 <meta name="theme-color" content="#07070F">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
@@ -109,7 +109,7 @@
       <div class="strip card reveal">
         <div><b>3</b><span>subjects</span></div>
         <div><b>23</b><span>chapters</span></div>
-        <div><b>312</b><span>lessons</span></div>
+        <div><b id="lessonCount">359</b><span>lessons</span></div>
         <div><b id="bankCount">348</b><span>practice questions</span></div>
       </div>
     </div>
@@ -408,14 +408,16 @@
     { s: 'physics', t: 'Modern Physics', q: 'An isotope has a half-life of 5 days. How much of a 100 g sample remains after 15 days?', o: ['33.3 g', '25 g', '12.5 g', '6.25 g'], a: 2, why: '15 days is 3 half-lives: 100 × (½)³ = 12.5 g.' }
   ];
 
+  // The mission itself is six questions drawn from the bank for today's date, so these
+  // are names for the day, not a promise about which topics turn up.
   var MISSIONS = [
-    { title: 'Quadratics × Kinematics Sprint', topics: ['Algebra', 'Mechanics'] },
-    { title: 'Trig × Waves Run', topics: ['Trigonometry', 'Waves'] },
-    { title: 'Derivatives × Energy Boost', topics: ['Calculus', 'Energy'] },
-    { title: 'Logs × Half-life Leap', topics: ['Logarithms', 'Modern Physics'] },
-    { title: 'Circuits × Calculus Climb', topics: ['Electricity', 'Calculus'] },
-    { title: 'Forces × Factoring Drill', topics: ['Mechanics', 'Algebra'] },
-    { title: 'Identities × Ohm’s Law Mix', topics: ['Trigonometry', 'Electricity'] }
+    { title: 'Six to Start the Day' },
+    { title: 'Daily Mixed Set' },
+    { title: 'Warm-up Sprint' },
+    { title: 'Exam Pace Drill' },
+    { title: 'Mixed Bag Run' },
+    { title: 'Six Before Study' },
+    { title: 'Quick Six Climb' }
   ];
 
   var FORMULAS = [
@@ -495,23 +497,28 @@
   if (Study.updateFreezes(state, todayKey)) save();
 
   // ---------- Mission ----------
+  // The first six questions are today's mission, so progress saved as 0-5 still lines
+  // up after a reload. They start as built-in questions, which work with no network,
+  // and are swapped for the shared daily set from the question bank once it arrives.
+  var MISSION_SIZE = 6;
   var mission = MISSIONS[dayNum % MISSIONS.length];
-  var missionQueue = (function () {
-    var order = QUESTIONS.map(function (q, i) { return i; });
-    var rot = dayNum % order.length;
-    order = order.slice(rot).concat(order.slice(0, rot));
-    var main = order.filter(function (i) { return mission.topics.indexOf(QUESTIONS[i].t) >= 0; });
-    var rest = order.filter(function (i) { return mission.topics.indexOf(QUESTIONS[i].t) < 0; });
-    return main.concat(rest).slice(0, 6);
-  })();
+  var missionQueue = [0, 1, 2, 3, 4, 5];
   function missionDone() { return state.mission.done.filter(function (i) { return missionQueue.indexOf(i) >= 0; }).length; }
+  function missionSubjects() {
+    var seen = [];
+    missionQueue.forEach(function (i) {
+      var name = LABEL[QUESTIONS[i].s] || QUESTIONS[i].s;
+      if (seen.indexOf(name) < 0) seen.push(name);
+    });
+    return seen.join(' + ');
+  }
 
   $('#todayLabel').textContent = today.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
   $('#missionTitle').textContent = mission.title;
-  $('#missionTopics').textContent = mission.topics.join(' + ');
 
   function renderMission() {
     var done = missionDone();
+    $('#missionTopics').textContent = missionSubjects();
     $$('#missionSegs span').forEach(function (s, i) { s.classList.toggle('on', i < done); });
     $('#missionCount').textContent = done >= 6 ? 'Mission complete. See you tomorrow!' : done + ' / 6 questions done';
     $('#launchLabel').textContent = done === 0 ? 'Launch mission' : done >= 6 ? 'Keep practising' : 'Resume mission';
@@ -782,26 +789,40 @@
   buildQueue();
   showQuestion();
 
-  // Widen the arena with the full Math and English bank. These questions arrive
-  // without their answers -- check() grades them through /api/practice/grade. The
-  // built-in questions above stay put, so the page still works with no network and
-  // the daily mission keeps its fixed, curated set.
+  // Bank questions arrive without their answers; check() grades them through
+  // /api/practice/grade. The built-in questions stay in the arena, so the page still
+  // works with no network at all.
+  function fromBank(q) {
+    return { s: q.subject, t: q.topic || q.domain || '', tid: q.topicId, q: q.question, id: q.id,
+             o: q.choices.map(function (c) { return c.text; }) };
+  }
+  function usable(q) { return q && q.choices && q.choices.length === 4 && q.question; }
+
   if (window.EstSat) {
+    // Today's mission, the same six questions for every student, changing each day.
+    // Because they come from the bank, a wrong answer here is saved for review --
+    // the built-in questions have no id, so their mistakes could never be.
+    window.EstSat.api('/practice/daily?n=' + MISSION_SIZE + '&day=' + todayKey, { auth: false }).then(function (res) {
+      var fresh = (res.questions || []).filter(usable);
+      if (fresh.length < MISSION_SIZE) return;
+      // Keep the built-ins they replace, at the end, so the arena does not lose them.
+      QUESTIONS.push.apply(QUESTIONS, QUESTIONS.slice(0, MISSION_SIZE));
+      fresh.slice(0, MISSION_SIZE).forEach(function (q, i) { QUESTIONS[i] = fromBank(q); });
+      renderMission();
+      if (mode === 'mission' && !checked && !started) { buildQueue(); showQuestion(); }
+    }).catch(function () { /* offline: the built-in mission above still works */ });
+
     // Keep the headline count honest, whatever is in the bank today.
     window.EstSat.api('/practice/subjects', { auth: false }).then(function (res) {
-      var total = (res.subjects || []).reduce(function (sum, s) { return sum + (s.questions || 0); }, 0);
-      if (total) $('#bankCount').textContent = total;
-    }).catch(function () { /* the printed number stays */ });
+      function total(key) {
+        return (res.subjects || []).reduce(function (sum, s) { return sum + (s[key] || 0); }, 0);
+      }
+      if (total('questions')) $('#bankCount').textContent = total('questions');
+      if (total('lessons')) $('#lessonCount').textContent = total('lessons');
+    }).catch(function () { /* the printed numbers stay */ });
 
     window.EstSat.api('/practice/random?subject=all&n=50', { auth: false }).then(function (res) {
-      var added = (res.questions || []).filter(function (q) {
-        return q.choices && q.choices.length === 4 && q.question;
-      }).map(function (q) {
-        return {
-          s: q.subject, t: q.topic || q.domain || '', tid: q.topicId, q: q.question, id: q.id,
-          o: q.choices.map(function (c) { return c.text; })
-        };
-      });
+      var added = (res.questions || []).filter(usable).map(fromBank);
       if (!added.length) return;
       QUESTIONS.push.apply(QUESTIONS, added);
       if (mode !== 'mission') { buildQueue(); showQuestion(); }

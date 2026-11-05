@@ -14,6 +14,8 @@ questions the signed-in student has already got wrong.
 import json
 import os
 import random
+import re
+from datetime import date
 
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import current_user, jwt_required
@@ -21,7 +23,9 @@ from flask_jwt_extended import current_user, jwt_required
 practice_bp = Blueprint('practice', __name__, url_prefix='/api/practice')
 
 CONTENT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'content')
-SUBJECTS = ('math', 'english')
+SUBJECTS = ('math', 'english', 'physics')
+DAY_RE = re.compile(r'^\d{4}-\d{2}-\d{2}$')
+MAX_DAILY = 20
 MAX_GRADE_ITEMS = 100
 MAX_RANDOM = 100
 MAX_BY_ID = 60
@@ -72,7 +76,8 @@ def _subject(name):
 
 
 def _subject_of(question_id):
-    return 'english' if question_id.startswith('english') else 'math'
+    name = question_id.split('-', 1)[0]
+    return name if name in SUBJECTS else 'math'
 
 
 def error(message, status):
@@ -157,6 +162,30 @@ def random_questions():
         return jsonify({'questions': []})
     chosen = random.sample(pool, min(count, len(pool)))
     return jsonify({'questions': [strip(q, subject) for subject, q in chosen]})
+
+
+@practice_bp.get('/daily')
+def daily():
+    """Today's mission: the same questions for everyone, a different set each day.
+
+    The day comes from the browser so the mission turns over at the student's own
+    midnight, which is the date their streak and progress already use.
+    """
+    try:
+        count = int(request.args.get('n', 6))
+    except (TypeError, ValueError):
+        count = 6
+    count = max(1, min(count, MAX_DAILY))
+    day = request.args.get('day', '')
+    if not DAY_RE.match(day):
+        day = date.today().isoformat()
+
+    pool = sorted(((subject, q) for subject in SUBJECTS for q in CONTENT[subject].get('practice', [])),
+                  key=lambda pair: pair[1]['id'])
+    if not pool:
+        return jsonify({'day': day, 'questions': []})
+    chosen = random.Random(day).sample(pool, min(count, len(pool)))
+    return jsonify({'day': day, 'questions': [strip(q, subject) for subject, q in chosen]})
 
 
 @practice_bp.get('/questions')

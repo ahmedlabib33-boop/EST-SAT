@@ -184,7 +184,7 @@
     panelTitle(box, 'From your parent', open.length + ' to do');
     open.forEach(function (a) {
       var row = el('a', 'inbox-row');
-      if (a.kind === 'lesson') row.href = 'learn.html?subject=' + (a.target.indexOf('english') === 0 ? 'english' : 'math') + '&lesson=' + encodeURIComponent(a.target);
+      if (a.kind === 'lesson') row.href = 'learn.html?subject=' + String(a.target).split('-')[0] + '&lesson=' + encodeURIComponent(a.target);
       else row.href = 'exam.html?preset=' + encodeURIComponent(a.target);
       row.appendChild(A.icon(a.kind === 'lesson' ? 'book' : 'target'));
       var t = el('span');

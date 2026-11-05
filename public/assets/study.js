@@ -215,7 +215,7 @@
   function topicRows(state, catalog) {
     var s = normalize(state), rows = [], seen = {}, done = {};
     s.lessons.forEach(function (id) { done[id] = true; });
-    ['math', 'english'].forEach(function (subject) {
+    ['math', 'english', 'physics'].forEach(function (subject) {
       var c = catalog && catalog[subject];
       if (!c) return;
       c.topics.forEach(function (t) {
@@ -264,7 +264,7 @@
   function dailyPlan(state, catalog, today, size) {
     size = size || 8;
     var due = reviewQueue(state, today).slice(0, size).map(function (e) { return e.mistake; });
-    var weak = topGains(state, catalog, 4).filter(function (r) { return r.subject !== 'physics'; });
+    var weak = topGains(state, catalog, 4);
     return { due: due, freshCount: Math.max(0, size - due.length), weak: weak };
   }
 

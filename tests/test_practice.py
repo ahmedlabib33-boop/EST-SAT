@@ -48,9 +48,42 @@ def test_banks_are_loaded(client):
 
 
 def test_unknown_subject_is_rejected(client):
-    assert client.get('/api/practice/physics/topics').status_code == 400
+    assert client.get('/api/practice/physics/topics').status_code == 200
     assert client.get('/api/practice/nope/topics').status_code == 400
     assert client.get('/api/practice/random?subject=nope').status_code == 400
+
+
+def test_physics_is_a_full_subject(client):
+    """Physics used to have no lessons at all, so a wrong physics answer could
+    not be saved for review and there was nothing to revise from."""
+    counts = {s['subject']: s for s in client.get('/api/practice/subjects').get_json()['subjects']}
+    assert counts['physics']['topics'] == 6
+    assert counts['physics']['lessons'] >= 40
+    assert counts['physics']['questions'] >= 40
+
+    topics = client.get('/api/practice/physics/topics').get_json()
+    lesson = topics['lessons'][0]
+    body = client.get('/api/practice/physics/lessons/' + lesson['id']).get_json()
+    assert body['questions'] and 'answer' not in body['questions'][0]
+    assert body['lesson']['formula'] and body['lesson']['explanation']
+
+    sheet = client.get('/api/practice/physics/revision').get_json()
+    assert len(sheet['lessons']) == counts['physics']['lessons']
+    assert all(l['title'] for l in sheet['lessons'])
+
+
+def test_the_daily_mission_is_the_same_all_day_and_changes_tomorrow(client):
+    first = client.get('/api/practice/daily?day=2026-11-05&n=6').get_json()
+    again = client.get('/api/practice/daily?day=2026-11-05&n=6').get_json()
+    tomorrow = client.get('/api/practice/daily?day=2026-11-06&n=6').get_json()
+    ids = [q['id'] for q in first['questions']]
+    assert len(ids) == 6 and len(set(ids)) == 6
+    assert ids == [q['id'] for q in again['questions']]
+    assert ids != [q['id'] for q in tomorrow['questions']]
+    assert all('answer' not in q and 'explanation' not in q for q in first['questions'])
+    # A bad or missing day falls back to today rather than failing.
+    assert len(client.get('/api/practice/daily?day=nope').get_json()['questions']) == 6
+    assert len(client.get('/api/practice/daily?n=999').get_json()['questions']) == 20
 
 
 def test_unknown_lesson_is_404(client):

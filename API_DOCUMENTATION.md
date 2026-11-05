@@ -678,7 +678,7 @@ Authorization: Bearer {token}
 
 ## Practice and AI
 
-Questions never include their answers until they are graded.
+Questions never include their answers until they are graded. Subjects are math, english and physics.
 
 | Method | Path | Auth | Purpose |
 |---|---|---|---|
@@ -687,6 +687,7 @@ Questions never include their answers until they are graded.
 | GET | `/api/practice/<subject>/lessons/<id>` | Public | A lesson and its questions, without answers |
 | GET | `/api/practice/<subject>/revision` | Public | Every lesson's rule, formula, example and tip |
 | GET | `/api/practice/random?subject=&n=&topics=` | Public | Up to 100 random questions, without answers |
+| GET | `/api/practice/daily?day=&n=` | Public | Today's mission: the same questions for everyone, a new set each day |
 | GET | `/api/practice/questions?ids=` | Public | Up to 60 questions by id, without answers |
 | POST | `/api/practice/grade` | Public | `{items: [{id, answer}]}`, up to 100; returns the answer and explanation |
 | GET | `/api/practice/review` | JWT | The account's own wrong answers, with explanations |
