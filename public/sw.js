@@ -3,7 +3,7 @@
 // Accounts, grading, the AI coach and live classes always need the network and are never saved.
 // Pages hold no personal data (progress lives in the browser's own storage), so sharing a device is safe.
 
-var VERSION = 'v2';
+var VERSION = 'v3';
 var CACHE = 'estsat-' + VERSION;
 var SHELL = [
   'index.html', 'today.html', 'learn.html', 'exam.html', 'review.html', 'progress.html', 'rewards.html', 'revision.html',
@@ -11,7 +11,7 @@ var SHELL = [
   'assets/site.css', 'assets/auth.js', 'assets/study.js', 'assets/app.js', 'assets/icons/icon.svg', 'assets/icons/icon-192.png'
 ];
 var CONTENT = ['/api/practice/subjects', '/api/practice/math/topics', '/api/practice/english/topics',
-  '/api/practice/physics/topics'];
+  '/api/practice/physics/topics', '/api/practice/math2/topics'];
 
 self.addEventListener('install', function (event) {
   event.waitUntil(caches.open(CACHE).then(function (cache) {
