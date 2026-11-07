@@ -69,7 +69,8 @@
     seconds = Math.max(0, Math.round(seconds));
     return Math.floor(seconds / 60) + ':' + ('0' + (seconds % 60)).slice(-2);
   }
-  function subjectLabel(s) { return s === 'math' ? 'Math' : s === 'english' ? 'English' : s === 'physics' ? 'Physics' : 'Mixed'; }
+  var SUBJECT_LABELS = { math: 'Math', english: 'English', physics: 'Physics', math2: 'Math 2' };
+  function subjectLabel(s) { return SUBJECT_LABELS[s] || 'Mixed'; }
   function ring(percent, label, tone) {
     var box = el('div', 'ring-c' + (tone ? ' ' + tone : ''));
     box.style.setProperty('--p', Math.max(0, Math.min(100, percent)) + '%');
@@ -153,8 +154,9 @@
       catalogRequest = Promise.all([
         E.api('/practice/math/topics', { auth: false }),
         E.api('/practice/english/topics', { auth: false }),
-        E.api('/practice/physics/topics', { auth: false })
-      ]).then(function (r) { return { math: r[0], english: r[1], physics: r[2] }; })
+        E.api('/practice/physics/topics', { auth: false }),
+        E.api('/practice/math2/topics', { auth: false })
+      ]).then(function (r) { return { math: r[0], english: r[1], physics: r[2], math2: r[3] }; })
         .catch(function (err) { catalogRequest = null; throw err; });
     }
     return catalogRequest;

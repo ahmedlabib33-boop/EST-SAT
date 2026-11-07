@@ -30,6 +30,8 @@ sys.path.insert(0, HERE)
 
 from items_english import EXTRA as ENGLISH_EXTRA, HARD as ENGLISH_HARD, ITEMS as ENGLISH_ITEMS  # noqa: E402
 from items_math import EXTRA as MATH_EXTRA, HARD as MATH_HARD, ITEMS as MATH_ITEMS  # noqa: E402
+from items_math2 import (EXTRA as MATH2_EXTRA, HARD as MATH2_HARD,  # noqa: E402
+                         LESSONS as MATH2_LESSONS, TOPICS as MATH2_TOPICS)
 from items_physics import (EXTRA as PHYSICS_EXTRA, HARD as PHYSICS_HARD,  # noqa: E402
                            LESSONS as PHYSICS_LESSONS, TOPICS as PHYSICS_TOPICS)
 
@@ -135,17 +137,17 @@ def check(subject, payload):
     return empty
 
 
-def build_physics():
-    """Physics has no source workbook, so the whole subject is written here."""
-    topics = [{'id': tid, 'name': name} for tid, name in PHYSICS_TOPICS]
+def build_written(subject, subject_topics, subject_lessons, extra, hard):
+    """A subject with no source workbook: lessons and questions are written here."""
+    topics = [{'id': tid, 'name': name} for tid, name in subject_topics]
     known = {t['id'] for t in topics}
     lessons, items = [], {}
-    for index, row in enumerate(PHYSICS_LESSONS, start=1):
+    for index, row in enumerate(subject_lessons, start=1):
         topic, title, formula, steps, example, tip, arabic, difficulty, stem, options, why = row
         if topic not in known:
-            sys.exit('physics: lesson %r has unknown topic %r' % (title, topic))
+            sys.exit('%s: lesson %r has unknown topic %r' % (subject, title, topic))
         lessons.append({
-            'id': 'physics-lesson-%d' % index,
+            'id': '%s-lesson-%d' % (subject, index),
             'topicId': topic,
             'topicTitle': title,
             'title': title,
@@ -155,16 +157,16 @@ def build_physics():
             'example': example,
             'tip': tip,
             'arabic': arabic,
-            'domain': dict(PHYSICS_TOPICS)[topic],
+            'domain': dict(subject_topics)[topic],
             'difficulty': difficulty,
         })
         items[index] = [(stem, options, why)]
-        if title in PHYSICS_EXTRA:
-            items[index].append(PHYSICS_EXTRA[title])
-        if title in PHYSICS_HARD:
-            items[index].append(tuple(PHYSICS_HARD[title]) + (HARD,))
-    payload = {'subject': 'physics', 'topics': topics, 'lessons': lessons, 'practice': []}
-    path = os.path.join(ROOT, 'backend', 'content', 'physics.json')
+        if title in extra:
+            items[index].append(extra[title])
+        if title in hard:
+            items[index].append(tuple(hard[title]) + (HARD,))
+    payload = {'subject': subject, 'topics': topics, 'lessons': lessons, 'practice': []}
+    path = os.path.join(ROOT, 'backend', 'content', subject + '.json')
     with io.open(path, 'w', encoding='utf-8', newline='\n') as handle:
         json.dump(payload, handle, ensure_ascii=False, indent=1, sort_keys=True)
         handle.write(u'\n')
@@ -190,14 +192,19 @@ def merge(items, extra, hard=None):
 
 
 def main():
-    stray = _unused_titles()
-    if stray:
-        sys.exit('physics: extra questions for lessons that do not exist: %s' % stray)
-    physics_items = build_physics()
+    written = (('physics', PHYSICS_TOPICS, PHYSICS_LESSONS, PHYSICS_EXTRA, PHYSICS_HARD),
+               ('math2', MATH2_TOPICS, MATH2_LESSONS, MATH2_EXTRA, MATH2_HARD))
+    built = {}
+    for subject, topics, lessons, extra, hard in written:
+        stray = _unused_titles(lessons, extra, hard)
+        if stray:
+            sys.exit('%s: extra questions for lessons that do not exist: %s' % (subject, stray))
+        built[subject] = build_written(subject, topics, lessons, extra, hard)
     total = 0
     banks = (('math', merge(MATH_ITEMS, MATH_EXTRA, MATH_HARD)),
              ('english', merge(ENGLISH_ITEMS, ENGLISH_EXTRA, ENGLISH_HARD)),
-             ('physics', physics_items))
+             ('physics', built['physics']),
+             ('math2', built['math2']))
     for subject, items in banks:
         payload, dropped, kept, written = build(subject, items)
         empty = check(subject, payload)
@@ -210,9 +217,9 @@ def main():
     print('%d practice questions in all' % total)
 
 
-def _unused_titles():
-    titles = {row[1] for row in PHYSICS_LESSONS}
-    return sorted((set(PHYSICS_EXTRA) | set(PHYSICS_HARD)) - titles)
+def _unused_titles(lessons, extra, hard):
+    titles = {row[1] for row in lessons}
+    return sorted((set(extra) | set(hard)) - titles)
 
 
 if __name__ == '__main__':

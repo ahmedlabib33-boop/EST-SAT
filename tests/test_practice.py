@@ -87,14 +87,16 @@ def test_a_challenge_paper_asks_the_hard_questions_first(client):
     assert len(big) == 100
     assert len({q['id'] for q in big}) == 100
 
-    # Asking for hard alone caps at however many hard questions exist.
-    only = client.get('/api/practice/random?subject=all&n=100&difficulty=hard').get_json()['questions']
-    assert 60 <= len(only) < 100
+    # Asking for hard alone caps at however many hard questions the subject has:
+    # physics has 20, so asking for 60 cannot invent more.
+    only = client.get('/api/practice/random?subject=physics&n=60&difficulty=hard').get_json()['questions']
+    assert 0 < len(only) < 60
+    assert all(q['difficulty'] == 'Hard' for q in only)
     assert client.get('/api/practice/random?subject=all&n=5&difficulty=nope').get_json()['questions'] == []
 
 
 def test_every_subject_has_challenge_questions(client):
-    for subject in ('math', 'english', 'physics'):
+    for subject in ('math', 'english', 'physics', 'math2'):
         body = client.get('/api/practice/random?subject=%s&n=60&difficulty=hard' % subject).get_json()
         assert len(body['questions']) >= 20, subject
 
@@ -290,3 +292,46 @@ def test_review_returns_only_this_student_s_mistakes(client):
 
     other = register(client, username='someone.else')
     assert client.get('/api/practice/review', headers=auth(other)).get_json()['total'] == 0
+
+
+def test_math_2_covers_every_area_of_the_published_syllabus(client):
+    """EST II Math Level 2 and SAT II Math Level 2 publish the same six content areas.
+
+    Plane Euclidean geometry is the one thing deliberately absent: both boards say it
+    is not tested directly at Level 2.
+    """
+    topics = client.get('/api/practice/math2/topics').get_json()
+    names = ' | '.join(t['name'].lower() for t in topics['topics'])
+    for area in ('numbers', 'matrices', 'sequences', 'vectors', 'algebra', 'functions',
+                 'coordinate', 'three-dimensional', 'trigonometry', 'statistics', 'probability'):
+        assert area in names, area
+
+    lessons = topics['lessons']
+    titles = ' | '.join(l['title'].lower() for l in lessons)
+    # Every subtopic either board names, in its own words.
+    for subtopic in ('ratio', 'percentage', 'complex', 'counting', 'matri', 'determinant',
+                     'arithmetic sequence', 'geometric series', 'vector', 'exponent', 'radical',
+                     'quadratic formula', 'discriminant', 'remainder theorem', 'factor theorem',
+                     'rational', 'asymptote', 'inequalities', 'absolute value', 'exponential',
+                     'logarithm', 'composition', 'inverse function', 'domain and range',
+                     'piecewise', 'recursive', 'parametric', 'derivative', 'circle', 'parabola',
+                     'ellipse', 'hyperbola', 'symmetry', 'transformations', 'polar',
+                     'prism', 'cone', 'sphere', 'three dimensions', 'right triangle',
+                     'pythagorean', 'radian', 'unit circle', 'identities', 'double angle',
+                     'law of sines', 'law of cosines', 'inverse trigonometric',
+                     'median', 'interquartile', 'standard deviation', 'regression',
+                     'probability', 'permutation', 'combination'):
+        assert subtopic in titles, subtopic
+
+    # Every lesson carries at least one question, and the Challenge paper has enough.
+    practice = client.get('/api/practice/random?subject=math2&n=100').get_json()['questions']
+    assert len(practice) == 100
+    assert all(q['subject'] == 'math2' for q in practice)
+    hard = client.get('/api/practice/random?subject=math2&n=60&difficulty=hard').get_json()['questions']
+    assert len(hard) >= 30
+
+    # It is a separate subject test, so it stays out of the shared mix unless asked for.
+    mixed = client.get('/api/practice/random?subject=all&n=100').get_json()['questions']
+    assert not any(q['subject'] == 'math2' for q in mixed)
+    mission = client.get('/api/practice/daily?n=20&day=2026-11-07').get_json()['questions']
+    assert not any(q['subject'] == 'math2' for q in mission)

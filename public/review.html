@@ -246,7 +246,8 @@
   function renderView() { if (view === 'list') renderList(); else renderCards(); }
 
   A.modes(A.byId('viewModes'), [['list', 'Mistake list'], ['cards', 'Flashcards']], view, function (v) { view = v; flipped = false; cardIndex = 0; renderView(); });
-  A.modes(A.byId('subjectModes'), [['all', 'All'], ['math', 'Math'], ['english', 'English'], ['physics', 'Physics']], subject, function (v) { subject = v; flipped = false; cardIndex = 0; renderView(); });
+  A.modes(A.byId('subjectModes'), [['all', 'All'], ['math', 'Math'], ['english', 'English'],
+    ['physics', 'Physics'], ['math2', 'Math 2']], subject, function (v) { subject = v; flipped = false; cardIndex = 0; renderView(); });
   A.byId('clearBtn').addEventListener('click', function () {
     if (!window.confirm('Clear every saved mistake and its review schedule?')) return;
     state.mistakes = [];

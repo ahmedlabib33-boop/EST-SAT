@@ -28,13 +28,13 @@ blueprints = [auth_bp, courses_bp, quiz_bp, progress_bp, user_bp, admin_bp, pare
 USERNAME_RE = re.compile(r'^[A-Za-z0-9_.]{3,30}$')
 EMAIL_RE = re.compile(r'^[^@\s]+@[^@\s]+\.[^@\s]+$')
 DATE_RE = re.compile(r'^\d{4}-\d{2}-\d{2}$')
-CHAPTER_RE = re.compile(r'^(math|physics|english)-\d{1,2}$')
-QUESTION_ID_RE = re.compile(r'^(math|english|physics)-practice-\d{1,5}$')
-LESSON_ID_RE = re.compile(r'^(math|english|physics)-lesson-\d{1,5}$')
-TOPIC_KEY_RE = re.compile(r"^(math|english|physics)\|[A-Za-z0-9 .,&'-]{1,60}$")
+CHAPTER_RE = re.compile(r'^(math|physics|english|math2)-\d{1,2}$')
+QUESTION_ID_RE = re.compile(r'^(math|english|physics|math2)-practice-\d{1,5}$')
+LESSON_ID_RE = re.compile(r'^(math|english|physics|math2)-lesson-\d{1,5}$')
+TOPIC_KEY_RE = re.compile(r"^(math|english|physics|math2)\|[A-Za-z0-9 .,&'-]{1,60}$")
 ASSIGNMENT_ID_RE = re.compile(r'^a-\d{1,16}$')
 GOAL_ID_RE = re.compile(r'^g-\d{1,16}$')
-ATTEMPT_SUBJECTS = ('math', 'english', 'physics', 'mixed')
+ATTEMPT_SUBJECTS = ('math', 'english', 'physics', 'math2', 'mixed')
 ATTEMPT_LEVELS = ('standard', 'challenge', 'mock')
 # The teacher's homework board lives inside a staff account's own state row, because
 # production has no migration tooling for a new table. Students only ever read it.

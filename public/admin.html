@@ -605,10 +605,12 @@
     ['math-20', 'Math, 20 questions'], ['math-40', 'Math, 40 questions'],
     ['english-20', 'English, 20 questions'], ['english-40', 'English, 40 questions'],
     ['physics-20', 'Physics, 20 questions'],
+    ['math2-20', 'Math 2, 20 questions'], ['math2-40', 'Math 2, 40 questions'],
     ['mixed-40-challenge', 'Mixed, 40 questions · Challenge'],
     ['math-20-challenge', 'Math, 20 questions · Challenge'],
     ['english-20-challenge', 'English, 20 questions · Challenge'],
-    ['physics-20-challenge', 'Physics, 20 questions · Challenge']
+    ['physics-20-challenge', 'Physics, 20 questions · Challenge'],
+    ['math2-20-challenge', 'Math 2, 20 questions · Challenge']
   ];
   var board = { notice: '', assignments: [] }, boardKind = 'lesson', catalog = null, lastReport = null;
 
@@ -634,7 +636,7 @@
       sel.appendChild(el('option', null, 'Loading lessons…'));
       return;
     }
-    ['math', 'english', 'physics'].forEach(function (subject) {
+    ['math', 'english', 'physics', 'math2'].forEach(function (subject) {
       var part = catalog[subject];
       if (!part) return;
       var names = {};

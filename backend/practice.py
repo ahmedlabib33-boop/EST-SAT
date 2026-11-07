@@ -23,7 +23,10 @@ from flask_jwt_extended import current_user, jwt_required
 practice_bp = Blueprint('practice', __name__, url_prefix='/api/practice')
 
 CONTENT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'content')
-SUBJECTS = ('math', 'english', 'physics')
+SUBJECTS = ('math', 'english', 'physics', 'math2')
+# Math 2 is a separate subject test, not part of everyone's course, so it joins a
+# paper or a mission only when it is asked for by name.
+CORE_SUBJECTS = ('math', 'english', 'physics')
 DAY_RE = re.compile(r'^\d{4}-\d{2}-\d{2}$')
 MAX_DAILY = 20
 DIFFICULTIES = ('hard', 'medium', 'easy', 'mixed')
@@ -145,7 +148,7 @@ def lesson(subject, lesson_id):
 @practice_bp.get('/random')
 def random_questions():
     wanted = request.args.get('subject', 'all')
-    names = SUBJECTS if wanted == 'all' else ([_subject(wanted)] if _subject(wanted) else None)
+    names = CORE_SUBJECTS if wanted == 'all' else ([_subject(wanted)] if _subject(wanted) else None)
     if not names:
         return error('Unknown subject.', 400)
 
@@ -197,7 +200,7 @@ def daily():
     if not DAY_RE.match(day):
         day = date.today().isoformat()
 
-    pool = sorted(((subject, q) for subject in SUBJECTS for q in CONTENT[subject].get('practice', [])),
+    pool = sorted(((subject, q) for subject in CORE_SUBJECTS for q in CONTENT[subject].get('practice', [])),
                   key=lambda pair: pair[1]['id'])
     if not pool:
         return jsonify({'day': day, 'questions': []})

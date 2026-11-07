@@ -107,7 +107,8 @@
     });
   }
 
-  A.modes(A.byId('subjectModes'), [['math', 'Math'], ['english', 'English'], ['physics', 'Physics']], subject, function (v) { subject = v; topic = ''; load(); });
+  A.modes(A.byId('subjectModes'), [['math', 'Math'], ['english', 'English'],
+    ['physics', 'Physics'], ['math2', 'Math 2']], subject, function (v) { subject = v; topic = ''; load(); });
   A.byId('topicSel').addEventListener('change', function () { topic = this.value; renderSheet(); });
   A.byId('search').addEventListener('input', function () { query = this.value; renderSheet(); });
   A.byId('printBtn').addEventListener('click', function () { window.print(); });

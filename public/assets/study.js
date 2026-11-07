@@ -216,7 +216,7 @@
   function topicRows(state, catalog) {
     var s = normalize(state), rows = [], seen = {}, done = {};
     s.lessons.forEach(function (id) { done[id] = true; });
-    ['math', 'english', 'physics'].forEach(function (subject) {
+    ['math', 'english', 'physics', 'math2'].forEach(function (subject) {
       var c = catalog && catalog[subject];
       if (!c) return;
       c.topics.forEach(function (t) {

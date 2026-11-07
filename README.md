@@ -369,13 +369,23 @@ was right.
 | Math | 5 | 155 | 368 |
 | English | 12 | 157 | 344 |
 | Physics | 6 | 47 | 114 |
+| Math 2 | 7 | 89 | 216 |
+
+**Math 2** is the subject test, covering EST II Math Level 2 and SAT Subject Math Level 2.
+Both boards publish the same six content areas, and every subtopic either names has a lesson:
+numbers and operations, algebra and functions, coordinate geometry, three-dimensional
+geometry, trigonometry, and data, statistics and probability. Plane Euclidean geometry is
+deliberately absent, because both boards state it is not tested directly at Level 2. The
+subject test is not part of everyone's course, so Math 2 joins a paper or the daily mission
+only when it is asked for by name: it has its own tab in Lessons, Revision, Progress and
+Review, its own Quick exam subject, and a Math 2 mock of 50 questions in 60 minutes.
 
 Each lesson has a question on its rule, a second that applies it a step further, and many
 have a third marked `Hard`. The Exam Arena's **Challenge** paper draws on those first and
 gives 75 seconds a question instead of 90.
 
-Every practice question is written by hand in `scripts/items_math.py`, `scripts/items_english.py`
-and `scripts/items_physics.py`. To change or add one, edit those files and run:
+Every practice question is written by hand in `scripts/items_math.py`, `scripts/items_english.py`,
+`scripts/items_physics.py` and `scripts/items_math2.py`. To change or add one, edit those files and run:
 
 ```bash
 python scripts/import_content.py   # only to re-import Math and English from the source workbook

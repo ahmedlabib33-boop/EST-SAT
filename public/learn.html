@@ -51,6 +51,7 @@
         <button type="button" class="mode" data-subject="math" aria-pressed="true">Math</button>
         <button type="button" class="mode" data-subject="english" aria-pressed="false">English</button>
         <button type="button" class="mode" data-subject="physics" aria-pressed="false">Physics</button>
+        <button type="button" class="mode" data-subject="math2" aria-pressed="false">Math 2</button>
       </div>
       <div class="topic-pick">
         <label for="topicSel">Topic</label>
@@ -431,7 +432,7 @@
 
   if (E.loggedIn()) { E.pullState(true).then(function () { renderLessons(); paintLessonDone(); }).catch(function () {}); }
   var asked = App.param('subject');
-  var startSubject = (asked === 'english' || asked === 'physics') ? asked : 'math';
+  var startSubject = (asked === 'english' || asked === 'physics' || asked === 'math2') ? asked : 'math';
   Array.prototype.forEach.call(document.querySelectorAll('.mode[data-subject]'), function (b) {
     b.setAttribute('aria-pressed', b.getAttribute('data-subject') === startSubject ? 'true' : 'false');
   });

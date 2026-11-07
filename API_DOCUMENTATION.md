@@ -678,7 +678,9 @@ Authorization: Bearer {token}
 
 ## Practice and AI
 
-Questions never include their answers until they are graded. Subjects are math, english and physics.
+Questions never include their answers until they are graded. Subjects are math, english, physics
+and math2 (the EST II / SAT II subject test). `subject=all` and the daily mission cover the first
+three; math2 is returned only when it is named.
 
 | Method | Path | Auth | Purpose |
 |---|---|---|---|

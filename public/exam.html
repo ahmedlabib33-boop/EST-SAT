@@ -54,6 +54,12 @@
         { label: 'English module', subject: 'english', count: 27, seconds: 32 * 60 },
         { label: 'Math module', subject: 'math', count: 22, seconds: 35 * 60 }
       ] },
+    { id: 'math2', short: 'Math 2', name: 'Math 2 subject mock',
+      note: 'The EST II and SAT II shape: 50 questions in 60 minutes, in two timed halves.',
+      sections: [
+        { label: 'Math 2 section 1', subject: 'math2', count: 25, seconds: 30 * 60 },
+        { label: 'Math 2 section 2', subject: 'math2', count: 25, seconds: 30 * 60 }
+      ] },
     { id: 'physics', short: 'Physics', name: 'Physics mock',
       note: 'Two physics sections, mechanics and electricity through to modern physics. 40 questions, 50 minutes.',
       sections: [
@@ -118,7 +124,8 @@
         + Math.round(setup.count * perQuestion() / 60) + ' minutes · ' + perQuestion() + 's each. '
         + LEVELS[setup.level].note;
     }
-    A.modes(subjectGroup, [['mixed', 'Mixed'], ['math', 'Math'], ['english', 'English'], ['physics', 'Physics']], setup.subject, function (v) { setup.subject = v; paintSummary(); });
+    A.modes(subjectGroup, [['mixed', 'Mixed'], ['math', 'Math'], ['english', 'English'],
+      ['physics', 'Physics'], ['math2', 'Math 2']], setup.subject, function (v) { setup.subject = v; paintSummary(); });
     A.modes(countGroup, [[20, '20 questions'], [40, '40 questions'], [60, '60 questions']], setup.count, function (v) { setup.count = v; paintSummary(); });
     A.modes(levelGroup, [['standard', 'Standard'], ['challenge', 'Challenge']], setup.level, function (v) { setup.level = v; paintSummary(); });
     body.appendChild(el('label', 'mini-label', 'Subject'));
@@ -629,7 +636,7 @@
   // ---------- Start ----------
   // A parent can assign an exam as "<subject>-<count>", for example mixed-40, and may add
   // "-challenge" to set the harder paper.
-  var preset = /^(mixed|math|english|physics)-(20|40|60)(-challenge)?$/.exec(A.param('preset'));
+  var preset = /^(mixed|math|english|physics|math2)-(20|40|60)(-challenge)?$/.exec(A.param('preset'));
   if (preset) {
     setup.subject = preset[1];
     setup.count = Number(preset[2]);

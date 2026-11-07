@@ -210,7 +210,8 @@
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(function () { if (state) renderChart(); }, 150);
   });
-  A.modes(A.byId('subjectModes'), [['math', 'Math'], ['english', 'English'], ['physics', 'Physics']], subject, function (v) { subject = v; renderTopics(); });
+  A.modes(A.byId('subjectModes'), [['math', 'Math'], ['english', 'English'],
+    ['physics', 'Physics'], ['math2', 'Math 2']], subject, function (v) { subject = v; renderTopics(); });
   A.boot(function (s) {
     state = s;
     renderKpis(); renderChart(); renderReadiness(); renderAttempts(); renderTopics();
