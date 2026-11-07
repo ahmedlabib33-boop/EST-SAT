@@ -30,6 +30,7 @@
     <div id="session"></div>
   </section>
   <section id="ready" class="view-cards" data-view="Readiness" aria-label="Your readiness">
+    <div class="card tool-card" id="classBoard" hidden></div>
     <div class="card tool-card" id="readiness"></div>
     <div class="card tool-card" id="inbox" hidden></div>
   </section>
@@ -47,6 +48,7 @@
   'use strict';
   var E = window.EstSat, S = window.EstSatStudy, A = window.App, el = A.el;
   var SESSION_SECONDS = 15 * 60, SESSION_SIZE = 8;
+  var classBoard = null;
   var state = null, catalog = null, session = null, timer = null;
 
   A.byId('dateLine').textContent = 'Your plan for ' + new Date().toLocaleDateString('en', { weekday: 'long', day: 'numeric', month: 'long' }) + ', built from your own mistakes and weakest topics.';
@@ -176,7 +178,35 @@
   }
 
   // ---------- The side panels ----------
+  function classRow(a) {
+    var row = el('a', 'inbox-row');
+    if (a.kind === 'lesson') row.href = 'learn.html?subject=' + String(a.target).split('-')[0] + '&lesson=' + encodeURIComponent(a.target);
+    else row.href = 'exam.html?preset=' + encodeURIComponent(a.target);
+    row.appendChild(A.icon(a.kind === 'lesson' ? 'book' : 'target'));
+    var text = el('span');
+    text.appendChild(el('strong', null, a.title || a.target));
+    var bits = [];
+    if (a.due) bits.push('Due ' + A.formatDate(a.due));
+    if (a.note) bits.push(a.note);
+    if (bits.length) text.appendChild(el('small', null, bits.join(' \u00b7 ')));
+    row.appendChild(text);
+    return row;
+  }
+  function renderClassBoard() {
+    var box = A.clear(A.byId('classBoard'));
+    var open = classBoard
+      ? (classBoard.assignments || []).filter(function (a) { return !S.assignmentDone(a, state); })
+      : [];
+    if (!classBoard || (!classBoard.notice && !open.length)) { box.hidden = true; return; }
+    box.hidden = false;
+    panelTitle(box, classBoard.teacher ? 'From ' + classBoard.teacher : 'From your teacher',
+      open.length ? open.length + ' to do' : 'Notice');
+    if (classBoard.notice) box.appendChild(el('p', 'class-notice', classBoard.notice));
+    open.forEach(function (a) { box.appendChild(classRow(a)); });
+  }
+
   function renderInbox() {
+    renderClassBoard();
     var box = A.clear(A.byId('inbox'));
     var open = state.assignments.filter(function (a) { return !S.assignmentDone(a, state); });
     if (!open.length && !state.goals.length) { box.hidden = true; return; }
@@ -270,6 +300,13 @@
     if (!session) renderIdle();
     renderSide();
   });
+  // Homework the teacher set for everyone. Students only ever read it.
+  if (E.loggedIn()) {
+    E.api('/user/class-board').then(function (res) {
+      classBoard = res;
+      if (state) renderInbox();
+    }).catch(function () { /* the rest of the page does not depend on it */ });
+  }
   A.catalog().then(function (c) { catalog = c; if (state) renderReadiness(); }).catch(function () {});
 })();
 </script>

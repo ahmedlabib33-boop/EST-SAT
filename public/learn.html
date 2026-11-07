@@ -430,7 +430,8 @@
   }).catch(function () { $('bankLine').textContent = ''; });
 
   if (E.loggedIn()) { E.pullState(true).then(function () { renderLessons(); paintLessonDone(); }).catch(function () {}); }
-  var startSubject = App.param('subject') === 'english' ? 'english' : 'math';
+  var asked = App.param('subject');
+  var startSubject = (asked === 'english' || asked === 'physics') ? asked : 'math';
   Array.prototype.forEach.call(document.querySelectorAll('.mode[data-subject]'), function (b) {
     b.setAttribute('aria-pressed', b.getAttribute('data-subject') === startSubject ? 'true' : 'false');
   });

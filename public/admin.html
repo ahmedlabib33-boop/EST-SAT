@@ -48,7 +48,7 @@
     <div class="hero-actions" style="justify-content:center"><a class="btn btn-primary" href="student-portal.html">Go to my portal</a></div>
   </section>
 
-  <div id="app" hidden>
+  <div id="app" data-views="Dashboard" hidden>
     <section class="portal">
       <div class="portal-head">
         <div>
@@ -70,21 +70,8 @@
       </div>
     </section>
 
-    <div class="admin-grid">
-      <section class="panel card" aria-labelledby="liveHead">
-        <h2 id="liveHead">Live class</h2>
-        <p class="sub">Teach live with video, audio and screen sharing.</p>
-        <div class="live-state" id="liveState"></div>
-        <div id="liveBody"></div>
-      </section>
-      <section class="panel card" aria-labelledby="attnHead">
-        <h2 id="attnHead">Needs attention</h2>
-        <p class="sub">Students who may need a nudge.</p>
-        <ul class="attention" id="attention"></ul>
-      </section>
-    </div>
 
-    <section class="panel card admin-section" aria-labelledby="studentsHead">
+    <section class="panel card admin-section" id="studentsView" data-view="Students" aria-labelledby="studentsHead">
       <div class="panel-head">
         <div><h2 id="studentsHead">Students</h2><p class="sub" id="studentCount"></p></div>
       </div>
@@ -119,7 +106,60 @@
       </div>
     </section>
 
-    <section class="panel card admin-section" aria-labelledby="teamHead">
+    <section class="panel card admin-section" id="boardView" data-view="Class board" aria-labelledby="boardHead">
+      <div class="panel-title">
+        <div><h2 id="boardHead">Class board</h2><p class="sub">Homework and a notice, on every student's Today page.</p></div>
+        <span class="sub" id="boardMeta"></span>
+      </div>
+      <div class="field">
+        <label for="boardNotice">Notice</label>
+        <textarea class="input" id="boardNotice" rows="2" maxlength="400" placeholder="One line for the class"></textarea>
+      </div>
+      <div class="control-row">
+        <div class="modes" id="boardKind" role="group" aria-label="What to set"></div>
+        <select class="input" id="boardTarget" aria-label="What to assign"></select>
+        <label class="date-pick"><span class="sr-only">Due date</span><input class="input input-sm" id="boardDue" type="date"></label>
+        <button class="btn btn-ghost btn-sm" type="button" id="boardAdd">Add</button>
+      </div>
+      <div class="assigned-list" id="boardList"></div>
+      <div class="hero-actions" style="margin-top:12px">
+        <button class="btn btn-primary btn-sm" type="button" id="boardSave">Save the board</button>
+        <span class="sub" id="boardSaved" role="status"></span>
+      </div>
+    </section>
+
+    <section class="panel card admin-section" id="reportView" data-view="Class report" aria-labelledby="reportHead">
+      <div class="panel-title">
+        <div><h2 id="reportHead">Class report</h2><p class="sub">What to teach next, and who owes you work.</p></div>
+        <span class="sub" id="reportMeta"></span>
+      </div>
+      <div class="two-col two-col-even">
+        <div>
+          <h3 class="sub-head">Homework</h3>
+          <div id="reportHomework"></div>
+        </div>
+        <div>
+          <h3 class="sub-head">Weakest topics</h3>
+          <div id="reportTopics"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="view-cards" id="liveView" data-view="Live class">
+      <section class="panel card" aria-labelledby="liveHead">
+        <h2 id="liveHead">Live class</h2>
+        <p class="sub">Teach live with video, audio and screen sharing.</p>
+        <div class="live-state" id="liveState"></div>
+        <div id="liveBody"></div>
+      </section>
+      <section class="panel card" aria-labelledby="attnHead">
+        <h2 id="attnHead">Needs attention</h2>
+        <p class="sub">Students who may need a nudge.</p>
+        <ul class="attention" id="attention"></ul>
+      </section>
+    </div>
+
+    <section class="panel card admin-section" id="teamView" data-view="Team" aria-labelledby="teamHead">
       <h2 id="teamHead">Team</h2>
       <p class="sub">Teacher and admin accounts. Admins can make a student a teacher from the student’s details.</p>
       <ul class="attention" id="team"></ul>
@@ -293,27 +333,31 @@
       return (x < y ? -1 : x > y ? 1 : 0) * sortDir || SORTS.name(a).localeCompare(SORTS.name(b));
     });
   }
-  function renderTable() {
+  var tablePages = App.pager($('rows'), [3, 8, 10], $('rows').closest('.table-wrap'));
+  function renderTable(keepPage) {
     var list = visible();
     Array.prototype.forEach.call(document.querySelectorAll('th[data-sort]'), function (th) {
       th.setAttribute('aria-sort', th.dataset.sort === sortKey ? (sortDir > 0 ? 'ascending' : 'descending') : 'none');
     });
-    var rows = $('rows');
-    rows.innerHTML = '';
+    var made = [];
     $('studentCount').textContent = list.length === students.length
       ? students.length + (students.length === 1 ? ' student' : ' students')
       : 'Showing ' + list.length + ' of ' + students.length;
     if (!list.length) {
       var tr = document.createElement('tr'), td = cell(tr, students.length ? 'No students match.' : 'No students yet.');
       td.colSpan = 7; td.className = 'empty';
-      rows.appendChild(tr);
+      tablePages.set([tr]);
       return;
     }
     list.forEach(function (s) {
       var p = s.progress, tr = document.createElement('tr');
       tr.tabIndex = 0;
       tr.setAttribute('aria-label', 'Open details for ' + (s.full_name || s.username));
-      var name = cell(tr, '', '@' + s.username + ' · ' + s.email);
+      var name = cell(tr, '', '@' + s.username);
+      var mail = document.createElement('span');
+      mail.className = 'cell-mail';
+      mail.textContent = ' · ' + s.email;
+      name.querySelector('small').appendChild(mail);
       name.className = 'name-cell';
       var b = document.createElement('b'); b.textContent = s.full_name || s.username;
       name.insertBefore(b, name.firstChild);
@@ -329,8 +373,9 @@
       st.appendChild(pill);
       tr.addEventListener('click', function () { openStudent(s); });
       tr.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openStudent(s); } });
-      rows.appendChild(tr);
+      made.push(tr);
     });
+    tablePages.set(made, keepPage);
   }
   Array.prototype.forEach.call(document.querySelectorAll('th[data-sort] button'), function (btn) {
     btn.addEventListener('click', function () {
@@ -520,13 +565,192 @@
     setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
   });
 
+  // ---------- Class board ----------
+  // One board for the whole class, set here and read by every student's Today page.
+  var A = window.App, el = A.el;
+  var EXAM_PRESETS = [
+    ['mixed-20', 'Mixed, 20 questions'], ['mixed-40', 'Mixed, 40 questions'], ['mixed-60', 'Mixed, 60 questions'],
+    ['math-20', 'Math, 20 questions'], ['math-40', 'Math, 40 questions'],
+    ['english-20', 'English, 20 questions'], ['english-40', 'English, 40 questions'],
+    ['physics-20', 'Physics, 20 questions'],
+    ['mixed-40-challenge', 'Mixed, 40 questions · Challenge'],
+    ['math-20-challenge', 'Math, 20 questions · Challenge'],
+    ['english-20-challenge', 'English, 20 questions · Challenge'],
+    ['physics-20-challenge', 'Physics, 20 questions · Challenge']
+  ];
+  var board = { notice: '', assignments: [] }, boardKind = 'lesson', catalog = null, lastReport = null;
+
+  // The class report counts topics by id, because that is all a student's progress stores.
+  // The names live in the question bank, so they are filled in here.
+  function topicName(subject, id) {
+    var part = catalog && catalog[subject];
+    var found = part && (part.topics || []).filter(function (x) { return x.id === id; })[0];
+    return found ? found.name : id;
+  }
+
+  function fillTargets() {
+    var sel = A.clear($('boardTarget'));
+    if (boardKind === 'exam') {
+      EXAM_PRESETS.forEach(function (row) {
+        var o = el('option', null, row[1]);
+        o.value = row[0];
+        sel.appendChild(o);
+      });
+      return;
+    }
+    if (!catalog) {
+      sel.appendChild(el('option', null, 'Loading lessons…'));
+      return;
+    }
+    ['math', 'english', 'physics'].forEach(function (subject) {
+      var part = catalog[subject];
+      if (!part) return;
+      var names = {};
+      (part.topics || []).forEach(function (t) { names[t.id] = t.name; });
+      (part.lessons || []).forEach(function (l) {
+        var o = el('option', null, A.subjectLabel(subject) + ' · ' + (names[l.topicId] || '') + ' · ' + l.title);
+        o.value = l.id;
+        sel.appendChild(o);
+      });
+    });
+  }
+  var boardPager = null;
+  function boardPages() {
+    if (!boardPager) boardPager = A.pager($('boardList'), [3, 4, 4]);
+    return boardPager;
+  }
+  function renderBoard() {
+    var list = A.clear($('boardList'));
+    if (!board.assignments.length) {
+      boardPages().set([]);
+      list.appendChild(el('p', 'sub', 'Nothing set. Add a lesson or an exam and save.'));
+      return;
+    }
+    var made = [];
+    board.assignments.forEach(function (a) {
+      var row = el('div', 'assigned');
+      var text = el('span');
+      text.appendChild(el('strong', null, a.title || a.target));
+      var bits = [a.kind === 'lesson' ? 'Lesson' : 'Exam'];
+      if (a.due) bits.push('due ' + a.due);
+      text.appendChild(el('small', null, bits.join(' · ')));
+      row.appendChild(text);
+      var drop = el('button', 'link-btn', 'Remove');
+      drop.type = 'button';
+      drop.addEventListener('click', function () {
+        board.assignments = board.assignments.filter(function (x) { return x.id !== a.id; });
+        renderBoard();
+        $('boardSaved').textContent = 'Not saved yet';
+      });
+      row.appendChild(drop);
+      made.push(row);
+    });
+    boardPages().set(made);
+  }
+  function renderReport(report) {
+    $('reportMeta').textContent = report.students + (report.students === 1 ? ' student' : ' students');
+    var box = A.clear($('reportHomework'));
+    if (!report.homework.length) {
+      box.appendChild(el('p', 'sub', 'No homework set yet.'));
+    } else {
+      var done = [];
+      report.homework.forEach(function (h) {
+        var row = el('div', 'report-row');
+        var text = el('span');
+        text.appendChild(el('strong', null, h.title));
+        var behind = h.names.length > 3
+          ? h.names.slice(0, 3).join(', ') + ' and ' + (h.names.length - 3) + ' more'
+          : h.names.join(', ');
+        text.appendChild(el('small', null, h.done + ' of ' + report.students + ' done'
+          + (behind ? ' · still to do: ' + behind : '')));
+        row.appendChild(text);
+        row.appendChild(A.meter(report.students ? h.done / report.students : 0));
+        done.push(row);
+      });
+      homeworkPages().set(done);
+    }
+    var topics = A.clear($('reportTopics'));
+    if (!report.topics.length) {
+      topics.appendChild(el('p', 'sub', 'Once the class has answered a few questions, the weakest topics appear here.'));
+      return;
+    }
+    var rows = [];
+    report.topics.forEach(function (t) {
+      var row = el('div', 'report-row');
+      var text = el('span');
+      text.appendChild(el('strong', null, A.subjectLabel(t.subject) + ' · ' + topicName(t.subject, t.topic)));
+      text.appendChild(el('small', null, t.accuracy + '% correct over ' + t.answered + ' answers from '
+        + t.students + (t.students === 1 ? ' student' : ' students')));
+      row.appendChild(text);
+      row.appendChild(A.meter(t.accuracy / 100, t.subject));
+      rows.push(row);
+    });
+    topicPages().set(rows);
+  }
+  var homeworkPager = null;
+  function homeworkPages() {
+    if (!homeworkPager) homeworkPager = A.pager($('reportHomework'), [2, 3, 3]);
+    return homeworkPager;
+  }
+  var topicPager = null;
+  function topicPages() {
+    if (!topicPager) topicPager = A.pager($('reportTopics'), [3, 4, 4]);
+    return topicPager;
+  }
+  function loadBoard() {
+    return Promise.all([E.api('/user/class-board'), E.api('/admin/class-report')]).then(function (r) {
+      board = { notice: r[0].notice || '', assignments: r[0].assignments || [] };
+      $('boardNotice').value = board.notice;
+      $('boardMeta').textContent = r[0].updated_at
+        ? 'Last set by ' + (r[0].teacher || 'a teacher') + ' on ' + A.formatDate(r[0].updated_at.slice(0, 10))
+        : 'Not set yet';
+      lastReport = r[1];
+      renderBoard();
+      renderReport(lastReport);
+    });
+  }
+  A.modes($('boardKind'), [['lesson', 'Lesson'], ['exam', 'Exam']], boardKind, function (v) { boardKind = v; fillTargets(); });
+  fillTargets();
+  A.catalog().then(function (c) {
+    catalog = c;
+    if (boardKind === 'lesson') fillTargets();
+    if (lastReport) renderReport(lastReport);
+  }).catch(function () { /* the exam list still works, and topics show their id */ });
+
+  $('boardAdd').addEventListener('click', function () {
+    var sel = $('boardTarget');
+    if (!sel.value) return;
+    board.assignments.push({
+      id: 'a-' + Date.now(),
+      kind: boardKind,
+      target: sel.value,
+      title: sel.options[sel.selectedIndex].textContent,
+      due: $('boardDue').value || '',
+      note: '',
+      created: keyOf(today)
+    });
+    renderBoard();
+    $('boardSaved').textContent = 'Not saved yet';
+  });
+  $('boardSave').addEventListener('click', function (e) {
+    var btn = e.currentTarget;
+    btn.disabled = true;
+    board.notice = $('boardNotice').value.trim();
+    E.api('/admin/class-board', { method: 'PUT', body: { board: board } }).then(function () {
+      $('boardSaved').textContent = 'Saved. Your students see it on their next visit.';
+      return loadBoard();
+    }).catch(function (err) {
+      $('boardSaved').textContent = 'Could not save: ' + err.message;
+    }).then(function () { btn.disabled = false; });
+  });
+
   // ---------- Load ----------
   function load() {
     return Promise.all([E.api('/admin/students'), E.api('/admin/users')]).then(function (r) {
       students = r[0].students || [];
       team = (r[1].users || []).filter(function (u) { return u.role === 'admin' || u.role === 'teacher'; });
       renderOverview(); renderAttention(); renderTable(); renderTeam();
-    });
+    }).then(loadBoard);
   }
   $('refreshBtn').addEventListener('click', function () { load(); loadLive(); });
   $('logoutBtn').addEventListener('click', E.logout);

@@ -809,6 +809,13 @@ select.input option, .topic-pick select option { background: #14141F; color: var
 .assigned strong { display: block; font-size: 14px; }
 .assigned small { display: block; color: var(--muted); font-size: 12.5px; }
 .assigned.done { border-color: rgba(52,211,153,0.4); }
+.report-row { display: grid; gap: 6px; padding: 10px 0; border-top: 1px solid var(--line); }
+.report-row:first-child { border-top: 0; }
+.report-row strong { display: block; font-size: 14px; }
+.report-row small { display: block; color: var(--muted); font-size: 12.5px; }
+.class-notice { padding: 10px 12px; border-radius: var(--r-md); border: 1px solid rgba(139,92,246,0.4);
+  background: color-mix(in srgb, var(--violet) 10%, transparent); font-size: 14px; }
+
 .save-note { color: var(--green); font-size: 14px; margin-top: 16px; }
 
 /* AI Coach */
@@ -923,6 +930,38 @@ body.one-screen { height: 100vh; height: 100dvh; display: flex; flex-direction: 
 .view-tab[aria-selected="true"] { color: #fff; background: rgba(139,92,246,0.24); border-color: rgba(139,92,246,0.6); }
 .view-tab:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
 .view-panels { flex: 1 1 auto; min-height: 0; }
+/* Tabs inside a wrapper, like the teacher dashboard's #app. */
+.one-screen > main:has(> [data-views]) { display: flex; flex-direction: column; overflow: hidden; padding-bottom: 0; }
+.one-screen > main > [data-views] { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; overflow: hidden; }
+.one-screen > main > [data-views] > .portal { flex: none; }
+.one-screen .portal { padding: 14px 0 0; }
+.one-screen .portal-head h1 { font-size: clamp(1.25rem, 2.4vw, 1.75rem); margin-top: 2px; }
+.one-screen .portal-head .eyebrow { display: none; }
+.one-screen .portal-head p { margin-top: 2px; font-size: 14px; }
+.one-screen .kpi-row { margin-top: 12px; gap: 10px; }
+.one-screen .kpi-row .kpi { padding: 10px 12px; }
+.one-screen .kpi-row .kpi b { font-size: 22px; }
+.one-screen .portal-head { flex-wrap: nowrap; align-items: center; gap: 12px; }
+.one-screen .portal-head .hero-actions { flex: none; gap: 8px; }
+.one-screen .portal-head .btn { padding: 8px 14px; font-size: 14px; }
+@media (max-width: 700px) {
+  /* Five numbers in one swipeable row, so the tab below keeps its height. */
+  .one-screen .kpi-row { display: flex; overflow-x: auto; scrollbar-width: none; }
+  .one-screen .kpi-row::-webkit-scrollbar { display: none; }
+  .one-screen .kpi-row .kpi { flex: 0 0 auto; min-width: 118px; }
+  .one-screen .portal-head { flex-wrap: wrap; gap: 8px; }
+  .one-screen .portal-head > div { flex: 1 1 100%; }
+  .one-screen .portal-head .hero-actions { flex-wrap: nowrap; }
+  .one-screen .portal-head .btn { flex: 1 1 0; padding: 7px 10px; font-size: 13px; }
+  /* A phone has no room for the email or the columns a tap already shows. */
+  .one-screen .cell-mail { display: none; }
+  .one-screen .students th:nth-child(4), .one-screen .students td:nth-child(4),
+  .one-screen .students th:nth-child(6), .one-screen .students td:nth-child(6) { display: none; }
+  /* The heading keeps one line; the sentence under it is for a wider screen. */
+  .one-screen .panel-title { flex-wrap: nowrap; align-items: baseline; }
+  .one-screen .panel-title .sub:not([id]) { display: none; }
+  .one-screen .panel-title > span { white-space: nowrap; font-size: 12px; }
+}
 .view { height: 100%; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; padding-bottom: 12px; }
 .view[hidden] { display: none !important; }
 .view > * + * { margin-top: 12px; }

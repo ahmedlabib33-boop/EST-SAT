@@ -333,3 +333,78 @@ def test_quiz_flow(client):
 def test_unknown_api_route_is_json(client):
     res = client.get('/api/nope')
     assert res.status_code == 404 and res.get_json()['error']
+
+
+def test_the_teacher_sets_one_board_and_every_student_reads_it(client):
+    student = register(client).get_json()['access_token']
+    teacher = register(client, username='ahmed', email='ahmed@example.com').get_json()['access_token']
+    with client.app.app_context():
+        User.query.filter_by(username='ahmed').first().role = 'teacher'
+        db.session.commit()
+
+    assert client.get('/api/user/class-board', headers=auth(student)).get_json()['assignments'] == []
+
+    board = {'notice': 'Finish the quadratics lesson before Sunday.', 'assignments': [
+        {'id': 'a-1', 'kind': 'lesson', 'target': 'math-lesson-20', 'title': 'Quadratic standard form',
+         'due': '2026-11-09', 'note': 'Bring your working', 'created': '2026-11-07'},
+        {'id': 'bad', 'kind': 'lesson', 'target': 'math-lesson-21'},
+        {'id': 'a-2', 'kind': 'hack', 'target': 'x'},
+    ]}
+    # A student cannot set it.
+    assert client.put('/api/admin/class-board', headers=auth(student), json={'board': board}).status_code == 403
+
+    saved = client.put('/api/admin/class-board', headers=auth(teacher), json={'board': board})
+    assert saved.status_code == 200
+    assert len(saved.get_json()['assignments']) == 1
+
+    seen = client.get('/api/user/class-board', headers=auth(student)).get_json()
+    assert seen['notice'] == 'Finish the quadratics lesson before Sunday.'
+    assert seen['assignments'][0]['target'] == 'math-lesson-20'
+    assert seen['teacher'] == 'Sara Ali'
+
+
+def test_the_teachers_own_progress_sync_leaves_the_board_alone(client):
+    teacher = register(client, username='ahmed', email='ahmed@example.com').get_json()['access_token']
+    with client.app.app_context():
+        User.query.filter_by(username='ahmed').first().role = 'teacher'
+        db.session.commit()
+    board = {'notice': 'Mock exam on Thursday.', 'assignments': []}
+    assert client.put('/api/admin/class-board', headers=auth(teacher), json={'board': board}).status_code == 200
+
+    # The teacher uses the app as well, and their own state syncs like anyone else's.
+    assert client.put('/api/user/state', headers=auth(teacher),
+                      json={'data': {'stats': {'answered': 5, 'correct': 5}}}).status_code == 200
+    assert client.get('/api/user/class-board', headers=auth(teacher)).get_json()['notice'] == 'Mock exam on Thursday.'
+
+
+def test_the_class_report_shows_the_weakest_topics_and_who_owes_homework(client):
+    teacher = register(client, username='ahmed', email='ahmed@example.com').get_json()['access_token']
+    with client.app.app_context():
+        User.query.filter_by(username='ahmed').first().role = 'teacher'
+        db.session.commit()
+    board = {'notice': '', 'assignments': [
+        {'id': 'a-1', 'kind': 'lesson', 'target': 'math-lesson-20', 'title': 'Quadratics', 'created': '2026-11-01'},
+        {'id': 'a-2', 'kind': 'exam', 'target': 'mixed-40', 'title': 'Mock', 'created': '2026-11-01'},
+    ]}
+    client.put('/api/admin/class-board', headers=auth(teacher), json={'board': board})
+
+    done = register(client, username='omar', email='omar@example.com').get_json()['access_token']
+    client.put('/api/user/state', headers=auth(done), json={'data': {
+        'lessons': ['math-lesson-20'],
+        'attempts': [{'date': '2026-11-05', 'subject': 'mixed', 'score': 20, 'total': 40, 'percent': 50, 'seconds': 60}],
+        'topics': {'math|MATH-01': [10, 2], 'english|eng-01': [10, 9]},
+    }})
+    behind = register(client, username='lina', email='lina@example.com').get_json()['access_token']
+    client.put('/api/user/state', headers=auth(behind), json={'data': {'topics': {'math|MATH-01': [10, 4]}}})
+
+    report = client.get('/api/admin/class-report', headers=auth(teacher)).get_json()
+    assert report['students'] == 2
+    weakest = report['topics'][0]
+    assert weakest['topic'] == 'MATH-01'
+    assert weakest['answered'] == 20 and weakest['correct'] == 6 and weakest['accuracy'] == 30
+    assert weakest['students'] == 2
+
+    lesson, exam = report['homework']
+    assert lesson['done'] == 1 and lesson['names'] == ['Sara Ali']
+    assert exam['done'] == 1
+    assert client.get('/api/admin/class-report', headers=auth(done)).status_code == 403

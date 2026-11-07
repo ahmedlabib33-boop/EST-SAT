@@ -34,6 +34,10 @@ ASSIGNMENT_ID_RE = re.compile(r'^a-\d{1,16}$')
 GOAL_ID_RE = re.compile(r'^g-\d{1,16}$')
 ATTEMPT_SUBJECTS = ('math', 'english', 'physics', 'mixed')
 ATTEMPT_LEVELS = ('standard', 'challenge', 'mock')
+# The teacher's homework board lives inside a staff account's own state row, because
+# production has no migration tooling for a new table. Students only ever read it.
+CLASS_KEY = 'class_board'
+MAX_CLASS_ASSIGNMENTS = 40
 GOAL_KINDS = ('level', 'streak', 'exam', 'topic')
 MAX_MISTAKES = 100
 STAFF_ROLES = ('admin', 'teacher')
@@ -309,6 +313,63 @@ def clean_study_extras(raw, keep_mistakes=None):
     }
 
 
+def clean_assignment(a):
+    """One piece of homework: a lesson to finish or an exam to sit."""
+    if not isinstance(a, dict) or a.get('kind') not in ('lesson', 'exam'):
+        return None
+    target = _short_text(a.get('target'), 60)
+    if not isinstance(a.get('id'), str) or not ASSIGNMENT_ID_RE.match(a['id']) or not target:
+        return None
+    return {
+        'id': a['id'],
+        'kind': a['kind'],
+        'target': target,
+        'title': _short_text(a.get('title'), 120),
+        'due': _date_or_blank(a.get('due')),
+        'note': _short_text(a.get('note'), 140),
+        'created': _date_or_blank(a.get('created')),
+    }
+
+
+def clean_board(raw):
+    raw = raw if isinstance(raw, dict) else {}
+    items = []
+    for a in _list(raw, 'assignments'):
+        cleaned = clean_assignment(a)
+        if cleaned:
+            items.append(cleaned)
+    return {'notice': _short_text(raw.get('notice'), 400), 'assignments': items[:MAX_CLASS_ASSIGNMENTS]}
+
+
+def class_board():
+    """The newest board any staff account has set, with who set it and when."""
+    rows = (db.session.query(UserState, User)
+            .join(User, User.id == UserState.user_id)
+            .filter(User.role.in_(STAFF_ROLES))
+            .order_by(UserState.updated_at.desc())
+            .all())
+    for state, user in rows:
+        data = state.data if isinstance(state.data, dict) else {}
+        if isinstance(data.get(CLASS_KEY), dict):
+            board = dict(clean_board(data[CLASS_KEY]))
+            board['teacher'] = user.full_name or user.username
+            board['updated_at'] = state.updated_at.isoformat() if state.updated_at else None
+            return board
+    return {'notice': '', 'assignments': [], 'teacher': '', 'updated_at': None}
+
+
+def assignment_is_done(assignment, data):
+    """Mirrors assignmentDone() in study.js, so the teacher sees what the student sees."""
+    if assignment['kind'] == 'lesson':
+        return assignment['target'] in (data.get('lessons') or [])
+    subject = assignment['target'].split('-')[0]
+    since = assignment.get('created') or ''
+    for attempt in data.get('attempts') or []:
+        if isinstance(attempt, dict) and attempt.get('subject') == subject and (attempt.get('date') or '') >= since:
+            return True
+    return False
+
+
 def summarize_state(data):
     data = data or {}
     stats = data.get('stats') or {}
@@ -485,10 +546,19 @@ def put_state():
         state = UserState(user_id=current_user.id, data=cleaned)
         db.session.add(state)
     else:
-        state.data = cleaned
+        # A teacher's own progress sync must not take the class board down with it.
+        kept = state.data.get(CLASS_KEY) if isinstance(state.data, dict) else None
+        state.data = dict(cleaned, **({CLASS_KEY: kept} if isinstance(kept, dict) else {}))
         state.updated_at = utcnow()
     db.session.commit()
     return jsonify({'data': cleaned, 'updated_at': state.updated_at.isoformat()}), 200
+
+
+@user_bp.get('/class-board')
+@jwt_required()
+def get_class_board():
+    """What the teacher has set for everyone. Read-only for students."""
+    return jsonify(class_board()), 200
 
 
 @user_bp.get('/notes')
@@ -764,6 +834,65 @@ def reset_password(user_id):
     db.session.commit()
     return jsonify({'message': 'Password reset. Share the temporary password with the student privately.',
                     'temporary_password': temporary}), 200
+
+
+@admin_bp.put('/class-board')
+@roles_required(*STAFF_ROLES)
+def put_class_board():
+    board = clean_board(body().get('board'))
+    state = db.session.get(UserState, current_user.id)
+    if state is None:
+        state = UserState(user_id=current_user.id, data={CLASS_KEY: board})
+        db.session.add(state)
+    else:
+        kept = state.data if isinstance(state.data, dict) else {}
+        state.data = dict(kept, **{CLASS_KEY: board})
+        state.updated_at = utcnow()
+    db.session.commit()
+    return jsonify(class_board()), 200
+
+
+@admin_bp.get('/class-report')
+@roles_required(*STAFF_ROLES)
+def class_report():
+    """What the class as a whole is finding hard, and who has done the homework."""
+    rows = (db.session.query(User, UserState)
+            .outerjoin(UserState, UserState.user_id == User.id)
+            .filter(User.role == 'student')
+            .all())
+    board = class_board()
+    topics, homework = {}, []
+    for assignment in board['assignments']:
+        homework.append({'id': assignment['id'], 'title': assignment['title'] or assignment['target'],
+                         'kind': assignment['kind'], 'due': assignment['due'], 'done': 0, 'names': []})
+
+    students = 0
+    for user, state in rows:
+        students += 1
+        data = state.data if state and isinstance(state.data, dict) else {}
+        for key, pair in (data.get('topics') or {}).items():
+            if not isinstance(pair, list) or len(pair) != 2:
+                continue
+            row = topics.setdefault(key, [0, 0, 0])
+            row[0] += _count(pair[0], 10 ** 6)
+            row[1] += min(_count(pair[1], 10 ** 6), _count(pair[0], 10 ** 6))
+            row[2] += 1
+        for i, assignment in enumerate(board['assignments']):
+            if assignment_is_done(assignment, data):
+                homework[i]['done'] += 1
+            elif len(homework[i]['names']) < 12:
+                homework[i]['names'].append(user.full_name or user.username)
+
+    weakest = []
+    for key, row in topics.items():
+        if row[0] < 3:
+            continue
+        subject, _, name = key.partition('|')
+        weakest.append({'subject': subject, 'topic': name, 'answered': row[0],
+                        'correct': row[1], 'students': row[2],
+                        'accuracy': round(row[1] * 100.0 / row[0])})
+    weakest.sort(key=lambda r: (r['accuracy'], -r['answered']))
+    return jsonify({'students': students, 'topics': weakest, 'homework': homework}), 200
 
 
 @admin_bp.get('/statistics')
