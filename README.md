@@ -395,7 +395,7 @@ Every tool shares one progress object. It is saved in the browser and synced to 
 | Page | What it does |
 |---|---|
 | `today.html` | A 15-minute session: due reviews first, then fresh questions from the weakest topics. Streak, weekly challenge, readiness estimate. |
-| `exam.html` | Timed exams from the question bank: warnings at 15 and 5 minutes, automatic collection, resumes after a reload, and a review of where the time went. |
+| `exam.html` | Timed exams: a quick paper (Standard or Challenge), or a full mock sat in timed sections with a break between them. Warnings at 15 and 5 minutes, automatic collection, resumes after a reload, and a review of where the time went. |
 | `review.html` | Spaced review of wrong answers after 1, 3, 7 and 14 days, as a list or flashcards. |
 | `progress.html` | Exam score chart, readiness estimate and accuracy by topic. The estimate is not an official SAT or EST score. |
 | `rewards.html` | XP, levels, badges, a topic map and printable certificates. |

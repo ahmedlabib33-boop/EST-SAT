@@ -236,12 +236,14 @@ def test_an_exam_remembers_which_paper_it_was(client):
     sent = {'attempts': [
         {'date': '2026-11-05', 'subject': 'mixed', 'score': 30, 'total': 40, 'percent': 75, 'seconds': 1200,
          'level': 'challenge'},
-        {'date': '2026-11-04', 'subject': 'math', 'score': 18, 'total': 20, 'percent': 90, 'seconds': 900,
+        {'date': '2026-11-04', 'subject': 'mixed', 'score': 60, 'total': 98, 'percent': 61, 'seconds': 8000,
+         'level': 'mock'},
+        {'date': '2026-11-03', 'subject': 'math', 'score': 18, 'total': 20, 'percent': 90, 'seconds': 900,
          'level': 'nonsense'},
     ]}
     assert client.put('/api/user/state', headers=auth(token), json={'data': sent}).status_code == 200
     kept = client.get('/api/user/state', headers=auth(token)).get_json()['data']['attempts']
-    assert [a['level'] for a in kept] == ['challenge', 'standard']
+    assert [a['level'] for a in kept] == ['challenge', 'mock', 'standard']
 
 
 def test_profile_and_password_change(client):

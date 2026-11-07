@@ -182,7 +182,7 @@
     table.appendChild(body);
     state.attempts.forEach(function (a) {
       var tr = el('tr');
-      [A.formatDate(a.date), A.subjectLabel(a.subject) + (a.level === 'challenge' ? ' · Challenge' : ''), a.score + '/' + a.total, a.percent + '%', A.clock(a.seconds)].forEach(function (v) { tr.appendChild(el('td', null, v)); });
+      [A.formatDate(a.date), A.subjectLabel(a.subject) + (a.level === 'challenge' ? ' · Challenge' : a.level === 'mock' ? ' · Mock' : ''), a.score + '/' + a.total, a.percent + '%', A.clock(a.seconds)].forEach(function (v) { tr.appendChild(el('td', null, v)); });
       rows.push(tr);
     });
     box.appendChild(table);

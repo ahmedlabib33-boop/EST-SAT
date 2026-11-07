@@ -702,9 +702,17 @@ select.input option, .topic-pick select option { background: #14141F; color: var
 
 /* Exam Arena */
 .exam-setup .modes { width: fit-content; }
+.mock-plan { margin-top: 8px; }
+.mock-sections { margin: 8px 0 0; padding-left: 20px; display: grid; gap: 4px; }
+.mock-sections li { color: var(--muted); font-size: 14px; }
+.mock-sections strong { color: var(--text); margin-right: 8px; font-weight: 600; }
 .exam-setup .mini-label { margin-top: 2px; }
 .one-screen .exam-setup { padding: 16px 18px; }
-.one-screen .exam-setup > * + * { margin-top: 8px; }
+.one-screen .exam-setup > * + * { margin-top: 6px; }
+.one-screen .mock-sections { gap: 2px; }
+.one-screen .mock-sections li { line-height: 1.4; }
+.one-screen .mock-plan .fine { line-height: 1.35; }
+.one-screen .mock-plan { margin-top: 6px; }
 .mini-label { display: block; font-size: 13px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.08em; }
 #arena > * + * { margin-top: 20px; }
 #arena { margin-top: 20px; }

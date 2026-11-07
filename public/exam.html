@@ -35,16 +35,48 @@
 (function () {
   'use strict';
   var E = window.EstSat, S = window.EstSatStudy, A = window.App, el = A.el;
-  var RUN_KEY = 'estsat.examRun';
+  var RUN_KEY = 'estsat.examRun', PAPER_KEY = 'estsat.examPaper';
   var FAST_SECONDS = 20, WARNINGS = [15 * 60, 5 * 60];
+  // Mock papers run as several timed sections with a break between them, the way a real
+  // sitting goes. The shape and the pacing follow the digital SAT; the questions are ours.
+  var PAPERS = [
+    { id: 'sat', short: 'Full', name: 'Full mock',
+      note: 'Two English modules and two Math modules, in the shape of the digital SAT. 98 questions, about 2 hours 15.',
+      sections: [
+        { label: 'English module 1', subject: 'english', count: 27, seconds: 32 * 60 },
+        { label: 'English module 2', subject: 'english', count: 27, seconds: 32 * 60 },
+        { label: 'Math module 1', subject: 'math', count: 22, seconds: 35 * 60 },
+        { label: 'Math module 2', subject: 'math', count: 22, seconds: 35 * 60 }
+      ] },
+    { id: 'half', short: 'Half', name: 'Half mock',
+      note: 'One English module and one Math module, for an evening rather than a morning. 49 questions, about 1 hour 10.',
+      sections: [
+        { label: 'English module', subject: 'english', count: 27, seconds: 32 * 60 },
+        { label: 'Math module', subject: 'math', count: 22, seconds: 35 * 60 }
+      ] },
+    { id: 'physics', short: 'Physics', name: 'Physics mock',
+      note: 'Two physics sections, mechanics and electricity through to modern physics. 40 questions, 50 minutes.',
+      sections: [
+        { label: 'Physics section 1', subject: 'physics', count: 20, seconds: 25 * 60 },
+        { label: 'Physics section 2', subject: 'physics', count: 20, seconds: 25 * 60 }
+      ] }
+  ];
   // A Challenge paper asks the harder questions and gives exam pace rather than practice pace.
   var LEVELS = {
     standard: { label: 'Standard', seconds: 90, difficulty: '', note: 'A mix of everything.' },
     challenge: { label: 'Challenge', seconds: 75, difficulty: 'hard,medium',
                  note: 'The hardest questions in the bank, at exam pace.' }
   };
-  var state = null, run = null, ticker = null, setup = { subject: 'mixed', count: 40, level: 'standard' };
+  var state = null, run = null, paper = null, ticker = null;
+  var setup = { mode: 'quick', subject: 'mixed', count: 40, level: 'standard', paper: 'sat' };
   function perQuestion() { return LEVELS[setup.level].seconds; }
+  function paperById(id) {
+    return PAPERS.filter(function (p) { return p.id === id; })[0] || PAPERS[0];
+  }
+  function mergeInto(target, extra) {
+    Object.keys(extra).forEach(function (k) { target[k] = extra[k]; });
+    return target;
+  }
 
   function saveRun() {
     try { if (run) sessionStorage.setItem(RUN_KEY, JSON.stringify(run)); else sessionStorage.removeItem(RUN_KEY); } catch (e) { /* the exam just can't survive a reload */ }
@@ -56,22 +88,30 @@
     } catch (e) { /* start fresh */ }
     return null;
   }
+  function savePaper() {
+    try {
+      if (paper) sessionStorage.setItem(PAPER_KEY, JSON.stringify(paper));
+      else sessionStorage.removeItem(PAPER_KEY);
+    } catch (e) { /* the paper just can't survive a reload */ }
+  }
+  function restorePaper() {
+    try {
+      var saved = JSON.parse(sessionStorage.getItem(PAPER_KEY));
+      if (saved && saved.sections && saved.sections.length) return saved;
+    } catch (e) { /* start fresh */ }
+    return null;
+  }
   function leaveGuard(e) { e.preventDefault(); e.returnValue = ''; }
 
   // ---------- Setup ----------
-  function renderSetup() {
-    var box = A.clear(A.byId('arena'));
-    var card = el('div', 'card tool-card exam-setup');
-    card.appendChild(el('h2', null, 'Set up your exam'));
-    var subjectGroup = el('div', 'modes');
-    subjectGroup.setAttribute('role', 'group');
-    subjectGroup.setAttribute('aria-label', 'Subject');
-    var countGroup = el('div', 'modes');
-    countGroup.setAttribute('role', 'group');
-    countGroup.setAttribute('aria-label', 'Number of questions');
-    var levelGroup = el('div', 'modes');
-    levelGroup.setAttribute('role', 'group');
-    levelGroup.setAttribute('aria-label', 'Paper');
+  function group(label) {
+    var g = el('div', 'modes');
+    g.setAttribute('role', 'group');
+    g.setAttribute('aria-label', label);
+    return g;
+  }
+  function quickBody(body) {
+    var subjectGroup = group('Subject'), countGroup = group('Number of questions'), levelGroup = group('Paper');
     var summary = el('p', 'muted');
     function paintSummary() {
       summary.textContent = A.subjectLabel(setup.subject) + ' · ' + setup.count + ' questions · '
@@ -81,18 +121,59 @@
     A.modes(subjectGroup, [['mixed', 'Mixed'], ['math', 'Math'], ['english', 'English'], ['physics', 'Physics']], setup.subject, function (v) { setup.subject = v; paintSummary(); });
     A.modes(countGroup, [[20, '20 questions'], [40, '40 questions'], [60, '60 questions']], setup.count, function (v) { setup.count = v; paintSummary(); });
     A.modes(levelGroup, [['standard', 'Standard'], ['challenge', 'Challenge']], setup.level, function (v) { setup.level = v; paintSummary(); });
-    card.appendChild(el('label', 'mini-label', 'Subject'));
-    card.appendChild(subjectGroup);
-    card.appendChild(el('label', 'mini-label', 'Length'));
-    card.appendChild(countGroup);
-    card.appendChild(el('label', 'mini-label', 'Paper'));
-    card.appendChild(levelGroup);
+    body.appendChild(el('label', 'mini-label', 'Subject'));
+    body.appendChild(subjectGroup);
+    body.appendChild(el('label', 'mini-label', 'Length'));
+    body.appendChild(countGroup);
+    body.appendChild(el('label', 'mini-label', 'Paper'));
+    body.appendChild(levelGroup);
     paintSummary();
-    card.appendChild(summary);
+    body.appendChild(summary);
     var go = el('button', 'btn btn-primary', 'Start the exam');
     go.type = 'button';
     go.addEventListener('click', function () { start(go); });
-    card.appendChild(go);
+    body.appendChild(go);
+  }
+  function mockBody(body) {
+    var pick = group('Mock paper'), plan = el('div', 'mock-plan');
+    function paintPlan() {
+      var chosen = paperById(setup.paper);
+      A.clear(plan);
+      plan.appendChild(el('p', 'muted', chosen.note));
+      var list = el('ol', 'mock-sections');
+      chosen.sections.forEach(function (s) {
+        var li = el('li');
+        li.appendChild(el('strong', null, s.label));
+        li.appendChild(el('span', null, s.count + ' questions · ' + Math.round(s.seconds / 60) + ' min'));
+        list.appendChild(li);
+      });
+      plan.appendChild(list);
+      plan.appendChild(el('p', 'fine', 'Each section has its own clock, with a break in between. Once a section is handed in you cannot go back to it.'));
+    }
+    A.modes(pick, PAPERS.map(function (chosen) { return [chosen.id, chosen.short]; }), setup.paper, function (v) { setup.paper = v; paintPlan(); });
+    body.appendChild(el('label', 'mini-label', 'Mock paper'));
+    body.appendChild(pick);
+    paintPlan();
+    body.appendChild(plan);
+    var go = el('button', 'btn btn-primary', 'Start the mock');
+    go.type = 'button';
+    go.addEventListener('click', function () { startMock(go); });
+    body.appendChild(go);
+  }
+  function renderSetup() {
+    var box = A.clear(A.byId('arena'));
+    var card = el('div', 'card tool-card exam-setup');
+    card.appendChild(el('h2', null, 'Set up your exam'));
+    var modeGroup = group('Kind of exam');
+    var body = el('div', 'setup-body');
+    A.modes(modeGroup, [['quick', 'Quick exam'], ['mock', 'Full mock']], setup.mode, function (v) {
+      setup.mode = v;
+      A.clear(body);
+      (v === 'mock' ? mockBody : quickBody)(body);
+    });
+    card.appendChild(modeGroup);
+    card.appendChild(body);
+    (setup.mode === 'mock' ? mockBody : quickBody)(body);
     box.appendChild(card);
 
     if (state && state.attempts.length) {
@@ -102,6 +183,9 @@
       box.appendChild(past);
     }
   }
+  function levelTag(level) {
+    return level === 'challenge' ? ' · Challenge' : level === 'mock' ? ' · Mock' : '';
+  }
   function attemptsTable(rows) {
     var table = el('table', 'score-table');
     var head = el('tr');
@@ -110,7 +194,7 @@
     rows.forEach(function (a) {
       var tr = el('tr');
       tr.appendChild(el('td', null, A.formatDate(a.date)));
-      tr.appendChild(el('td', null, A.subjectLabel(a.subject) + (a.level === 'challenge' ? ' · Challenge' : '')));
+      tr.appendChild(el('td', null, A.subjectLabel(a.subject) + levelTag(a.level)));
       tr.appendChild(el('td', null, a.score + '/' + a.total + ' (' + a.percent + '%)'));
       tr.appendChild(el('td', null, A.clock(a.seconds)));
       table.appendChild(tr);
@@ -128,6 +212,8 @@
       var questions = res.questions || [];
       if (!questions.length) throw new Error('empty');
       var total = questions.length * level.seconds;
+      paper = null;
+      savePaper();
       run = { subject: setup.subject, level: setup.level, questions: questions, answers: {}, flags: {}, spent: {}, index: 0, total: total, deadline: Date.now() + total * 1000, warned: [] };
       saveRun();
       renderRun();
@@ -138,6 +224,85 @@
     });
   }
 
+  // ---------- Mock papers ----------
+  // The whole paper is fetched before the first section starts, so no question can turn
+  // up twice and a section never waits on the network once the clock is running.
+  function startMock(btn) {
+    btn.disabled = true;
+    btn.textContent = 'Preparing your paper…';
+    var chosen = paperById(setup.paper);
+    var need = {}, subjects = [];
+    chosen.sections.forEach(function (s) {
+      if (!need[s.subject]) subjects.push(s.subject);
+      need[s.subject] = (need[s.subject] || 0) + s.count;
+    });
+    Promise.all(subjects.map(function (subject) {
+      return E.api('/practice/random?subject=' + subject + '&n=' + need[subject], { auth: false });
+    })).then(function (parts) {
+      var pools = {};
+      subjects.forEach(function (subject, i) { pools[subject] = (parts[i].questions || []).slice(); });
+      var sections = chosen.sections.map(function (s) {
+        return { label: s.label, subject: s.subject, seconds: s.seconds, questions: pools[s.subject].splice(0, s.count) };
+      });
+      if (sections.some(function (s) { return !s.questions.length; })) throw new Error('empty');
+      paper = { id: chosen.id, name: chosen.name, index: 0, sections: sections, done: [],
+                results: [], questions: [], answers: {}, byId: {}, used: 0, allowed: 0 };
+      savePaper();
+      startSection(0);
+    }).catch(function () {
+      btn.disabled = false;
+      btn.textContent = 'Start the mock';
+      A.toast('Could not load the paper. Check your connection and try again.');
+    });
+  }
+  function startSection(index) {
+    var s = paper.sections[index];
+    paper.index = index;
+    savePaper();
+    run = { subject: s.subject, level: 'mock', section: index, label: s.label, questions: s.questions,
+            answers: {}, flags: {}, spent: {}, index: 0, total: s.seconds,
+            deadline: Date.now() + s.seconds * 1000, warned: [] };
+    saveRun();
+    renderRun();
+  }
+  function renderBreak() {
+    clearInterval(ticker);
+    window.removeEventListener('beforeunload', leaveGuard);
+    var box = A.clear(A.byId('arena'));
+    var card = el('div', 'card tool-card');
+    var last = paper.done[paper.done.length - 1];
+    var next = paper.sections[paper.index + 1];
+    card.appendChild(el('p', 'eyebrow', 'Section handed in'));
+    card.appendChild(el('h2', null, last.label + ': ' + last.score + ' / ' + last.total));
+    card.appendChild(el('p', 'muted', 'Take a short break. You cannot go back to that section, and the next one starts on a fresh clock.'));
+    card.appendChild(el('p', null, 'Next: ' + next.label + ' · ' + next.questions.length + ' questions · '
+      + Math.round(next.seconds / 60) + ' minutes'));
+    var go = el('button', 'btn btn-primary', 'Start the next section');
+    go.type = 'button';
+    go.addEventListener('click', function () { startSection(paper.index + 1); });
+    card.appendChild(go);
+    var stop = el('button', 'link-btn', 'Stop here and mark what I have done');
+    stop.type = 'button';
+    stop.addEventListener('click', function () { finishPaper(); });
+    card.appendChild(stop);
+    box.appendChild(card);
+  }
+  // Builds one result out of the sections that were sat, and records a single exam.
+  function finishPaper() {
+    var done = paper, score = 0, total = 0;
+    done.done.forEach(function (s) { score += s.score; total += s.total; });
+    var percent = total ? Math.round(score * 100 / total) : 0;
+    var graded = { score: score, total: total, percent: percent };
+    var finished = { questions: done.questions, answers: done.answers, total: done.allowed,
+                     level: 'mock', name: done.name, sections: done.done };
+    S.recordExam(state, { subject: 'mixed', level: 'mock', score: score, total: total, percent: percent,
+                          seconds: done.used, results: done.results });
+    A.commit(state);
+    S.celebrate(percent >= 70);
+    paper = null;
+    savePaper();
+    renderResults(finished, graded, done.byId, done.results, done.used);
+  }
   // ---------- Sitting the exam ----------
   function secondsLeft() { return Math.max(0, (run.deadline - Date.now()) / 1000); }
   function answeredCount() { return Object.keys(run.answers).length; }
@@ -156,6 +321,9 @@
     stage.appendChild(main);
     var side = el('aside', 'card tool-card exam-side');
     side.setAttribute('aria-label', 'Exam progress');
+    if (run.label && paper) {
+      side.appendChild(el('p', 'eyebrow', run.label + ' · ' + (run.section + 1) + ' of ' + paper.sections.length));
+    }
     var clock = el('div', 'exam-clock');
     clock.id = 'examClock';
     clock.setAttribute('role', 'timer');
@@ -168,11 +336,12 @@
     palette.setAttribute('role', 'group');
     palette.setAttribute('aria-label', 'Jump to a question');
     side.appendChild(palette);
-    var finish = el('button', 'btn btn-primary btn-sm', 'Finish exam');
+    var finish = el('button', 'btn btn-primary btn-sm', run.label ? 'Hand in this section' : 'Finish exam');
     finish.type = 'button';
     finish.addEventListener('click', function () {
       var blank = run.questions.length - answeredCount();
-      if (blank && !window.confirm(blank + ' question' + (blank === 1 ? ' is' : 's are') + ' still blank. Finish anyway?')) return;
+      var what = run.label ? 'Hand the section in anyway?' : 'Finish anyway?';
+      if (blank && !window.confirm(blank + ' question' + (blank === 1 ? ' is' : 's are') + ' still blank. ' + what)) return;
       submit();
     });
     side.appendChild(finish);
@@ -285,6 +454,22 @@
         var r = byId[q.id] || {};
         return { id: q.id, subject: q.subject, topic: q.topicId, topicName: q.topic, correct: !!r.correct, answered: !!run.answers[q.id], seconds: run.spent[q.id] || 0 };
       });
+      if (paper && run.section !== undefined) {
+        paper.done.push({ label: run.label, score: graded.score, total: graded.total, percent: graded.percent, seconds: used });
+        paper.results = paper.results.concat(results);
+        paper.questions = paper.questions.concat(run.questions);
+        mergeInto(paper.answers, run.answers);
+        mergeInto(paper.byId, byId);
+        paper.used += used;
+        paper.allowed += run.total;
+        var more = paper.index + 1 < paper.sections.length;
+        window.removeEventListener('beforeunload', leaveGuard);
+        run = null;
+        saveRun();
+        savePaper();
+        if (more) renderBreak(); else finishPaper();
+        return;
+      }
       S.recordExam(state, { subject: run.subject, level: run.level, score: graded.score, total: graded.total, percent: graded.percent, seconds: used, results: results });
       A.commit(state);
       S.celebrate(graded.percent >= 70);
@@ -312,7 +497,7 @@
     var head = el('div', 'card tool-card done-card');
     head.appendChild(A.ring(graded.percent, graded.percent + '%'));
     var t = el('div');
-    t.appendChild(el('p', 'eyebrow', 'Exam submitted'));
+    t.appendChild(el('p', 'eyebrow', finished.sections ? finished.name + ' finished' : 'Exam submitted'));
     t.appendChild(el('h2', null, graded.score + ' / ' + graded.total + ' correct'));
     var wrong = results.filter(function (r) { return !r.correct; }).length;
     t.appendChild(el('p', 'muted', wrong + ' question' + (wrong === 1 ? ' is' : 's are') + ' now in your Review Vault, and will come back in your daily session.'));
@@ -327,6 +512,7 @@
     t.appendChild(row);
     head.appendChild(t);
     box.appendChild(head);
+    if (finished.sections) box.appendChild(sectionReview(finished.sections));
     var time = timeReview(finished, results, used), checks = answerReview(finished, byId);
     time.id = 'resultTime';
     time.setAttribute('data-view', 'Your time');
@@ -339,8 +525,33 @@
     A.pager(list, [4, 12, 6]).set(items);
   }
 
+  function sectionReview(sections) {
+    var card = el('section', 'card tool-card');
+    card.appendChild(el('h2', null, 'Section by section'));
+    var table = el('table', 'score-table'), head = el('tr');
+    ['Section', 'Score', 'Percent', 'Time'].forEach(function (h) {
+      var th = el('th', null, h);
+      th.scope = 'col';
+      head.appendChild(th);
+    });
+    table.appendChild(head);
+    sections.forEach(function (s) {
+      var tr = el('tr');
+      tr.appendChild(el('td', null, s.label));
+      tr.appendChild(el('td', null, s.score + '/' + s.total));
+      tr.appendChild(el('td', null, s.percent + '%'));
+      tr.appendChild(el('td', null, A.clock(s.seconds)));
+      table.appendChild(tr);
+    });
+    card.appendChild(table);
+    return card;
+  }
+
   function timeReview(finished, results, used) {
-    var target = LEVELS[finished.level === 'challenge' ? 'challenge' : 'standard'].seconds;
+    // A mock has a different clock in each section, so the pace to beat is the paper's average.
+    var target = finished.sections
+      ? Math.round(finished.total / Math.max(1, finished.questions.length))
+      : LEVELS[finished.level === 'challenge' ? 'challenge' : 'standard'].seconds;
     var card = el('section', 'card tool-card');
     card.appendChild(el('h2', null, 'Where your time went'));
     var blank = results.filter(function (r) { return !r.answered; }).length;
@@ -416,7 +627,6 @@
   }
 
   // ---------- Start ----------
-  // A parent can assign an exam as "<subject>-<count>", for example mixed-40.
   // A parent can assign an exam as "<subject>-<count>", for example mixed-40, and may add
   // "-challenge" to set the harder paper.
   var preset = /^(mixed|math|english|physics)-(20|40|60)(-challenge)?$/.exec(A.param('preset'));
@@ -429,6 +639,7 @@
   A.boot(function (s) {
     state = s;
     if (run) return;
+    paper = restorePaper();
     var saved = restoreRun();
     if (saved) {
       run = saved;
@@ -437,6 +648,9 @@
       renderRun();
       return;
     }
+    // Reloaded during a break: pick the paper up where it stopped.
+    if (paper && paper.done.length && paper.index + 1 < paper.sections.length) { renderBreak(); return; }
+    if (paper) { paper = null; savePaper(); }
     renderSetup();
   });
 })();
