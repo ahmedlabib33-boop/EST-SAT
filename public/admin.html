@@ -195,6 +195,7 @@
     </div>
     <div class="alert" role="status" id="dNotice"></div>
     <div class="dialog-actions">
+      <button class="btn btn-ghost btn-sm" type="button" id="dParent">Parent report</button>
       <button class="btn btn-ghost btn-sm" type="button" id="dReset">Reset password</button>
       <button class="btn btn-ghost btn-sm" type="button" id="dToggle">Disable account</button>
       <button class="btn btn-ghost btn-sm" type="button" id="dRole" hidden>Make teacher</button>
@@ -463,6 +464,37 @@
   dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
   dialog.addEventListener('close', function () { current = null; });
 
+  // A link the teacher sends home. It reads one student's report and nothing else.
+  $('dParent').addEventListener('click', function () {
+    var s = current;
+    if (!s) return;
+    E.api('/admin/students/' + s.id + '/parent-link').then(function (res) {
+      var url = location.origin + res.path;
+      var box = $('dNotice');
+      box.innerHTML = '';
+      box.appendChild(document.createTextNode('Parent link for ' + (s.full_name || s.username) + ', good for ' + res.days + ' days: '));
+      var open = document.createElement('a');
+      open.href = res.path;
+      open.target = '_blank';
+      open.rel = 'noopener';
+      open.textContent = 'open it';
+      box.appendChild(open);
+      box.appendChild(document.createTextNode(' \u00b7 '));
+      var copy = document.createElement('button');
+      copy.type = 'button';
+      copy.className = 'link-btn';
+      copy.textContent = 'copy the link';
+      copy.addEventListener('click', function () {
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(url).then(function () { copy.textContent = 'copied'; })
+            .catch(function () { copy.textContent = url; });
+        } else { copy.textContent = url; }
+      });
+      box.appendChild(copy);
+      box.appendChild(document.createTextNode(' \u2014 anyone with the link can read this report, so send it to the family only.'));
+      box.className = 'alert show success';
+    }).catch(function (err) { notice($('dNotice'), err.message, false); });
+  });
   $('dReset').addEventListener('click', function () {
     var s = current;
     if (!s || !window.confirm('Reset the password for ' + (s.full_name || s.username) + '? Their current password will stop working.')) return;

@@ -408,3 +408,82 @@ def test_the_class_report_shows_the_weakest_topics_and_who_owes_homework(client)
     assert lesson['done'] == 1 and lesson['names'] == ['Sara Ali']
     assert exam['done'] == 1
     assert client.get('/api/admin/class-report', headers=auth(done)).status_code == 403
+
+
+def _teacher(client):
+    token = register(client, username='ahmed', email='ahmed@example.com').get_json()['access_token']
+    with client.app.app_context():
+        User.query.filter_by(username='ahmed').first().role = 'teacher'
+        db.session.commit()
+    return token
+
+
+def test_a_parent_reads_the_report_from_a_link_and_can_change_nothing(client):
+    student = register(client).get_json()['access_token']
+    client.put('/api/user/state', headers=auth(student), json={'data': {
+        'stats': {'answered': 40, 'correct': 30, 'time': 3600},
+        'days': {'2026-11-05': 12, '2026-11-06': 8},
+        'lessons': ['math-lesson-20'],
+        'attempts': [{'date': '2026-11-06', 'subject': 'math', 'score': 15, 'total': 20,
+                      'percent': 75, 'seconds': 900, 'level': 'challenge'}],
+        'exam': '2027-05-01',
+        'music': 'https://example.com/private-playlist',
+    }})
+    teacher = _teacher(client)
+    client.put('/api/admin/class-board', headers=auth(teacher), json={'board': {
+        'notice': 'Mock on Thursday.',
+        'assignments': [{'id': 'a-1', 'kind': 'lesson', 'target': 'math-lesson-20',
+                         'title': 'Quadratics', 'created': '2026-11-01'},
+                        {'id': 'a-2', 'kind': 'lesson', 'target': 'math-lesson-21',
+                         'title': 'Circles', 'created': '2026-11-01'}],
+    }})
+
+    with client.app.app_context():
+        student_id = User.query.filter_by(username='sara').first().id
+    link = client.get(f'/api/admin/students/{student_id}/parent-link', headers=auth(teacher))
+    assert link.status_code == 200
+    token = link.get_json()['token']
+    assert link.get_json()['path'] == '/parent-report.html?t=' + token
+
+    # No account, no header: the link is the whole key.
+    report = client.get('/api/parent/report?t=' + token)
+    assert report.status_code == 200
+    seen = report.get_json()
+    assert seen['student']['name'] == 'Sara Ali'
+    assert seen['student']['exam'] == '2027-05-01'
+    assert seen['teacher'] == 'Sara Ali'
+    assert seen['progress']['stats']['answered'] == 40
+    assert seen['progress']['attempts'][0]['percent'] == 75
+    # Personal keys stay out of a report the whole family can read.
+    assert 'music' not in seen['progress']
+    assert 'goals' not in seen['progress']
+    assert 'mistakes' not in seen['progress']
+    assert [h['done'] for h in seen['homework']] == [True, False]
+
+    # It is a report, not a login: it opens nothing else.
+    assert client.get('/api/user/state', headers=auth(token)).status_code in (401, 422)
+    assert client.get('/api/admin/students', headers=auth(token)).status_code in (401, 422)
+
+
+def test_a_broken_or_foreign_parent_link_is_refused(client):
+    student = register(client).get_json()['access_token']
+    teacher = _teacher(client)
+    with client.app.app_context():
+        student_id = User.query.filter_by(username='sara').first().id
+    good = client.get(f'/api/admin/students/{student_id}/parent-link',
+                      headers=auth(teacher)).get_json()['token']
+
+    assert client.get('/api/parent/report').status_code == 404
+    assert client.get('/api/parent/report?t=' + good[:-3] + 'xyz').status_code == 404
+    assert client.get('/api/parent/report?t=' + student).status_code == 404
+
+    # Only staff hand the link out, and only for a student who exists.
+    assert client.get(f'/api/admin/students/{student_id}/parent-link',
+                      headers=auth(student)).status_code == 403
+    assert client.get('/api/admin/students/9999/parent-link', headers=auth(teacher)).status_code == 404
+
+    # A disabled account stops answering.
+    with client.app.app_context():
+        User.query.filter_by(username='sara').first().is_active = False
+        db.session.commit()
+    assert client.get('/api/parent/report?t=' + good).status_code == 404

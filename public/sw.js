@@ -7,7 +7,7 @@ var VERSION = 'v2';
 var CACHE = 'estsat-' + VERSION;
 var SHELL = [
   'index.html', 'today.html', 'learn.html', 'exam.html', 'review.html', 'progress.html', 'rewards.html', 'revision.html',
-  'coach.html', 'pad.html', 'focus.html', 'parent.html', 'student-portal.html', 'manifest.webmanifest',
+  'coach.html', 'pad.html', 'focus.html', 'parent.html', 'parent-report.html', 'student-portal.html', 'manifest.webmanifest',
   'assets/site.css', 'assets/auth.js', 'assets/study.js', 'assets/app.js', 'assets/icons/icon.svg', 'assets/icons/icon-192.png'
 ];
 var CONTENT = ['/api/practice/subjects', '/api/practice/math/topics', '/api/practice/english/topics',

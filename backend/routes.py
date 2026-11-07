@@ -5,8 +5,9 @@ import secrets
 from datetime import timedelta
 from functools import wraps
 
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, current_app, jsonify, request
 from flask_jwt_extended import create_access_token, current_user, jwt_required
+from itsdangerous import BadSignature, SignatureExpired, URLSafeTimedSerializer
 from sqlalchemy import func, or_
 from sqlalchemy.exc import IntegrityError
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -21,7 +22,8 @@ quiz_bp = Blueprint('quiz', __name__, url_prefix='/api/quizzes')
 progress_bp = Blueprint('progress', __name__, url_prefix='/api/progress')
 user_bp = Blueprint('user', __name__, url_prefix='/api/user')
 admin_bp = Blueprint('admin', __name__, url_prefix='/api/admin')
-blueprints = [auth_bp, courses_bp, quiz_bp, progress_bp, user_bp, admin_bp]
+parent_bp = Blueprint('parent', __name__, url_prefix='/api/parent')
+blueprints = [auth_bp, courses_bp, quiz_bp, progress_bp, user_bp, admin_bp, parent_bp]
 
 USERNAME_RE = re.compile(r'^[A-Za-z0-9_.]{3,30}$')
 EMAIL_RE = re.compile(r'^[^@\s]+@[^@\s]+\.[^@\s]+$')
@@ -38,6 +40,10 @@ ATTEMPT_LEVELS = ('standard', 'challenge', 'mock')
 # production has no migration tooling for a new table. Students only ever read it.
 CLASS_KEY = 'class_board'
 MAX_CLASS_ASSIGNMENTS = 40
+# A parent opens their child's report from a signed link, with no account. The link is
+# signed with its own salt, so it is not a login and works on nothing but this report.
+PARENT_SALT = 'estsat-parent-report-v1'
+PARENT_LINK_DAYS = 120
 GOAL_KINDS = ('level', 'streak', 'exam', 'topic')
 MAX_MISTAKES = 100
 STAFF_ROLES = ('admin', 'teacher')
@@ -893,6 +899,61 @@ def class_report():
                         'accuracy': round(row[1] * 100.0 / row[0])})
     weakest.sort(key=lambda r: (r['accuracy'], -r['answered']))
     return jsonify({'students': students, 'topics': weakest, 'homework': homework}), 200
+
+
+def parent_signer():
+    return URLSafeTimedSerializer(current_app.config['JWT_SECRET_KEY'], salt=PARENT_SALT)
+
+
+def parent_report_for(user):
+    """Everything a parent should see, and nothing else: no answers, no messages, no email."""
+    state = db.session.get(UserState, user.id)
+    data = state.data if state and isinstance(state.data, dict) else {}
+    board = class_board()
+    homework = [{
+        'title': a['title'] or a['target'],
+        'kind': a['kind'],
+        'due': a['due'],
+        'done': assignment_is_done(a, data),
+    } for a in board['assignments']]
+    # The page runs the same study engine the student sees, so it is handed the
+    # aggregates it needs and none of the personal keys (goals, voice notes, music).
+    shared = {key: data.get(key) for key in
+              ('stats', 'days', 'time', 'topics', 'lessons', 'chapters', 'attempts', 'exam', 'freezes', 'week')
+              if data.get(key) is not None}
+    return {
+        'student': {'name': user.full_name or user.username, 'exam': data.get('exam') or ''},
+        'teacher': board.get('teacher') or '',
+        'progress': shared,
+        'homework': homework,
+        'updated_at': state.updated_at.isoformat() if state and state.updated_at else None,
+    }
+
+
+@admin_bp.get('/students/<int:user_id>/parent-link')
+@roles_required(*STAFF_ROLES)
+def parent_link(user_id):
+    """A link the teacher can send home. It expires, and it only ever reads."""
+    user = db.session.get(User, user_id)
+    if not user or user.role != 'student':
+        return error('Student not found.', 404)
+    token = parent_signer().dumps(user.id)
+    return jsonify({'token': token, 'path': '/parent-report.html?t=' + token, 'days': PARENT_LINK_DAYS}), 200
+
+
+@parent_bp.get('/report')
+def parent_report():
+    token = request.args.get('t') or ''
+    try:
+        user_id = parent_signer().loads(token, max_age=PARENT_LINK_DAYS * 86400)
+    except SignatureExpired:
+        return error('This link has expired. Ask the teacher for a new one.', 410)
+    except BadSignature:
+        return error('This link is not valid. Ask the teacher for a new one.', 404)
+    user = db.session.get(User, user_id) if isinstance(user_id, int) else None
+    if not user or user.role != 'student' or not user.is_active:
+        return error('This link is not valid. Ask the teacher for a new one.', 404)
+    return jsonify(parent_report_for(user)), 200
 
 
 @admin_bp.get('/statistics')

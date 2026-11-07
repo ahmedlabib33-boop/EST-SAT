@@ -278,6 +278,8 @@
     return sheet;
   }
   function renderNav() {
+    // A page for someone who is not a student, such as the parent report, says so.
+    if (document.body.getAttribute('data-app-nav') === 'off') return;
     var sheet = moreSheet();
     function open() { sheet.showModal(); }
 

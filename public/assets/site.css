@@ -812,6 +812,9 @@ select.input option, .topic-pick select option { background: #14141F; color: var
 .report-row { display: grid; gap: 6px; padding: 10px 0; border-top: 1px solid var(--line); }
 .report-row:first-child { border-top: 0; }
 .report-row strong { display: block; font-size: 14px; }
+.report-row .status-pill { justify-self: start; }
+/* The parent report's one line of explanation stays, even on a phone. */
+.one-screen .page-head .parent-lede { display: block !important; font-size: 13px; }
 .report-row small { display: block; color: var(--muted); font-size: 12.5px; }
 .class-notice { padding: 10px 12px; border-radius: var(--r-md); border: 1px solid rgba(139,92,246,0.4);
   background: color-mix(in srgb, var(--violet) 10%, transparent); font-size: 14px; }
@@ -1214,4 +1217,18 @@ main:has(.exam-stage) .page-head { display: none; }
   .one-screen > main, .one-screen > main[data-views], .fill-page, .view { overflow: visible !important; height: auto; display: block; }
   #sheet { display: block; }
   #sheet > .revision-card { overflow: visible; margin-bottom: 10px; }
+}
+
+
+/* ---------- Printing a tabbed page ----------
+   A parent prints the report on paper, so every tab prints, not just the open one. */
+@media print {
+  html:has(body.one-screen), body.one-screen { height: auto; overflow: visible; display: block; }
+  .one-screen > main, .one-screen > main[data-views] { height: auto; overflow: visible; display: block; }
+  .one-screen > main > [data-views] { height: auto; overflow: visible; display: block; }
+  .view-panels { display: block; }
+  .one-screen .view, .one-screen .view[hidden] { display: block !important; height: auto; overflow: visible; break-inside: avoid; margin-top: 14px; }
+  .view-bar, .pager { display: none !important; }
+  .page-head h1 { font-size: 1.6rem; }
+  .kpi, .report-row, .status-pill { break-inside: avoid; }
 }

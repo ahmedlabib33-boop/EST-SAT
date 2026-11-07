@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Parent report — EST · SAT with Ahmed Labib</title>
+<meta name="description" content="A read-only report of one student's work, shared by their teacher.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#07070F">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="one-screen" data-app-nav="off" data-live-banner="off">
+<div class="space" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html" aria-label="EST · SAT home">
+      <span class="mark" aria-hidden="true">E</span>
+      <span class="brand-txt"><b>EST · SAT</b><small>with Ahmed Labib</small></span>
+    </a>
+    <button class="btn btn-ghost btn-sm no-print" type="button" id="printBtn">Print</button>
+  </div>
+</header>
+
+<main id="top" class="wrap page" data-views="Report">
+  <section class="page-head">
+    <p class="eyebrow">Parent report</p>
+    <h1 id="who">Loading…</h1>
+    <p class="lede parent-lede" id="intro"></p>
+  </section>
+
+  <section id="summary" class="view-cards" data-view="Summary">
+    <div class="card tool-card" id="headline"></div>
+    <div class="card tool-card" id="athome"></div>
+  </section>
+  <section id="exams" data-view="Exams">
+    <div class="card tool-card" id="examBox"></div>
+  </section>
+  <section id="topics" class="view-cards" data-view="Topics">
+    <div class="card tool-card" id="strongBox"></div>
+    <div class="card tool-card" id="weakBox"></div>
+  </section>
+  <section id="homework" data-view="Homework">
+    <div class="card tool-card" id="homeworkBox"></div>
+  </section>
+</main>
+
+<script src="assets/auth.js"></script>
+<script src="assets/study.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var A = window.App, S = window.EstSatStudy, el = A.el;
+  var report = null, catalog = null, state = null;
+
+  function panelTitle(box, title, meta) {
+    var head = el('div', 'panel-title');
+    head.appendChild(el('h2', null, title));
+    if (meta) head.appendChild(el('span', 'sub', meta));
+    box.appendChild(head);
+    return head;
+  }
+  function empty(box, text) { box.appendChild(el('p', 'sub', text)); }
+
+  // ---------- the numbers ----------
+  function daysIn(window) {
+    var keys = Object.keys(state.days || {}), cut = S.addDays(S.dayKey(), -window);
+    return keys.filter(function (k) { return k >= cut; }).length;
+  }
+  function accuracy() {
+    var a = state.stats;
+    return a.answered ? Math.round(a.correct / a.answered * 100) : null;
+  }
+
+  function renderHeadline() {
+    var box = A.clear(A.byId('headline'));
+    panelTitle(box, 'The last 30 days', A.formatDate(S.dayKey()));
+    var active = daysIn(30), acc = accuracy(), ready = S.readiness(state);
+
+    var first = report.student.name.split(' ')[0];
+    var line = el('p', 'class-notice');
+    line.textContent = state.stats.answered
+      ? first + ' studied on ' + active + (active === 1 ? ' day' : ' days')
+        + ' out of the last 30, and has answered ' + state.stats.answered
+        + (state.stats.answered === 1 ? ' question' : ' questions') + ' in all'
+        + (acc === null ? '.' : ', getting ' + acc + '% of them right.')
+      : first + ' has not answered any questions yet. This report fills in by itself as soon as they start.';
+    box.appendChild(line);
+
+    var row = el('div', 'stat-row');
+    [
+      [String(active), 'days studied'],
+      [S.minutesStudied(state, 30) + ' min', 'time on the app'],
+      [String(state.lessons.length), 'lessons finished'],
+      [ready ? ready.percent + '%' : '—', 'readiness estimate']
+    ].forEach(function (k) {
+      var kpi = el('div', 'kpi');
+      kpi.appendChild(el('b', null, k[0]));
+      kpi.appendChild(el('span', null, k[1]));
+      row.appendChild(kpi);
+    });
+    box.appendChild(row);
+
+    var note = el('p', 'fine');
+    note.textContent = ready
+      ? ready.band + ' · from ' + (ready.basis === 'exams' ? 'their own timed exams' : 'their own practice')
+        + '. An estimate from their work here, not an official SAT or EST score.'
+      : 'The readiness estimate appears once they have answered a dozen questions or taken one timed exam.';
+    box.appendChild(note);
+  }
+
+  // One honest, specific thing a parent can do, taken from the data itself.
+  function renderAtHome() {
+    var box = A.clear(A.byId('athome'));
+    panelTitle(box, 'What would help at home');
+    var streak = S.streak(state), tips = [];
+    if (!state.stats.answered) {
+      tips.push('Nothing has been answered yet. Fifteen minutes on the first lesson is a good start.');
+    } else if (streak.current === 0) {
+      tips.push('The daily streak has stopped. One short session today starts it again.');
+    } else {
+      tips.push('The streak is at ' + streak.current + (streak.current === 1 ? ' day' : ' days')
+        + ', and the best run so far is ' + streak.best + '. Fifteen minutes a day keeps it going.');
+    }
+    var open = (report.homework || []).filter(function (h) { return !h.done; });
+    if (open.length === 1) {
+      tips.push('Homework still to do: ' + open[0].title + '.');
+    } else if (open.length) {
+      tips.push(open.length + ' pieces of homework are still to do, starting with ' + open[0].title + '.');
+    }
+    var weak = weakRows()[0];
+    if (weak) tips.push('The topic worth going over together is ' + A.subjectLabel(weak.subject) + ' · ' + weak.name + '.');
+    if (report.student.exam) {
+      tips.push('The exam they are working towards is on ' + A.formatDate(report.student.exam) + '.');
+    }
+    var list = el('ul', 'attention');
+    tips.forEach(function (text) {
+      var li = el('li');
+      li.appendChild(el('span', null, text));
+      list.appendChild(li);
+    });
+    box.appendChild(list);
+  }
+
+  // ---------- exams ----------
+  function renderExams() {
+    var box = A.clear(A.byId('examBox'));
+    panelTitle(box, 'Timed exams', state.attempts.length
+      ? state.attempts.length + (state.attempts.length === 1 ? ' sitting' : ' sittings') : '');
+    if (!state.attempts.length) {
+      empty(box, 'No timed exam yet. The app has quick exams and full mock papers, and the scores appear here.');
+      return;
+    }
+    var list = el('div', 'assigned-list');
+    state.attempts.slice(0, 10).forEach(function (a) {
+      var row = el('div', 'report-row');
+      var text = el('span');
+      text.appendChild(el('strong', null, A.subjectLabel(a.subject) + ' · ' + a.total + ' questions'
+        + (a.level && a.level !== 'standard' ? ' · ' + (a.level === 'mock' ? 'full mock' : 'challenge') : '')));
+      text.appendChild(el('small', null, A.formatDate(a.date) + ' · ' + a.score + ' of ' + a.total
+        + ' right · ' + Math.round(a.seconds / 60) + ' min'));
+      row.appendChild(text);
+      row.appendChild(A.meter(a.percent / 100, a.subject === 'mixed' ? '' : a.subject));
+      list.appendChild(row);
+    });
+    box.appendChild(list);
+    A.pager(list, [3, 5, 5]).set(Array.prototype.slice.call(list.children));
+  }
+
+  // ---------- topics ----------
+  function rows() {
+    return catalog ? S.topicRows(state, catalog).filter(function (r) { return r.answered >= 3; }) : [];
+  }
+  function weakRows() {
+    return rows().filter(function (r) { return r.accuracy !== null; })
+      .sort(function (a, b) { return a.accuracy - b.accuracy; });
+  }
+  function topicCard(id, title, list, blank) {
+    var box = A.clear(A.byId(id));
+    panelTitle(box, title);
+    if (!catalog) { empty(box, 'Loading topics…'); return; }
+    if (!list.length) { empty(box, blank); return; }
+    var holder = el('div', 'assigned-list');
+    list.forEach(function (r) {
+      var row = el('div', 'report-row');
+      var text = el('span');
+      text.appendChild(el('strong', null, A.subjectLabel(r.subject) + ' · ' + r.name));
+      text.appendChild(el('small', null, Math.round(r.accuracy * 100) + '% right over ' + r.answered + ' answers'));
+      row.appendChild(text);
+      row.appendChild(A.meter(r.accuracy, r.subject));
+      holder.appendChild(row);
+    });
+    box.appendChild(holder);
+    A.pager(holder, [3, 4, 4]).set(Array.prototype.slice.call(holder.children));
+  }
+  // The line between the two cards, so "doing well" always means it.
+  var GOOD = 0.6;
+  function renderTopics() {
+    var ranked = weakRows();
+    var strong = ranked.filter(function (r) { return r.accuracy >= GOOD; }).reverse();
+    var weak = ranked.filter(function (r) { return r.accuracy < GOOD; });
+    topicCard('strongBox', 'Doing well', strong.slice(0, 6),
+      'No topic is above 60% yet. That is what the daily practice is for.');
+    topicCard('weakBox', 'Worth some work', weak.slice(0, 6),
+      'Nothing is below 60%, so there is no weak spot to point at.');
+  }
+
+  // ---------- homework ----------
+  function renderHomework() {
+    var box = A.clear(A.byId('homeworkBox'));
+    var list = report.homework || [];
+    var done = list.filter(function (h) { return h.done; }).length;
+    panelTitle(box, 'Homework from the teacher', list.length ? done + ' of ' + list.length + ' done' : '');
+    if (!list.length) { empty(box, 'The teacher has not set any homework yet.'); return; }
+    var holder = el('div', 'assigned-list');
+    list.forEach(function (h) {
+      var row = el('div', 'report-row');
+      var text = el('span');
+      text.appendChild(el('strong', null, h.title));
+      var bits = [h.kind === 'lesson' ? 'Lesson' : 'Exam'];
+      if (h.due) bits.push('due ' + A.formatDate(h.due));
+      text.appendChild(el('small', null, bits.join(' · ')));
+      row.appendChild(text);
+      var pill = el('span', 'status-pill ' + (h.done ? 'on' : 'off'), h.done ? 'Done' : 'Not yet');
+      row.appendChild(pill);
+      holder.appendChild(row);
+    });
+    box.appendChild(holder);
+    A.pager(holder, [3, 5, 6]).set(Array.prototype.slice.call(holder.children));
+  }
+
+  function renderAll() {
+    renderHeadline();
+    renderAtHome();
+    renderExams();
+    renderTopics();
+    renderHomework();
+  }
+
+  function fail(message) {
+    A.byId('who').textContent = 'This report is not available';
+    A.byId('intro').textContent = message;
+    ['headline', 'athome', 'examBox', 'strongBox', 'weakBox', 'homeworkBox'].forEach(function (id) {
+      A.clear(A.byId(id)).hidden = true;
+    });
+  }
+
+  A.byId('printBtn').addEventListener('click', function () { window.print(); });
+
+  var token = A.param('t');
+  if (!token) {
+    fail('The link is incomplete. Ask the teacher to send it again.');
+    return;
+  }
+  fetch('/api/parent/report?t=' + encodeURIComponent(token))
+    .then(function (r) { return r.json().then(function (data) { return { ok: r.ok, data: data }; }); })
+    .then(function (res) {
+      if (!res.ok) throw new Error(res.data && res.data.error ? res.data.error : 'This report is not available.');
+      report = res.data;
+      state = S.normalize(report.progress);
+      A.byId('who').textContent = report.student.name;
+      A.byId('intro').textContent = 'A read-only report'
+        + (report.teacher ? ', shared by ' + report.teacher : '') + '. Nothing here can be changed.';
+      renderAll();
+      A.catalog().then(function (c) { catalog = c; renderTopics(); renderAtHome(); })
+        .catch(function () { /* the rest of the report does not need it */ });
+    })
+    .catch(function (err) { fail(err.message); });
+})();
+</script>
+</body>
+</html>
