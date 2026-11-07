@@ -335,3 +335,37 @@ def test_math_2_covers_every_area_of_the_published_syllabus(client):
     assert not any(q['subject'] == 'math2' for q in mixed)
     mission = client.get('/api/practice/daily?n=20&day=2026-11-07').get_json()['questions']
     assert not any(q['subject'] == 'math2' for q in mission)
+
+
+def test_the_imported_lessons_carry_their_corrections():
+    """scripts/lesson_fixes.py corrects the workbook lessons on every build.
+
+    Re-running the importer without the build would bring back lessons that taught
+    the wrong rule (percent increase as "divide by 100"), a spreadsheet date as
+    working (46086) and answer lines that named a label instead of an answer.
+    """
+    import json
+    import sys
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(__file__)), 'scripts'))
+    import lesson_fixes
+
+    root = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'backend', 'content')
+    for subject, fixes in lesson_fixes.FIXES.items():
+        with open(os.path.join(root, subject + '.json'), encoding='utf-8') as handle:
+            lessons = {int(l['id'].rsplit('-', 1)[-1]): l for l in json.load(handle)['lessons']}
+        for number, change in fixes.items():
+            lesson = lessons[number]
+            for field, value in change.items():
+                if field in lesson_fixes.PREFIX:
+                    line = '%s %s' % (lesson_fixes.PREFIX[field], value)
+                    assert line in lesson['explanation'], (subject, number, line)
+                else:
+                    assert lesson[field] == value, (subject, number, field)
+        # What a student reads; 'key' stays as imported, because questions link to it.
+        shown = [{f: l.get(f) for f in ('title', 'formula', 'explanation', 'example', 'tip')}
+                 for l in lessons.values()]
+        text = json.dumps(shown, ensure_ascii=False)
+        assert '46086' not in text
+        assert '->' not in text, subject
+        for label in ('Answer: expected value', 'Answer: weighted mean', 'Answer: variance value'):
+            assert label not in text

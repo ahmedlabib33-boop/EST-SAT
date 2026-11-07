@@ -1138,7 +1138,7 @@
    "arabic": "المجسمات المتشابهة",
    "difficulty": "Medium",
    "domain": "Three-dimensional geometry",
-   "example": "Two similar cones with radii 2 and 6 have k = 3, so their volumes are in the ratio 27 : 1.",
+   "example": "Two similar cones with radii 2 and 6 have k = 3, so the larger holds 3³ = 27 times the volume of the smaller.",
    "explanation": [
     "Two similar solids have the same shape at different sizes.",
     "If every length is k times bigger, areas scale by k² and volumes by k³.",
@@ -2495,7 +2495,7 @@
    "difficulty": "Hard",
    "domain": "Matrices, sequences, series and vectors",
    "explanation": [
-    "det A = 6 − 5 = 1, and the inverse is [[d, −b], [−c, a]] ÷ det = [[2, −1], [−5, 3]]."
+    "det A = 6 − 5 = 1, and the inverse is [[d, −b], [−c, a]] ÷ det = [[2, −1], [−5, 3]], so the top-left entry is 2."
    ],
    "id": "math2-practice-1212",
    "lessonId": "math2-lesson-12",
@@ -3225,7 +3225,7 @@
     },
     {
      "id": "B",
-     "text": "(x² + 4)(x² − 4)"
+     "text": "(x + 2)²(x − 2)²"
     },
     {
      "id": "C",
@@ -4558,7 +4558,7 @@
     },
     {
      "id": "B",
-     "text": "about 7.5%"
+     "text": "about 7.4%"
     },
     {
      "id": "C",
@@ -4572,7 +4572,7 @@
    "difficulty": "Hard",
    "domain": "Algebra and functions",
    "explanation": [
-    "30 ÷ 8 = 3.75 half-lives, so the fraction left is (½)^3.75 ≈ 0.0745, about 7.5%."
+    "30 ÷ 8 = 3.75 half-lives, so the fraction left is (½)^3.75 ≈ 0.0743, about 7.4%."
    ],
    "id": "math2-practice-1239",
    "lessonId": "math2-lesson-39",
@@ -4678,30 +4678,30 @@
    "choices": [
     {
      "id": "A",
-     "text": "27"
+     "text": "5.00"
     },
     {
      "id": "B",
-     "text": "3"
+     "text": "0.30"
     },
     {
      "id": "C",
-     "text": "4"
+     "text": "3.32"
     },
     {
      "id": "D",
-     "text": "9"
+     "text": "2.30"
     }
    ],
    "difficulty": "Medium",
    "domain": "Algebra and functions",
    "explanation": [
-    "3⁴ = 81, so the logarithm is 4."
+    "log₂ 10 = (log 10)/(log 2) = 1/0.30103 ≈ 3.32. 0.30 has the division upside down, and 2.30 is ln 10."
    ],
    "id": "math2-practice-441",
    "lessonId": "math2-lesson-41",
    "lessonKey": "Change of base",
-   "question": "What is log₃ 81?",
+   "question": "Use change of base to find log₂ 10 to two decimal places.",
    "topicId": "M2-03"
   },
   {
@@ -5209,26 +5209,26 @@
     },
     {
      "id": "B",
-     "text": "3"
-    },
-    {
-     "id": "C",
      "text": "5"
     },
     {
-     "id": "D",
+     "id": "C",
      "text": "1"
+    },
+    {
+     "id": "D",
+     "text": "3"
     }
    ],
    "difficulty": "Medium",
    "domain": "Algebra and functions",
    "explanation": [
-    "x = 1 satisfies x ≥ 1, so f(1) = 1 + 2 = 3."
+    "x = 1 satisfies x ≥ 1, so the second rule applies: f(1) = 1 + 4 = 5. Using the first rule gives 3."
    ],
    "id": "math2-practice-847",
    "lessonId": "math2-lesson-47",
    "lessonKey": "Piecewise functions",
-   "question": "f(x) = 3 for x < 1 and f(x) = x + 2 for x ≥ 1. What is f(1)?",
+   "question": "f(x) = 3 for x < 1 and f(x) = x + 4 for x ≥ 1. What is f(1)?",
    "topicId": "M2-03"
   },
   {
@@ -8034,7 +8034,7 @@
     },
     {
      "id": "C",
-     "text": "10/28 + 1"
+     "text": "25/56"
     },
     {
      "id": "D",

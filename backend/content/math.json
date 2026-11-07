@@ -188,7 +188,7 @@
    "explanation": [
     "Steps: Divide part by whole → multiply by 100 → express percentage.",
     "Numeric substitution: (45/180)×100 → 0.25×100 →25%",
-    "Answer: 0.25"
+    "Answer: 25%"
    ],
    "formula": "part/whole×100",
    "id": "math-lesson-11",
@@ -202,13 +202,13 @@
    "arabic": "تحويل نسبة",
    "difficulty": "Easy",
    "domain": "Algebra",
-   "example": "Given: x=25. Find: x/100",
+   "example": "Given: old=40, new=50. Find: percent increase",
    "explanation": [
-    "Steps: Divide percent value by 100 → convert to decimal.",
-    "Numeric substitution: 25/100 →0.25",
-    "Answer: 0.25"
+    "Steps: Subtract the old value from the new one → divide by the old value → multiply by 100.",
+    "Numeric substitution: (50 − 40)/40 × 100 → 10/40 × 100 → 25%",
+    "Answer: 25%"
    ],
-   "formula": "x/100",
+   "formula": "(new − old)/old × 100",
    "id": "math-lesson-12",
    "key": "Percent increase",
    "tip": "",
@@ -220,13 +220,13 @@
    "arabic": "نسبة التغير",
    "difficulty": "Easy",
    "domain": "Algebra",
-   "example": "Given: original=50, new=65. Find: percent change",
+   "example": "Given: original=50, new=35. Find: percent decrease",
    "explanation": [
-    "Steps: Calculate difference (new−old) → divide by original value → multiply by 100.",
-    "Numeric substitution: (65−50)/50×100 →15/50×100 →30%",
-    "Answer: 0.3"
+    "Steps: Subtract the new value from the old one → divide by the old value → multiply by 100.",
+    "Numeric substitution: (50 − 35)/50 × 100 → 15/50 × 100 → 30%",
+    "Answer: 30%"
    ],
-   "formula": "(new-old)/old",
+   "formula": "(old − new)/old × 100",
    "id": "math-lesson-13",
    "key": "Percent decrease",
    "tip": "",
@@ -296,7 +296,7 @@
    "explanation": [
     "Steps: Solve first equation for variable → substitute into second equation → solve intersection point.",
     "Numeric substitution: y=2x and y=x+4 →2x=x+4 →x=4 →y=8",
-    "Answer: 4"
+    "Answer: (4, 8)"
    ],
    "formula": "intersection",
    "id": "math-lesson-17",
@@ -314,7 +314,7 @@
    "explanation": [
     "Steps: Calculate slope of both equations → compare slopes → conclude no intersection.",
     "Numeric substitution: 3x+2=3x−5 →2=−5 →no solution",
-    "Answer: —"
+    "Answer: No solution: the lines are parallel"
    ],
    "formula": "same slope",
    "id": "math-lesson-18",
@@ -332,7 +332,7 @@
    "explanation": [
     "Steps: Simplify both equations → verify they are identical expressions.",
     "Numeric substitution: 2y=4x →y=2x same equation → infinite solutions",
-    "Answer: ∞"
+    "Answer: Infinitely many solutions"
    ],
    "formula": "same equation",
    "id": "math-lesson-19",
@@ -386,7 +386,7 @@
    "explanation": [
     "Steps: Substitute a,b,c values → calculate b²-4ac → analyze solution type.",
     "Numeric substitution: b²−4ac →2²−4(1)(5) →4−20 →−16",
-    "Answer: neg"
+    "Answer: −16, so there are no real roots"
    ],
    "formula": "b²-4ac",
    "id": "math-lesson-22",
@@ -404,7 +404,7 @@
    "explanation": [
     "Steps: Identify values inside parentheses → vertex = (h,k).",
     "Numeric substitution: y=(x−3)²+2 →vertex (3,2)",
-    "Answer: —"
+    "Answer: (3, 2)"
    ],
    "formula": "a(x-h)²+k",
    "id": "math-lesson-23",
@@ -526,19 +526,19 @@
    "arabic": "النمو الأسي",
    "difficulty": "Medium",
    "domain": "Algebra",
-   "example": "a=100 b=1.05 x=2",
+   "example": "Given: a=100, b=1.05, x=2. Find: y=a(b)^x",
    "explanation": [
-    "Steps: substitute",
-    "Numeric substitution: 100(1.05)²",
+    "Steps: Identify the starting value a and the growth factor b → raise b to the power x → multiply by a.",
+    "Numeric substitution: 100(1.05)² → 100(1.1025) → 110.25",
     "Answer: 110.25"
    ],
    "formula": "y=a(b)^x",
    "id": "math-lesson-30",
    "key": "exponential model",
    "tip": "",
-   "title": "exponential model",
+   "title": "Exponential Model",
    "topicId": "MATH-01",
-   "topicTitle": "exponential model"
+   "topicTitle": "Exponential Model"
   },
   {
    "arabic": "مساحة مستطيل",
@@ -940,10 +940,11 @@
    "arabic": "Easy",
    "difficulty": "Mixed",
    "domain": "Algebra",
-   "example": "Given: x=−7. Find:",
+   "example": "Given: |x| = 7. Find: x",
    "explanation": [
-    "Steps: Remove negative sign → measure distance from zero.",
-    "Answer: 7"
+    "Steps: Absolute value is the distance from zero → |x| = a has two solutions, x = a and x = −a, when a > 0.",
+    "Numeric substitution: |x| = 7 → x = 7 or x = −7",
+    "Answer: x = 7 or x = −7"
    ],
    "formula": "|x| = a",
    "id": "math-lesson-53",
@@ -960,8 +961,8 @@
    "example": "Given: a1=2, d=3. Find: next term",
    "explanation": [
     "Steps: Add constant difference repeatedly → find nth term.",
-    "Numeric substitution: 2,5,8 → difference=3",
-    "Answer: 3"
+    "Numeric substitution: 2, 5, 8 → difference = 3 → next term = 8 + 3 = 11",
+    "Answer: 11"
    ],
    "formula": "aₙ = a + (n−1)d",
    "id": "math-lesson-54",
@@ -978,8 +979,8 @@
    "example": "Given: a1=3, r=2. Find: next term",
    "explanation": [
     "Steps: Multiply by constant ratio repeatedly → find nth term.",
-    "Numeric substitution: 3,6,12 → ratio=2",
-    "Answer: 2"
+    "Numeric substitution: 3, 6, 12 → ratio = 2 → next term = 12 × 2 = 24",
+    "Answer: 24"
    ],
    "formula": "aₙ = a(r)^(n−1)",
    "id": "math-lesson-55",
@@ -1051,7 +1052,7 @@
    "explanation": [
     "Steps: Add x values → divide by 2 → repeat for y values.",
     "Numeric substitution: (2+6)/2=4 , (6+2)/2=4",
-    "Answer: 4"
+    "Answer: (4, 4)"
    ],
    "formula": "(x1+x2)/2",
    "id": "math-lesson-59",
@@ -1069,7 +1070,7 @@
    "explanation": [
     "Steps: Multiply constant k by x value.",
     "Numeric substitution: y=3×5 →15",
-    "Answer: y=3x"
+    "Answer: 15"
    ],
    "formula": "y=kx",
    "id": "math-lesson-60",
@@ -1087,7 +1088,7 @@
    "explanation": [
     "Steps: Divide constant by variable value.",
     "Numeric substitution: y=12/3 →4",
-    "Answer: y=12/x"
+    "Answer: 4"
    ],
    "formula": "k/x",
    "id": "math-lesson-61",
@@ -1101,7 +1102,7 @@
    "arabic": "معدل عمل",
    "difficulty": "Hard",
    "domain": "Problem Solving",
-   "example": "Given: rate1=1/2, rate2=1/3. Find: total rate",
+   "example": "Given: rates 1/2 and 1/3 of a tank per hour. Find: time to fill it together",
    "explanation": [
     "Steps: Convert work rates to fractions → add rates → invert total rate.",
     "Numeric substitution: 1/2+1/3=3/6+2/6=5/6 →6/5=1.2",
@@ -1173,11 +1174,11 @@
    "arabic": "خلط",
    "difficulty": "Medium",
    "domain": "Problem Solving",
-   "example": "Given: 30% of 10 and 50% of 20. Find: mixture result",
+   "example": "Given: 10 L of a 30% solution and 20 L of a 50% solution. Find: concentration of the mixture",
    "explanation": [
-    "Steps: Convert percentages to decimals → multiply by quantities → add results.",
-    "Numeric substitution: 0.3(10)+0.5(20)=3+10=13",
-    "Answer: weighted result"
+    "Steps: Convert percentages to decimals → multiply by each quantity → add the pure amounts → divide by the total volume.",
+    "Numeric substitution: 0.3(10) + 0.5(20) = 3 + 10 = 13 → 13/30 ≈ 0.433",
+    "Answer: about 43.3%"
    ],
    "formula": "concentration = amount of solute / total solution",
    "id": "math-lesson-66",
@@ -1247,9 +1248,9 @@
    "domain": "Advanced Math",
    "example": "Given: f(x)=x²,h=2,k=3. Find: f(x−h)+k",
    "explanation": [
-    "Steps: Adjust input value by subtracting h → shift graph horizontally.",
-    "Numeric substitution: f(x−2)=(x−2)²",
-    "Answer: shift right"
+    "Steps: Subtract h inside the function to move the graph h right → add k outside to move it k up.",
+    "Numeric substitution: f(x−2) + 3 = (x−2)² + 3",
+    "Answer: 2 right and 3 up"
    ],
    "formula": "f(x-h)+k",
    "id": "math-lesson-70",
@@ -1374,8 +1375,8 @@
    "example": "Given: r=3,θ=π. Find: ½r²θ",
    "explanation": [
     "Steps: Square radius → multiply by angle → multiply by ½.",
-    "Numeric substitution: ½×9π≈14.13",
-    "Answer: 14.13"
+    "Numeric substitution: ½ × 3² × π = 4.5π ≈ 14.14",
+    "Answer: 14.14"
    ],
    "formula": "½r²θ",
    "id": "math-lesson-77",
@@ -1447,7 +1448,7 @@
    "explanation": [
     "Steps: Multiply each outcome by probability → sum results.",
     "Numeric substitution: 1(0.2)+2(0.5)+3(0.3)=2.1",
-    "Answer: expected value"
+    "Answer: 2.1"
    ],
    "formula": "ΣxP(x)",
    "id": "math-lesson-81",
@@ -1497,28 +1498,28 @@
    "arabic": "دائرة الوحدة",
    "difficulty": "Medium",
    "domain": "Advanced Math",
-   "example": "θ=90°",
+   "example": "Given: θ = 90°. Find: (cos θ, sin θ)",
    "explanation": [
-    "Steps: find coordinates",
-    "Numeric substitution: (0,1)",
+    "Steps: The point at angle θ on the unit circle is (cos θ, sin θ) → read off the coordinates.",
+    "Numeric substitution: θ = 90° → (cos 90°, sin 90°) = (0, 1)",
     "Answer: (0,1)"
    ],
    "formula": "(cosθ, sinθ)",
    "id": "math-lesson-88",
    "key": "unit circle values",
    "tip": "",
-   "title": "unit circle values",
+   "title": "Unit Circle Values",
    "topicId": "MATH-02",
-   "topicTitle": "unit circle values"
+   "topicTitle": "Unit Circle Values"
   },
   {
    "arabic": "النسب المثلثية",
    "difficulty": "Easy",
    "domain": "Advanced Math",
-   "example": "opp=3 hyp=5",
+   "example": "Given: opposite=3, hypotenuse=5. Find: sin",
    "explanation": [
-    "Steps: divide sides",
-    "Numeric substitution: 46086",
+    "Steps: Label the sides from the angle → pick the ratio that uses the sides you know → divide.",
+    "Numeric substitution: sin = opp/hyp = 3/5 = 0.6",
     "Answer: 0.6"
    ],
    "formula": "sin=opp/hyp cos=adj/hyp tan=opp/adj",
@@ -1627,7 +1628,7 @@
    "explanation": [
     "Steps: Subtract measured value from actual → divide by actual → multiply by 100.",
     "Numeric substitution: (100−98)/100×100=2%",
-    "Answer: 0.02"
+    "Answer: 2%"
    ],
    "formula": "diff/actual×100",
    "id": "math-lesson-95",
@@ -1662,8 +1663,8 @@
    "example": "Given: data 1,2,2,3,3,4. Find: histogram representation",
    "explanation": [
     "Steps: Divide data into intervals → count frequency of each interval.",
-    "Numeric substitution: count frequencies per interval",
-    "Answer: frequency bars"
+    "Numeric substitution: value 1 → 1, value 2 → 2, value 3 → 2, value 4 → 1",
+    "Answer: bars of height 1, 2, 2 and 1"
    ],
    "formula": "frequency bars",
    "id": "math-lesson-97",
@@ -1680,8 +1681,8 @@
    "example": "Given: (x,y)={(1,2),(2,3),(3,5)}. Find: scatter pattern",
    "explanation": [
     "Steps: Plot coordinate pairs → analyze pattern direction.",
-    "Numeric substitution: plot points observe trend",
-    "Answer: correlation pattern"
+    "Numeric substitution: (1, 2), (2, 3), (3, 5) → y rises as x rises",
+    "Answer: positive correlation"
    ],
    "formula": "points relation",
    "id": "math-lesson-98",
@@ -1713,11 +1714,11 @@
    "arabic": "تباين",
    "difficulty": "Hard",
    "domain": "Statistics",
-   "example": "Given: values 2,4,6. Find: variance concept",
+   "example": "Given: values 2, 4, 6. Find: variance",
    "explanation": [
     "Steps: Calculate mean → compute squared deviations → average results.",
-    "Numeric substitution: spread from mean",
-    "Answer: variance value"
+    "Numeric substitution: mean = 4 → deviations −2, 0, 2 → squares 4, 0, 4 → 8 ÷ 3 ≈ 2.67",
+    "Answer: about 2.67"
    ],
    "formula": "spread",
    "id": "math-lesson-100",
@@ -1795,9 +1796,9 @@
    "id": "math-lesson-104",
    "key": "log base 10",
    "tip": "",
-   "title": "log base 10",
+   "title": "Log Base 10",
    "topicId": "MATH-02",
-   "topicTitle": "log base 10"
+   "topicTitle": "Log Base 10"
   },
   {
    "arabic": "تمدد رأسي",
@@ -1806,8 +1807,8 @@
    "example": "Given: f(x)=x²,a=2. Find: vertical stretch",
    "explanation": [
     "Steps: Multiply function output values by constant.",
-    "Numeric substitution: 2x² vertical stretch",
-    "Answer: vertical stretch"
+    "Numeric substitution: 2f(x) = 2x² → every height doubles",
+    "Answer: vertical stretch by a factor of 2"
    ],
    "formula": "af(x)",
    "id": "math-lesson-105",
@@ -1824,8 +1825,8 @@
    "example": "Given: f(x)=x²,a=2. Find: horizontal stretch",
    "explanation": [
     "Steps: Divide input variable by constant.",
-    "Numeric substitution: x²/2 horizontal stretch",
-    "Answer: horizontal stretch"
+    "Numeric substitution: f(x/2) = (x/2)² = x²/4 → the graph is twice as wide",
+    "Answer: horizontal stretch by a factor of 2"
    ],
    "formula": "f(x/a)",
    "id": "math-lesson-106",
@@ -1843,7 +1844,7 @@
    "explanation": [
     "Steps: Substitute y=0 → solve equation.",
     "Numeric substitution: 0=2x−4 →x=2",
-    "Answer: 2"
+    "Answer: (2, 0)"
    ],
    "formula": "y=0",
    "id": "math-lesson-107",
@@ -1861,7 +1862,7 @@
    "explanation": [
     "Steps: Substitute x=0 → solve equation.",
     "Numeric substitution: x=0 →y=5",
-    "Answer: 5"
+    "Answer: (0, 5)"
    ],
    "formula": "x=0",
    "id": "math-lesson-108",
@@ -1914,8 +1915,8 @@
    "example": "Given: initial=100,r=0.03,x=2. Find: growth",
    "explanation": [
     "Steps: Multiply initial value by growth factor repeatedly.",
-    "Numeric substitution: 100(1.03)²≈106",
-    "Answer: 106"
+    "Numeric substitution: 100(1.03)² = 100(1.0609) = 106.09",
+    "Answer: 106.09"
    ],
    "formula": "a(1+r)^x",
    "id": "math-lesson-111",
@@ -1987,7 +1988,7 @@
    "explanation": [
     "Steps: Multiply values by weights → divide by sum of weights.",
     "Numeric substitution: (2×3+4×5)/(3+5)=26/8=3.25",
-    "Answer: weighted mean"
+    "Answer: 3.25"
    ],
    "formula": "Σwx/Σw",
    "id": "math-lesson-115",
@@ -2059,7 +2060,7 @@
    "explanation": [
     "Steps: Plot constant y value as horizontal line.",
     "Numeric substitution: y=4 horizontal",
-    "Answer: y=constant"
+    "Answer: a horizontal line through (0, 4)"
    ],
    "formula": "y=c",
    "id": "math-lesson-119",
@@ -2077,7 +2078,7 @@
    "explanation": [
     "Steps: Plot constant x value as vertical line.",
     "Numeric substitution: x=2 vertical",
-    "Answer: x=constant"
+    "Answer: a vertical line through (2, 0)"
    ],
    "formula": "x=c",
    "id": "math-lesson-120",
@@ -2094,8 +2095,8 @@
    "example": "Given: a₁=2,d=3. Find: next recursive term",
    "explanation": [
     "Steps: Use previous term to compute next value.",
-    "Numeric substitution: 2+3=5",
-    "Answer: recursive rule"
+    "Numeric substitution: a₂ = a₁ + d = 2 + 3 = 5",
+    "Answer: 5"
    ],
    "formula": "aₙ = aₙ₋₁ + d",
    "id": "math-lesson-121",
@@ -2166,8 +2167,8 @@
    "example": "Given: y=−x²+4. Find: maximum value",
    "explanation": [
     "Steps: Locate highest point of graph (vertex).",
-    "Numeric substitution: max=4",
-    "Answer: maximum value"
+    "Numeric substitution: −x² ≤ 0, so y ≤ 4, reached at x = 0",
+    "Answer: 4"
    ],
    "formula": "vertex",
    "id": "math-lesson-125",
@@ -2184,8 +2185,8 @@
    "example": "Given: y=x². Find: minimum value",
    "explanation": [
     "Steps: Locate lowest point of graph (vertex).",
-    "Numeric substitution: min=0",
-    "Answer: minimum value"
+    "Numeric substitution: x² ≥ 0, so y ≥ 0, reached at x = 0",
+    "Answer: 0"
    ],
    "formula": "vertex",
    "id": "math-lesson-126",
@@ -2255,7 +2256,7 @@
    "domain": "Advanced Math",
    "example": "Given: 1/√5. Find: rationalized denominator",
    "explanation": [
-    "Steps: Multiply numerator and denominator by conjugate expression.",
+    "Steps: Multiply numerator and denominator by the radical, or by the conjugate when the denominator is a + √b.",
     "Numeric substitution: 1/√5×√5/√5=√5/5",
     "Answer: √5/5"
    ],
@@ -2311,7 +2312,7 @@
    "explanation": [
     "Steps: List all possible outcomes of experiment.",
     "Numeric substitution: {H,T}",
-    "Answer: all outcomes"
+    "Answer: 2 outcomes: H and T"
    ],
    "formula": "all outcomes",
    "id": "math-lesson-133",
@@ -2329,7 +2330,7 @@
    "explanation": [
     "Steps: Multiply probabilities along each branch of tree.",
     "Numeric substitution: 0.5×0.5=0.25",
-    "Answer: probability tree"
+    "Answer: 0.25"
    ],
    "formula": "branch probability",
    "id": "math-lesson-134",
@@ -2345,9 +2346,9 @@
    "domain": "Advanced Math",
    "example": "Given: f(x)=x² shifted right 3. Find: new function",
    "explanation": [
-    "Steps: Add constant inside function argument → shift horizontally.",
-    "Numeric substitution: f(x−3)",
-    "Answer: shift horizontal"
+    "Steps: Subtract the shift inside the function → the graph moves that far to the right.",
+    "Numeric substitution: f(x−3) = (x−3)²",
+    "Answer: y = (x − 3)²"
    ],
    "formula": "f(x-h)",
    "id": "math-lesson-135",
@@ -2364,8 +2365,8 @@
    "example": "Given: f(x)=x² shifted up 2. Find: new function",
    "explanation": [
     "Steps: Add constant outside function → shift vertically.",
-    "Numeric substitution: f(x)+2",
-    "Answer: shift vertical"
+    "Numeric substitution: f(x) + 2 = x² + 2",
+    "Answer: y = x² + 2"
    ],
    "formula": "f(x)+k",
    "id": "math-lesson-136",
@@ -2419,7 +2420,7 @@
    "explanation": [
     "Steps: Determine allowable input values of function.",
     "Numeric substitution: x≥0",
-    "Answer: domain set"
+    "Answer: x ≥ 0"
    ],
    "formula": "allowed x",
    "id": "math-lesson-139",
@@ -2437,7 +2438,7 @@
    "explanation": [
     "Steps: Determine possible output values of function.",
     "Numeric substitution: y≥0",
-    "Answer: range set"
+    "Answer: y ≥ 0"
    ],
    "formula": "possible y",
    "id": "math-lesson-140",
@@ -2472,8 +2473,8 @@
    "example": "Given: distribution skewed right. Find: shape description",
    "explanation": [
     "Steps: Observe shape symmetry or skew direction.",
-    "Numeric substitution: skew right",
-    "Answer: distribution shape"
+    "Numeric substitution: the long tail is on the right",
+    "Answer: skewed right"
    ],
    "formula": "sym/skew",
    "id": "math-lesson-142",
@@ -2509,7 +2510,7 @@
    "explanation": [
     "Steps: Multiply value by 1 → confirm unchanged result.",
     "Numeric substitution: 5×1=5",
-    "Answer: a"
+    "Answer: 5"
    ],
    "formula": "a×1=a",
    "id": "math-lesson-144",
@@ -2577,19 +2578,19 @@
    "arabic": "احتمال متوقع",
    "difficulty": "Medium",
    "domain": "Statistics",
-   "example": "Given: values 1,2 probabilities 0.4,0.6. Find: expected probability",
+   "example": "Given: values 1, 2 with probabilities 0.4, 0.6. Find: expected value",
    "explanation": [
     "Steps: Multiply probability by corresponding value.",
     "Numeric substitution: 1(0.4)+2(0.6)=1.6",
-    "Answer: expected probability"
+    "Answer: 1.6"
    ],
    "formula": "Σxp",
    "id": "math-lesson-148",
    "key": "Expected Probability Concept",
    "tip": "",
-   "title": "Expected Probability Concept",
+   "title": "Expected Value (Two Outcomes)",
    "topicId": "MATH-04",
-   "topicTitle": "Expected Probability Concept"
+   "topicTitle": "Expected Value (Two Outcomes)"
   },
   {
    "arabic": "تكرار نسبي",
@@ -2703,10 +2704,10 @@
    "arabic": "مسافة مطلقة",
    "difficulty": "Easy",
    "domain": "Algebra",
-   "example": "Given: x=−9. Find:",
+   "example": "Given: x=−9. Find: |x|",
    "explanation": [
     "Steps: Calculate distance from zero on number line.",
-    "Numeric substitution: 9",
+    "Numeric substitution: |−9| = 9",
     "Answer: 9"
    ],
    "formula": "abs(x)",
@@ -2724,8 +2725,8 @@
    "example": "Given: y=2x+3. Find: intercept concept",
    "explanation": [
     "Steps: Find coordinate where graph crosses axis.",
-    "Numeric substitution: set axis=0",
-    "Answer: intercept point"
+    "Numeric substitution: x = 0 → y = 3; y = 0 → x = −1.5",
+    "Answer: (0, 3) and (−1.5, 0)"
    ],
    "formula": "cross axis",
    "id": "math-lesson-156",
@@ -2743,7 +2744,7 @@
    "explanation": [
     "Steps: Calculate change in y → divide by change in x.",
     "Numeric substitution: 6/3=2",
-    "Answer: rate of change"
+    "Answer: 2"
    ],
    "formula": "Δy/Δx",
    "id": "math-lesson-157",
@@ -2761,7 +2762,7 @@
    "explanation": [
     "Steps: Identify data point far from cluster.",
     "Numeric substitution: 20 far from others",
-    "Answer: outlier value"
+    "Answer: 20"
    ],
    "formula": "value far from others",
    "id": "math-lesson-158",
@@ -2779,7 +2780,7 @@
    "explanation": [
     "Steps: Check if graph mirrors across axis.",
     "Numeric substitution: x² symmetric about y-axis",
-    "Answer: —"
+    "Answer: symmetric about the y-axis"
    ],
    "formula": "f(-x)=f(x)",
    "id": "math-lesson-159",
@@ -3850,30 +3851,30 @@
    "choices": [
     {
      "id": "A",
-     "text": "x = 3"
+     "text": "x = 4"
     },
     {
      "id": "B",
-     "text": "x = 15"
+     "text": "x = 28"
     },
     {
      "id": "C",
-     "text": "x = 5"
+     "text": "x = 7"
     },
     {
      "id": "D",
-     "text": "x = 25"
+     "text": "x = 11.5"
     }
    ],
    "difficulty": "Easy",
    "domain": "Algebra",
    "explanation": [
-    "Take 5 from both sides: 3x = 15, then divide by 3: x = 5."
+    "Take 9 from both sides: 4x = 28, then divide by 4: x = 7."
    ],
    "id": "math-practice-414",
    "lessonId": "math-lesson-14",
    "lessonKey": "Linear Equation",
-   "question": "Solve 3x + 5 = 20.",
+   "question": "Solve 4x + 9 = 37.",
    "topicId": "MATH-01"
   },
   {
@@ -4736,7 +4737,7 @@
    "difficulty": "Easy",
    "domain": "Advanced Math",
    "explanation": [
-    "A power of a power multiplies: 3²ˣ³ = 3⁶ = 729."
+    "A power of a power multiplies the exponents: 2 × 3 = 6, so (3²)³ = 3⁶ = 729."
    ],
    "id": "math-practice-426",
    "lessonId": "math-lesson-26",

@@ -61,7 +61,7 @@
    "example": "u = 5 m/s, a = 2 m/s², t = 4 s: v = 5 + 2(4) = 13 m/s.",
    "explanation": [
     "Start from the velocity you already have, then add what the acceleration adds.",
-    "Each second adds a more metres per second.",
+    "Each second the velocity grows by another a metres per second.",
     "Use it when the time is known but the distance is not."
    ],
    "formula": "v = u + at",
@@ -403,7 +403,7 @@
    "explanation": [
     "In a transverse wave the vibration is at right angles to the travel, like light.",
     "In a longitudinal wave the vibration is along the travel, like sound in air.",
-    "Longitudinal waves need a material, so sound cannot cross a vacuum."
+    "Sound is a mechanical wave and needs a material, so it cannot cross a vacuum; light needs none."
    ],
    "formula": "direction of vibration vs travel",
    "id": "physics-lesson-23",
@@ -3263,11 +3263,11 @@
    "choices": [
     {
      "id": "A",
-     "text": "230 Ω"
+     "text": "0.04 Ω"
     },
     {
      "id": "B",
-     "text": "2400 Ω"
+     "text": "240 Ω"
     },
     {
      "id": "C",
@@ -3275,18 +3275,18 @@
     },
     {
      "id": "D",
-     "text": "0.04 Ω"
+     "text": "2.4 Ω"
     }
    ],
    "difficulty": "Hard",
    "domain": "Electricity and current",
    "explanation": [
-    "R = V ÷ I = 240 ÷ 10 = 24 Ω."
+    "P = I²R, so R = P ÷ I² = 2400 ÷ 100 = 24 Ω. Dividing by I instead of I² gives 240."
    ],
    "id": "physics-practice-1232",
    "lessonId": "physics-lesson-32",
    "lessonKey": "Power and resistance",
-   "question": "A heater draws 10 A from a 240 V supply. What is its resistance?",
+   "question": "A 2400 W heater draws a current of 10 A. What is its resistance?",
    "topicId": "PHY-04"
   },
   {

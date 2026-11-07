@@ -495,9 +495,9 @@ LESSONS = [
      'log₅ 40 = (log 40)/(log 5) ≈ 2.29.',
      'The base goes underneath: that is the half people get backwards.',
      'تغيير الأساس', 'Medium',
-     'What is log₃ 81?',
-     ['4', '3', '27', '9'],
-     '3⁴ = 81, so the logarithm is 4.'),
+     'Use change of base to find log₂ 10 to two decimal places.',
+     ['3.32', '0.30', '5.00', '2.30'],
+     'log₂ 10 = (log 10)/(log 2) = 1/0.30103 ≈ 3.32. 0.30 has the division upside down, and 2.30 is ln 10.'),
 
     ('M2-03', 'Exponential and logarithmic equations', 'take a log of both sides',
      ['If the bases can be made equal, set the exponents equal.',
@@ -747,7 +747,7 @@ LESSONS = [
      ['Two similar solids have the same shape at different sizes.',
       'If every length is k times bigger, areas scale by k² and volumes by k³.',
       'Work backwards by taking the square or cube root of the ratio.'],
-     'Two similar cones with radii 2 and 6 have k = 3, so their volumes are in the ratio 27 : 1.',
+     'Two similar cones with radii 2 and 6 have k = 3, so the larger holds 3³ = 27 times the volume of the smaller.',
      'A volume ratio of 8 : 1 means a length ratio of 2 : 1.',
      'المجسمات المتشابهة', 'Medium',
      'Two similar solids have volumes in the ratio 8 : 27. What is the ratio of their surface areas?',
@@ -1006,7 +1006,7 @@ LESSONS = [
      '"Without replacement" is the signal that the denominator drops by one.',
      'الاحتمال الشرطي والاستقلال', 'Medium',
      'A bag has 5 red and 3 green balls. Two are drawn without replacement. What is P(both red)?',
-     ['5/14', '25/64', '5/8', '10/28 + 1'],
+     ['5/14', '25/64', '5/8', '25/56'],
      '5/8 × 4/7 = 20/56 = 5/14.'),
 
     ('M2-07', 'Permutations', 'ⁿPᵣ = n!/(n − r)!',
@@ -1224,9 +1224,9 @@ EXTRA = {
         ['y ≥ 4', 'y ≥ 0', 'All real numbers', 'y ≤ 4'],
         'x² is never negative, so the smallest value is 0 + 4 = 4.'),
     'Piecewise functions': (
-        'f(x) = 3 for x < 1 and f(x) = x + 2 for x ≥ 1. What is f(1)?',
-        ['3', '1', '5', 'It is undefined'],
-        'x = 1 satisfies x ≥ 1, so f(1) = 1 + 2 = 3.'),
+        'f(x) = 3 for x < 1 and f(x) = x + 4 for x ≥ 1. What is f(1)?',
+        ['5', '3', '1', 'It is undefined'],
+        'x = 1 satisfies x ≥ 1, so the second rule applies: f(1) = 1 + 4 = 5. Using the first rule gives 3.'),
     'Recursive definitions': (
         'a₁ = 4 and aₙ = aₙ₋₁ ÷ 2. What is a₅?',
         ['0.25', '0.5', '1', '2'],
@@ -1431,7 +1431,7 @@ HARD = {
     'Inverse of a 2 × 2 matrix': (
         'If A = [[3, 1], [5, 2]], what is the top-left entry of A⁻¹?',
         ['2', '3', '−1', '1/2'],
-        'det A = 6 − 5 = 1, and the inverse is [[d, −b], [−c, a]] ÷ det = [[2, −1], [−5, 3]].'),
+        'det A = 6 − 5 = 1, and the inverse is [[d, −b], [−c, a]] ÷ det = [[2, −1], [−5, 3]], so the top-left entry is 2.'),
     'Infinite geometric series': (
         'An infinite geometric series has first term 12 and sum 16. What is r?',
         ['1/4', '3/4', '4/3', '1/3'],
@@ -1446,7 +1446,7 @@ HARD = {
         'Squaring gives x + 7 = x² − 10x + 25, so x² − 11x + 18 = 0 and x = 2 or 9. Only x = 9 satisfies the original equation, since x − 5 must not be negative.'),
     'Factoring expressions': (
         'Factor x⁴ − 16 completely over the real numbers.',
-        ['(x² + 4)(x + 2)(x − 2)', '(x² − 4)(x² + 4)', '(x − 2)⁴', '(x² + 4)(x² − 4)'],
+        ['(x² + 4)(x + 2)(x − 2)', '(x² − 4)(x² + 4)', '(x − 2)⁴', '(x + 2)²(x − 2)²'],
         'x⁴ − 16 = (x² − 4)(x² + 4), and x² − 4 factors further into (x + 2)(x − 2). x² + 4 has no real factors.'),
     'Systems of equations': (
         'Solve x + y + z = 14, x − y = 2 and z = 2y. What is x?',
@@ -1482,8 +1482,8 @@ HARD = {
         '−5 ≤ 2x − 7 ≤ 5 gives 1 ≤ x ≤ 6, which holds for the integers 1, 2, 3, 4, 5 and 6.'),
     'Exponential growth and decay': (
         'A substance has a half-life of 8 days. What fraction remains after 30 days?',
-        ['about 7.5%', 'about 12.5%', 'about 3.1%', 'about 26.7%'],
-        '30 ÷ 8 = 3.75 half-lives, so the fraction left is (½)^3.75 ≈ 0.0745, about 7.5%.'),
+        ['about 7.4%', 'about 12.5%', 'about 3.1%', 'about 26.7%'],
+        '30 ÷ 8 = 3.75 half-lives, so the fraction left is (½)^3.75 ≈ 0.0743, about 7.4%.'),
     'Logarithm rules': (
         'Solve log₂ x + log₂(x − 2) = 3.',
         ['x = 4', 'x = 4 and x = −2', 'x = 2', 'x = 8'],

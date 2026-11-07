@@ -36,7 +36,7 @@
    "arabic": "الضمير يحل محل الاسم ويجب أن يكون واضحا",
    "difficulty": "",
    "domain": "",
-   "example": "Omar finished her homework.",
+   "example": "The students finished their homework.",
    "explanation": [
     "Replaces a noun and must be clear"
    ],
@@ -372,7 +372,7 @@
    "arabic": "الضمير الانعكاسي",
    "difficulty": "",
    "domain": "",
-   "example": "Omar taught herself.",
+   "example": "She taught herself to code.",
    "explanation": [
     "Use when subject and object are the same"
    ],
@@ -1012,14 +1012,14 @@
    "arabic": "الكلام المنقول",
    "difficulty": "",
    "domain": "",
-   "example": "Omar said that she was tired.",
+   "example": "My sister said that she was tired.",
    "explanation": [
     "Past reporting verb usually shifts tense back"
    ],
    "formula": "",
    "id": "english-lesson-64",
    "key": "Reported statements",
-   "tip": "am -> was, will -> would.",
+   "tip": "am → was, will → would.",
    "title": "Reported statements",
    "topicId": "eng-08",
    "topicTitle": "Clauses, conditionals, and reported speech"
@@ -1284,7 +1284,7 @@
    "arabic": "اختصار",
    "difficulty": "",
    "domain": "",
-   "example": "do not -> don't; it is -> it's",
+   "example": "do not → don't; it is → it's",
    "explanation": [
     "Shows missing letters"
    ],
@@ -1460,7 +1460,7 @@
    "arabic": "اختصار واضح",
    "difficulty": "",
    "domain": "",
-   "example": "due to the fact that -> because",
+   "example": "due to the fact that → because",
    "explanation": [
     "Remove extra words without losing meaning"
    ],
@@ -1499,8 +1499,8 @@
    "formula": "",
    "id": "english-lesson-94",
    "key": "01. Singular subject -> singular verb",
-   "tip": "student = singular -> studies/works",
-   "title": "01. Singular subject -> singular verb",
+   "tip": "student = singular → studies/works",
+   "title": "Singular subject → singular verb",
    "topicId": "eng-02",
    "topicTitle": "Subject-verb agreement"
   },
@@ -1515,8 +1515,8 @@
    "formula": "",
    "id": "english-lesson-95",
    "key": "02. Plural subject -> plural verb",
-   "tip": "students = plural -> study/work",
-   "title": "02. Plural subject -> plural verb",
+   "tip": "students = plural → study/work",
+   "title": "Plural subject → plural verb",
    "topicId": "eng-02",
    "topicTitle": "Subject-verb agreement"
   },
@@ -1532,7 +1532,7 @@
    "id": "english-lesson-96",
    "key": "03. Subjects joined by and",
    "tip": "One combined idea can be singular.",
-   "title": "03. Subjects joined by and",
+   "title": "Subjects joined by and",
    "topicId": "eng-02",
    "topicTitle": "Subject-verb agreement"
   },
@@ -1548,7 +1548,7 @@
    "id": "english-lesson-97",
    "key": "04. Or / nor nearest subject",
    "tip": "Look at the noun closest to the verb.",
-   "title": "04. Or / nor nearest subject",
+   "title": "Or / nor nearest subject",
    "topicId": "eng-02",
    "topicTitle": "Subject-verb agreement"
   },
@@ -1564,7 +1564,7 @@
    "id": "english-lesson-98",
    "key": "05. Each / everyone / someone / anybody",
    "tip": "Everyone sounds plural but is singular.",
-   "title": "05. Each / everyone / someone / anybody",
+   "title": "Each / everyone / someone / anybody",
    "topicId": "eng-02",
    "topicTitle": "Subject-verb agreement"
   },
@@ -1580,7 +1580,7 @@
    "id": "english-lesson-99",
    "key": "06. The number vs a number",
    "tip": "The article changes agreement.",
-   "title": "06. The number vs a number",
+   "title": "The number vs a number",
    "topicId": "eng-02",
    "topicTitle": "Subject-verb agreement"
   },
@@ -1595,8 +1595,8 @@
    "formula": "",
    "id": "english-lesson-100",
    "key": "07. Collective nouns",
-   "tip": "One unit -> singular verb.",
-   "title": "07. Collective nouns",
+   "tip": "One unit → singular verb.",
+   "title": "Collective nouns",
    "topicId": "eng-02",
    "topicTitle": "Subject-verb agreement"
   },
@@ -1612,7 +1612,7 @@
    "id": "english-lesson-101",
    "key": "08. Words ending in s but singular",
    "tip": "Meaning beats spelling.",
-   "title": "08. Words ending in s but singular",
+   "title": "Words ending in s but singular",
    "topicId": "eng-02",
    "topicTitle": "Subject-verb agreement"
   },
@@ -1628,7 +1628,7 @@
    "id": "english-lesson-102",
    "key": "09. Singular indefinite pronouns",
    "tip": "Use is/has/does.",
-   "title": "09. Singular indefinite pronouns",
+   "title": "Singular indefinite pronouns",
    "topicId": "eng-02",
    "topicTitle": "Subject-verb agreement"
   },
@@ -1644,7 +1644,7 @@
    "id": "english-lesson-103",
    "key": "10. Plural indefinite pronouns",
    "tip": "Use are/have/do.",
-   "title": "10. Plural indefinite pronouns",
+   "title": "Plural indefinite pronouns",
    "topicId": "eng-02",
    "topicTitle": "Subject-verb agreement"
   },
@@ -1660,7 +1660,7 @@
    "id": "english-lesson-104",
    "key": "11. Some / all / most / none",
    "tip": "Uncountable = singular; plural noun = plural.",
-   "title": "11. Some / all / most / none",
+   "title": "Some / all / most / none",
    "topicId": "eng-02",
    "topicTitle": "Subject-verb agreement"
   },
@@ -1676,7 +1676,7 @@
    "id": "english-lesson-105",
    "key": "12. Distance / time / money",
    "tip": "Treat the amount as one idea.",
-   "title": "12. Distance / time / money",
+   "title": "Distance / time / money",
    "topicId": "eng-02",
    "topicTitle": "Subject-verb agreement"
   },
@@ -1691,8 +1691,8 @@
    "formula": "",
    "id": "english-lesson-106",
    "key": "13. Titles",
-   "tip": "One work -> singular.",
-   "title": "13. Titles",
+   "tip": "One work → singular.",
+   "title": "Titles",
    "topicId": "eng-02",
    "topicTitle": "Subject-verb agreement"
   },
@@ -1708,7 +1708,7 @@
    "id": "english-lesson-107",
    "key": "14. Fractions",
    "tip": "cake singular; students plural.",
-   "title": "14. Fractions",
+   "title": "Fractions",
    "topicId": "eng-02",
    "topicTitle": "Subject-verb agreement"
   },
@@ -1724,7 +1724,7 @@
    "id": "english-lesson-108",
    "key": "15. There is / there are",
    "tip": "Look after the verb.",
-   "title": "15. There is / there are",
+   "title": "There is / there are",
    "topicId": "eng-02",
    "topicTitle": "Subject-verb agreement"
   },
@@ -1740,7 +1740,7 @@
    "id": "english-lesson-109",
    "key": "16. Ignore prepositional phrase",
    "tip": "Subject = list, not items.",
-   "title": "16. Ignore prepositional phrase",
+   "title": "Ignore prepositional phrase",
    "topicId": "eng-02",
    "topicTitle": "Subject-verb agreement"
   },
@@ -1756,7 +1756,7 @@
    "id": "english-lesson-110",
    "key": "17. Gerund subject",
    "tip": "Activity = one idea.",
-   "title": "17. Gerund subject",
+   "title": "Gerund subjects are singular",
    "topicId": "eng-02",
    "topicTitle": "Subject-verb agreement"
   },
@@ -1772,7 +1772,7 @@
    "id": "english-lesson-111",
    "key": "18. Either / neither",
    "tip": "Use singular unless joined with or/nor.",
-   "title": "18. Either / neither",
+   "title": "Either / neither",
    "topicId": "eng-02",
    "topicTitle": "Subject-verb agreement"
   },
@@ -2689,30 +2689,30 @@
    "choices": [
     {
      "id": "A",
-     "text": "Sara finished their homework."
+     "text": "its"
     },
     {
      "id": "B",
-     "text": "Sara finished her homework."
+     "text": "their"
     },
     {
      "id": "C",
-     "text": "Sara finished his homework."
+     "text": "her"
     },
     {
      "id": "D",
-     "text": "Sara finished its homework."
+     "text": "his"
     }
    ],
    "difficulty": "Medium",
    "domain": "",
    "explanation": [
-    "A pronoun must match the noun it replaces. Sara is one person, so 'her' is the match."
+    "A pronoun must match the noun it replaces. 'The two sisters' is plural, so the pronoun is 'their'."
    ],
    "id": "english-practice-403",
    "lessonId": "english-lesson-3",
    "lessonKey": "Pronoun",
-   "question": "Choose the clearest version.",
+   "question": "Choose the correct pronoun.  “The two sisters shared ___ notes before the exam.”",
    "topicId": "eng-01"
   },
   {
@@ -4257,7 +4257,7 @@
    "difficulty": "Hard",
    "domain": "",
    "explanation": [
-    "With two people of the same gender in the sentence, only repeating the noun removes the doubt."
+    "With two people in the sentence, 'she' or 'they' could point to either one; only repeating the noun removes the doubt."
    ],
    "id": "english-practice-1226",
    "lessonId": "english-lesson-26",
@@ -6409,25 +6409,25 @@
    "choices": [
     {
      "id": "A",
-     "text": "She continued, although it was hard, ."
+     "text": "She stayed late, because, the bus was delayed."
     },
     {
      "id": "B",
-     "text": "She, continued although it was hard."
+     "text": "She, stayed late because the bus was delayed."
     },
     {
      "id": "C",
-     "text": "Although, it was hard she continued."
+     "text": "Because, the bus was delayed she stayed late."
     },
     {
      "id": "D",
-     "text": "She continued although it was hard."
+     "text": "She stayed late because the bus was delayed."
     }
    ],
    "difficulty": "Medium",
    "domain": "",
    "explanation": [
-    "An adverb clause at the end needs no comma before it when it is essential."
+    "A reason clause at the end of a sentence usually takes no comma; at the start it would be followed by one."
    ],
    "id": "english-practice-858",
    "lessonId": "english-lesson-58",
@@ -7471,7 +7471,7 @@
     },
     {
      "id": "C",
-     "text": "My brother who lives in Cairo called me."
+     "text": "My mother who lives in Cairo called me."
     },
     {
      "id": "D",
@@ -9571,30 +9571,30 @@
    "choices": [
     {
      "id": "A",
-     "text": "were"
+     "text": "are"
     },
     {
      "id": "B",
-     "text": "are being"
+     "text": "have been"
     },
     {
      "id": "C",
-     "text": "was"
+     "text": "is"
     },
     {
      "id": "D",
-     "text": "have been"
+     "text": "were"
     }
    ],
    "difficulty": "Medium",
    "domain": "",
    "explanation": [
-    "A group noun acting as one unit takes a singular verb."
+    "A group noun acting as one unit takes a singular verb, and 'its' shows the team is treated as one."
    ],
    "id": "english-practice-500",
    "lessonId": "english-lesson-100",
    "lessonKey": "07. Collective nouns",
-   "question": "Choose the correct verb.  “The team ___ winning at half time.”",
+   "question": "Choose the correct verb.  “The team ___ celebrating its first win of the season.”",
    "topicId": "eng-02"
   },
   {
@@ -10364,7 +10364,7 @@
    "difficulty": "Medium",
    "domain": "",
    "explanation": [
-    "either and neither on their own are singular."
+    "'Neither' is the subject and it is singular; 'of the answers' does not change that."
    ],
    "id": "english-practice-911",
    "lessonId": "english-lesson-111",
@@ -10408,7 +10408,7 @@
    "choices": [
     {
      "id": "A",
-     "text": "rapid"
+     "text": "feasible"
     },
     {
      "id": "B",
@@ -10722,7 +10722,7 @@
     },
     {
      "id": "B",
-     "text": "relevant"
+     "text": "rapid"
     },
     {
      "id": "C",
@@ -11826,7 +11826,7 @@
    "id": "english-practice-535",
    "lessonId": "english-lesson-135",
    "lessonKey": "analyze",
-   "question": "Read the sentence: “Analyse the passage before answering.”  As it is used here, “analyze” most nearly means…",
+   "question": "Read the sentence: “Analyze the passage before answering.”  As it is used here, “analyze” most nearly means…",
    "topicId": "eng-11"
   },
   {

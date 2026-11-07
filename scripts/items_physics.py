@@ -57,7 +57,7 @@ LESSONS = [
 
     ('PHY-01', 'Velocity–time equation', 'v = u + at',
      ['Start from the velocity you already have, then add what the acceleration adds.',
-      'Each second adds a more metres per second.',
+      'Each second the velocity grows by another a metres per second.',
       'Use it when the time is known but the distance is not.'],
      'u = 5 m/s, a = 2 m/s², t = 4 s: v = 5 + 2(4) = 13 m/s.',
      'Check the unit: a × t is m/s² × s = m/s, which matches u.',
@@ -274,7 +274,7 @@ LESSONS = [
     ('PHY-03', 'Transverse and longitudinal waves', 'direction of vibration vs travel',
      ['In a transverse wave the vibration is at right angles to the travel, like light.',
       'In a longitudinal wave the vibration is along the travel, like sound in air.',
-      'Longitudinal waves need a material, so sound cannot cross a vacuum.'],
+      'Sound is a mechanical wave and needs a material, so it cannot cross a vacuum; light needs none.'],
      'Light reaches us from the Sun through empty space; sound does not.',
      'If a question mentions a vacuum, think about whether the wave needs matter.',
      'موجات مستعرضة وموجات طولية', 'Easy',
@@ -825,9 +825,9 @@ HARD = {
         ['2 A', '0.8 A', '4 A', '1.33 A'],
         'The parallel pair is 3 Ω, so the total is 6 Ω and I = 12 ÷ 6 = 2 A.'),
     'Power and resistance': (
-        'A heater draws 10 A from a 240 V supply. What is its resistance?',
-        ['24 Ω', '2400 Ω', '0.04 Ω', '230 Ω'],
-        'R = V ÷ I = 240 ÷ 10 = 24 Ω.'),
+        'A 2400 W heater draws a current of 10 A. What is its resistance?',
+        ['24 Ω', '240 Ω', '2.4 Ω', '0.04 Ω'],
+        'P = I²R, so R = P ÷ I² = 2400 ÷ 100 = 24 Ω. Dividing by I instead of I² gives 240.'),
     'Electrical energy': (
         'A 2 kW kettle runs for 6 minutes. How much energy does it use in joules?',
         ['720 000 J', '12 000 J', '200 J', '7 200 J'],

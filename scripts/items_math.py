@@ -5,11 +5,10 @@ One entry per lesson, keyed by the number in its id (math-lesson-16 -> 16).
 Each entry is (stem, [correct, wrong, wrong, wrong], why); the correct choice is
 written first and `build_practice.py` shuffles the four.
 
-Every question was worked out from the lesson's own rule. Where the imported
-example disagreed with its own answer line (the arithmetic sequence example
-gave the common difference where it asked for the next term, and the percent
-decrease example went up rather than down) the question here follows the rule,
-not the broken example.
+Every question was worked out from the lesson's own rule. Some imported lessons
+were themselves wrong (the arithmetic sequence example gave the common difference
+where it asked for the next term, and the percent decrease example went up rather
+than down); lesson_fixes.py corrects those lessons on every build.
 """
 
 ITEMS = {
@@ -43,8 +42,8 @@ ITEMS = {
          "Change ÷ original: (50 − 35)/50 = 15/50 = 0.3, so 30%."),
 
     # ---- Linear equations and lines ----
-    14: ("Solve 3x + 5 = 20.", ["x = 5", "x = 15", "x = 25", "x = 3"],
-         "Take 5 from both sides: 3x = 15, then divide by 3: x = 5."),
+    14: ("Solve 4x + 9 = 37.", ["x = 7", "x = 28", "x = 11.5", "x = 4"],
+         "Take 9 from both sides: 4x = 28, then divide by 4: x = 7."),
     15: ("If y = 2x + 3, what is y when x = 4?", ["11", "9", "14", "24"],
          "y = 2(4) + 3 = 8 + 3 = 11."),
     16: ("What is the slope of the line through (2, 3) and (6, 11)?", ["2", "1/2", "4", "−2"],
@@ -76,7 +75,7 @@ ITEMS = {
     25: ("What is 5⁶ ÷ 5²?", ["625", "125", "25", "5⁸"],
          "Same base: subtract the powers. 5⁶⁻² = 5⁴ = 625."),
     26: ("What is (3²)³?", ["729", "243", "81", "216"],
-         "A power of a power multiplies: 3²ˣ³ = 3⁶ = 729."),
+         "A power of a power multiplies the exponents: 2 × 3 = 6, so (3²)³ = 3⁶ = 729."),
     27: ("What is √49?", ["7", "24.5", "9", "6"],
          "7 × 7 = 49."),
     28: ("What is √(36 × 25)?", ["30", "61", "900", "11"],

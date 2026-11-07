@@ -34,6 +34,7 @@ from items_math2 import (EXTRA as MATH2_EXTRA, HARD as MATH2_HARD,  # noqa: E402
                          LESSONS as MATH2_LESSONS, TOPICS as MATH2_TOPICS)
 from items_physics import (EXTRA as PHYSICS_EXTRA, HARD as PHYSICS_HARD,  # noqa: E402
                            LESSONS as PHYSICS_LESSONS, TOPICS as PHYSICS_TOPICS)
+import lesson_fixes  # noqa: E402
 
 NEW_ID_FROM = 400
 # A lesson can carry more than one question: the first is 400 + the lesson number, the
@@ -63,6 +64,8 @@ def build(subject, items):
     path = os.path.join(ROOT, 'backend', 'content', subject + '.json')
     with io.open(path, encoding='utf-8') as handle:
         payload = json.load(handle)
+    # The imported workbook lessons carry mistakes; lesson_fixes.py corrects them every build.
+    lesson_fixes.apply(subject, payload['lessons'])
 
     def written_here(question):
         return int(question['id'].rsplit('-', 1)[-1]) >= NEW_ID_FROM
